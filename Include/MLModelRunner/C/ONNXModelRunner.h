@@ -1,5 +1,5 @@
-#ifndef PIPE_MODEL_RUNNER_WRAPPER_H
-#define PIPE_MODEL_RUNNER_WRAPPER_H
+#ifndef ONNX_MODEL_RUNNER_WRAPPER_H
+#define ONNX_MODEL_RUNNER_WRAPPER_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -7,27 +7,26 @@ extern "C" {
 
 // Define an opaque pointer type for ONNXModelRunnerWrapper
 typedef struct ONNXModelRunnerWrapper ONNXModelRunnerWrapper;
+typedef struct Environment Environment;
+typedef signed Action;
 
-// Function to create an instance of ONNXModelRunnerWrapper
-ONNXModelRunnerWrapper *createONNXModelRunner(const char *outBoundName,
-                                              const char *inBoundName,
-                                              int serDesType);
+Environment *createEnvironment();
+void env_setDone(Environment *env);
+void env_resetDone(Environment *env);
+bool env_checkDone(Environment *env);
+void env_setNumFeatures(Environment *env, int numFeatures);
+void env_setStepFunc(Environment *env, float *(*stepFunc)(Action action));
+void env_setResetFunc(Environment *env, float *(*resetFunc)());
+void env_setNextAgent(Environment *env, char *agentName);
 
-// Function to call a method on ONNXModelRunnerWrapper
-void populateFloatFeatures(ONNXModelRunnerWrapper *obj, const char *name,
-                           const float *data, const int size);
-void populateIntFeatures(ONNXModelRunnerWrapper *obj, const char *name,
-                         const int *data, const int size);
-int evaluateIntFeatures(ONNXModelRunnerWrapper *obj);
-float evaluateFloatFeatures(ONNXModelRunnerWrapper *obj);
-
-// Function to destroy an instance of ONNXModelRunnerWrapper
+ONNXModelRunnerWrapper *createONNXModelRunner(Environment *env, int numAgents,
+                                              ...);
+void evaluate(ONNXModelRunnerWrapper *obj);
+void destroyEnvironment(Environment *env);
 void destroyONNXModelRunner(ONNXModelRunnerWrapper *obj);
-
-// void test();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // PIPE_MODEL_RUNNER_WRAPPER_H
+#endif // ONNX_MODEL_RUNNER_WRAPPER_H

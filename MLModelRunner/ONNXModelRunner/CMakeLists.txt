@@ -15,7 +15,7 @@ if(NOT ONNXRUNTIME_ROOTDIR)
 endif()
 
 include_directories("${ONNXRUNTIME_ROOTDIR}/include" "${ONNXRUNTIME_ROOTDIR}/include/onnxruntime/core/session")
-link_directories("${ONNXRUNTIME_ROOTDIR}/lib")
+# link_directories("${ONNXRUNTIME_ROOTDIR}/lib")
 
 if(onnxruntime_USE_CUDA)
   add_definitions(-DUSE_CUDA)
@@ -48,9 +48,17 @@ endif()
 
 # target_link_libraries(LLVMONNXModelRunner PUBLIC onnxruntime)
 
-add_library(ONNXModelRunnerLib OBJECT onnx.cpp
-      agent.cpp
-      ONNXModelRunner.cpp
-    )
-target_link_libraries(ONNXModelRunnerLib PUBLIC onnxruntime)  
-set_property(TARGET ONNXModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)
+# set(onnx_sources
+#     onnx.cpp
+#     agent.cpp
+#     ONNXModelRunner.cpp
+#     )
+# message("onnx_sources INSIDE: ${onnx_sources}")
+
+# add_library(ONNXModelRunnerLib OBJECT onnx.cpp
+#       agent.cpp
+#       ONNXModelRunner.cpp
+#     )
+# target_link_libraries(ONNXModelRunnerLib PUBLIC onnxruntime)  
+# target_include_directories(ONNXModelRunnerLib PUBLIC "${ONNXRUNTIME_ROOTDIR}/include" "${ONNXRUNTIME_ROOTDIR}/include/onnxruntime/core/session")
+# set_property(TARGET ONNXModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)

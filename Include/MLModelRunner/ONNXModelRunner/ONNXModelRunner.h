@@ -20,10 +20,11 @@
 namespace llvm {
 class ONNXModelRunner : public MLModelRunner {
 public:
-  ONNXModelRunner(Environment *env,
-                  std::map<std::string, Agent *> agents, LLVMContext* Ctx = nullptr);
-  void setEnvironment(Environment *_env) { env = _env; }
-  Environment *getEnvironment() { return env; }
+  ONNXModelRunner(MLBridge::Environment *env,
+                  std::map<std::string, Agent *> agents,
+                  LLVMContext *Ctx = nullptr);
+  void setEnvironment(MLBridge::Environment *_env) { env = _env; }
+  MLBridge::Environment *getEnvironment() { return env; }
   void addAgent(Agent *agent, std::string name);
   void computeAction(Observation obs);
 
@@ -32,7 +33,7 @@ public:
   void *evaluateUntyped() override;
 
 private:
-  Environment *env;
+  MLBridge::Environment *env;
   std::map<std::string, Agent *> agents;
 };
 } // namespace llvm

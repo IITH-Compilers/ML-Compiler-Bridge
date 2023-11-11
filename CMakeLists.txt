@@ -47,13 +47,16 @@ message("LLVM Libs: ${llvm_libs}")
 
 add_library(MLCompilerBridgeC STATIC $<TARGET_OBJECTS:ModelRunnerCWrapper>)
 link_directories("/usr/lib/llvm-10/lib")
+link_directories("${ONNXRUNTIME_ROOTDIR}/lib")
+
+
 target_link_libraries(MLCompilerBridgeC 
-	PUBLIC  SerDesCLib 
-			ModelRunnerCLib 
-			ModelRunnerUtils
-			LLVM-10
-			${llvm_libs}
-			)
+						PUBLIC  SerDesCLib 
+						ModelRunnerCLib 
+						ModelRunnerUtils
+						LLVM-10
+						${llvm_libs}
+						)
 add_dependencies(MLCompilerBridgeC copy-ml-llvm-bridge-include)
 set_property(TARGET MLCompilerBridgeC PROPERTY POSITION_INDEPENDENT_CODE 1)
 

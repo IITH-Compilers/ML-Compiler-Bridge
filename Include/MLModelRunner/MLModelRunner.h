@@ -35,8 +35,6 @@ public:
   template <typename T>
   typename std::enable_if<std::is_fundamental<T>::value, T>::type evaluate() {
     float res = *reinterpret_cast<T *>(evaluateUntyped());
-    errs() << "In MLModelRunner evaluate...\n";
-    errs() << res << "\n"; 
     // return *reinterpret_cast<T *>(evaluateUntyped());
     return res;
   }

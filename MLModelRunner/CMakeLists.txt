@@ -86,6 +86,12 @@ add_subdirectory(C)
 # # target_link_libraries(ModelRunnerCLib PUBLIC ${MLLinkDeps} ModelRunnerUtils PipeModelRunner.cpp ONNXModelRunnerLib)
 # set_property(TARGET ModelRunnerCLib PROPERTY POSITION_INDEPENDENT_CODE 1)
 
-add_library(ModelRunnerCLib OBJECT PipeModelRunner.cpp)
+# add_library(ModelRunnerCLib OBJECT PipeModelRunner.cpp $<TARGET_OBJECTS:ONNXModelRunnerLib>)
+message(STATUS "ONNX sources: ${onnx_sources}")
+link_directories("${ONNXRUNTIME_ROOTDIR}/lib")
+add_library(ModelRunnerCLib OBJECT PipeModelRunner.cpp ONNXModelRunner/agent.cpp ONNXModelRunner/onnx.cpp ONNXModelRunner/ONNXModelRunner.cpp)
+target_link_libraries(ModelRunnerCLib PUBLIC "/home/venkat/.local/onnxruntime-linux-x64-1.13.1/lib/libonnxruntime.so")
+target_include_directories(ModelRunnerCLib PUBLIC "${ONNXRUNTIME_ROOTDIR}/include" "${ONNXRUNTIME_ROOTDIR}/include/onnxruntime/core/session")
+
 # target_link_libraries(ModelRunnerLib PUBLIC ${MLLinkDeps} ModelRunnerUtils ONNXModelRunnerLib gRPCModelRunnerLib)  
 # set_property(TARGET ModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)

@@ -15,6 +15,6 @@ include_directories(${Protobuf_INCLUDE_DIRS} ${CMAKE_BINARY_DIR}/Include)
 # set_property(TARGET SerDesLib PROPERTY POSITION_INDEPENDENT_CODE 1)
 
 add_library(SerDesLib OBJECT TensorSpec.cpp jsonSerDes.cpp bitstreamSerDes.cpp protobufSerDes.cpp)
-set_property(TARGET SerDesLib PROPERTY POSITION_INDEPENDENT_CODE 1)
+# set_property(TARGET SerDesLib PROPERTY POSITION_INDEPENDENT_CODE 1)
 
 add_library(SerDesCLib OBJECT TensorSpec.cpp jsonSerDes.cpp bitstreamSerDes.cpp)

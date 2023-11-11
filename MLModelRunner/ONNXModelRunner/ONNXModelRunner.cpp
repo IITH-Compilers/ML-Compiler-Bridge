@@ -9,7 +9,7 @@
 #include "MLModelRunner/ONNXModelRunner/ONNXModelRunner.h"
 #include "SerDes/baseSerDes.h"
 using namespace llvm;
-
+using namespace MLBridge;
 ONNXModelRunner::ONNXModelRunner(Environment *env,
                                  std::map<std::string, Agent *> agents,
                                  LLVMContext *Ctx)
