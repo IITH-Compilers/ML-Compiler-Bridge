@@ -111,7 +111,6 @@ void BitstreamSerDes::setFeature(const std::string &name,
 }
 
 void *BitstreamSerDes::getSerializedData() {
-  errs() << "In BitstreamSerDes getSerializedData...\n";
   std::unique_ptr<raw_ostream> OS =
       std::make_unique<raw_string_ostream>(Buffer);
   json::OStream J(*OS);

@@ -144,18 +144,15 @@ private:
   void initSerDes() {
     switch (SerDesType) {
     case BaseSerDes::Kind::Json:
-      errs() << "JSON serdes\n";
       SerDes = std::make_unique<JsonSerDes>();
       break;
     // case BaseSerDes::Kind::Protobuf:
     //   SerDes = std::make_unique<ProtobufSerDes>();
     //   break;
     case BaseSerDes::Kind::Bitstream:
-      errs() << "Bitstream serdes\n";
       SerDes = std::make_unique<BitstreamSerDes>();
       break;
     case BaseSerDes::Kind::Unknown:
-      errs() << "Unknown serdes\n";
       SerDes = nullptr;
       break;
     }

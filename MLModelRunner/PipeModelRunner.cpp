@@ -85,36 +85,28 @@ void PipeModelRunner::send(void *data) {
   const char *message_length_ptr =
       reinterpret_cast<const char *>(&message_length);
   LLVM_DEBUG(errs() << "Message length: " << message_length << "\n");
-  errs() << "Message length: " << message_length << "\n";
   LLVM_DEBUG(errs() << "DataString.size(): " << dataString->size() << "\n");
-  errs() << "DataString.size(): " << dataString->size() << "\n";
   OutStream->write(message_length_ptr, sizeof(size_t));
   OutStream->write(dataString->data(), dataString->size());
   OutStream->flush();
-  errs() << "End PipeModelRunner send...\n";
 }
 
 void *PipeModelRunner::receive() {
   LLVM_DEBUG(errs() << "In PipeModelRunner receive...\n");
-  errs() << "In PipeModelRunner receive...\n";
   auto hdr = readNBytes(8);
   LLVM_DEBUG(errs() << "Read header...\n");
-  errs() << "Read header...\n";
   size_t MessageLength = 0;
   memcpy(&MessageLength, hdr.data(), sizeof(MessageLength));
   // Read message
   auto OutputBuffer = new std::string(readNBytes(MessageLength));
   LLVM_DEBUG(errs() << "OutputBuffer size: " << OutputBuffer->size() << "\n";
              errs() << "OutputBuffer: " << *OutputBuffer << "\n");
-  errs() << "OutputBuffer size: " << OutputBuffer->size() << "\n";
-  errs() << "OutputBuffer: " << *OutputBuffer << "\n";
 
   return OutputBuffer;
 }
 
 void *PipeModelRunner::evaluateUntyped() {
   LLVM_DEBUG(llvm::errs() << "In PipeModelRunner evaluateUntyped...\n");
-  llvm::errs() << "In PipeModelRunner evaluateUntyped...\n";
   auto *data = SerDes->getSerializedData();
   send(data);
   auto *reply = receive();

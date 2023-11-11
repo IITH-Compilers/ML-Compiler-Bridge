@@ -9,14 +9,12 @@
 #define DEBUG_TYPE "json-serdes"
 
 void *JsonSerDes::getSerializedData() {
-  errs() << "In JsonSerDes getSerializedData...\n";
   auto tempJO = J;
   auto data = json::Value(std::move(tempJO));
   auto *ret = new std::string();
   llvm::raw_string_ostream OS(*ret);
   json::OStream(OS).value(data);
   cleanDataStructures();
-  errs() << "End JsonSerDes getSerializedData...\n";
   return ret;
 }
 
@@ -31,8 +29,6 @@ void *JsonSerDes::deserializeUntyped(void *data) {
   }
   json::Object *ret = valueOrErr->getAsObject();
   auto val = ret->get("out");
-  errs() << "JsonSerDes::deserializeUntyped: " << val->getAsNumber().value()
-         << "\n";
   LLVM_DEBUG(errs() << "Got the final array...\n";
              errs() << "End JsonSerDes deserializeUntyped...\n");
   return desJson(val);
@@ -47,13 +43,11 @@ void *JsonSerDes::desJson(json::Value *V) {
       int *ret = new int();
       *ret = x.value();
       this->MessageLength = sizeof(int);
-      errs() << "JsonSerDes::desJson: (int)" << *ret << "\n";
       return ret;
     } else if (auto x = V->getAsNumber()) {
       float *ret = new float();
       *ret = x.value();
       this->MessageLength = sizeof(float);
-      errs() << "JsonSerDes::desJson: " << *ret << "\n";
       return ret;
     } else {
       llvm::errs() << "Error in desJson: Number is not int, or double\n";

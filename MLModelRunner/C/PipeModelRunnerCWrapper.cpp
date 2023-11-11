@@ -23,7 +23,6 @@ void populateFloatFeatures(PipeModelRunnerWrapper *obj, const char *name,
   auto dataVec = std::vector<float>(data, data + size);
   std::pair<std::string, std::vector<float>> p1(name, dataVec);
   obj->model->populateFeatures(p1);
-  errs() << "populateFloatFeatures: " << name << " " << size << "\n";
 }
 
 void populateIntFeatures(PipeModelRunnerWrapper *obj, const char *name,
