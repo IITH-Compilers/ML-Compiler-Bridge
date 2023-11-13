@@ -22,7 +22,9 @@ void env_setNextAgent(Environment *env, char *agentName);
 
 ONNXModelRunner *createONNXModelRunner(Environment *env, int numAgents,
                                               ...);
+ONNXModelRunner *createSingleAgentOMR(char* agent_path);
 void evaluate(ONNXModelRunner *obj);
+int singleAgentEvaluate(ONNXModelRunner *obj, float* inp, int inp_size);
 void destroyEnvironment(Environment *env);
 void destroyONNXModelRunner(ONNXModelRunner *obj);
 

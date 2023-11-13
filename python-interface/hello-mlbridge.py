@@ -4,6 +4,7 @@ import os, io, json
 import SerDes
 
 import sys
+import torch, torch.nn as nn
 
 sys.path.append(
     "/home/cs20btech11024/repos/ml-llvm-project/ml-llvm-tools/MLModelRunner/gRPCModelRunner/Python-Utilities"
@@ -33,7 +34,15 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
+class DummyModel(nn.Module):
+    def __init__(self, input_dim=10):
+        nn.Module.__init__(self)
+        self.fc1 = nn.Linear(input_dim, 1)
 
+    def forward(self, input):
+        x = self.fc1(input)
+        return x
+    
 def run_pipe_communication(data_format, pipe_name):
     serdes = SerDes.SerDes(data_format, "/tmp/" + pipe_name)
     print('Serdes init...')
@@ -48,9 +57,11 @@ def run_pipe_communication(data_format, pipe_name):
                 data = [x for x in data[0]]
                 # print("Data: ", [x for x in data[0]])
             print('len(tensor): ', len(data))
+            model = DummyModel(input_dim=len(data))
+            action = model(torch.Tensor(data))
             serdes.sendData(3)
         except Exception as e:
-            # print("*******Exception*******", e)
+            print("*******Exception*******", e)
             serdes.init()
 
 

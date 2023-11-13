@@ -5,17 +5,22 @@
 #include "MLModelRunner/ONNXModelRunner/agent.h"
 #include "MLModelRunner/ONNXModelRunner/utils.h"
 #include <cassert>
+#include <iostream>
+#include <llvm-10/llvm/ADT/SmallVector.h>
+#include <llvm-10/llvm/Support/raw_ostream.h>
 #include <map>
 #include <stdarg.h>
 #include <vector>
-#include <iostream>
 
 using namespace llvm;
 struct ONNXModelRunner {
   Environment *env;
+  Agent *agent;
   std::map<std::string, Agent *> agents;
   ONNXModelRunner(Environment *env, std::map<std::string, Agent *> &&agents)
       : env(env), agents(agents) {}
+
+  ONNXModelRunner(Agent *agent) : agent(agent) {}
 };
 
 struct Environment {
@@ -106,20 +111,35 @@ ONNXModelRunner *createONNXModelRunner(Environment *env, int numAgents, ...) {
   return obj;
 }
 
+ONNXModelRunner *createSingleAgentOMR(char *agent_path) {
+  Agent *agent = new Agent(agent_path);
+  ONNXModelRunner *obj = new ONNXModelRunner(agent);
+  return obj;
+}
+
 void evaluate(ONNXModelRunner *omr) {
   auto x = omr->env->reset();
 
   while (true) {
     Action action;
     // current agent
-    auto current_agent = omr->agents[omr->env->getNextAgent()];
+    // auto current_agent = omr->agents[omr->env->getNextAgent()];
+    Agent* current_agent = omr->agent;
     action = current_agent->computeAction(x);
+    errs() << "Action: " << action << "\n";
     x = omr->env->step(action);
     if (omr->env->checkDone()) {
-      // std::cout << "Done🎉\n";
+      std::cout << "Done🎉\n";
       break;
     }
   }
+}
+
+int singleAgentEvaluate(ONNXModelRunner *obj, float* inp, int inp_size) {
+  SmallVector<float, 100> obs(inp, inp + inp_size);
+  Action action = obj->agent->computeAction(obs);
+  errs() << "action :: " << action << "\n";
+  return action;
 }
 
 void destroyEnvironment(Environment *env) { delete env; }
