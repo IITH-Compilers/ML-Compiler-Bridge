@@ -55,10 +55,10 @@ endif()
 #     )
 # message("onnx_sources INSIDE: ${onnx_sources}")
 
-# add_library(ONNXModelRunnerLib OBJECT onnx.cpp
-#       agent.cpp
-#       ONNXModelRunner.cpp
-#     )
-# target_link_libraries(ONNXModelRunnerLib PUBLIC onnxruntime)  
-# target_include_directories(ONNXModelRunnerLib PUBLIC "${ONNXRUNTIME_ROOTDIR}/include" "${ONNXRUNTIME_ROOTDIR}/include/onnxruntime/core/session")
+add_library(ONNXModelRunnerLib OBJECT onnx.cpp
+      agent.cpp
+      ONNXModelRunner.cpp
+    )
+target_link_libraries(ONNXModelRunnerLib PUBLIC onnxruntime)  
+target_include_directories(ONNXModelRunnerLib PUBLIC "${ONNXRUNTIME_ROOTDIR}/include" "${ONNXRUNTIME_ROOTDIR}/include/onnxruntime/core/session")
 # set_property(TARGET ONNXModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)
