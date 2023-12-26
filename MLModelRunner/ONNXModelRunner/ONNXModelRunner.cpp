@@ -8,8 +8,9 @@
 
 #include "MLModelRunner/ONNXModelRunner/ONNXModelRunner.h"
 #include "SerDes/baseSerDes.h"
-#include "llvm/Support/raw_ostream.h"
+
 using namespace llvm;
+using namespace MLBridge;
 
 ONNXModelRunner::ONNXModelRunner(Environment *env,
                                  std::map<std::string, Agent *> agents,
@@ -26,7 +27,7 @@ void ONNXModelRunner::addAgent(Agent *agent, std::string name) {
   }
 }
 
-void ONNXModelRunner::computeAction(Observation& obs) {
+void ONNXModelRunner::computeAction(Observation &obs) {
   while (true) {
     Action action;
     // current agent
@@ -41,7 +42,7 @@ void ONNXModelRunner::computeAction(Observation& obs) {
 }
 
 void *ONNXModelRunner::evaluateUntyped() {
-  Observation& obs = env->reset();
+  Observation &obs = env->reset();
   computeAction(obs);
   return new int(0);
 }

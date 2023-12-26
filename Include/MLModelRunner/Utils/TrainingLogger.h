@@ -55,10 +55,10 @@
 
 #include "llvm/Config/llvm-config.h"
 
-#include "llvm/Transforms/TensorSpec.h"
+// #include "llvm/Transforms/TensorSpec.h"
 #include "llvm/ADT/StringMap.h"
 #include "llvm/IR/LLVMContext.h"
-#include "llvm/Support/JSON.h"
+#include "MLModelRunner/Utils/JSON.h"
 
 #include <memory>
 #include <optional>

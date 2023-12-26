@@ -13,7 +13,7 @@
 
 #include "llvm/ADT/StringMap.h"
 #include "llvm/IR/LLVMContext.h"
-#include "llvm/Support/JSON.h"
+#include "MLModelRunner/Utils/JSON.h"
 
 #include <memory>
 #include <numeric>

@@ -2,7 +2,7 @@
 #define JSON_SERIALIZER_H
 
 #include "SerDes/baseSerDes.h"
-#include "llvm/Support/JSON.h"
+#include "MLModelRunner/Utils/JSON.h"
 #include "llvm/Support/raw_ostream.h"
 #include <string>
 #include <utility>

@@ -1,0 +1,1 @@
+add_library(ModelRunnerCWrapper OBJECT PipeModelRunnerCWrapper.cpp ONNXModelRunnerCWrapper.cpp)

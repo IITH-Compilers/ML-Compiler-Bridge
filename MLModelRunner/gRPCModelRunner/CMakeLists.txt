@@ -27,25 +27,25 @@ endif()
 
 file(GLOB proto_list ${CMAKE_CURRENT_SOURCE_DIR}/Protos/*.proto)
 set(proto_dir ${CMAKE_CURRENT_SOURCE_DIR}/Protos)
-file(MAKE_DIRECTORY ${LLVM_INCLUDE_DIR}/grpc)
+file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/Include/grpc)
 
 
 foreach(proto ${proto_list})
   get_filename_component(proto_name ${proto} NAME_WLE)
   file(GLOB cc_file ${CMAKE_CURRENT_SOURCE_DIR}/Service/${proto_name}/*.cc)
   set(cc_files ${cc_files} ${cc_file})
-  file(MAKE_DIRECTORY ${LLVM_INCLUDE_DIR}/grpc/${proto_name})
-  set(header_files ${header_files} "${LLVM_INCLUDE_DIR}/grpc/${proto_name}")
-  set(proto_srcs_list ${proto_srcs_list} "${LLVM_INCLUDE_DIR}/grpc/${proto_name}/${proto_name}.pb.cc")
-  set(grpc_srcs_list ${grpc_srcs_list} "${LLVM_INCLUDE_DIR}/grpc/${proto_name}/${proto_name}.grpc.pb.cc")
+  file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/Include/grpc/${proto_name})
+  set(header_files ${header_files} "${CMAKE_BINARY_DIR}/Include/grpc/${proto_name}")
+  set(proto_srcs_list ${proto_srcs_list} "${CMAKE_BINARY_DIR}/Include/grpc/${proto_name}/${proto_name}.pb.cc")
+  set(grpc_srcs_list ${grpc_srcs_list} "${CMAKE_BINARY_DIR}/Include/grpc/${proto_name}/${proto_name}.grpc.pb.cc")
   add_custom_command(
-      OUTPUT "${LLVM_INCLUDE_DIR}/grpc/${proto_name}/${proto_name}.pb.cc"
-             "${LLVM_INCLUDE_DIR}/grpc/${proto_name}/${proto_name}.pb.h"
-             "${LLVM_INCLUDE_DIR}/grpc/${proto_name}/${proto_name}.grpc.pb.cc"
-             "${LLVM_INCLUDE_DIR}/grpc/${proto_name}/${proto_name}.grpc.pb.h"
+      OUTPUT "${CMAKE_BINARY_DIR}/Include/grpc/${proto_name}/${proto_name}.pb.cc"
+             "${CMAKE_BINARY_DIR}/Include/grpc/${proto_name}/${proto_name}.pb.h"
+             "${CMAKE_BINARY_DIR}/Include/grpc/${proto_name}/${proto_name}.grpc.pb.cc"
+             "${CMAKE_BINARY_DIR}/Include/grpc/${proto_name}/${proto_name}.grpc.pb.h"
       COMMAND ${_PROTOBUF_PROTOC}
-      ARGS --grpc_out "${LLVM_INCLUDE_DIR}/grpc/${proto_name}"
-      --cpp_out "${LLVM_INCLUDE_DIR}/grpc/${proto_name}"
+      ARGS --grpc_out "${CMAKE_BINARY_DIR}/Include/grpc/${proto_name}"
+      --cpp_out "${CMAKE_BINARY_DIR}/Include/grpc/${proto_name}"
       -I "${proto_dir}"
       --plugin=protoc-gen-grpc="${_GRPC_CPP_PLUGIN_EXECUTABLE}"
       "${proto}"
@@ -70,19 +70,30 @@ foreach(proto ${proto_list})
   )
 endforeach()
 
-# Building the library
-add_llvm_component_library(LLVMgRPCModelRunner
-	  ${cc_files}
-	  ${proto_srcs_list}
-	  ${grpc_srcs_list}
-    ${proto_python_srcs_list}
-)
+# # Building the library
+# add_llvm_component_library(LLVMgRPCModelRunner
+# 	  ${cc_files}
+# 	  ${proto_srcs_list}
+# 	  ${grpc_srcs_list}
+#     ${proto_python_srcs_list}
+# )
 
-target_link_libraries(LLVMgRPCModelRunner 
+# target_link_libraries(LLVMgRPCModelRunner 
+# 	  PRIVATE ${_REFLECTION} 
+# 	          ${_GRPC_GRPCPP} 
+# 	          ${_PROTOBUF_LIBPROTOBUF}
+# )
+
+# target_include_directories(LLVMgRPCModelRunner PRIVATE ${CMAKE_BINARY_DIR}/Include/Service)
+# target_include_directories(LLVMgRPCModelRunner PUBLIC ${Protobuf_INCLUDE_DIRS})
+
+
+add_library(gRPCModelRunnerLib OBJECT ${cc_files} ${proto_srcs_list} ${grpc_srcs_list} ${proto_python_srcs_list})
+target_link_libraries(gRPCModelRunnerLib 
 	  PRIVATE ${_REFLECTION} 
 	          ${_GRPC_GRPCPP} 
 	          ${_PROTOBUF_LIBPROTOBUF}
 )
-
-target_include_directories(LLVMgRPCModelRunner PRIVATE ${LLVM_INCLUDE_DIR}/Service)
-target_include_directories(LLVMgRPCModelRunner PUBLIC ${Protobuf_INCLUDE_DIRS})
+target_include_directories(gRPCModelRunnerLib PRIVATE ${CMAKE_BINARY_DIR}/Include/Service)
+target_include_directories(gRPCModelRunnerLib PUBLIC ${Protobuf_INCLUDE_DIRS})
+set_property(TARGET gRPCModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)

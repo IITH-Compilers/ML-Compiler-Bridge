@@ -32,8 +32,7 @@ static cl::opt<bool> DebugReply(
              "the data received from the host (for debugging purposes)."));
 
 PipeModelRunner::PipeModelRunner(StringRef OutboundName, StringRef InboundName,
-                                 BaseSerDes::Kind SerDesType,
-                                 LLVMContext *Ctx)
+                                 BaseSerDes::Kind SerDesType, LLVMContext *Ctx)
     : MLModelRunner(Kind::Pipe, SerDesType, Ctx),
       InEC(sys::fs::openFileForRead(InboundName, Inbound)) {
   this->InboundName = InboundName.str();

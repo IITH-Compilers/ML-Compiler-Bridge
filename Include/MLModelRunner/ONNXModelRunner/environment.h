@@ -14,9 +14,11 @@
 
 typedef signed Action;
 
+namespace MLBridge {
 class Environment {
   bool done = false;
   std::string nextAgent = "";
+
 protected:
   std::map<std::string, Observation&> obsMap;
 
@@ -29,11 +31,8 @@ public:
   virtual Observation& step(Action action) = 0;
   virtual Observation& reset() = 0;
 };
-
+} // namespace MLBridge
 #endif // ONNX_MODELRUNNER_ENVIRONMENT_H
-
-
-
 
 // //===----------------------------------------------------------------------===//
 // //
