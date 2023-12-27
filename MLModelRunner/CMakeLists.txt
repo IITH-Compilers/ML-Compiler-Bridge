@@ -59,7 +59,7 @@ add_subdirectory(C)
 # endif()
 
 
-# add_llvm_component_library(LLVMMLModelRunner
+# add_llvm_component_library(ModelRunnerLib
 # PipeModelRunner.cpp
 
 # DEPENDS
@@ -67,9 +67,9 @@ add_subdirectory(C)
 
 # LINK_LIBS
 # ${MLLinkDeps}
-# LLVMMLModelRunnerUtils
-# LLVMgRPCModelRunner
-# LLVMONNXModelRunner
+# ModelRunnerUtils
+# ONNXModelRunnerLib
+# gRPCModelRunnerLib
 # )
 
 
@@ -91,10 +91,9 @@ add_subdirectory(C)
 # link_directories("${ONNXRUNTIME_ROOTDIR}/lib")
 add_library(ModelRunnerCLib OBJECT PipeModelRunner.cpp)
 target_link_libraries(ModelRunnerCLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib)
-# target_include_directories(ModelRunnerCLib PUBLIC "${CMAKE_BINARY_DIR}/Include" "${ONNXRUNTIME_ROOTDIR}/include" "${ONNXRUNTIME_ROOTDIR}/include/onnxruntime/core/session")
 # add_dependencies(ModelRunnerCLib copy-ml-llvm-bridge-include gRPCModelRunnerLib)
-add_dependencies(ModelRunnerCLib gRPCModelRunnerLib)
+# add_dependencies(ModelRunnerCLib gRPCModelRunnerLib)
 
 add_library(ModelRunnerLib OBJECT PipeModelRunner.cpp)
 target_link_libraries(ModelRunnerLib PUBLIC ${MLLinkDeps} ModelRunnerUtils ONNXModelRunnerLib gRPCModelRunnerLib)  
-# set_property(TARGET ModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)
+set_property(TARGET ModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)

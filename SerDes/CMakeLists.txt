@@ -8,7 +8,7 @@
 
 set(protobuf_MODULE_COMPATIBLE TRUE)
 find_package(Protobuf CONFIG REQUIRED)
-include_directories(${Protobuf_INCLUDE_DIRS} ${CMAKE_BINARY_DIR}/Include)
+include_directories(${Protobuf_INCLUDE_DIRS} ${CMAKE_BINARY_DIR}/include)
 
 
 # add_library(SerDesLib OBJECT protobufSerDes.cpp TensorSpec.cpp jsonSerDes.cpp protobufSerDes.cpp bitstreamSerDes.cpp)

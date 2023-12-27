@@ -12,7 +12,6 @@
 #include "MLModelRunner/MLModelRunner.h"
 #include "llvm/IR/LLVMContext.h"
 #include "llvm/MC/MCContext.h"
-#include "llvm/Support/CommandLine.h"
 #include "llvm/Support/ErrorHandling.h"
 #include "llvm/Support/FileSystem.h"
 #include "llvm/Support/raw_ostream.h"
@@ -25,11 +24,6 @@
 #define DEBUG_TYPE "pipe-model-runner"
 
 using namespace llvm;
-
-static cl::opt<bool> DebugReply(
-    "interactive-model-runner-echo-reply", cl::init(false), cl::Hidden,
-    cl::desc("The PipeModelRunner will echo back to stderr "
-             "the data received from the host (for debugging purposes)."));
 
 PipeModelRunner::PipeModelRunner(StringRef OutboundName, StringRef InboundName,
                                  BaseSerDes::Kind SerDesType, LLVMContext *Ctx)
