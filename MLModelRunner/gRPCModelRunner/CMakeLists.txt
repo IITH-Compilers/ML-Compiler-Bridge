@@ -71,12 +71,22 @@ foreach(proto ${proto_list})
 endforeach()
 
 # Building the library
-add_llvm_component_library(gRPCModelRunnerLib
-	  ${cc_files}
-	  ${proto_srcs_list}
-	  ${grpc_srcs_list}
-    ${proto_python_srcs_list}
-)
+if(LLVM_INSTALL)
+  add_llvm_component_library(gRPCModelRunnerLib
+      ${cc_files}
+      ${proto_srcs_list}
+      ${grpc_srcs_list}
+      ${proto_python_srcs_list}
+  )
+else()
+  message(STATUS "LLVM_INSTALL is not set")
+  add_library(gRPCModelRunnerLib OBJECT
+      ${cc_files}
+      ${proto_srcs_list}
+      ${grpc_srcs_list}
+      ${proto_python_srcs_list}
+  )
+endif(LLVM_INSTALL)
 
 target_link_libraries(gRPCModelRunnerLib 
 	  PRIVATE ${_REFLECTION} 

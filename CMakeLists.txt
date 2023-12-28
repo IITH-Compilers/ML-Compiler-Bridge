@@ -2,13 +2,16 @@ cmake_minimum_required(VERSION 3.10)
 
 project(MLCompilerBridge)
 
-include(AddLLVM)
-include(HandleLLVMOptions)
-include(LLVMDistributionSupport)
 
 set(protobuf_MODULE_COMPATIBLE TRUE)
 find_package(Protobuf CONFIG REQUIRED)
-# find_package(LLVM 10.0.0 REQUIRED CONFIG)
+set(protobuf_MODULE_COMPATIBLE TRUE)
+find_package(Protobuf CONFIG REQUIRED)
+
+
+
+
+find_package(LLVM 10.0.0 REQUIRED CONFIG)
 
 include_directories(${LLVM_INCLUDE_DIRS}) 
 include_directories(${Protobuf_INCLUDE_DIRS} ${LLVM_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/include) 
@@ -24,20 +27,27 @@ link_directories("/usr/lib/llvm-10/lib")
 # target_link_libraries(MLCompilerBridge PUBLIC protobuf::libprotobuf)  
 # set_property(TARGET MLCompilerBridge PROPERTY POSITION_INDEPENDENT_CODE 1)
 
-add_llvm_library(LLVMMLBridge
-  tools.cpp
+option(LLVM_INSTALL "MLCompilerBridge install for LLVM" OFF)
+if(LLVM_INSTALL)
+  include(AddLLVM)
+  include(HandleLLVMOptions)
+  include(LLVMDistributionSupport)
 
-  ADDITIONAL_HEADER_DIRS
-  ${CMAKE_CURRENT_SOURCE_DIR}/include
+  add_llvm_library(LLVMMLBridge
+    tools.cpp
 
-  LINK_LIBS
-  $<TARGET_OBJECTS:ModelRunnerLib>
-  $<TARGET_OBJECTS:SerDesLib>
-  protobuf::libprotobuf
-)
+    ADDITIONAL_HEADER_DIRS
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 
-target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-# target_link_libraries(LLVMMLBridge PUBLIC LLVM-10 )
+    LINK_LIBS
+    $<TARGET_OBJECTS:ModelRunnerLib>
+    $<TARGET_OBJECTS:SerDesLib>
+    protobuf::libprotobuf
+  )
+
+  target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+endif(LLVM_INSTALL)
+unset(LLVM_INSTALL CACHE)
 
 
 # llvm_map_components_to_libnames(llvm_libs all)

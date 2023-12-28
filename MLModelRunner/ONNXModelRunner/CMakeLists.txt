@@ -40,11 +40,18 @@ if(onnxruntime_USE_DML)
   add_definitions(-DUSE_DML)
 endif()
 
+if(LLVM_INSTALL)
 add_llvm_component_library(ONNXModelRunnerLib
 onnx.cpp
 agent.cpp
 ONNXModelRunner.cpp
 )
+else()
+add_library(ONNXModelRunnerLib OBJECT onnx.cpp
+      agent.cpp
+      ONNXModelRunner.cpp
+    )
+endif(LLVM_INSTALL)
 
 # target_link_libraries(LLVMONNXModelRunner PUBLIC onnxruntime)
 
