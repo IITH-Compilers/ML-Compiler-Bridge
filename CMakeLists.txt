@@ -8,12 +8,6 @@ find_package(Protobuf CONFIG REQUIRED)
 set(protobuf_MODULE_COMPATIBLE TRUE)
 find_package(Protobuf CONFIG REQUIRED)
 
-
-
-
-find_package(LLVM 10.0.0 REQUIRED CONFIG)
-
-include_directories(${LLVM_INCLUDE_DIRS}) 
 include_directories(${Protobuf_INCLUDE_DIRS} ${LLVM_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/include) 
 
 set (CMAKE_CXX_STANDARD 17)
@@ -32,22 +26,24 @@ if(LLVM_INSTALL)
   include(AddLLVM)
   include(HandleLLVMOptions)
   include(LLVMDistributionSupport)
-
+  
   add_llvm_library(LLVMMLBridge
-    tools.cpp
-
-    ADDITIONAL_HEADER_DIRS
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-
-    LINK_LIBS
-    $<TARGET_OBJECTS:ModelRunnerLib>
-    $<TARGET_OBJECTS:SerDesLib>
-    protobuf::libprotobuf
+  tools.cpp
+  
+  ADDITIONAL_HEADER_DIRS
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+  
+  LINK_LIBS
+  $<TARGET_OBJECTS:ModelRunnerLib>
+  $<TARGET_OBJECTS:SerDesLib>
+  protobuf::libprotobuf
   )
-
   target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+else()
+  find_package(LLVM 10.0.0 REQUIRED CONFIG)
+  include_directories(${LLVM_INCLUDE_DIRS}) 
+  
 endif(LLVM_INSTALL)
-unset(LLVM_INSTALL CACHE)
 
 
 # llvm_map_components_to_libnames(llvm_libs all)
