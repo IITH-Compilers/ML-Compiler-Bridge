@@ -32,19 +32,21 @@ if(LLVM_INSTALL)
   
   ADDITIONAL_HEADER_DIRS
   ${CMAKE_CURRENT_SOURCE_DIR}/include
+  ${TENSORFLOW_AOT_PATH}/include
   
   LINK_LIBS
   $<TARGET_OBJECTS:ModelRunnerLib>
   $<TARGET_OBJECTS:SerDesLib>
   protobuf::libprotobuf
   )
-  target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+  target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${TENSORFLOW_AOT_PATH}/include)
 else()
   find_package(LLVM 10.0.0 REQUIRED CONFIG)
   include_directories(${LLVM_INCLUDE_DIRS}) 
   
 endif(LLVM_INSTALL)
 
+target_include_directories(LLVMMLBridge PUBLIC ${TENSORFLOW_AOT_PATH}/include)
 
 # llvm_map_components_to_libnames(llvm_libs all)
 llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)

@@ -20,3 +20,4 @@ add_library(SerDesLib OBJECT TensorSpec.cpp jsonSerDes.cpp bitstreamSerDes.cpp p
 add_library(SerDesCLib OBJECT TensorSpec.cpp jsonSerDes.cpp bitstreamSerDes.cpp)
 target_link_libraries(SerDesLib PUBLIC tf_xla_runtime)
 target_link_libraries(SerDesCLib PUBLIC tf_xla_runtime)
+target_include_directories(SerDesLib PUBLIC ${TENSORFLOW_AOT_PATH}/include)

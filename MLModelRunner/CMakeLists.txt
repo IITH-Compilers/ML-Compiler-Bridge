@@ -5,10 +5,10 @@ add_subdirectory(C)
 
 # # For up-to-date instructions for installing the TFLite dependency, refer to
 # # the bot setup script: https://github.com/google/ml-compiler-opt/blob/main/buildbot/buildbot_init.sh
-# set(LLVM_HAVE_TFLITE "" CACHE BOOL "Use tflite")
-# if (LLVM_HAVE_TFLITE)
-#   find_package(tensorflow-lite REQUIRED)
-# endif()
+set(LLVM_HAVE_TFLITE "" CACHE BOOL "Use tflite")
+if (LLVM_HAVE_TFLITE)
+  find_package(tensorflow-lite REQUIRED)
+endif()
 
 # # For up-to-date instructions for installing the Tensorflow dependency, refer to
 # # the bot setup script: https://github.com/google/ml-compiler-opt/blob/main/buildbot/buildbot_init.sh
@@ -16,19 +16,19 @@ add_subdirectory(C)
 # # python3 -m pip install --upgrade pip && python3 -m pip install --user tf_nightly==2.3.0.dev20200528
 # # Then set TENSORFLOW_AOT_PATH to the package install - usually it's ~/.local/lib/python3.7/site-packages/tensorflow
 # #
-# set(TENSORFLOW_AOT_PATH "" CACHE PATH "Path to TensorFlow pip install dir")
+set(TENSORFLOW_AOT_PATH "" CACHE PATH "Path to TensorFlow pip install dir")
 
-# if (NOT TENSORFLOW_AOT_PATH STREQUAL "")
-#   set(LLVM_HAVE_TF_AOT "ON" CACHE BOOL "Tensorflow AOT available")
-#   set(TENSORFLOW_AOT_COMPILER
-#     "${TENSORFLOW_AOT_PATH}/../../../../bin/saved_model_cli"
-#     CACHE PATH "Path to the Tensorflow AOT compiler")
-#   include_directories(${TENSORFLOW_AOT_PATH}/include)
-#   add_subdirectory(${TENSORFLOW_AOT_PATH}/xla_aot_runtime_src
-#     ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/tf_runtime)
-#   install(TARGETS tf_xla_runtime EXPORT LLVMExports
-#     ARCHIVE DESTINATION lib${LLVM_LIBDIR_SUFFIX} COMPONENT tf_xla_runtime)
-#   set_property(GLOBAL APPEND PROPERTY LLVM_EXPORTS tf_xla_runtime)
+if (NOT TENSORFLOW_AOT_PATH STREQUAL "")
+  set(LLVM_HAVE_TF_AOT "ON" CACHE BOOL "Tensorflow AOT available")
+  set(TENSORFLOW_AOT_COMPILER
+    "${TENSORFLOW_AOT_PATH}/../../../../bin/saved_model_cli"
+    CACHE PATH "Path to the Tensorflow AOT compiler")
+  include_directories(${TENSORFLOW_AOT_PATH}/include)
+  add_subdirectory(${TENSORFLOW_AOT_PATH}/xla_aot_runtime_src
+    ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/tf_runtime)
+  install(TARGETS tf_xla_runtime EXPORT LLVMExports
+    ARCHIVE DESTINATION lib${LLVM_LIBDIR_SUFFIX} COMPONENT tf_xla_runtime)
+  set_property(GLOBAL APPEND PROPERTY LLVM_EXPORTS tf_xla_runtime)
   
   # Once we add more modules, we should handle this more automatically.
   if (DEFINED LLVM_OVERRIDE_MODEL_HEADER_INLINERSIZEMODEL)
@@ -112,15 +112,5 @@ target_link_libraries(ModelRunnerCLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib
 # add_dependencies(ModelRunnerCLib gRPCModelRunnerLib)
 
 add_library(ModelRunnerLib OBJECT PipeModelRunner.cpp)
-target_link_libraries(ModelRunnerLib PUBLIC ${MLLinkDeps} ModelRunnerUtils ONNXModelRunnerLib gRPCModelRunnerLib)  
+target_link_libraries(ModelRunnerLib PUBLIC ${MLLinkDeps} ModelRunnerUtils ONNXModelRunnerLib gRPCModelRunnerLib $<TARGET_OBJECTS:SerDesLib>)  
 set_property(TARGET ModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)
-# message("${MLLinkDeps} ++++++++++++++++++++++++")
-
-target_link_libraries(LLVMMLModelRunner 
-PRIVATE ${MLLinkDeps}
-LLVMMLModelRunnerUtils
-LLVMgRPCModelRunner
-LLVMONNXModelRunner
-# LLVMTFModelRunner
-)
-set_property(TARGET LLVMMLModelRunner PROPERTY CXX_STANDARD 17)

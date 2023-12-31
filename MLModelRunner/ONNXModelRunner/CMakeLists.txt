@@ -67,5 +67,5 @@ endif(LLVM_INSTALL)
 #       ONNXModelRunner.cpp
 #     )
 target_link_libraries(ONNXModelRunnerLib PUBLIC onnxruntime)  
-target_include_directories(ONNXModelRunnerLib PUBLIC "${ONNXRUNTIME_ROOTDIR}/include" "${ONNXRUNTIME_ROOTDIR}/include/onnxruntime/core/session")
+target_include_directories(ONNXModelRunnerLib PUBLIC "${ONNXRUNTIME_ROOTDIR}/include" "${ONNXRUNTIME_ROOTDIR}/include/onnxruntime/core/session" ${TENSORFLOW_AOT_PATH}/include)
 # set_property(TARGET ONNXModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)
