@@ -5,10 +5,10 @@ add_subdirectory(C)
 
 # # For up-to-date instructions for installing the TFLite dependency, refer to
 # # the bot setup script: https://github.com/google/ml-compiler-opt/blob/main/buildbot/buildbot_init.sh
-set(LLVM_HAVE_TFLITE "" CACHE BOOL "Use tflite")
-if (LLVM_HAVE_TFLITE)
-  find_package(tensorflow-lite REQUIRED)
-endif()
+# set(LLVM_HAVE_TFLITE "" CACHE BOOL "Use tflite")
+# if (LLVM_HAVE_TFLITE)
+#   find_package(tensorflow-lite REQUIRED)
+# endif()
 
 # # For up-to-date instructions for installing the Tensorflow dependency, refer to
 # # the bot setup script: https://github.com/google/ml-compiler-opt/blob/main/buildbot/buildbot_init.sh
@@ -83,10 +83,10 @@ if (DEFINED LLVM_HAVE_TF_AOT OR LLVM_HAVE_TFLITE)
     )
   endif()
 
-  if (LLVM_HAVE_TFLITE)
-    list(APPEND MLLinkDeps
-      tensorflow-lite::tensorflow-lite)
-  endif()
+  # if (LLVM_HAVE_TFLITE)
+  #   list(APPEND MLLinkDeps
+  #     tensorflow-lite::tensorflow-lite)
+  # endif()
 endif()
 
 

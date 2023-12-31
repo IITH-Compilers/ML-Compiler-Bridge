@@ -38,6 +38,7 @@ if(LLVM_INSTALL)
   $<TARGET_OBJECTS:ModelRunnerLib>
   $<TARGET_OBJECTS:SerDesLib>
   protobuf::libprotobuf
+  tf_xla_runtime
   )
   target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${TENSORFLOW_AOT_PATH}/include)
 else()
@@ -46,14 +47,14 @@ else()
   
 endif(LLVM_INSTALL)
 
-target_include_directories(LLVMMLBridge PUBLIC ${TENSORFLOW_AOT_PATH}/include)
+# target_include_directories(LLVMMLBridge PUBLIC ${TENSORFLOW_AOT_PATH}/include)
 
 # llvm_map_components_to_libnames(llvm_libs all)
 llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)
 
-message("LLVM Includes: ${LLVM_INCLUDE_DIRS}")
-message("LLVM Libs: ${llvm_libs}")
-message("${TENSORFLOW_AOT_PATH}/include ----------------------------")
+# message("LLVM Includes: ${LLVM_INCLUDE_DIRS}")
+# message("LLVM Libs: ${llvm_libs}")
+# message("${TENSORFLOW_AOT_PATH}/include ----------------------------")
 
 add_custom_target(protobuf_version ALL 
 COMMAND ${CMAKE_COMMAND} -E echo "protoc path = $<TARGET_FILE:protobuf::protoc> Using Protobuf ${Protobuf_VERSION}")
