@@ -18,3 +18,5 @@ add_library(SerDesLib OBJECT TensorSpec.cpp jsonSerDes.cpp bitstreamSerDes.cpp p
 # set_property(TARGET SerDesLib PROPERTY POSITION_INDEPENDENT_CODE 1)
 
 add_library(SerDesCLib OBJECT TensorSpec.cpp jsonSerDes.cpp bitstreamSerDes.cpp)
+target_link_libraries(SerDesLib PUBLIC tf_xla_runtime)
+target_link_libraries(SerDesCLib PUBLIC tf_xla_runtime)

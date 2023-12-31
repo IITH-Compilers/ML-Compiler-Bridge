@@ -51,6 +51,10 @@ llvm_map_components_to_libnames(llvm_libs support core irreader analysis Transfo
 
 message("LLVM Includes: ${LLVM_INCLUDE_DIRS}")
 message("LLVM Libs: ${llvm_libs}")
+message("${TENSORFLOW_AOT_PATH}/include ----------------------------")
+
+add_custom_target(protobuf_version ALL 
+COMMAND ${CMAKE_COMMAND} -E echo "protoc path = $<TARGET_FILE:protobuf::protoc> Using Protobuf ${Protobuf_VERSION}")
 
 add_library(MLCompilerBridgeC STATIC $<TARGET_OBJECTS:ModelRunnerCWrapper>)
 # link_directories("${ONNXRUNTIME_ROOTDIR}/lib")
