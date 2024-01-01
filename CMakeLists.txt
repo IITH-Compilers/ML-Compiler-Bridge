@@ -21,6 +21,33 @@ link_directories("/usr/lib/llvm-10/lib")
 # target_link_libraries(MLCompilerBridge PUBLIC protobuf::libprotobuf)  
 # set_property(TARGET MLCompilerBridge PROPERTY POSITION_INDEPENDENT_CODE 1)
 
+if (DEFINED LLVM_HAVE_TF_AOT OR LLVM_HAVE_TFLITE)
+  include(cmake/modules/TensorFlowCompile.cmake)
+  set(LLVM_INLINER_MODEL_PATH_DEFAULT "models/inliner-Oz")
+
+  set(LLVM_INLINER_MODEL_CURRENT_URL "<UNSPECIFIED>" CACHE STRING "URL to download the LLVM inliner model")
+
+  if (DEFINED LLVM_HAVE_TF_AOT)
+  
+    tf_find_and_compile(
+      ${LLVM_INLINER_MODEL_PATH}
+      ${LLVM_INLINER_MODEL_CURRENT_URL}
+      ${LLVM_INLINER_MODEL_PATH_DEFAULT}
+      "../../llvm/lib/Analysis/models/gen-inline-oz-test-model.py"
+      serve
+      action
+      InlinerSizeModel
+      llvm::InlinerSizeModel
+      ${LLVM_INCLUDE_DIR}/MLModelRunner/TFModel
+    )
+  endif()
+
+  # if (LLVM_HAVE_TFLITE)
+  #   list(APPEND MLLinkDeps
+  #     tensorflow-lite::tensorflow-lite)
+  # endif()
+endif()
+
 option(LLVM_INSTALL "MLCompilerBridge install for LLVM" OFF)
 if(LLVM_INSTALL)
   include(AddLLVM)
@@ -29,6 +56,7 @@ if(LLVM_INSTALL)
   
   add_llvm_library(LLVMMLBridge
   tools.cpp
+  ${GeneratedMLSources}
   
   ADDITIONAL_HEADER_DIRS
   ${CMAKE_CURRENT_SOURCE_DIR}/include

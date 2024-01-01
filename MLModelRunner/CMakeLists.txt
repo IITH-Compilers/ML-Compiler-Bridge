@@ -62,33 +62,6 @@ endif()
 # gRPCModelRunnerLib
 # )
 
-if (DEFINED LLVM_HAVE_TF_AOT OR LLVM_HAVE_TFLITE)
-  include(cmake/modules/TensorFlowCompile.cmake)
-  set(LLVM_INLINER_MODEL_PATH_DEFAULT "models/inliner-Oz")
-
-  set(LLVM_INLINER_MODEL_CURRENT_URL "<UNSPECIFIED>" CACHE STRING "URL to download the LLVM inliner model")
-
-  if (DEFINED LLVM_HAVE_TF_AOT)
-  
-    tf_find_and_compile(
-      ${LLVM_INLINER_MODEL_PATH}
-      ${LLVM_INLINER_MODEL_CURRENT_URL}
-      ${LLVM_INLINER_MODEL_PATH_DEFAULT}
-      "../../llvm/lib/Analysis/models/gen-inline-oz-test-model.py"
-      serve
-      action
-      InlinerSizeModel
-      llvm::InlinerSizeModel
-      ${LLVM_INCLUDE_DIR}/MLModelRunner/TFModel
-    )
-  endif()
-
-  # if (LLVM_HAVE_TFLITE)
-  #   list(APPEND MLLinkDeps
-  #     tensorflow-lite::tensorflow-lite)
-  # endif()
-endif()
-
 
 # target_link_libraries(LLVMMLModelRunner 
 # PRIVATE LLVMMLModelRunnerUtils
@@ -112,5 +85,5 @@ target_link_libraries(ModelRunnerCLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib
 # add_dependencies(ModelRunnerCLib gRPCModelRunnerLib)
 
 add_library(ModelRunnerLib OBJECT PipeModelRunner.cpp)
-target_link_libraries(ModelRunnerLib PUBLIC ${MLLinkDeps} ModelRunnerUtils ONNXModelRunnerLib gRPCModelRunnerLib $<TARGET_OBJECTS:SerDesLib>)  
+target_link_libraries(ModelRunnerLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib gRPCModelRunnerLib $<TARGET_OBJECTS:SerDesLib>)  
 set_property(TARGET ModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)
