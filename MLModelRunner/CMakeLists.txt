@@ -107,7 +107,7 @@ endif()
 # message(STATUS "ONNX sources: ${onnx_sources}")
 # link_directories("${ONNXRUNTIME_ROOTDIR}/lib")
 add_library(ModelRunnerCLib OBJECT PipeModelRunner.cpp)
-target_link_libraries(ModelRunnerCLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib)
+target_link_libraries(ModelRunnerCLib PUBLIC ModelRunnerCUtils ONNXModelRunnerLib)
 # add_dependencies(ModelRunnerCLib copy-ml-llvm-bridge-include gRPCModelRunnerLib)
 # add_dependencies(ModelRunnerCLib gRPCModelRunnerLib)
 
