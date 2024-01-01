@@ -7,7 +7,7 @@ import sys
 import torch, torch.nn as nn
 
 sys.path.append(
-    "/home/cs20btech11024/repos/ml-llvm-project/ml-llvm-tools/MLModelRunner/gRPCModelRunner/Python-Utilities"
+    "../MLModelRunner/gRPCModelRunner/Python-Utilities"
 )
 import helloMLBridge_pb2, helloMLBridge_pb2_grpc, grpc
 from concurrent import futures
