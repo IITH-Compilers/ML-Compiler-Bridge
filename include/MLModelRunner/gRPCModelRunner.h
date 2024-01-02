@@ -59,7 +59,10 @@ public:
     request = getRequest();
     auto status = stub_->getAdvice(&grpcCtx, *request, response);
     if (!status.ok())
-      Ctx->emitError("gRPC failed: " + status.error_message());
+      if (Ctx)
+        Ctx->emitError("gRPC failed: " + status.error_message());
+      else
+        llvm_unreachable(("gRPC failed: " + status.error_message()).c_str());
     return SerDes->deserializeUntyped(response);
   }
 

@@ -145,9 +145,9 @@ private:
     case BaseSerDes::Kind::Json:
       SerDes = std::make_unique<JsonSerDes>();
       break;
-    // case BaseSerDes::Kind::Protobuf:
-    //   SerDes = std::make_unique<ProtobufSerDes>();
-    //   break;
+    case BaseSerDes::Kind::Protobuf:
+      SerDes = std::make_unique<ProtobufSerDes>();
+      break;
     case BaseSerDes::Kind::Bitstream:
       SerDes = std::make_unique<BitstreamSerDes>();
       break;
