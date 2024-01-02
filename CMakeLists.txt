@@ -63,7 +63,7 @@ if(LLVM_INSTALL)
   ${TENSORFLOW_AOT_PATH}/include
   
   LINK_LIBS
-  $<TARGET_OBJECTS:ModelRunnerLib>
+  ModelRunnerLib
   $<TARGET_OBJECTS:SerDesLib>
   protobuf::libprotobuf
   tf_xla_runtime

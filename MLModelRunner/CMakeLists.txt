@@ -84,6 +84,13 @@ target_link_libraries(ModelRunnerCLib PUBLIC ModelRunnerCUtils ONNXModelRunnerLi
 # add_dependencies(ModelRunnerCLib copy-ml-llvm-bridge-include gRPCModelRunnerLib)
 # add_dependencies(ModelRunnerCLib gRPCModelRunnerLib)
 
-add_library(ModelRunnerLib OBJECT PipeModelRunner.cpp)
-target_link_libraries(ModelRunnerLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib gRPCModelRunnerLib $<TARGET_OBJECTS:SerDesLib>)  
+if(LLVM_INSTALL)
+  add_llvm_library(ModelRunnerLib PipeModelRunner.cpp)
+else()
+  add_library(ModelRunnerLib OBJECT PipeModelRunner.cpp)
+endif(LLVM_INSTALL)
+
+target_link_libraries(ModelRunnerLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib gRPCModelRunnerLib $<TARGET_OBJECTS:SerDesLib>)
+
+
 set_property(TARGET ModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)
