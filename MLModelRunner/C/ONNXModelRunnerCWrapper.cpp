@@ -6,8 +6,8 @@
 #include "MLModelRunner/ONNXModelRunner/utils.h"
 #include <cassert>
 #include <iostream>
-#include <llvm-10/llvm/ADT/SmallVector.h>
-#include <llvm-10/llvm/Support/raw_ostream.h>
+#include <llvm/ADT/SmallVector.h>
+#include <llvm/Support/raw_ostream.h>
 #include <map>
 #include <stdarg.h>
 #include <vector>

@@ -1,1 +1,2 @@
 add_library(ModelRunnerCWrapper OBJECT PipeModelRunnerCWrapper.cpp ONNXModelRunnerCWrapper.cpp)
+target_include_directories(ModelRunnerCWrapper PUBLIC ${TENSORFLOW_AOT_PATH}/include)
