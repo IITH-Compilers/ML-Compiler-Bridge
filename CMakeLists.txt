@@ -106,7 +106,7 @@ set_property(TARGET MLCompilerBridgeC PROPERTY POSITION_INDEPENDENT_CODE 1)
 
 install(TARGETS MLCompilerBridgeC DESTINATION lib)
 install(DIRECTORY include/ DESTINATION include)
-
+install(DIRECTORY CompilerInterface DESTINATION include/python/MLCompilerBridge)
 message("protobuf Libs: ${Protobuf_LIBRARIES}")
 message("protobuf Include: ${Protobuf_INCLUDE_DIRS}")
 # message("protobuf includes: ${Protobuf}")
