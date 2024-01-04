@@ -18,6 +18,7 @@ if(NOT LLVM_INSTALL)
   message("FROM MAIN: ${LLVM_INCLUDE_DIRS}")
   message("FROM MAIN: ${LLVM_LIBRARY_DIR}")
   link_directories(${LLVM_LIBRARY_DIR} "${ONNXRUNTIME_ROOTDIR}/lib")
+  add_compile_definitions(C_LIBRARY)
 endif()
 message(TENSORFLOW_AOT_PATH: ${TENSORFLOW_AOT_PATH})
 

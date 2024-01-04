@@ -96,10 +96,10 @@ void *PipeModelRunner::receive() {
   LLVM_DEBUG(errs() << "OutputBuffer size: " << OutputBuffer->size() << "\n";
              errs() << "OutputBuffer: " << *OutputBuffer << "\n");
 
-  int *data = reinterpret_cast<int *>(OutputBuffer->data());
-  LLVM_DEBUG(for (int i = 0; i < 3; i++) {
-    errs() << "data[" << i << "]: " << data[i] << "\n";
-  } errs() << "End PipeModelRunner receive...\n");
+  // // int *data = reinterpret_cast<int *>(OutputBuffer->data());
+  // LLVM_DEBUG(for (int i = 0; i < 3; i++) {
+  //   errs() << "data[" << i << "]: " << data[i] << "\n";
+  // } errs() << "End PipeModelRunner receive...\n");
   return OutputBuffer;
 }
 

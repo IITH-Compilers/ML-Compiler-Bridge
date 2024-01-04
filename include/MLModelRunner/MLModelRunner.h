@@ -13,8 +13,6 @@
 #include "SerDes/baseSerDes.h"
 #include "SerDes/bitstreamSerDes.h"
 #include "SerDes/jsonSerDes.h"
-#include "SerDes/protobufSerDes.h"
-#include "SerDes/tensorflowSerDes.h"
 #include "llvm/MC/MCContext.h"
 #include "llvm/Support/raw_ostream.h"
 #include <cstdlib>
@@ -23,6 +21,10 @@
 #include <string>
 #include <type_traits>
 
+#ifndef C_LIBRARY
+#include "SerDes/tensorflowSerDes.h"
+#include "SerDes/protobufSerDes.h"
+#endif
 namespace llvm {
 class LLVMContext;
 
@@ -145,15 +147,17 @@ private:
     case BaseSerDes::Kind::Json:
       SerDes = std::make_unique<JsonSerDes>();
       break;
-    case BaseSerDes::Kind::Protobuf:
-      SerDes = std::make_unique<ProtobufSerDes>();
-      break;
     case BaseSerDes::Kind::Bitstream:
       SerDes = std::make_unique<BitstreamSerDes>();
+      break;
+    #ifndef C_LIBRARY
+    case BaseSerDes::Kind::Protobuf:
+      SerDes = std::make_unique<ProtobufSerDes>();
       break;
     case BaseSerDes::Kind::Tensorflow:
       SerDes = std::make_unique<TensorflowSerDes>();
       break;
+    #endif
     case BaseSerDes::Kind::Unknown:
       SerDes = nullptr;
       break;

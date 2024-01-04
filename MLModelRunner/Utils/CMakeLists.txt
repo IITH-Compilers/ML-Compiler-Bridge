@@ -1,6 +1,6 @@
 # add_llvm_component_library(LLVMMLModelRunnerUtils TrainingLogger.cpp)
 
-add_library(ModelRunnerCUtils OBJECT JSON.cpp MLConfig.cpp)
+add_library(ModelRunnerCUtils OBJECT MLConfig.cpp)
 
 if(LLVM_INSTALL)
 add_llvm_component_library(ModelRunnerUtils

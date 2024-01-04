@@ -17,7 +17,7 @@ include_directories(${Protobuf_INCLUDE_DIRS} ${CMAKE_BINARY_DIR}/include)
 add_library(SerDesLib OBJECT TensorSpec.cpp jsonSerDes.cpp bitstreamSerDes.cpp protobufSerDes.cpp tensorflowSerDes.cpp)
 # set_property(TARGET SerDesLib PROPERTY POSITION_INDEPENDENT_CODE 1)
 
-add_library(SerDesCLib OBJECT TensorSpec.cpp jsonSerDes.cpp bitstreamSerDes.cpp)
+add_library(SerDesCLib OBJECT TensorSpec.cpp jsonSerDes.cpp bitstreamSerDes.cpp tensorflowSerDes.cpp protobufSerDes.cpp JSON.cpp)
 # target_link_libraries(SerDesLib PUBLIC tf_xla_runtime)
 # target_link_libraries(SerDesCLib PUBLIC tf_xla_runtime)
 target_include_directories(SerDesLib PUBLIC ${TENSORFLOW_AOT_PATH}/include)
