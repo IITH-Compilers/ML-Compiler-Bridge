@@ -4,7 +4,6 @@ add_library(ModelRunnerCUtils OBJECT MLConfig.cpp)
 
 if(LLVM_INSTALL)
 add_llvm_component_library(ModelRunnerUtils
-    JSON.cpp
     MLConfig.cpp
 )
 
