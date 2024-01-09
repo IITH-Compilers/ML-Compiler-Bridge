@@ -106,16 +106,3 @@ message(STATUS "cc_files: ${cc_files}")
 message(STATUS "proto_srcs_list: ${proto_srcs_list}")
 message(STATUS "grpc_srcs_list: ${grpc_srcs_list}")
 message(STATUS "proto_python_srcs_list: ${proto_python_srcs_list}")
-
-# add_library(gRPCModelRunnerLib OBJECT ${cc_files} ${proto_srcs_list} ${grpc_srcs_list} ${proto_python_srcs_list})
-
-
-
-# target_link_libraries(gRPCModelRunnerLib 
-# 	  PRIVATE ${_REFLECTION} 
-# 	          ${_GRPC_GRPCPP} 
-# 	          ${_PROTOBUF_LIBPROTOBUF}
-# )
-# target_include_directories(gRPCModelRunnerLib PRIVATE ${CMAKE_BINARY_DIR}/include/Service)
-# target_include_directories(gRPCModelRunnerLib PUBLIC ${Protobuf_INCLUDE_DIRS})
-# set_property(TARGET gRPCModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO_DIR=$HOME/repos/IITH-Compilers-MLCompilerBridge
+REPO_DIR=$HOME/repos/ml-llvm-project/MLCompilerBridge
 BUILD=$1
 
 if [[ -z "$BUILD" ]]
@@ -12,6 +12,7 @@ fi
 
 
 cmake \
+  -G Ninja \
   -S $REPO_DIR \
   -B $REPO_DIR/build_${BUILD,,} \
   -DONNXRUNTIME_ROOTDIR=$HOME/Downloads/onnxruntime-linux-x64-cuda-1.13.1 \

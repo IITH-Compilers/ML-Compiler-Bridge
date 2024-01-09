@@ -61,6 +61,4 @@ else()
 endif(LLVM_INSTALL)
 
 target_link_libraries(ModelRunnerLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib gRPCModelRunnerLib $<TARGET_OBJECTS:SerDesLib>)
-
-
 set_property(TARGET ModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)

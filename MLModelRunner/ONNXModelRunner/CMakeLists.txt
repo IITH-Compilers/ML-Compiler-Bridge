@@ -53,19 +53,5 @@ add_library(ONNXModelRunnerLib OBJECT onnx.cpp
     )
 endif(LLVM_INSTALL)
 
-# target_link_libraries(LLVMONNXModelRunner PUBLIC onnxruntime)
-
-# set(onnx_sources
-#     onnx.cpp
-#     agent.cpp
-#     ONNXModelRunner.cpp
-#     )
-# message("onnx_sources INSIDE: ${onnx_sources}")
-
-# add_library(ONNXModelRunnerLib OBJECT onnx.cpp
-#       agent.cpp
-#       ONNXModelRunner.cpp
-#     )
 target_link_libraries(ONNXModelRunnerLib PUBLIC onnxruntime)  
 target_include_directories(ONNXModelRunnerLib PUBLIC "${ONNXRUNTIME_ROOTDIR}/include" "${ONNXRUNTIME_ROOTDIR}/include/onnxruntime/core/session" ${TENSORFLOW_AOT_PATH}/include)
-# set_property(TARGET ONNXModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)
