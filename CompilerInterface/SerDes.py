@@ -49,19 +49,16 @@ class SerDes:
         raise NotImplementedError
 
     ## Serializes data and places it in a buffer
-    # @param data
     def serializeData(self, data):
         self.serMap[self.data_format](data)
 
     ## Serializes data to JSON 
-    # @param data
     def serializeJson(self, data):
         msg = json.dumps({"out": data}).encode("utf-8")
         hdr = len(msg).to_bytes(8, "little")
         self.buffer = hdr + msg
 
     ## Serializes data to bitstream
-    # @param data
     def serializeBytes(self, data):
         if isinstance(data, list):
             msg = b"".join([x.to_bytes(4, "little", signed=True) for x in data])
@@ -75,7 +72,7 @@ class SerDes:
         self.buffer = data
 
     ## Returns value in buffer and empties it
-    # @return data from output buffer 
+    # @return Data from output buffer 
     def getOutputBuffer(self):
         out = self.buffer
         self.buffer = None
