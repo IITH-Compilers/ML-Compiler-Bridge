@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MLCompilerBridge: Main Page</title>
+<title>MLCompilerBridge: LLVM-GRPC:Register-Allocation</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,10 +71,27 @@ $(function() {
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">MLCompilerBridge Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">LLVM-GRPC:Register-Allocation </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_MLModelRunner_2gRPCModelRunner_2README"></a>A GRPC framework to communicate between LLVM and a python ML workload for optimized Register Allocation.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Pre-requites</h1>
+<ul>
+<li>Building GRPC from Source: Please follow <a href="https://grpc.io/docs/languages/cpp/quickstart/"><code>Build GRPC with cmake</code></a> v1.34 (protobuff v3.13) to build GRPC from source.</li>
+<li>In the above tutorial setting <code>DCMAKE_INSTALL_PREFIX</code> may not be necessary and the default install prefix can be used.</li>
+<li>A proper build from source of LLVM along with Clang.</li>
+<li>The following dependencies will be required for Python: <code>pip install grpcio-tools</code></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Building LLVM-GRPC</h1>
+<ul>
+<li><code>mkdir build &amp;&amp; cd build</code></li>
+<li><code>cmake -DLLVM_BUILD_DIR=&lt;path to your LLVM Build Directory&gt; ../</code></li>
+<li><code>Ex: cmake -DLLVM_BUILD_DIR=/home/cs20mtech01002/llvm-project/build ../</code> </li>
+</ul>
+</div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"/>
 </div><!-- contents -->
 <!-- start footer part -->
