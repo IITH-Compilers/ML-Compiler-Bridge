@@ -2,7 +2,7 @@ set(protobuf_MODULE_COMPATIBLE TRUE)
 find_package(Protobuf CONFIG REQUIRED)
 include_directories(${Protobuf_INCLUDE_DIRS} ${CMAKE_BINARY_DIR}/include)
 
-if(LLVM_INSTALL)
+if(LLVM_MLBRIDGE)
   add_llvm_library(SerDesLib
   TensorSpec.cpp
   jsonSerDes.cpp

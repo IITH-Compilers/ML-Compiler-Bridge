@@ -16,7 +16,7 @@ add_subdirectory(C)
 # # python3 -m pip install --upgrade pip && python3 -m pip install --user tf_nightly==2.3.0.dev20200528
 # # Then set TENSORFLOW_AOT_PATH to the package install - usually it's ~/.local/lib/python3.7/site-packages/tensorflow
 # #
-if(LLVM_INSTALL)
+if(LLVM_MLBRIDGE)
 set(TENSORFLOW_AOT_PATH "" CACHE PATH "Path to TensorFlow pip install dir")
 
 if (NOT TENSORFLOW_AOT_PATH STREQUAL "")
@@ -54,11 +54,11 @@ endif()
 add_library(ModelRunnerCLib OBJECT PipeModelRunner.cpp)
 target_link_libraries(ModelRunnerCLib PUBLIC ModelRunnerCUtils ONNXModelRunnerLib)
 
-if(LLVM_INSTALL)
+if(LLVM_MLBRIDGE)
   add_llvm_library(ModelRunnerLib PipeModelRunner.cpp)
 else()
   add_library(ModelRunnerLib OBJECT PipeModelRunner.cpp)
-endif(LLVM_INSTALL)
+endif(LLVM_MLBRIDGE)
 
 target_link_libraries(ModelRunnerLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib gRPCModelRunnerLib $<TARGET_OBJECTS:SerDesLib>)
 set_property(TARGET ModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)

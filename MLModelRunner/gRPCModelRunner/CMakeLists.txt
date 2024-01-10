@@ -76,7 +76,7 @@ foreach(proto ${proto_list})
 endforeach()
 
 # Building the library
-if(LLVM_INSTALL)
+if(LLVM_MLBRIDGE)
   add_llvm_component_library(gRPCModelRunnerLib
       ${cc_files}
       ${proto_srcs_list}
@@ -84,14 +84,14 @@ if(LLVM_INSTALL)
       ${proto_python_srcs_list}
   )
 else()
-  message(STATUS "LLVM_INSTALL is not set")
+  message(STATUS "LLVM_MLBRIDGE is not set")
   add_library(gRPCModelRunnerLib OBJECT
       ${cc_files}
       ${proto_srcs_list}
       ${grpc_srcs_list}
       ${proto_python_srcs_list}
   )
-endif(LLVM_INSTALL)
+endif(LLVM_MLBRIDGE)
 
 target_link_libraries(gRPCModelRunnerLib 
 	  PRIVATE ${_REFLECTION} 
@@ -102,7 +102,3 @@ target_link_libraries(gRPCModelRunnerLib
 target_include_directories(gRPCModelRunnerLib PRIVATE ${CMAKE_BINARY_DIR}/include/Service)
 target_include_directories(gRPCModelRunnerLib PUBLIC ${Protobuf_INCLUDE_DIRS})
 
-message(STATUS "cc_files: ${cc_files}")
-message(STATUS "proto_srcs_list: ${proto_srcs_list}")
-message(STATUS "grpc_srcs_list: ${grpc_srcs_list}")
-message(STATUS "proto_python_srcs_list: ${proto_python_srcs_list}")

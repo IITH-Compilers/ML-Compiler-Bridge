@@ -10,8 +10,10 @@ find_package(Protobuf CONFIG REQUIRED)
 include_directories(${Protobuf_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 set (CMAKE_CXX_STANDARD 17)
- 
-if(NOT LLVM_INSTALL)
+
+message("LLVM_MLBRIDGE: ${LLVM_MLBRIDGE}")
+
+if(NOT LLVM_MLBRIDGE)
   find_package(LLVM 10.0.0 REQUIRED CONFIG)
   include_directories(${LLVM_INCLUDE_DIRS}) 
   message("FROM MAIN: ${LLVM_INCLUDE_DIRS}")
@@ -46,8 +48,7 @@ if (DEFINED LLVM_HAVE_TF_AOT OR LLVM_HAVE_TFLITE)
 add_subdirectory(MLModelRunner)
 add_subdirectory(SerDes)
 
-option(LLVM_INSTALL "MLCompilerBridge install for LLVM" OFF)
-if(LLVM_INSTALL)
+if(LLVM_MLBRIDGE)
   include(AddLLVM)
   include(HandleLLVMOptions)
   include(LLVMDistributionSupport)
@@ -67,7 +68,7 @@ if(LLVM_INSTALL)
   tf_xla_runtime
   )
   target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${TENSORFLOW_AOT_PATH}/include)
-endif(LLVM_INSTALL)
+endif(LLVM_MLBRIDGE)
 
 llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)
 
