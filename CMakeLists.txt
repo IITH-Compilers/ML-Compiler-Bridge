@@ -44,6 +44,10 @@ endif(LLVM_MLBRIDGE)
 
 llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)
 
+
+add_library(MLCompilerBridge STATIC tools.cpp)
+target_link_libraries(MLCompilerBridge PUBLIC SerDesLib ModelRunnerLib ONNXModelRunnerLib LLVM-10 ${llvm_libs})
+
 add_library(MLCompilerBridgeC STATIC $<TARGET_OBJECTS:ModelRunnerCWrapper>)
 target_link_libraries(MLCompilerBridgeC PUBLIC SerDesCLib ModelRunnerCLib ONNXModelRunnerLib LLVM-10 ${llvm_libs})
 target_include_directories(MLCompilerBridgeC PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${LLVM_INCLUDE_DIRS})
