@@ -7,12 +7,12 @@ option objc_class_prefix = "DP";
 
 package demopass;
 
-// demo pass Service 
+// demo pass Service
 service demoPass{
 
 // RPC function to send Inference graph data and receive color data for codegen
   rpc getLoopInfo(Command) returns (loopInfo) {}
- 
+
 }
 
 message Command {

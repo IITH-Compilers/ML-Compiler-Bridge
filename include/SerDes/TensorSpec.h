@@ -9,10 +9,10 @@
 #ifndef LLVM_ANALYSIS_TENSORSPEC_H
 #define LLVM_ANALYSIS_TENSORSPEC_H
 
-#include "llvm/Config/llvm-config.h"
-#include "llvm/ADT/StringMap.h"
-#include "llvm/IR/LLVMContext.h"
 #include "MLModelRunner/Utils/JSON.h"
+#include "llvm/ADT/StringMap.h"
+#include "llvm/Config/llvm-config.h"
+#include "llvm/IR/LLVMContext.h"
 #include <memory>
 #include <numeric>
 #include <optional>

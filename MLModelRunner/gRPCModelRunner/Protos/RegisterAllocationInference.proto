@@ -7,7 +7,7 @@ option objc_class_prefix = "REG";
 
 package registerallocationinference;
 
-// General Register Allocation Service 
+// General Register Allocation Service
 service RegisterAllocationInference{
 
 // RPC function to send Inference graph data and receive color data for codegen

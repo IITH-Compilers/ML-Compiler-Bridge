@@ -44,8 +44,7 @@ public:
                                                    DecisionName.str());
     assert(ResultIndex >= 0 && "Cannot find DecisionName in inlining model");
   }
-  TFModelRunner(StringRef DecisionName,
-                StringRef FeedPrefix = "feed_",
+  TFModelRunner(StringRef DecisionName, StringRef FeedPrefix = "feed_",
                 StringRef FetchPrefix = "fetch_")
       : MLModelRunner(MLModelRunner::Kind::TFAOT, BaseSerDes::Kind::Tensorflow),
         CompiledModel(std::make_unique<TGen>()) {

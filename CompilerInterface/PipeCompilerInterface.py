@@ -6,7 +6,7 @@ import io
 ## This class implements methods for communication with compiler using pipes.
 class PipeCompilerInterface(BaseCompilerInterface):
     ## Initializes PipeCompilerInterface object.
-    # @param data_format Data format for serialization 
+    # @param data_format Data format for serialization
     # @param pipe_name Name for pipe file
     def __init__(self, data_format=None, pipe_name=None):
         super().__init__(data_format)
@@ -23,21 +23,20 @@ class PipeCompilerInterface(BaseCompilerInterface):
         self.remove_pipes()
 
     ## Sends query to compiler and returns deserialized result.
-    def evaluate(self, mode = None):
+    def evaluate(self, mode=None):
         out = self.serdes_obj.getOutputBuffer()
         if out is not None:
             self.tc.write(out)
             self.tc.flush()
 
-        if mode == 'exit':
+        if mode == "exit":
             return None
 
         result = self.serdes_obj.deserializeData(self.fc)
 
         return result
 
-
-    ## Creates pipe files for communication. 
+    ## Creates pipe files for communication.
     def init_pipes(self):
         self.to_compiler = self.pipe_name + ".in"
         self.from_compiler = self.pipe_name + ".out"
@@ -45,7 +44,7 @@ class PipeCompilerInterface(BaseCompilerInterface):
             os.remove(self.to_compiler)
         if os.path.exists(self.from_compiler):
             os.remove(self.from_compiler)
-            
+
         os.mkfifo(self.to_compiler, 0o666)
         os.mkfifo(self.from_compiler, 0o666)
 

@@ -14,9 +14,6 @@ if(NOT ONNXRUNTIME_ROOTDIR)
   message( FATAL_ERROR "Set path to Onnx runtime in -DONNXRUNTIME_ROOTDIR variable" )
 endif()
 
-include_directories("${ONNXRUNTIME_ROOTDIR}/include" "${ONNXRUNTIME_ROOTDIR}/include/onnxruntime/core/session")
-link_directories("${ONNXRUNTIME_ROOTDIR}/lib")
-
 if(onnxruntime_USE_CUDA)
   add_definitions(-DUSE_CUDA)
 endif()
@@ -40,7 +37,7 @@ if(onnxruntime_USE_DML)
   add_definitions(-DUSE_DML)
 endif()
 
-if(LLVM_INSTALL)
+if(LLVM_MLBRIDGE)
 add_llvm_component_library(ONNXModelRunnerLib
 onnx.cpp
 agent.cpp
@@ -51,7 +48,7 @@ add_library(ONNXModelRunnerLib OBJECT onnx.cpp
       agent.cpp
       ONNXModelRunner.cpp
     )
-endif(LLVM_INSTALL)
+endif(LLVM_MLBRIDGE)
 
-target_link_libraries(ONNXModelRunnerLib PUBLIC onnxruntime)  
+target_link_libraries(ONNXModelRunnerLib PUBLIC onnxruntime)
 target_include_directories(ONNXModelRunnerLib PUBLIC "${ONNXRUNTIME_ROOTDIR}/include" "${ONNXRUNTIME_ROOTDIR}/include/onnxruntime/core/session" ${TENSORFLOW_AOT_PATH}/include)

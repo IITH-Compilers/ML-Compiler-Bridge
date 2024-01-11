@@ -9,7 +9,6 @@ else()
   set(_PROTOBUF_PROTOC $<TARGET_FILE:protobuf::protoc>)
 endif()
 
-include_directories(${Protobuf_INCLUDE_DIRS})
 # Find gRPC installation
 # Looks for gRPCConfig.cmake file installed by gRPC's cmake installation.
 
@@ -76,7 +75,7 @@ foreach(proto ${proto_list})
 endforeach()
 
 # Building the library
-if(LLVM_INSTALL)
+if(LLVM_MLBRIDGE)
   add_llvm_component_library(gRPCModelRunnerLib
       ${cc_files}
       ${proto_srcs_list}
@@ -90,18 +89,15 @@ else()
       ${grpc_srcs_list}
       ${proto_python_srcs_list}
   )
-endif(LLVM_INSTALL)
+endif(LLVM_MLBRIDGE)
 
-target_link_libraries(gRPCModelRunnerLib 
-	  PRIVATE ${_REFLECTION} 
-	          ${_GRPC_GRPCPP} 
+target_link_libraries(gRPCModelRunnerLib
+	  PRIVATE ${_REFLECTION}
+	          ${_GRPC_GRPCPP}
 	          ${_PROTOBUF_LIBPROTOBUF}
 )
 
-target_include_directories(gRPCModelRunnerLib PRIVATE ${CMAKE_BINARY_DIR}/include/Service)
-target_include_directories(gRPCModelRunnerLib PUBLIC ${Protobuf_INCLUDE_DIRS})
-
-message(STATUS "cc_files: ${cc_files}")
-message(STATUS "proto_srcs_list: ${proto_srcs_list}")
-message(STATUS "grpc_srcs_list: ${grpc_srcs_list}")
-message(STATUS "proto_python_srcs_list: ${proto_python_srcs_list}")
+target_include_directories(gRPCModelRunnerLib
+  PRIVATE ${CMAKE_BINARY_DIR}/include/Service
+  PUBLIC ${Protobuf_INCLUDE_DIRS}
+)

@@ -12,14 +12,14 @@ Integration of a trained model happnes in two steps.
 
 ## Directory structure
 
-The direcory and its subdirctories contain source code for OONX model integrations as well as base classes of vaious components used by and RL algorithm. 
+The direcory and its subdirctories contain source code for OONX model integrations as well as base classes of vaious components used by and RL algorithm.
 
     .
     ├── onnx.cpp                # Defination of ONNXModel class
     ├── agent.cpp               # RL Agent class which will compute action by quring model
-    ├── Include               
+    ├── Include
     │   ├── agent.h             # Declare RL agent class
-    │   ├── driver.h            # A interface class to query RL baaed model 
+    │   ├── driver.h            # A interface class to query RL baaed model
     │   ├── environment.h       # Declare a base Environment class which can be extended further
     │   ├── onnx.h              # Declaration of ONNXModel class
     │   └── utils.h             # Utility defination used my Agent class
@@ -89,11 +89,10 @@ struct Hello : public FunctionPass, Environment {
 
 bool runOnFunction(Function &F) override {
  ...
- // Creates instance of DriverService with InferenceEngine as parent class 
+ // Creates instance of DriverService with InferenceEngine as parent class
  InferenceEngine* inference_driver = new DriverService(Environment* env);
  inference_driver->getPredictions(PassData passData, OptInfo &predictions);
  ...
 }
 
 ```
-

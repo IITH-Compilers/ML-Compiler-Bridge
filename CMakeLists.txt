@@ -11,9 +11,9 @@ include_directories(${Protobuf_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/include
 
 set (CMAKE_CXX_STANDARD 17)
 
-option(LLVM_INSTALL "MLCompilerBridge install for LLVM" OFF)
+option(LLVM_MLBRIDGE "MLCompilerBridge install for LLVM" OFF)
 
-if(NOT LLVM_INSTALL)
+if(NOT LLVM_MLBRIDGE)
   find_package(LLVM 10.0.0 REQUIRED CONFIG)
   include_directories(${LLVM_INCLUDE_DIRS}) 
   link_directories(${LLVM_LIBRARY_DIR} "${ONNXRUNTIME_ROOTDIR}/lib")
@@ -23,11 +23,11 @@ endif()
 add_subdirectory(MLModelRunner)
 add_subdirectory(SerDes)
 
-if(LLVM_INSTALL)
+if(LLVM_MLBRIDGE)
   include(AddLLVM)
   include(HandleLLVMOptions)
   include(LLVMDistributionSupport)
-  
+
   add_llvm_library(LLVMMLBridge
   tools.cpp
   
@@ -40,7 +40,7 @@ if(LLVM_INSTALL)
   protobuf::libprotobuf
   )
   target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-endif(LLVM_INSTALL)
+endif(LLVM_MLBRIDGE)
 
 llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)
 

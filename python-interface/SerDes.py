@@ -3,6 +3,7 @@ import json
 import log_reader
 import struct
 
+
 class SerDes:
     def __init__(self, data_format, pipe_name):
         self.data_format = data_format
@@ -12,7 +13,7 @@ class SerDes:
         self.tc = None
         self.fc = None
         self.read_stream_iter = None
-        self.log_file = open(f'{data_format}_pythonout.log', 'w')
+        self.log_file = open(f"{data_format}_pythonout.log", "w")
 
         self.readObsMap = {
             "json": self.readObservationJson,
@@ -69,12 +70,12 @@ class SerDes:
         hdr = self.fc.read(8)
         context, observation_id, features, score = next(self.read_stream_iter)
         return features
-    
+
     def readObservationProtobuf(self):
         raise NotImplementedError
 
     def sendData(self, data):
-        self.log_file.write(f'{data}\n')
+        self.log_file.write(f"{data}\n")
         data = self.serializeDataMap[self.data_format](data)
         self.tc.write(data)
         self.tc.flush()
@@ -88,14 +89,14 @@ class SerDes:
     def serializeDataBytes(self, data):
         def _pack(data):
             if isinstance(data, int):
-                return struct.pack('i', data)
+                return struct.pack("i", data)
             elif isinstance(data, float):
-                return struct.pack('f', data)
+                return struct.pack("f", data)
             elif isinstance(data, str) and len(data) == 1:
-                return struct.pack('c', data)
+                return struct.pack("c", data)
             elif isinstance(data, list):
                 return b"".join([_pack(x) for x in data])
-            
+
         msg = _pack(data)
         hdr = len(msg).to_bytes(8, "little")
         out = hdr + msg

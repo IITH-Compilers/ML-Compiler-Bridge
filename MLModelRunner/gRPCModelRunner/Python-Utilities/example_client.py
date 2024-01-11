@@ -12,24 +12,25 @@ from google.protobuf.json_format import MessageToJson
 import json
 import numpy as np
 
+
 def repeatedgRPCFieldToNumpyArray(gRPCObj):
     jsonObj = MessageToJson(gRPCObj)
     dictObj = json.loads(jsonObj)
-    array = dictObj['embedding']
+    array = dictObj["embedding"]
     return np.array(array)
 
 
 class PosetRLClient(object):
-
     def __init__(self):
 
-        self.host = '127.0.0.1'
+        self.host = "127.0.0.1"
         self.server_port = 50051
 
         self.process = None
 
         self.channel = grpc.insecure_channel(
-            '{}:{}'.format(self.host, self.server_port))
+            "{}:{}".format(self.host, self.server_port)
+        )
 
         self.stub = posetRL_pb2_grpc.PosetRLStub(self.channel)
 
@@ -47,8 +48,7 @@ class PosetRLClient(object):
         # print(responseInArray)
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     client = PosetRLClient()
     client.applyActionGetEmbeddings(-1)

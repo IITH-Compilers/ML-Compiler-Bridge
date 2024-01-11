@@ -119,6 +119,7 @@ def read_stream(fname: str):
             )
             yield context, observation_id, features, score
 
+
 def read_stream2(f: io.BufferedReader):
     context = None
     while True:
@@ -126,11 +127,12 @@ def read_stream2(f: io.BufferedReader):
         # event_str = f.readline()
         # print("Event: ", event_str)
         # if not event_str:
-            # break
+        # break
         context, observation_id, features, score = read_one_observation(
-            context, '', f, tensor_specs, score_spec
+            context, "", f, tensor_specs, score_spec
         )
         yield context, observation_id, features, score
+
 
 def main(args):
     last_context = None
