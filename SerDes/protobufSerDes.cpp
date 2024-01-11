@@ -9,71 +9,71 @@
 #include <vector>
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                           const int &value) {
+                                       const int &value) {
   Request->GetReflection()->SetInt32(
       Request, Request->GetDescriptor()->FindFieldByName(name), value);
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                           const long &value) {
+                                       const long &value) {
   Request->GetReflection()->SetInt64(
       Request, Request->GetDescriptor()->FindFieldByName(name), value);
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                           const float &value) {
+                                       const float &value) {
   Request->GetReflection()->SetFloat(
       Request, Request->GetDescriptor()->FindFieldByName(name), value);
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                           const double &value) {
+                                       const double &value) {
   Request->GetReflection()->SetDouble(
       Request, Request->GetDescriptor()->FindFieldByName(name), value);
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                           const std::string &value) {
+                                       const std::string &value) {
   Request->GetReflection()->SetString(
       Request, Request->GetDescriptor()->FindFieldByName(name), value);
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                           const bool &value) {
+                                       const bool &value) {
   Request->GetReflection()->SetBool(
       Request, Request->GetDescriptor()->FindFieldByName(name), value);
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                           const std::vector<int> &value) {
+                                       const std::vector<int> &value) {
   auto ref = Request->GetReflection()->MutableRepeatedField<int>(
       Request, Request->GetDescriptor()->FindFieldByName(name));
   ref->Add(value.begin(), value.end());
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                           const std::vector<long> &value) {
+                                       const std::vector<long> &value) {
   auto ref = Request->GetReflection()->MutableRepeatedField<long>(
       Request, Request->GetDescriptor()->FindFieldByName(name));
   ref->Add(value.begin(), value.end());
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                           const std::vector<float> &value) {
+                                       const std::vector<float> &value) {
   auto ref = Request->GetReflection()->MutableRepeatedField<float>(
       Request, Request->GetDescriptor()->FindFieldByName(name));
   ref->Add(value.begin(), value.end());
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                           const std::vector<double> &value) {
+                                       const std::vector<double> &value) {
   auto ref = Request->GetReflection()->MutableRepeatedField<double>(
       Request, Request->GetDescriptor()->FindFieldByName(name));
   ref->Add(value.begin(), value.end());
 }
 
 void ProtobufSerDes::setFeature(const std::string &name,
-                                    const std::vector<std::string> &value) {
+                                const std::vector<std::string> &value) {
   auto reflection = Request->GetReflection();
   auto descriptor = Request->GetDescriptor();
   auto field = descriptor->FindFieldByName(name);
@@ -83,7 +83,7 @@ void ProtobufSerDes::setFeature(const std::string &name,
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                           const std::vector<bool> &value) {
+                                       const std::vector<bool> &value) {
   auto ref = Request->GetReflection()->MutableRepeatedField<bool>(
       Request, Request->GetDescriptor()->FindFieldByName(name));
   ref->Add(value.begin(), value.end());
@@ -97,21 +97,23 @@ void *ProtobufSerDes::getSerializedData() {
 }
 
 void ProtobufSerDes::setFeature(const std::string &name,
-                                    const google::protobuf::Message* value) {
+                                const google::protobuf::Message *value) {
   auto reflection = Request->GetReflection();
   auto descriptor = Request->GetDescriptor();
   auto field = descriptor->FindFieldByName(name);
   reflection->MutableMessage(Request, field)->CopyFrom(*value);
 }
 
-void ProtobufSerDes::setFeature(const std::string& name, const std::vector<google::protobuf::Message*>& value) {
-    // set repeated field of messages in this->Request
-    auto reflection = Request->GetReflection();
-    auto descriptor = Request->GetDescriptor();
-    auto field = descriptor->FindFieldByName(name);
-    for (auto& v : value) {
-        reflection->AddMessage(Request, field)->CopyFrom(*v);
-    }
+void ProtobufSerDes::setFeature(
+    const std::string &name,
+    const std::vector<google::protobuf::Message *> &value) {
+  // set repeated field of messages in this->Request
+  auto reflection = Request->GetReflection();
+  auto descriptor = Request->GetDescriptor();
+  auto field = descriptor->FindFieldByName(name);
+  for (auto &v : value) {
+    reflection->AddMessage(Request, field)->CopyFrom(*v);
+  }
 }
 
 inline void ProtobufSerDes::setRequest(void *Request) {
@@ -123,7 +125,8 @@ inline void ProtobufSerDes::setResponse(void *Response) {
 }
 
 void *ProtobufSerDes::deserializeUntyped(void *data) {
-  Request->Clear();      // todo: find correct place to clear request for protobuf serdes
+  Request->Clear(); // todo: find correct place to clear request for protobuf
+                    // serdes
   Response = reinterpret_cast<Message *>(data);
 
   const Descriptor *descriptor = Response->GetDescriptor();
@@ -132,7 +135,7 @@ void *ProtobufSerDes::deserializeUntyped(void *data) {
 
   if (field->label() == FieldDescriptor::LABEL_REPEATED) {
     if (field->type() == FieldDescriptor::Type::TYPE_INT32) {
-      auto& ref = reflection->GetRepeatedField<int32_t>(*Response, field);
+      auto &ref = reflection->GetRepeatedField<int32_t>(*Response, field);
       std::vector<int> *ret = new std::vector<int>(ref.begin(), ref.end());
       this->MessageLength = ref.size() * sizeof(int32_t);
       return ret->data();
@@ -145,7 +148,8 @@ void *ProtobufSerDes::deserializeUntyped(void *data) {
     }
     if (field->type() == FieldDescriptor::Type::TYPE_DOUBLE) {
       auto ref = reflection->GetRepeatedField<double>(*Response, field);
-     std::vector<double> *ret = new std::vector<double>(ref.begin(), ref.end());
+      std::vector<double> *ret =
+          new std::vector<double>(ref.begin(), ref.end());
       this->MessageLength = ref.size() * sizeof(double);
       return ret->data();
     }
@@ -155,8 +159,8 @@ void *ProtobufSerDes::deserializeUntyped(void *data) {
       std::vector<std::string> *ptr = new std::vector<std::string>();
 
       /*
-      ISSUE: error: static assertion failed: We only support non-string scalars in RepeatedField.
-      FIX: ??
+      ISSUE: error: static assertion failed: We only support non-string scalars
+      in RepeatedField. FIX: ??
       */
       // auto ref = reflection->GetRepeatedField<std::string>(*Response, field);
       // for (auto &v : ref) {

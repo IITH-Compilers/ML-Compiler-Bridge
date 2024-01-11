@@ -50,5 +50,5 @@ add_library(ONNXModelRunnerLib OBJECT onnx.cpp
     )
 endif(LLVM_MLBRIDGE)
 
-target_link_libraries(ONNXModelRunnerLib PUBLIC onnxruntime)  
+target_link_libraries(ONNXModelRunnerLib PUBLIC onnxruntime)
 target_include_directories(ONNXModelRunnerLib PUBLIC "${ONNXRUNTIME_ROOTDIR}/include" "${ONNXRUNTIME_ROOTDIR}/include/onnxruntime/core/session" ${TENSORFLOW_AOT_PATH}/include)

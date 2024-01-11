@@ -28,7 +28,8 @@ class ONNXModel {
 
 public:
   ONNXModel(const char *model_path);
-  void run(llvm::SmallVector<float, 100> &input, llvm::SmallVector<float, 100> &output);
+  void run(llvm::SmallVector<float, 100> &input,
+           llvm::SmallVector<float, 100> &output);
 };
 
 #endif // ONNX_MODELRUNNER_ONNX_H

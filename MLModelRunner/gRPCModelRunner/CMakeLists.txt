@@ -26,7 +26,7 @@ endif()
 
 
 set(CMAKE_CXX_STANDARD 11)
-add_custom_target(protobuf_grpc_version ALL 
+add_custom_target(protobuf_grpc_version ALL
 COMMAND ${CMAKE_COMMAND} -E echo "protoc path = $<TARGET_FILE:protobuf::protoc> Using Protobuf ${Protobuf_VERSION} Using gRPC ${gRPC_VERSION} have AOT ${LLVM_HAVE_TF_AOT}")
 
 file(GLOB proto_list ${CMAKE_CURRENT_SOURCE_DIR}/Protos/*.proto)
@@ -92,14 +92,13 @@ else()
   )
 endif(LLVM_MLBRIDGE)
 
-target_link_libraries(gRPCModelRunnerLib 
-	  PRIVATE ${_REFLECTION} 
-	          ${_GRPC_GRPCPP} 
+target_link_libraries(gRPCModelRunnerLib
+	  PRIVATE ${_REFLECTION}
+	          ${_GRPC_GRPCPP}
 	          ${_PROTOBUF_LIBPROTOBUF}
 )
 
-target_include_directories(gRPCModelRunnerLib 
+target_include_directories(gRPCModelRunnerLib
   PRIVATE ${CMAKE_BINARY_DIR}/include/Service
   PUBLIC ${Protobuf_INCLUDE_DIRS}
 )
-

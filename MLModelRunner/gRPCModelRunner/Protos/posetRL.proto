@@ -5,9 +5,9 @@ package posetRLgRPC;
 
 service PosetRLService{
     rpc applyActionGetEmbeddings (ActionRequest) returns (EmbeddingResponse) {}
-    
+
     rpc queryCompiler (ActionRequest) returns (EmbeddingResponse) {}
-    
+
     rpc getAdvice(EmbeddingResponse) returns (ActionRequest) {}
 }
 
@@ -18,4 +18,3 @@ message EmbeddingResponse {
 message ActionRequest {
     int32 action = 1;
 }
-

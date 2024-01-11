@@ -1,5 +1,5 @@
 import grpc
-from multiprocessing import Process,Queue
+from multiprocessing import Process, Queue
 import subprocess
 import os
 import signal
@@ -9,53 +9,59 @@ import RegisterAllocation_pb2_grpc, RegisterAllocation_pb2
 
 
 class RegisterAllocationClient(object):
+    def __init__(self, hostip="localhost", hostport=50051):
 
-    def __init__(self, hostip='localhost', hostport=50051):
-
-        self.host=hostip
+        self.host = hostip
         self.server_port = hostport
 
-        self.process=None
+        self.process = None
 
-        self.channel = grpc.insecure_channel('{}:{}'.format(self.host,self.server_port))
+        self.channel = grpc.insecure_channel(
+            "{}:{}".format(self.host, self.server_port)
+        )
 
+        self.stub = RegisterAllocation_pb2_grpc.RegisterAllocationStub(self.channel)
 
-        self.stub= RegisterAllocation_pb2_grpc.RegisterAllocationStub(self.channel)
+    def startServer(self, BinaryPath):
 
-    def startServer(self,BinaryPath):
+        cmd = BinaryPath + "service_binary"
 
-        cmd=BinaryPath+"service_binary"
+        self.process = subprocess.Popen(
+            [cmd, "-O3", "--regalloc=mlra", "-mlra-experimental"]
+        )
 
-        self.process=subprocess.Popen([cmd,"-O3","--regalloc=mlra","-mlra-experimental"])
-
-        #TODO: Find a better way to introduce delay
+        # TODO: Find a better way to introduce delay
         time.sleep(4)
 
-    def getGraphs(self,IRPath):
+    def getGraphs(self, IRPath):
 
-        irPath=IRPath
+        irPath = IRPath
 
-        seedPath=""
+        seedPath = ""
 
-        request=RegisterAllocation_pb2.Path(IRPath=irPath,SeedEmbPath=seedPath)
+        request = RegisterAllocation_pb2.Path(IRPath=irPath, SeedEmbPath=seedPath)
 
-        return (self.stub.getGraphs(request))
+        return self.stub.getGraphs(request)
 
     def codeGen(self, message, register, payload, color=None):
 
         # with open(FilePath,'rb') as f:
         #    file_content=f.read()
-        
+
         if color:
-            request=RegisterAllocation_pb2.Data(message=message, regidx=register, payload=payload, color=color)
+            request = RegisterAllocation_pb2.Data(
+                message=message, regidx=register, payload=payload, color=color
+            )
         else:
-            request=RegisterAllocation_pb2.Data(message=message, regidx=register, payload=payload)
-        
-        return self.stub.codeGen(request) 
+            request = RegisterAllocation_pb2.Data(
+                message=message, regidx=register, payload=payload
+            )
+
+        return self.stub.codeGen(request)
 
     def killServer(self):
-        
-        #print(self.process.pid)  
+
+        # print(self.process.pid)
         self.process.kill()
         self.process.communicate()
         if self.process.poll() is not None:

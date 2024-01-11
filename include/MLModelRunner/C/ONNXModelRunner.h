@@ -20,11 +20,10 @@ void env_setStepFunc(Environment *env, float *(*stepFunc)(Action action));
 void env_setResetFunc(Environment *env, float *(*resetFunc)());
 void env_setNextAgent(Environment *env, char *agentName);
 
-ONNXModelRunner *createONNXModelRunner(Environment *env, int numAgents,
-                                              ...);
-ONNXModelRunner *createSingleAgentOMR(char* agent_path);
+ONNXModelRunner *createONNXModelRunner(Environment *env, int numAgents, ...);
+ONNXModelRunner *createSingleAgentOMR(char *agent_path);
 void evaluate(ONNXModelRunner *obj);
-int singleAgentEvaluate(ONNXModelRunner *obj, float* inp, int inp_size);
+int singleAgentEvaluate(ONNXModelRunner *obj, float *inp, int inp_size);
 void destroyEnvironment(Environment *env);
 void destroyONNXModelRunner(ONNXModelRunner *obj);
 

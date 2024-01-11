@@ -14,7 +14,7 @@ message("LLVM_MLBRIDGE: ${LLVM_MLBRIDGE}")
 
 if(NOT LLVM_MLBRIDGE)
   find_package(LLVM 10.0.0 REQUIRED CONFIG)
-  include_directories(${LLVM_INCLUDE_DIRS}) 
+  include_directories(${LLVM_INCLUDE_DIRS})
   link_directories(${LLVM_LIBRARY_DIR})
   add_compile_definitions(C_LIBRARY)
 endif()
@@ -25,9 +25,9 @@ if (DEFINED LLVM_HAVE_TF_AOT OR LLVM_HAVE_TFLITE)
   set(LLVM_INLINER_MODEL_PATH_DEFAULT "models/inliner-Oz")
 
   set(LLVM_INLINER_MODEL_CURRENT_URL "<UNSPECIFIED>" CACHE STRING "URL to download the LLVM inliner model")
-  
+
   if (DEFINED LLVM_HAVE_TF_AOT)
-    
+
     tf_find_and_compile(
       ${LLVM_INLINER_MODEL_PATH}
       ${LLVM_INLINER_MODEL_CURRENT_URL}
@@ -41,7 +41,7 @@ if (DEFINED LLVM_HAVE_TF_AOT OR LLVM_HAVE_TFLITE)
       )
     endif()
   endif()
-  
+
 add_subdirectory(MLModelRunner)
 add_subdirectory(SerDes)
 
@@ -49,15 +49,15 @@ if(LLVM_MLBRIDGE)
   include(AddLLVM)
   include(HandleLLVMOptions)
   include(LLVMDistributionSupport)
-  
+
   add_llvm_library(LLVMMLBridge
   tools.cpp
   ${GeneratedMLSources}
-  
+
   ADDITIONAL_HEADER_DIRS
   ${CMAKE_CURRENT_SOURCE_DIR}/include
   ${TENSORFLOW_AOT_PATH}/include
-  
+
   LINK_LIBS
   ModelRunnerLib
   $<TARGET_OBJECTS:SerDesLib>
@@ -68,7 +68,7 @@ endif(LLVM_MLBRIDGE)
 
 llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)
 
-add_custom_target(protobuf_version ALL 
+add_custom_target(protobuf_version ALL
 COMMAND ${CMAKE_COMMAND} -E echo "protoc path = $<TARGET_FILE:protobuf::protoc> Using Protobuf ${Protobuf_VERSION}")
 
 add_library(MLCompilerBridgeC STATIC $<TARGET_OBJECTS:ModelRunnerCWrapper>)

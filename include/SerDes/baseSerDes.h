@@ -36,13 +36,13 @@ public:
   SUPPORTED_TYPES(SET_FEATURE)
 #undef SET_FEATURE
 
-// #ifdef __cplusplus
+  // #ifdef __cplusplus
   virtual void setFeature(const std::string &name,
                           const google::protobuf::Message *value){};
   virtual void
   setFeature(const std::string &name,
              const std::vector<google::protobuf::Message *> &value){};
-// #endif
+  // #endif
 
   // a hack to set the request and response structures in protobuf serializer
   virtual void setRequest(void *Request) {

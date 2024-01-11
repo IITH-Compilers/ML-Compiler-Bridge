@@ -13,7 +13,7 @@ class SerDes:
         self.read_stream_iter = None
 
         self.serMap = {
-            "json": self.serializeJson,             
+            "json": self.serializeJson,
             "bytes": self.serializeBytes,
             "protobuf": self.serializeProtobuf,
         }
@@ -39,11 +39,13 @@ class SerDes:
     ##  Deserializes and returns bitstream data
     def deserializeBytes(self, datastream):
         if self.read_stream_iter is None:
-            self.read_stream_iter = log_reader.read_stream2(datastream)        # try to make it indep
+            self.read_stream_iter = log_reader.read_stream2(
+                datastream
+            )  # try to make it indep
         hdr = datastream.read(8)
         context, observation_id, features, score = next(self.read_stream_iter)
         return features
-    
+
     # Not implemented
     def deserializeProtobuf(self, datastream):
         raise NotImplementedError
@@ -52,7 +54,7 @@ class SerDes:
     def serializeData(self, data):
         self.serMap[self.data_format](data)
 
-    ## Serializes data to JSON 
+    ## Serializes data to JSON
     def serializeJson(self, data):
         msg = json.dumps({"out": data}).encode("utf-8")
         hdr = len(msg).to_bytes(8, "little")
@@ -72,7 +74,7 @@ class SerDes:
         self.buffer = data
 
     ## Returns value in buffer and empties it
-    # @return Data from output buffer 
+    # @return Data from output buffer
     def getOutputBuffer(self):
         out = self.buffer
         self.buffer = None

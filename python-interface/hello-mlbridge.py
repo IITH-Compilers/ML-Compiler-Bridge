@@ -6,14 +6,14 @@ import SerDes
 import sys
 import torch, torch.nn as nn
 
-sys.path.append(
-    "../MLModelRunner/gRPCModelRunner/Python-Utilities"
-)
+sys.path.append("../MLModelRunner/gRPCModelRunner/Python-Utilities")
 import helloMLBridge_pb2, helloMLBridge_pb2_grpc, grpc
 from concurrent import futures
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--use_pipe", type=bool, default=False, help="Use pipe or not", required=False)
+parser.add_argument(
+    "--use_pipe", type=bool, default=False, help="Use pipe or not", required=False
+)
 parser.add_argument(
     "--data_format",
     type=str,
@@ -34,6 +34,7 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
+
 class DummyModel(nn.Module):
     def __init__(self, input_dim=10):
         nn.Module.__init__(self)
@@ -42,21 +43,22 @@ class DummyModel(nn.Module):
     def forward(self, input):
         x = self.fc1(input)
         return x
-    
+
+
 def run_pipe_communication(data_format, pipe_name):
     serdes = SerDes.SerDes(data_format, "/tmp/" + pipe_name)
-    print('Serdes init...')
+    print("Serdes init...")
     serdes.init()
     while True:
         try:
             data = serdes.readObservation()
             if data_format == "json":
-                data = data['tensor']
+                data = data["tensor"]
                 # print("Data: ", data["tensor"])
             elif data_format == "bytes":
                 data = [x for x in data[0]]
                 # print("Data: ", [x for x in data[0]])
-            print('len(tensor): ', len(data))
+            print("len(tensor): ", len(data))
             model = DummyModel(input_dim=len(data))
             action = model(torch.Tensor(data))
             serdes.sendData(3)
@@ -70,6 +72,7 @@ class service_server(helloMLBridge_pb2_grpc.HelloMLBridgeService):
         # self.serdes = SerDes.SerDes(data_format, pipe_name)
         # self.serdes.init()
         pass
+
     def getAdvice(self, request, context):
         try:
             print("Entered getAdvice")
@@ -80,18 +83,20 @@ class service_server(helloMLBridge_pb2_grpc.HelloMLBridgeService):
             reply = helloMLBridge_pb2.ActionRequest(action=-1)
             return reply
 
+
 def test_func():
     data = 3.24
     import struct
+
     print(data, type(data))
-    byte_data = struct.pack('f', data)
+    byte_data = struct.pack("f", data)
     print(byte_data, len(byte_data))
-    
-    
-    print('decoding...')
+
+    print("decoding...")
     decoded = float(byte_data)
-    
+
     print(decoded, type(decoded))
+
 
 if __name__ == "__main__":
     # test_func()
