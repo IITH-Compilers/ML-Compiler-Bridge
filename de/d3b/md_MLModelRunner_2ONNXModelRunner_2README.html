@@ -88,9 +88,9 @@ Directory structure</h1>
 <p>The direcory and its subdirctories contain source code for OONX model integrations as well as base classes of vaious components used by and RL algorithm. </p><pre class="fragment">.
 ├── onnx.cpp                # Defination of ONNXModel class
 ├── agent.cpp               # RL Agent class which will compute action by quring model
-├── Include               
+├── Include
 │   ├── agent.h             # Declare RL agent class
-│   ├── driver.h            # A interface class to query RL baaed model 
+│   ├── driver.h            # A interface class to query RL baaed model
 │   ├── environment.h       # Declare a base Environment class which can be extended further
 │   ├── onnx.h              # Declaration of ONNXModel class
 │   └── utils.h             # Utility defination used my Agent class
@@ -151,7 +151,7 @@ Integration with LLVM Pass</h3>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">bool</span> runOnFunction(Function &amp;F)<span class="keyword"> override </span>{</div>
 <div class="line"> ...</div>
-<div class="line"> <span class="comment">// Creates instance of DriverService with InferenceEngine as parent class </span></div>
+<div class="line"> <span class="comment">// Creates instance of DriverService with InferenceEngine as parent class</span></div>
 <div class="line"> InferenceEngine* inference_driver = <span class="keyword">new</span> DriverService(<a class="code hl_struct" href="../../d0/d3c/structEnvironment.html">Environment</a>* env);</div>
 <div class="line"> inference_driver-&gt;getPredictions(PassData passData, OptInfo &amp;predictions);</div>
 <div class="line"> ...</div>
