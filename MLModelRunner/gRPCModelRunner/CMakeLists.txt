@@ -27,8 +27,8 @@ endif()
 
 
 set(CMAKE_CXX_STANDARD 11)
-add_custom_target(protobuf_grpc_version ALL 
-COMMAND ${CMAKE_COMMAND} -E echo "protoc path = $<TARGET_FILE:protobuf::protoc> Using Protobuf ${Protobuf_VERSION} Using gRPC ${gRPC_VERSION} have AOT ${LLVM_HAVE_TF_AOT}")
+# add_custom_target(protobuf_grpc_version ALL 
+# COMMAND ${CMAKE_COMMAND} -E echo "protoc path = $<TARGET_FILE:protobuf::protoc> Using Protobuf ${Protobuf_VERSION} Using gRPC ${gRPC_VERSION} have AOT ${LLVM_HAVE_TF_AOT}")
 
 file(GLOB proto_list ${CMAKE_CURRENT_SOURCE_DIR}/Protos/*.proto)
 set(proto_dir ${CMAKE_CURRENT_SOURCE_DIR}/Protos)
@@ -84,7 +84,6 @@ if(LLVM_INSTALL)
       ${proto_python_srcs_list}
   )
 else()
-  message(STATUS "LLVM_INSTALL is not set")
   add_library(gRPCModelRunnerLib OBJECT
       ${cc_files}
       ${proto_srcs_list}

@@ -69,7 +69,8 @@ function(tf_compile model tag_set signature_def_key fname cpp_class hdr_file obj
 
   endfunction()
 
-function(tf_find_and_compile model default_url default_path test_model_generator tag_set signature_def_key fname cpp_class opath)
+function(tf_find_and_compile compiler_path model default_url default_path test_model_generator tag_set signature_def_key fname cpp_class opath)
+  set(TENSORFLOW_AOT_COMPILER ${compiler_path})
   set(prefix ${opath}/${fname})
   set(obj_file ${prefix}.o)
   set(hdr_file ${prefix}.h)
