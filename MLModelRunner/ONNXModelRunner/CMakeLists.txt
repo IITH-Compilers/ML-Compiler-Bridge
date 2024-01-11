@@ -14,9 +14,6 @@ if(NOT ONNXRUNTIME_ROOTDIR)
   message( FATAL_ERROR "Set path to Onnx runtime in -DONNXRUNTIME_ROOTDIR variable" )
 endif()
 
-include_directories("${ONNXRUNTIME_ROOTDIR}/include" "${ONNXRUNTIME_ROOTDIR}/include/onnxruntime/core/session")
-link_directories("${ONNXRUNTIME_ROOTDIR}/lib")
-
 if(onnxruntime_USE_CUDA)
   add_definitions(-DUSE_CUDA)
 endif()

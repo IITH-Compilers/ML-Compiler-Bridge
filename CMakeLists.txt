@@ -10,15 +10,12 @@ find_package(Protobuf CONFIG REQUIRED)
 include_directories(${Protobuf_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 set (CMAKE_CXX_STANDARD 17)
-
 message("LLVM_MLBRIDGE: ${LLVM_MLBRIDGE}")
 
 if(NOT LLVM_MLBRIDGE)
   find_package(LLVM 10.0.0 REQUIRED CONFIG)
   include_directories(${LLVM_INCLUDE_DIRS}) 
-  message("FROM MAIN: ${LLVM_INCLUDE_DIRS}")
-  message("FROM MAIN: ${LLVM_LIBRARY_DIR}")
-  link_directories(${LLVM_LIBRARY_DIR} "${ONNXRUNTIME_ROOTDIR}/lib")
+  link_directories(${LLVM_LIBRARY_DIR})
   add_compile_definitions(C_LIBRARY)
 endif()
 message(TENSORFLOW_AOT_PATH: ${TENSORFLOW_AOT_PATH})
@@ -67,7 +64,6 @@ if(LLVM_MLBRIDGE)
   protobuf::libprotobuf
   tf_xla_runtime
   )
-  target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${TENSORFLOW_AOT_PATH}/include)
 endif(LLVM_MLBRIDGE)
 
 llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)

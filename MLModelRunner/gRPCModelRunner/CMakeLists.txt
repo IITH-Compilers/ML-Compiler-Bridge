@@ -9,7 +9,6 @@ else()
   set(_PROTOBUF_PROTOC $<TARGET_FILE:protobuf::protoc>)
 endif()
 
-include_directories(${Protobuf_INCLUDE_DIRS})
 # Find gRPC installation
 # Looks for gRPCConfig.cmake file installed by gRPC's cmake installation.
 
@@ -99,6 +98,8 @@ target_link_libraries(gRPCModelRunnerLib
 	          ${_PROTOBUF_LIBPROTOBUF}
 )
 
-target_include_directories(gRPCModelRunnerLib PRIVATE ${CMAKE_BINARY_DIR}/include/Service)
-target_include_directories(gRPCModelRunnerLib PUBLIC ${Protobuf_INCLUDE_DIRS})
+target_include_directories(gRPCModelRunnerLib 
+  PRIVATE ${CMAKE_BINARY_DIR}/include/Service
+  PUBLIC ${Protobuf_INCLUDE_DIRS}
+)
 
