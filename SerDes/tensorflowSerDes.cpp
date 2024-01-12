@@ -2,7 +2,7 @@
 #include "SerDes/baseSerDes.h"
 
 // #define EXCEPT_LONG(M) M(int) M(float) M(double) M(std::string) M(bool)
-
+namespace MLBridge {
 #define SET_FEATURE(TYPE)                                                      \
   void TensorflowSerDes::setFeature(const std::string &Name,                   \
                                     const TYPE &Value) {                       \
@@ -61,3 +61,4 @@ void TensorflowSerDes::setFeature(const std::string &Name,
   std::copy(Value.begin(), Value.end(),
             static_cast<int *>(CompiledModel->arg_data(Index)));
 }
+} // namespace MLBridge

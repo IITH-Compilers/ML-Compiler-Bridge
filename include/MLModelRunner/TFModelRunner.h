@@ -21,7 +21,7 @@
 #include <memory>
 #include <vector>
 
-namespace llvm {
+namespace MLBridge {
 
 /// TFModelRunner - TF Compiled model implementation of the
 /// MLModelRunner. It uses an AOT-compiled SavedModel for efficient execution.
@@ -104,6 +104,6 @@ template <class T> bool isEmbeddedModelEvaluatorValid() { return true; }
 template <> inline bool isEmbeddedModelEvaluatorValid<NoopSavedModelImpl>() {
   return false;
 }
-} // namespace llvm
+} // namespace MLBridge
 
 #endif // TFMODELRUNNER_H

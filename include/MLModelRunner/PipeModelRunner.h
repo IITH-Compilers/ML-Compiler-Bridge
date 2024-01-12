@@ -22,7 +22,7 @@
 #include <memory>
 #include <system_error>
 
-namespace llvm {
+namespace MLBridge {
 
 /// A MLModelRunner that asks for advice from an external agent, or host. It
 /// uses 2 files - ideally named pipes - one to send data to that agent, and
@@ -67,5 +67,5 @@ private:
   std::error_code InEC;
   std::unique_ptr<raw_fd_ostream> OutStream;
 };
-} // namespace llvm
+} // namespace MLBridge
 #endif // PipeModelRunner_H

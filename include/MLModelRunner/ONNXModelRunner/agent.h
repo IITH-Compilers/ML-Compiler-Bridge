@@ -19,6 +19,7 @@
 
 #define DEBUG_TYPE "rl-inference-engine"
 
+namespace MLBridge {
 class Agent {
 public:
   ONNXModel *model;
@@ -26,4 +27,5 @@ public:
   unsigned computeAction(Observation &obs);
 };
 
+} // namespace MLBridge
 #endif // ONNX_MODELRUNNER_AGENT_H

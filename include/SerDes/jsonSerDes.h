@@ -7,9 +7,9 @@
 #include <string>
 #include <utility>
 
-using namespace llvm;
 using namespace std;
-
+using namespace llvm;
+namespace MLBridge {
 class JsonSerDes : public BaseSerDes {
 public:
   JsonSerDes() : BaseSerDes(BaseSerDes::Kind::Json){};
@@ -40,5 +40,6 @@ private:
 private:
   json::Object J;
 };
+} // namespace MLBridge
 
 #endif

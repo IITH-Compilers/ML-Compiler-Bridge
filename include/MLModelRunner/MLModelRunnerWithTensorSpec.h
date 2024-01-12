@@ -15,7 +15,7 @@
 #include "SerDes/baseSerDes.h"
 // #include "llvm/IR/PassManager.h"
 
-namespace llvm {
+namespace MLBridge {
 class LLVMContext;
 
 /// MLModelRunner interface: abstraction of a mechanism for evaluating a
@@ -82,6 +82,6 @@ private:
   std::vector<void *> InputBuffers;
   std::vector<std::vector<char *>> OwnedBuffers;
 };
-} // namespace llvm
+} // namespace MLBridge
 
 #endif // MLMODELRUNNER_WITH_TENSORSPEC_H

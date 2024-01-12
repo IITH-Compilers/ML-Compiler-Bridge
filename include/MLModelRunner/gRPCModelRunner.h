@@ -19,7 +19,7 @@
 #include <memory>
 
 // grpc model runner requires service, stub, request and response
-namespace llvm {
+namespace MLBridge {
 template <class Client, class Stub, class Request, class Response>
 class gRPCModelRunner : public MLModelRunner {
 public:
@@ -112,6 +112,6 @@ private:
     }
   }
 };
-} // namespace llvm
+} // namespace MLBridge
 
 #endif // GRPC_MODELRUNNER_H

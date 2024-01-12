@@ -15,6 +15,7 @@
 using namespace llvm;
 using namespace std;
 
+namespace MLBridge {
 void BitstreamSerDes::setFeature(const std::string &name, const int &value) {
   auto *valuePtr = new int(value);
   featuresint[name] = valuePtr;
@@ -136,3 +137,4 @@ void *BitstreamSerDes::deserializeUntyped(void *data) {
   this->MessageLength = res->size();
   return res->data();
 }
+} // namespace MLBridge

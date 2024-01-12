@@ -27,7 +27,7 @@
 
 using namespace llvm;
 
-namespace llvm {
+namespace MLBridge {
 
 #define TFUTILS_GETDATATYPE_IMPL(T, E)                                         \
   template <> TensorType TensorSpec::getDataType<T>() { return TensorType::E; }

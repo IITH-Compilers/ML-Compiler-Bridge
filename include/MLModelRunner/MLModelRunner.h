@@ -25,9 +25,7 @@
 #include "SerDes/protobufSerDes.h"
 #include "SerDes/tensorflowSerDes.h"
 #endif
-namespace llvm {
-class LLVMContext;
-
+namespace MLBridge {
 class MLModelRunner {
 public:
   // Disallows copy and assign.
@@ -46,19 +44,13 @@ public:
       void>::type
   evaluate(T &data, size_t &dataSize) {
     using BaseType = typename std::remove_pointer<T>::type;
-    // errs() << "In MLModelRunner evaluate...\n";
     void *res = evaluateUntyped();
-    // errs() << "Evaluate: after deserialize\n";
-    // errs() << "Evaluate: SerDes->getMessageLength(): "
-    //        << SerDes->getMessageLength() << "\n";
     T ret = static_cast<T>(malloc(SerDes->getMessageLength()));
     memcpy(ret, res, SerDes->getMessageLength());
     dataSize = SerDes->getMessageLength() / sizeof(BaseType);
     data = ret;
   }
 
-  //   enum class Kind : int { Unknown, Release, Development, NoOp, Interactive
-  //   };
   enum class Kind : int {
     Unknown,
     Release,
@@ -108,40 +100,7 @@ protected:
 
 protected:
   std::unique_ptr<BaseSerDes> SerDes;
-  //   std::vector<std::vector<char *>> OwnedBuffers;
 private:
-  // vector check
-  template <typename T> struct IsStdVector : std::false_type {};
-
-  template <typename T, typename Alloc>
-  struct IsStdVector<std::vector<T, Alloc>> : std::true_type {};
-
-  template <typename T>
-  static constexpr bool is_std_vector_v = IsStdVector<T>::value;
-
-  // vector element type
-  template <typename T> struct VectorElementType;
-
-  template <typename F> struct VectorElementType<std::vector<F>> {
-    using type = F;
-  };
-
-  template <typename T>
-  using VectorElementTypeT = typename VectorElementType<T>::type;
-
-  // vector element size
-  template <typename T> struct VectorElementTypeSize {
-    static constexpr size_t value = 0;
-  };
-
-  template <typename F> struct VectorElementTypeSize<std::vector<F>> {
-    static constexpr size_t value = sizeof(F);
-  };
-
-  template <typename T> size_t getVectorElementSize() {
-    return VectorElementTypeSize<T>::value;
-  }
-
   void initSerDes() {
     switch (SerDesType) {
     case BaseSerDes::Kind::Json:
@@ -164,6 +123,6 @@ private:
     }
   }
 };
-} // namespace llvm
+} // namespace MLBridge
 
 #endif // LLVM_MLMODELRUNNER_H

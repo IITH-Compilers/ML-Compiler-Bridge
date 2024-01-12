@@ -5,6 +5,7 @@
 
 #include <vector>
 
+using namespace MLBridge;
 struct PipeModelRunnerWrapper {
   MLModelRunner *model;
 };
@@ -13,7 +14,7 @@ PipeModelRunnerWrapper *createPipeModelRunner(const char *OutboundName,
                                               const char *InboundName,
                                               int SerDesType) {
   PipeModelRunnerWrapper *obj = new PipeModelRunnerWrapper();
-  obj->model = new llvm::PipeModelRunner(OutboundName, InboundName,
+  obj->model = new PipeModelRunner(OutboundName, InboundName,
                                          (BaseSerDes::Kind)SerDesType);
   return obj;
 }

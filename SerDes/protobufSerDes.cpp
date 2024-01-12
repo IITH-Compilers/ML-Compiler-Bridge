@@ -8,6 +8,7 @@
 #include <type_traits>
 #include <vector>
 
+namespace MLBridge {
 inline void ProtobufSerDes::setFeature(const std::string &name,
                                        const int &value) {
   Request->GetReflection()->SetInt32(
@@ -214,3 +215,4 @@ void ProtobufSerDes::cleanDataStructures() {
   Request->Clear();
   Response->Clear();
 }
+} // namespace MLBridge

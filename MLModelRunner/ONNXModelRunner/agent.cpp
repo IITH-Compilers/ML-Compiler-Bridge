@@ -11,6 +11,8 @@
 #include <cmath>
 #include <iterator>
 
+namespace MLBridge {
+
 Agent::Agent(std::string modelPath) {
   // Create model object here
   this->model = new ONNXModel(modelPath.c_str());
@@ -38,3 +40,5 @@ unsigned Agent::computeAction(Observation &input) {
                           << argmaxVal << "\n");
   return argmaxVal;
 }
+
+} // namespace MLBridge

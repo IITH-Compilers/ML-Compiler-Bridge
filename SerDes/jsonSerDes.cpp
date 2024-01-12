@@ -8,6 +8,7 @@
 
 #define DEBUG_TYPE "json-serdes"
 
+namespace MLBridge {
 void *JsonSerDes::getSerializedData() {
   auto tempJO = J;
   auto data = json::Value(std::move(tempJO));
@@ -119,6 +120,7 @@ void *JsonSerDes::desJson(json::Value *V) {
   }
   }
 }
+} // namespace MLBridge
 
 // void *JsonSerDes::desJson(json::Value *V) {
 

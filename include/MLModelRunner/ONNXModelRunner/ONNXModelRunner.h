@@ -17,7 +17,7 @@
 #include "MLModelRunner/ONNXModelRunner/agent.h"
 #include "MLModelRunner/ONNXModelRunner/environment.h"
 
-namespace llvm {
+namespace MLBridge {
 class ONNXModelRunner : public MLModelRunner {
 public:
   ONNXModelRunner(MLBridge::Environment *env,
@@ -36,5 +36,5 @@ private:
   MLBridge::Environment *env;
   std::map<std::string, Agent *> agents;
 };
-} // namespace llvm
+} // namespace MLBridge
 #endif // ONNX_MODELRUNNER_H

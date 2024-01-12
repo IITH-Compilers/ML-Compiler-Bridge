@@ -18,7 +18,8 @@
 #include <optional>
 #include <vector>
 
-namespace llvm {
+using namespace llvm;
+namespace MLBridge {
 /// TensorSpec encapsulates the specification of a tensor: its dimensions, or
 /// "shape" (row-major), its type (see TensorSpec::getDataType specializations
 /// for supported types), its name and port (see "TensorFlow: Large-Scale

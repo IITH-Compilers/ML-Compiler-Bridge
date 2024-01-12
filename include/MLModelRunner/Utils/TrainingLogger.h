@@ -63,7 +63,7 @@
 #include <optional>
 #include <vector>
 
-namespace llvm {
+namespace MLBridge {
 
 /// Logging utility - given an ordered specification of features, and assuming
 /// a scalar reward, allow logging feature values and rewards.

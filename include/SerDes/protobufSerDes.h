@@ -7,6 +7,7 @@
 
 using namespace google::protobuf;
 
+namespace MLBridge {
 class ProtobufSerDes : public BaseSerDes {
 public:
   ProtobufSerDes() : BaseSerDes(Kind::Protobuf){};
@@ -45,4 +46,6 @@ private:
   Message *Response;
   Message *Request;
 };
+} // namespace MLBridge
+
 #endif

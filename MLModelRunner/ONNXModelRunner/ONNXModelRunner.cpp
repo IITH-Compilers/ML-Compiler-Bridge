@@ -9,8 +9,7 @@
 #include "MLModelRunner/ONNXModelRunner/ONNXModelRunner.h"
 #include "SerDes/baseSerDes.h"
 
-using namespace llvm;
-using namespace MLBridge;
+namespace MLBridge {
 
 ONNXModelRunner::ONNXModelRunner(Environment *env,
                                  std::map<std::string, Agent *> agents,
@@ -46,3 +45,5 @@ void *ONNXModelRunner::evaluateUntyped() {
   computeAction(obs);
   return new int(0);
 }
+
+} // namespace MLBridge

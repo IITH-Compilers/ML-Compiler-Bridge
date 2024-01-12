@@ -12,7 +12,7 @@
 #include <stdarg.h>
 #include <vector>
 
-using namespace llvm;
+using namespace MLBridge;
 struct ONNXModelRunner {
   Environment *env;
   Agent *agent;
@@ -53,14 +53,14 @@ public:
     assert(stepFunc != nullptr &&
            "Step function is null! Define step function on env");
     float *stepRes = stepFunc(action);
-    return SmallVector<float, 100>(stepRes, stepRes + numFeatures);
+    return llvm::SmallVector<float, 100>(stepRes, stepRes + numFeatures);
   }
 
   Observation reset() {
     assert(resetFunc != nullptr &&
            "Reset function is null! Define reset function on env");
     float *resetRes = resetFunc();
-    return SmallVector<float, 100>(resetRes, resetRes + numFeatures);
+    return llvm::SmallVector<float, 100>(resetRes, resetRes + numFeatures);
   }
 
   bool checkDone() { return done; }
@@ -126,7 +126,7 @@ void evaluate(ONNXModelRunner *omr) {
     // auto current_agent = omr->agents[omr->env->getNextAgent()];
     Agent *current_agent = omr->agent;
     action = current_agent->computeAction(x);
-    errs() << "Action: " << action << "\n";
+    llvm::errs() << "Action: " << action << "\n";
     x = omr->env->step(action);
     if (omr->env->checkDone()) {
       std::cout << "Done🎉\n";
@@ -138,7 +138,7 @@ void evaluate(ONNXModelRunner *omr) {
 int singleAgentEvaluate(ONNXModelRunner *obj, float *inp, int inp_size) {
   Observation obs(inp, inp + inp_size);
   Action action = obj->agent->computeAction(obs);
-  errs() << "action :: " << action << "\n";
+  llvm::errs() << "action :: " << action << "\n";
   return action;
 }
 

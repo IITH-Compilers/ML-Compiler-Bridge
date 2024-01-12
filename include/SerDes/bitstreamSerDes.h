@@ -10,9 +10,9 @@
 #include <utility>
 #include <vector>
 
-using namespace llvm;
 using namespace std;
 
+namespace MLBridge {
 class BitstreamSerDes : public BaseSerDes {
 public:
   BitstreamSerDes() : BaseSerDes(Kind::Bitstream) {
@@ -66,4 +66,6 @@ private:
   SUPPORTED_TYPES(TEMPORARY_STORAGE_DEF)
 #undef TEMPORARY_STORAGE_DEF
 };
+} // namespace MLBridge
+
 #endif

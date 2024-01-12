@@ -6,6 +6,7 @@
 
 #include <memory>
 
+namespace MLBridge {
 class TensorflowSerDes : public BaseSerDes {
 public:
   TensorflowSerDes() : BaseSerDes(Kind::Tensorflow) {}
@@ -32,5 +33,6 @@ private:
   void *deserializeUntyped(void *data) override{};
   tensorflow::XlaCompiledCpuFunction *CompiledModel;
 };
+} // namespace MLBridge
 
 #endif

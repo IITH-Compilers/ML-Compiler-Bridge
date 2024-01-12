@@ -23,8 +23,7 @@
 
 #define DEBUG_TYPE "pipe-model-runner"
 
-using namespace llvm;
-
+namespace MLBridge {
 PipeModelRunner::PipeModelRunner(StringRef OutboundName, StringRef InboundName,
                                  BaseSerDes::Kind SerDesType, LLVMContext *Ctx)
     : MLModelRunner(Kind::Pipe, SerDesType, Ctx),
@@ -112,3 +111,5 @@ void *PipeModelRunner::evaluateUntyped() {
       errs() << "In PipeModelRunner::evaluateUntyped() received data...\n");
   return SerDes->deserializeUntyped(reply);
 }
+
+} // namespace MLBridge

@@ -23,6 +23,7 @@ using namespace std;
   M(string)                                                                    \
   M(bool)
 
+namespace MLBridge {
 class BaseSerDes {
 public:
   // setRepeatedField as pushback
@@ -63,4 +64,6 @@ protected:
   void *ResponseVoid;
   size_t MessageLength;
 };
+} // namespace MLBridge
+
 #endif

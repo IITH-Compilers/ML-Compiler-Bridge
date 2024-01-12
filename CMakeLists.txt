@@ -16,7 +16,7 @@ option(LLVM_MLBRIDGE "MLCompilerBridge install for LLVM" OFF)
 if(NOT LLVM_MLBRIDGE)
   find_package(LLVM 10.0.0 REQUIRED CONFIG)
   include_directories(${LLVM_INCLUDE_DIRS}) 
-  link_directories(${LLVM_LIBRARY_DIR} "${ONNXRUNTIME_ROOTDIR}/lib")
+  link_directories(${LLVM_LIBRARY_DIR})
   add_compile_definitions(C_LIBRARY)
 endif()
   
@@ -37,24 +37,27 @@ if(LLVM_MLBRIDGE)
   LINK_LIBS
   ModelRunnerLib
   $<TARGET_OBJECTS:SerDesLib>
+  tf_xla_runtime
   protobuf::libprotobuf
   )
   target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+  install(TARGETS LLVMMLBridge DESTINATION lib)
+else()
+  llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)
+
+  add_library(MLCompilerBridge STATIC tools.cpp)
+  target_link_libraries(MLCompilerBridge PUBLIC SerDesLib ModelRunnerLib ONNXModelRunnerLib LLVM-10 ${llvm_libs})
+  
+  add_library(MLCompilerBridgeC STATIC $<TARGET_OBJECTS:ModelRunnerCWrapper>)
+  target_link_libraries(MLCompilerBridgeC PUBLIC SerDesCLib ModelRunnerCLib ONNXModelRunnerLib LLVM-10 ${llvm_libs})
+  target_include_directories(MLCompilerBridgeC PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${LLVM_INCLUDE_DIRS})
+  
+  target_compile_features(MLCompilerBridgeC PRIVATE cxx_std_17)
+  set_property(TARGET MLCompilerBridgeC PROPERTY POSITION_INDEPENDENT_CODE 1)
+  install(TARGETS MLCompilerBridgeC DESTINATION lib)
+  install(TARGETS MLCompilerBridge DESTINATION lib)
 endif(LLVM_MLBRIDGE)
 
-llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)
 
-
-add_library(MLCompilerBridge STATIC tools.cpp)
-target_link_libraries(MLCompilerBridge PUBLIC SerDesLib ModelRunnerLib ONNXModelRunnerLib LLVM-10 ${llvm_libs})
-
-add_library(MLCompilerBridgeC STATIC $<TARGET_OBJECTS:ModelRunnerCWrapper>)
-target_link_libraries(MLCompilerBridgeC PUBLIC SerDesCLib ModelRunnerCLib ONNXModelRunnerLib LLVM-10 ${llvm_libs})
-target_include_directories(MLCompilerBridgeC PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${LLVM_INCLUDE_DIRS})
-
-target_compile_options(MLCompilerBridgeC PUBLIC "-stdlib=libstdc++")
-set_property(TARGET MLCompilerBridgeC PROPERTY POSITION_INDEPENDENT_CODE 1)
-
-install(TARGETS MLCompilerBridgeC DESTINATION lib)
 install(DIRECTORY include/ DESTINATION include)
 install(DIRECTORY CompilerInterface DESTINATION include/python/MLCompilerBridge)
