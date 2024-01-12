@@ -98,7 +98,7 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;stdarg.h&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">using namespace </span>llvm;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">using namespace </span>MLBridge;</div>
 <div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../da/d2e/structONNXModelRunner.html">   16</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> {</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <a class="code hl_struct" href="../../d0/d3c/structEnvironment.html">Environment</a> *env;</div>
@@ -142,14 +142,14 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    assert(stepFunc != <span class="keyword">nullptr</span> &amp;&amp;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>           <span class="stringliteral">&quot;Step function is null! Define step function on env&quot;</span>);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">float</span> *stepRes = stepFunc(action);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">return</span> SmallVector&lt;float, 100&gt;(stepRes, stepRes + numFeatures);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">return</span> llvm::SmallVector&lt;float, 100&gt;(stepRes, stepRes + numFeatures);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  }</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  Observation reset() {</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    assert(resetFunc != <span class="keyword">nullptr</span> &amp;&amp;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>           <span class="stringliteral">&quot;Reset function is null! Define reset function on env&quot;</span>);</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">float</span> *resetRes = resetFunc();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">return</span> SmallVector&lt;float, 100&gt;(resetRes, resetRes + numFeatures);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">return</span> llvm::SmallVector&lt;float, 100&gt;(resetRes, resetRes + numFeatures);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  }</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keywordtype">bool</span> checkDone() { <span class="keywordflow">return</span> done; }</div>
@@ -216,7 +216,7 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="comment">// auto current_agent = omr-&gt;agents[omr-&gt;env-&gt;getNextAgent()];</span></div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    Agent *current_agent = omr-&gt;agent;</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    action = current_agent-&gt;computeAction(x);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    errs() &lt;&lt; <span class="stringliteral">&quot;Action: &quot;</span> &lt;&lt; action &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    llvm::errs() &lt;&lt; <span class="stringliteral">&quot;Action: &quot;</span> &lt;&lt; action &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    x = omr-&gt;env-&gt;step(action);</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordflow">if</span> (omr-&gt;env-&gt;checkDone()) {</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;Done🎉\n&quot;</span>;</div>
@@ -228,7 +228,7 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keywordtype">int</span> singleAgentEvaluate(<a class="code hl_struct" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> *obj, <span class="keywordtype">float</span> *inp, <span class="keywordtype">int</span> inp_size) {</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>  Observation obs(inp, inp + inp_size);</div>
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  Action action = obj-&gt;agent-&gt;computeAction(obs);</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>  errs() &lt;&lt; <span class="stringliteral">&quot;action :: &quot;</span> &lt;&lt; action &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>  llvm::errs() &lt;&lt; <span class="stringliteral">&quot;action :: &quot;</span> &lt;&lt; action &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  <span class="keywordflow">return</span> action;</div>
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>}</div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
