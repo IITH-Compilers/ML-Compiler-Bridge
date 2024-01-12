@@ -29,8 +29,8 @@ set(CMAKE_CXX_STANDARD 11)
 # add_custom_target(protobuf_grpc_version ALL 
 # COMMAND ${CMAKE_COMMAND} -E echo "protoc path = $<TARGET_FILE:protobuf::protoc> Using Protobuf ${Protobuf_VERSION} Using gRPC ${gRPC_VERSION} have AOT ${LLVM_HAVE_TF_AOT}")
 
-file(GLOB proto_list ${CMAKE_CURRENT_SOURCE_DIR}/Protos/*.proto)
-set(proto_dir ${CMAKE_CURRENT_SOURCE_DIR}/Protos)
+file(GLOB proto_list ${PROTOS_DIRECTORY}/*.proto)
+set(proto_dir ${PROTOS_DIRECTORY})
 file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/include/grpc)
 
 
