@@ -41,14 +41,14 @@ void *JsonSerDes::desJson(json::Value *V) {
     return nullptr;
   case json::Value::Kind::Number: {
     if (auto x = V->getAsInteger()) {
-      int *ret = new int();
+      long *ret = new long();
       *ret = x.value();
-      this->MessageLength = sizeof(int);
+      this->MessageLength = sizeof(long);
       return ret;
     } else if (auto x = V->getAsNumber()) {
-      float *ret = new float();
+      double *ret = new double();
       *ret = x.value();
-      this->MessageLength = sizeof(float);
+      this->MessageLength = sizeof(double);
       return ret;
     } else {
       llvm::errs() << "Error in desJson: Number is not int, or double\n";
@@ -78,18 +78,18 @@ void *JsonSerDes::desJson(json::Value *V) {
     switch (first->kind()) {
     case json::Value::Kind::Number: {
       if (auto x = first->getAsInteger()) {
-        std::vector<int> *ret = new std::vector<int>();
+        std::vector<long> *ret = new std::vector<long>();
         for (auto it : *arr) {
           ret->push_back(it.getAsInteger().value());
         }
-        this->MessageLength = ret->size() * sizeof(int);
+        this->MessageLength = ret->size() * sizeof(long);
         return ret->data();
       } else if (auto x = first->getAsNumber()) {
-        std::vector<float> *ret = new std::vector<float>();
+        std::vector<double> *ret = new std::vector<double>();
         for (auto it : *arr) {
           ret->push_back(it.getAsNumber().value());
         }
-        this->MessageLength = ret->size() * sizeof(float);
+        this->MessageLength = ret->size() * sizeof(double);
         return ret->data();
       } else {
         llvm::errs() << "Error in desJson: Number is not int, or double\n";
