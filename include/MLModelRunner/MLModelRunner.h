@@ -7,8 +7,8 @@
 //===----------------------------------------------------------------------===//
 //
 
-#ifndef LLVM_MLMODELRUNNER_H
-#define LLVM_MLMODELRUNNER_H
+#ifndef ML_MODEL_RUNNER_H
+#define ML_MODEL_RUNNER_H
 
 #include "SerDes/baseSerDes.h"
 #include "SerDes/bitstreamSerDes.h"
@@ -100,6 +100,7 @@ protected:
 
 protected:
   std::unique_ptr<BaseSerDes> SerDes;
+
 private:
   void initSerDes() {
     switch (SerDesType) {

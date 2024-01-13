@@ -6,8 +6,8 @@
 //
 //===----------------------------------------------------------------------===//
 //
-#ifndef LLVM_ANALYSIS_TENSORSPEC_H
-#define LLVM_ANALYSIS_TENSORSPEC_H
+#ifndef MLBRIDGE_TENSORSPEC_H
+#define MLBRIDGE_TENSORSPEC_H
 
 #include "MLModelRunner/Utils/JSON.h"
 #include "llvm/ADT/StringMap.h"
@@ -125,6 +125,6 @@ std::optional<TensorSpec> getTensorSpecFromJSON(LLVMContext &Ctx,
 SUPPORTED_TENSOR_TYPES(TFUTILS_GETDATATYPE_DEF)
 
 #undef TFUTILS_GETDATATYPE_DEF
-} // namespace llvm
+} // namespace MLBridge
 
-#endif // LLVM_ANALYSIS_TENSORSPEC_H
+#endif
