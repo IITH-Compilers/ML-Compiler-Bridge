@@ -1,12 +1,12 @@
-#ifndef LLVM_LIB_CODEGEN_MLCONFIG_H
-#define LLVM_LIB_CODEGEN_MLCONFIG_H
+#ifndef MLBRIDGE_CONFIG_H
+#define MLBRIDGE_CONFIG_H
 #include "llvm/Support/CommandLine.h"
 
-namespace llvm {
+namespace MLBridge {
 class MLConfig {
 public:
-  static cl::opt<std::string> mlconfig;
+  static llvm::cl::opt<std::string> mlconfig;
 };
-} // namespace llvm
+} // namespace MLBridge
 
 #endif

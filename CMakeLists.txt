@@ -50,8 +50,7 @@ else()
   add_library(MLCompilerBridge STATIC tools.cpp)
   target_link_libraries(MLCompilerBridge PUBLIC SerDesLib ModelRunnerLib ONNXModelRunnerLib LLVM-10 ${llvm_libs})
   
-  add_executable(MLCompilerBridgeTest $<TARGET_OBJECTS:LLVMMLBridgeTest>)
-  # add_library(MLCompilerBridgeTest SHARED $<TARGET_OBJECTS:LLVMHelloMLBridgeTest>)
+  add_executable(MLCompilerBridgeTest $<TARGET_OBJECTS:MLBridgeCPPTest>)
   target_link_libraries(MLCompilerBridgeTest PUBLIC MLCompilerBridge)
   set_property(TARGET MLCompilerBridge PROPERTY POSITION_INDEPENDENT_CODE 1)
 
