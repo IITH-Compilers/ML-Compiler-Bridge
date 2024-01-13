@@ -1,3 +1,9 @@
+//=== MLCBridge/SerDes/jsonSerDes.cpp - JsonSerDes class definition ===//
+//
+// Part of the MLCompilerBridge Project
+//
+//===------------------===//
+
 #include "SerDes/jsonSerDes.h"
 #include "MLModelRunner/Utils/JSON.h"
 #include "SerDes/baseSerDes.h"

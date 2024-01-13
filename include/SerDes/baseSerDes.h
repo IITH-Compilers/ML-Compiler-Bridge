@@ -1,3 +1,9 @@
+//===- SerDes/baseSerDes.h - Base class for serialization and deserialization ---*- C++ -*-===//
+//
+// Part of the MLCompilerBridge Project
+//
+//===------------------===//
+
 #ifndef BASE_SERDES_H
 #define BASE_SERDES_H
 

@@ -1,3 +1,9 @@
+//=== MLCompilerBridge/SerDes/protobufSerDes.cpp - Protobuf SerDes Implementation ---*- C++ -*-===//
+//
+// Part of the MLCompilerBridge Project
+//
+//===------------------===//
+
 #include "SerDes/protobufSerDes.h"
 #include "google/protobuf/descriptor.h"
 #include "google/protobuf/message.h"

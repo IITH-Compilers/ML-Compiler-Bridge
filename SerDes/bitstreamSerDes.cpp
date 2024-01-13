@@ -1,3 +1,9 @@
+//=== MLCompilerBridge/SerDes/bitstreamSerDes.cpp - Bitstream SerDes Implementation ---*- C++ -*-===//
+//
+// Part of the MLCompilerBridge Project
+//
+//===------------------===//
+
 #include "SerDes/bitstreamSerDes.h"
 #include "MLModelRunner/Utils/JSON.h"
 #include "llvm/Support/Error.h"

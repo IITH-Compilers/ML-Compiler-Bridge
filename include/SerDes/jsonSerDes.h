@@ -1,3 +1,9 @@
+//=== SerDes/jsonSerDes.h - Json Serialization/Deserialization ---*- C++
+//
+// Part of the MLCompilerBridge Project
+//
+//===------------------===//
+
 #ifndef JSON_SERIALIZER_H
 #define JSON_SERIALIZER_H
 

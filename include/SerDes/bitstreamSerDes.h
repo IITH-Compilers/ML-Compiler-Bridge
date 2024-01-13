@@ -1,3 +1,9 @@
+//=== SerDes/bitstreamSerDes.h - Bitstream Serialization/Deserialization ---*- C++ -*-===//
+//
+// Part of the MLCompilerBridge Project
+//
+//===------------------===//
+
 #ifndef BITSTREAM_SERIALIZER_H
 #define BITSTREAM_SERIALIZER_H
 
