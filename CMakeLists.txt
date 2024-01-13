@@ -71,9 +71,7 @@ else()
   target_compile_definitions(MLCompilerBridge PRIVATE DEBUG)
   target_compile_definitions(MLCompilerBridgeC PRIVATE DEBUG)
   endif()
-
 endif(LLVM_MLBRIDGE)
 
-install(TARGETS MLCompilerBridgeC DESTINATION lib)
 install(DIRECTORY include/ DESTINATION include)
 install(DIRECTORY CompilerInterface DESTINATION include/python/MLCompilerBridge)
