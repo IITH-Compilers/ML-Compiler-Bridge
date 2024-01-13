@@ -1,6 +1,4 @@
 <map id="MLModelRunner/gRPCModelRunner" name="MLModelRunner/gRPCModelRunner">
-<area shape="rect" id="node2" href="dir_f8e979336e81e05754d4928fd249a375.html" title="Python&#45;Utilities" alt="" coords="104,63,213,89"/>
-<area shape="rect" id="node3" href="dir_6bf3ce180588f6c0a8d01399b8fddcc4.html" title="test" alt="" coords="37,63,80,89"/>
-<area shape="rect" id="clust2" href="dir_dc465cb77b4e717e42fa1668434391d7.html" alt="" coords="27,52,379,99"/>
-<area shape="rect" id="clust1" href="dir_3676ed060da7b11e583c94bd430df0f2.html" title="MLModelRunner" alt="" coords="16,16,389,110"/>
+<area shape="rect" id="node1" href="dir_dc465cb77b4e717e42fa1668434391d7.html" title="gRPCModelRunner" alt="" coords="26,52,158,78"/>
+<area shape="rect" id="clust1" href="dir_3676ed060da7b11e583c94bd430df0f2.html" title="MLModelRunner" alt="" coords="16,16,168,89"/>
 </map>

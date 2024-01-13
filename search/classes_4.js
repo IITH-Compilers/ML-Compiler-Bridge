@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loopdistributionclient_0',['LoopDistributionClient',['../dc/d44/classloopDistributionClient_1_1LoopDistributionClient.html',1,'loopDistributionClient']]]
+  ['npencoder_0',['NpEncoder',['../d4/d0a/classSerDes_1_1NpEncoder.html',1,'SerDes']]]
 ];
