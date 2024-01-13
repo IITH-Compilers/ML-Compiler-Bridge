@@ -1,5 +1,7 @@
 add_subdirectory(Utils)
-add_subdirectory(gRPCModelRunner)
+if(PROTOS_DIRECTORY)
+  add_subdirectory(gRPCModelRunner)
+endif()
 add_subdirectory(ONNXModelRunner)
 add_subdirectory(C)
 
@@ -39,5 +41,9 @@ else()
   add_library(ModelRunnerLib OBJECT PipeModelRunner.cpp)
 endif(LLVM_MLBRIDGE)
 
-target_link_libraries(ModelRunnerLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib gRPCModelRunnerLib)
+target_link_libraries(ModelRunnerLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib)
+
+if(PROTOS_DIRECTORY)
+  target_link_libraries(ModelRunnerLib PUBLIC gRPCModelRunnerLib)
+endif()
 set_property(TARGET ModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)
