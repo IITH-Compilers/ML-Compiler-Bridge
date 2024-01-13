@@ -8,7 +8,7 @@ set(protobuf_MODULE_COMPATIBLE TRUE)
 find_package(Protobuf CONFIG REQUIRED)
 
 include_directories(${Protobuf_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti -fPIC")
 set (CMAKE_CXX_STANDARD 17)
 
 option(LLVM_MLBRIDGE "MLCompilerBridge install for LLVM" OFF)
@@ -22,6 +22,7 @@ endif()
   
 add_subdirectory(MLModelRunner)
 add_subdirectory(SerDes)
+add_subdirectory(test)
 
 if(LLVM_MLBRIDGE)
   include(AddLLVM)
@@ -49,6 +50,11 @@ else()
   add_library(MLCompilerBridge STATIC tools.cpp)
   target_link_libraries(MLCompilerBridge PUBLIC SerDesLib ModelRunnerLib ONNXModelRunnerLib LLVM-10 ${llvm_libs})
   
+  add_executable(MLCompilerBridgeTest $<TARGET_OBJECTS:LLVMMLBridgeTest>)
+  # add_library(MLCompilerBridgeTest SHARED $<TARGET_OBJECTS:LLVMHelloMLBridgeTest>)
+  target_link_libraries(MLCompilerBridgeTest PUBLIC MLCompilerBridge)
+  set_property(TARGET MLCompilerBridge PROPERTY POSITION_INDEPENDENT_CODE 1)
+
   add_library(MLCompilerBridgeC STATIC $<TARGET_OBJECTS:ModelRunnerCWrapper>)
   target_link_libraries(MLCompilerBridgeC PUBLIC SerDesCLib ModelRunnerCLib ONNXModelRunnerLib LLVM-10 ${llvm_libs})
   target_include_directories(MLCompilerBridgeC PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${LLVM_INCLUDE_DIRS})

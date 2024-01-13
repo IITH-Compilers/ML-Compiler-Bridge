@@ -2,8 +2,7 @@ import os, io
 import json
 import log_reader
 import struct
-
-
+import ctypes
 class SerDes:
     def __init__(self, data_format, pipe_name):
         self.data_format = data_format
@@ -81,7 +80,7 @@ class SerDes:
         self.tc.flush()
 
     def serializeDataJson(self, data):
-        msg = json.dumps({"out": data}).encode("utf-8")
+        msg = json.dumps({"out": data}, cls=NpEncoder).encode("utf-8")
         hdr = len(msg).to_bytes(8, "little")
         out = hdr + msg
         return out
@@ -93,7 +92,11 @@ class SerDes:
             elif isinstance(data, float):
                 return struct.pack("f", data)
             elif isinstance(data, str) and len(data) == 1:
-                return struct.pack("c", data)
+                return struct.pack('c', data)
+            elif isinstance(data, ctypes.c_double):
+                return struct.pack('d', data.value)
+            elif isinstance(data, ctypes.c_long):
+                return struct.pack('l', data.value)
             elif isinstance(data, list):
                 return b"".join([_pack(x) for x in data])
 
@@ -104,3 +107,11 @@ class SerDes:
 
     def serializeDataProtobuf(self, data):
         raise NotImplementedError
+
+class NpEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, ctypes.c_long):
+            return obj.value
+        if isinstance(obj, ctypes.c_double):
+            return obj.value
+        return super(NpEncoder, self).default(obj)
