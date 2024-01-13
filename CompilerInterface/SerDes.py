@@ -1,7 +1,16 @@
 import os, io
 import json
 import log_reader
+import ctypes
+import struct
 
+class NpEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, ctypes.c_long):
+            return obj.value
+        if isinstance(obj, ctypes.c_double):
+            return obj.value
+        return super(NpEncoder, self).default(obj)
 
 ## Class for serialization and deserialization in various formats for communication.
 class SerDes:
@@ -56,16 +65,27 @@ class SerDes:
 
     ## Serializes data to JSON
     def serializeJson(self, data):
-        msg = json.dumps({"out": data}).encode("utf-8")
+        msg = json.dumps({"out": data}, cls=NpEncoder).encode("utf-8")
         hdr = len(msg).to_bytes(8, "little")
         self.buffer = hdr + msg
 
     ## Serializes data to bitstream
     def serializeBytes(self, data):
-        if isinstance(data, list):
-            msg = b"".join([x.to_bytes(4, "little", signed=True) for x in data])
-        else:
-            msg = data.to_bytes(4, "little", signed=True)
+        def _pack(data):
+            if isinstance(data, int):
+                return struct.pack("i", data)
+            elif isinstance(data, float):
+                return struct.pack("f", data)
+            elif isinstance(data, str) and len(data) == 1:
+                return struct.pack('c', data)
+            elif isinstance(data, ctypes.c_double):
+                return struct.pack('d', data.value)
+            elif isinstance(data, ctypes.c_long):
+                return struct.pack('l', data.value)
+            elif isinstance(data, list):
+                return b"".join([_pack(x) for x in data])
+      
+        msg = _pack(data)
         hdr = len(msg).to_bytes(8, "little")
         self.buffer = hdr + msg
 

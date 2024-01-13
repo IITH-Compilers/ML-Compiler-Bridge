@@ -1,9 +1,8 @@
-import log_reader
 import argparse
-import os, io, json
-import SerDes
-import ctypes
+from PipeCompilerInterface import PipeCompilerInterface
+from GrpcCompilerInterface import GrpcCompilerInterface
 import numpy as np
+import ctypes
 
 import sys
 import torch, torch.nn as nn
@@ -92,14 +91,14 @@ returned_data = {
 }
 
 def run_pipe_communication(data_format, pipe_name):
-    serdes = SerDes.SerDes(data_format, "/tmp/" + pipe_name)
-    print('Serdes init...')
-    serdes.init()
+    compiler_interface = PipeCompilerInterface(data_format, '/tmp/' + pipe_name)
+    print("PipeCompilerInterface init...")
+    compiler_interface.reset_pipes()
     i = 0
     while True:
         i += 1 
         try:
-            data = serdes.readObservation()
+            data = compiler_interface.evaluate()
             if data_format == "json":
                 key = list(data)[0]
                 data = data[key]
@@ -120,10 +119,10 @@ def run_pipe_communication(data_format, pipe_name):
                 print(f"Mismatch in {expected_type[i]}")
                 # raise Exception(f"Mismatch in {expected_type[i]}")
 
-            serdes.sendData(returned_data[i])
+            compiler_interface.populate_buffer(returned_data[i])
         except Exception as e:
             print("*******Exception*******", e)
-            serdes.init()
+            compiler_interface.reset_pipes()
 
 class service_server(helloMLBridge_pb2_grpc.HelloMLBridgeService):
     def __init__(self, data_format, pipe_name):
@@ -155,22 +154,8 @@ def test_func():
     print(decoded, type(decoded))
 
 if __name__ == "__main__":
-    # test_func()
-    # exit(0)
     if args.use_pipe:
         run_pipe_communication(args.data_format, args.pipe_name)
     elif args.use_grpc:
-        server = grpc.server(
-            futures.ThreadPoolExecutor(max_workers=20),
-            options=[
-                ("grpc.max_send_message_length", 200 * 1024 * 1024),
-                ("grpc.max_receive_message_length", 200 * 1024 * 1024),
-            ],
-        )
-        helloMLBridge_pb2_grpc.add_HelloMLBridgeServiceServicer_to_server(
-            service_server(args.data_format, args.pipe_name), server
-        )
-        server.add_insecure_port(f"localhost:{args.server_port}")
-        server.start()
-        print("Server Running")
-        server.wait_for_termination()
+        compiler_interface = GrpcCompilerInterface(mode = 'server', add_server_method=helloMLBridge_pb2_grpc.add_HelloMLBridgeServiceServicer_to_server, grpc_service_obj=service_server(), hostport= args.server_port)
+        compiler_interface.start_server()
