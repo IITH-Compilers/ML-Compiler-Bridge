@@ -40,7 +40,6 @@ if(LLVM_MLBRIDGE)
   $<TARGET_OBJECTS:SerDesLib>
   tf_xla_runtime
   protobuf::libprotobuf
-  tf_xla_runtime
   )
   target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
   install(TARGETS LLVMMLBridge DESTINATION lib)

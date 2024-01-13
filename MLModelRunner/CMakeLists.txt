@@ -1,5 +1,6 @@
 add_subdirectory(Utils)
-if(PROTOS_DIRECTORY)
+set(PROTOS_DIRECTORY "" CACHE PATH "Path to the directory containing the proto files")
+if(NOT PROTOS_DIRECTORY STREQUAL "")
   add_subdirectory(gRPCModelRunner)
 endif()
 add_subdirectory(ONNXModelRunner)
@@ -43,7 +44,7 @@ endif(LLVM_MLBRIDGE)
 
 target_link_libraries(ModelRunnerLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib)
 
-if(PROTOS_DIRECTORY)
+if(NOT PROTOS_DIRECTORY STREQUAL "")
   target_link_libraries(ModelRunnerLib PUBLIC gRPCModelRunnerLib)
 endif()
 set_property(TARGET ModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)

@@ -1,4 +1,4 @@
-find_package(LLVM 10.0.1 REQUIRED CONFIG)
+find_package(LLVM 10.0.0 REQUIRED CONFIG)
 include_directories(SYSTEM ${LLVM_INCLUDE_DIRS})
 
 # if(NOT LLVM_ENABLE_RTTI)
