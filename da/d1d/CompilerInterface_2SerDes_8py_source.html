@@ -84,7 +84,7 @@ $(function() { codefold.init(1); });
   <div class="headertitle"><div class="title">SerDes.py</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">import</span> os, io</div>
+<a href="../../da/d1d/CompilerInterface_2SerDes_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="../../da/d52/namespaceSerDes.html">    1</a></span><span class="keyword">import</span> os, io</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">import</span> json</div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">import</span> log_reader</div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">import</span> ctypes</div>
@@ -92,13 +92,15 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="foldopen" id="foldopen00007" data-start="" data-end="">
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="../../d4/d0a/classSerDes_1_1NpEncoder.html">    7</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d4/d0a/classSerDes_1_1NpEncoder.html">NpEncoder</a>(json.JSONEncoder):</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keyword">def </span>default(self, obj):</div>
+<div class="foldopen" id="foldopen00008" data-start="" data-end="">
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="../../d4/d0a/classSerDes_1_1NpEncoder.html#a6f846507efc532b0c731d9c339a6b1f4">    8</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d4/d0a/classSerDes_1_1NpEncoder.html#a6f846507efc532b0c731d9c339a6b1f4">default</a>(self, obj):</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        <span class="keywordflow">if</span> isinstance(obj, ctypes.c_long):</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>            <span class="keywordflow">return</span> obj.value</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="keywordflow">if</span> isinstance(obj, ctypes.c_double):</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>            <span class="keywordflow">return</span> obj.value</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keywordflow">return</span> super(NpEncoder, self).default(obj)</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keywordflow">return</span> super(NpEncoder, self).<a class="code hl_function" href="../../d4/d0a/classSerDes_1_1NpEncoder.html#a6f846507efc532b0c731d9c339a6b1f4">default</a>(obj)</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+</div>
 </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="foldopen" id="foldopen00016" data-start="" data-end="">
@@ -106,19 +108,19 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    </div>
 <div class="foldopen" id="foldopen00019" data-start="" data-end="">
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a816add63be93aebbbbeed6fcda215026">   19</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#a816add63be93aebbbbeed6fcda215026">__init__</a>(self, data_format):</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a8d4a1391ad9f57df83fb00939e7f380a">buffer</a> = <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a1edd4d98b818dd0a4d208d68b866b2d8">data_format</a> = data_format</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a2638ddc74f788c46a87f8e8aeea19704">read_stream_iter</a> = <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a8d4a1391ad9f57df83fb00939e7f380a">   20</a></span>        self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a8d4a1391ad9f57df83fb00939e7f380a">buffer</a> = <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a1edd4d98b818dd0a4d208d68b866b2d8">   21</a></span>        self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a1edd4d98b818dd0a4d208d68b866b2d8">data_format</a> = data_format</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a2638ddc74f788c46a87f8e8aeea19704">   22</a></span>        self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a2638ddc74f788c46a87f8e8aeea19704">read_stream_iter</a> = <span class="keywordtype">None</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#ac1178a54fa264100aac4cdf9e5d3fdbb">serMap</a> = {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="stringliteral">&quot;json&quot;</span>: self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a9defe1668f1e0d4e1f3b1346c36974da">serializeJson</a><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#a45ae211918c24b393b4e1fd841dce799">serializeJson</a>,</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="stringliteral">&quot;bytes&quot;</span>: self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#ab7a64aae928916f493617550ef9c9133">serializeBytes</a><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#a0024b1195539aa03d62e6874a3e48dbb">serializeBytes</a>,</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <span class="stringliteral">&quot;protobuf&quot;</span>: self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a8cb8c9a1d2f76c476e2be38bc8d1f48c">serializeProtobuf</a><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#ad44d1504d1fe25badcee4a469771ac95">serializeProtobuf</a>,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#ac1178a54fa264100aac4cdf9e5d3fdbb">   24</a></span>        self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#ac1178a54fa264100aac4cdf9e5d3fdbb">serMap</a> = {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a9defe1668f1e0d4e1f3b1346c36974da">   25</a></span>            <span class="stringliteral">&quot;json&quot;</span>: self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a9defe1668f1e0d4e1f3b1346c36974da">serializeJson</a><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#a45ae211918c24b393b4e1fd841dce799">serializeJson</a>,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#ab7a64aae928916f493617550ef9c9133">   26</a></span>            <span class="stringliteral">&quot;bytes&quot;</span>: self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#ab7a64aae928916f493617550ef9c9133">serializeBytes</a><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#a0024b1195539aa03d62e6874a3e48dbb">serializeBytes</a>,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a8cb8c9a1d2f76c476e2be38bc8d1f48c">   27</a></span>            <span class="stringliteral">&quot;protobuf&quot;</span>: self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a8cb8c9a1d2f76c476e2be38bc8d1f48c">serializeProtobuf</a><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#ad44d1504d1fe25badcee4a469771ac95">serializeProtobuf</a>,</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        }</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#ac18eeb662f2b265bffec2c313940449e">desMap</a> = {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <span class="stringliteral">&quot;json&quot;</span>: self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#aa4d766de7f480ad9b0eed41e354700e5">deserializeJson</a><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#a0883e5e3886f8c9757e0c06ef333d645">deserializeJson</a>,</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="stringliteral">&quot;bytes&quot;</span>: self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a6ff767c16661960955c4b2e4ad1bd75b">deserializeBytes</a><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#aef40928e0cddb4ddb568908e50a0e8ac">deserializeBytes</a>,</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="stringliteral">&quot;protobuf&quot;</span>: self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a3829e97c0e90627966fc34bf4b6e5c81">deserializeProtobuf</a><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#a2fa569281c261f79cc90db84bf3ff5bf">deserializeProtobuf</a>,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#ac18eeb662f2b265bffec2c313940449e">   29</a></span>        self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#ac18eeb662f2b265bffec2c313940449e">desMap</a> = {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#aa4d766de7f480ad9b0eed41e354700e5">   30</a></span>            <span class="stringliteral">&quot;json&quot;</span>: self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#aa4d766de7f480ad9b0eed41e354700e5">deserializeJson</a><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#a0883e5e3886f8c9757e0c06ef333d645">deserializeJson</a>,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a6ff767c16661960955c4b2e4ad1bd75b">   31</a></span>            <span class="stringliteral">&quot;bytes&quot;</span>: self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a6ff767c16661960955c4b2e4ad1bd75b">deserializeBytes</a><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#aef40928e0cddb4ddb568908e50a0e8ac">deserializeBytes</a>,</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a3829e97c0e90627966fc34bf4b6e5c81">   32</a></span>            <span class="stringliteral">&quot;protobuf&quot;</span>: self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a3829e97c0e90627966fc34bf4b6e5c81">deserializeProtobuf</a><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#a2fa569281c261f79cc90db84bf3ff5bf">deserializeProtobuf</a>,</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        }</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 </div>
@@ -130,7 +132,7 @@ $(function() { codefold.init(1); });
 </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    </div>
 <div class="foldopen" id="foldopen00042" data-start="" data-end="">
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a0883e5e3886f8c9757e0c06ef333d645">   42</a></span>    <span class="keyword">def </span>deserializeJson(self, datastream):</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a0883e5e3886f8c9757e0c06ef333d645">   42</a></span>    <span class="keyword">def </span><a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#aa4d766de7f480ad9b0eed41e354700e5">deserializeJson</a>(self, datastream):</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        hdr = datastream.read(8)</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        size = int.from_bytes(hdr, <span class="stringliteral">&quot;little&quot;</span>)</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        data = datastream.read(size)</div>
@@ -139,7 +141,7 @@ $(function() { codefold.init(1); });
 </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    </div>
 <div class="foldopen" id="foldopen00049" data-start="" data-end="">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#aef40928e0cddb4ddb568908e50a0e8ac">   49</a></span>    <span class="keyword">def </span>deserializeBytes(self, datastream):</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#aef40928e0cddb4ddb568908e50a0e8ac">   49</a></span>    <span class="keyword">def </span><a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a6ff767c16661960955c4b2e4ad1bd75b">deserializeBytes</a>(self, datastream):</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">if</span> self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a2638ddc74f788c46a87f8e8aeea19704">read_stream_iter</a> <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a2638ddc74f788c46a87f8e8aeea19704">read_stream_iter</a> = <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a74c8aa46b334142ebc93060a7b32e3f6">log_reader.read_stream2</a>(</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                datastream</div>
@@ -150,9 +152,11 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment"># Not implemented</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">def </span>deserializeProtobuf(self, datastream):</div>
+<div class="foldopen" id="foldopen00059" data-start="" data-end="">
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a2fa569281c261f79cc90db84bf3ff5bf">   59</a></span>    <span class="keyword">def </span><a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a3829e97c0e90627966fc34bf4b6e5c81">deserializeProtobuf</a>(self, datastream):</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">raise</span> NotImplementedError</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    </div>
 <div class="foldopen" id="foldopen00063" data-start="" data-end="">
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a6c0c7e0335fa5e07660f87288c0f4c8b">   63</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#a6c0c7e0335fa5e07660f87288c0f4c8b">serializeData</a>(self, data):</div>
@@ -161,7 +165,7 @@ $(function() { codefold.init(1); });
 </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    </div>
 <div class="foldopen" id="foldopen00067" data-start="" data-end="">
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a45ae211918c24b393b4e1fd841dce799">   67</a></span>    <span class="keyword">def </span>serializeJson(self, data):</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a45ae211918c24b393b4e1fd841dce799">   67</a></span>    <span class="keyword">def </span><a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a9defe1668f1e0d4e1f3b1346c36974da">serializeJson</a>(self, data):</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        msg = json.dumps({<span class="stringliteral">&quot;out&quot;</span>: data}, cls=NpEncoder).encode(<span class="stringliteral">&quot;utf-8&quot;</span>)</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        hdr = len(msg).to_bytes(8, <span class="stringliteral">&quot;little&quot;</span>)</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a8d4a1391ad9f57df83fb00939e7f380a">buffer</a> = hdr + msg</div>
@@ -169,7 +173,7 @@ $(function() { codefold.init(1); });
 </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    </div>
 <div class="foldopen" id="foldopen00073" data-start="" data-end="">
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a0024b1195539aa03d62e6874a3e48dbb">   73</a></span>    <span class="keyword">def </span>serializeBytes(self, data):</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a0024b1195539aa03d62e6874a3e48dbb">   73</a></span>    <span class="keyword">def </span><a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#ab7a64aae928916f493617550ef9c9133">serializeBytes</a>(self, data):</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keyword">def </span>_pack(data):</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordflow">if</span> isinstance(data, int):</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                <span class="keywordflow">return</span> struct.pack(<span class="stringliteral">&quot;i&quot;</span>, data)</div>
@@ -190,9 +194,11 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
 </div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="comment"># Implemented outside for now</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keyword">def </span>serializeProtobuf(self, data):</div>
+<div class="foldopen" id="foldopen00093" data-start="" data-end="">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#ad44d1504d1fe25badcee4a469771ac95">   93</a></span>    <span class="keyword">def </span><a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a8cb8c9a1d2f76c476e2be38bc8d1f48c">serializeProtobuf</a>(self, data):</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a8d4a1391ad9f57df83fb00939e7f380a">buffer</a> = data</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    </div>
 <div class="foldopen" id="foldopen00098" data-start="" data-end="">
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#a7d0e770c53216df217708b0c6c1c85f7">   98</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d7/dab/classSerDes_1_1SerDes.html#a7d0e770c53216df217708b0c6c1c85f7">getOutputBuffer</a>(self):</div>
@@ -202,6 +208,7 @@ $(function() { codefold.init(1); });
 </div>
 </div>
 <div class="ttc" id="aclassSerDes_1_1NpEncoder_html"><div class="ttname"><a href="../../d4/d0a/classSerDes_1_1NpEncoder.html">SerDes.NpEncoder</a></div><div class="ttdef"><b>Definition</b> <a href="#l00007">SerDes.py:7</a></div></div>
+<div class="ttc" id="aclassSerDes_1_1NpEncoder_html_a6f846507efc532b0c731d9c339a6b1f4"><div class="ttname"><a href="../../d4/d0a/classSerDes_1_1NpEncoder.html#a6f846507efc532b0c731d9c339a6b1f4">SerDes.NpEncoder.default</a></div><div class="ttdeci">default(self, obj)</div><div class="ttdef"><b>Definition</b> <a href="#l00008">SerDes.py:8</a></div></div>
 <div class="ttc" id="aclassSerDes_1_1SerDes_html"><div class="ttname"><a href="../../d7/dab/classSerDes_1_1SerDes.html">SerDes.SerDes</a></div><div class="ttdoc">Class for serialization and deserialization in various formats for communication.</div><div class="ttdef"><b>Definition</b> <a href="#l00016">SerDes.py:16</a></div></div>
 <div class="ttc" id="aclassSerDes_1_1SerDes_html_a0024b1195539aa03d62e6874a3e48dbb"><div class="ttname"><a href="../../d7/dab/classSerDes_1_1SerDes.html#a0024b1195539aa03d62e6874a3e48dbb">SerDes.SerDes.serializeBytes</a></div><div class="ttdeci">serializeBytes(self, data)</div><div class="ttdoc">Serializes data to bitstream.</div><div class="ttdef"><b>Definition</b> <a href="#l00073">SerDes.py:73</a></div></div>
 <div class="ttc" id="aclassSerDes_1_1SerDes_html_a0883e5e3886f8c9757e0c06ef333d645"><div class="ttname"><a href="../../d7/dab/classSerDes_1_1SerDes.html#a0883e5e3886f8c9757e0c06ef333d645">SerDes.SerDes.deserializeJson</a></div><div class="ttdeci">deserializeJson(self, datastream)</div><div class="ttdoc">Deserializes and returns JSON data.</div><div class="ttdef"><b>Definition</b> <a href="#l00042">SerDes.py:42</a></div></div>

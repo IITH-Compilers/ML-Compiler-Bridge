@@ -84,7 +84,7 @@ $(function() { codefold.init(1); });
   <div class="headertitle"><div class="title">PipeModelRunner.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//===- PipeModelRunner.cpp - noop ML model runner   ----------------===//</span></div>
+<a href="../../df/d9a/PipeModelRunner_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//===- PipeModelRunner.cpp - noop ML model runner   ----------------===//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// See https://llvm.org/LICENSE.txt for license information.</span></div>
@@ -107,9 +107,9 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#define DEBUG_TYPE &quot;pipe-model-runner&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="../../df/d9a/PipeModelRunner_8cpp.html#ad78e062f62e0d6e453941fb4ca843e4d">   24</a></span><span class="preprocessor">#define DEBUG_TYPE &quot;pipe-model-runner&quot;</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">namespace </span>MLBridge {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d5/d9c/namespaceMLBridge.html">MLBridge</a> {</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>PipeModelRunner::PipeModelRunner(StringRef OutboundName, StringRef InboundName,</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                                 BaseSerDes::Kind SerDesType, LLVMContext *Ctx)</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    : MLModelRunner(Kind::Pipe, SerDesType, Ctx),</div>
@@ -190,15 +190,17 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keywordtype">void</span> *PipeModelRunner::evaluateUntyped() {</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  LLVM_DEBUG(llvm::errs() &lt;&lt; <span class="stringliteral">&quot;In PipeModelRunner evaluateUntyped...\n&quot;</span>);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keyword">auto</span> *data = SerDes-&gt;getSerializedData();</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keyword">auto</span> *data = <a class="code hl_namespace" href="../../da/d52/namespaceSerDes.html">SerDes</a>-&gt;getSerializedData();</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  send(data);</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  <span class="keyword">auto</span> *reply = receive();</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  LLVM_DEBUG(</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>      errs() &lt;&lt; <span class="stringliteral">&quot;In PipeModelRunner::evaluateUntyped() received data...\n&quot;</span>);</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  <span class="keywordflow">return</span> SerDes-&gt;deserializeUntyped(reply);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  <span class="keywordflow">return</span> <a class="code hl_namespace" href="../../da/d52/namespaceSerDes.html">SerDes</a>-&gt;deserializeUntyped(reply);</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>} <span class="comment">// namespace MLBridge</span></div>
+<div class="ttc" id="anamespaceMLBridge_html"><div class="ttname"><a href="../../d5/d9c/namespaceMLBridge.html">MLBridge</a></div><div class="ttdef"><b>Definition</b> <a href="../../dd/d3d/agent_8cpp_source.html#l00014">agent.cpp:14</a></div></div>
+<div class="ttc" id="anamespaceSerDes_html"><div class="ttname"><a href="../../da/d52/namespaceSerDes.html">SerDes</a></div><div class="ttdef"><b>Definition</b> <a href="../../da/d1d/CompilerInterface_2SerDes_8py_source.html#l00001">SerDes.py:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

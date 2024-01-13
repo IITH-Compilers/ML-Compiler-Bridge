@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['remove_5fpipes_0',['remove_pipes',['../d3/d1f/classPipeCompilerInterface_1_1PipeCompilerInterface.html#a004ba411178b05a4168bffede97cea4c',1,'PipeCompilerInterface::PipeCompilerInterface']]],
-  ['reset_5fpipes_1',['reset_pipes',['../d3/d1f/classPipeCompilerInterface_1_1PipeCompilerInterface.html#a8ff4295318d20306e73f38f0ec0f855f',1,'PipeCompilerInterface::PipeCompilerInterface']]]
+  ['main_0',['main',['../d0/d86/namespacelog__reader.html#a6af160e42ae316ed87fbc0189166d819',1,'log_reader.main()'],['../db/d4f/MLBridgeTest_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main():&#160;MLBridgeTest.cpp']]]
 ];

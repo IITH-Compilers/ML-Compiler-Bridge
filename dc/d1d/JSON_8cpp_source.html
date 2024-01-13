@@ -84,7 +84,7 @@ $(function() { codefold.init(1); });
   <div class="headertitle"><div class="title">JSON.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//=== JSON.cpp - JSON value, parsing and serialization - C++ -----------*-===//</span></div>
+<a href="../../dc/d1d/JSON_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//=== JSON.cpp - JSON value, parsing and serialization - C++ -----------*-===//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// See https://llvm.org/LICENSE.txt for license information.</span></div>
@@ -104,8 +104,10 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;cerrno&gt;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;optional&gt;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">namespace </span>llvm {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span>json {</div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="}">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="../../d9/d4a/namespacellvm.html">   21</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d9/d4a/namespacellvm.html">llvm</a> {</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../d3/db1/namespacellvm_1_1json.html">   22</a></span><span class="keyword">namespace </span>json {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>Value &amp;Object::operator[](<span class="keyword">const</span> ObjectKey &amp;K) {</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keywordflow">return</span> try_emplace(K, <span class="keyword">nullptr</span>).first-&gt;getSecond();</div>
@@ -170,7 +172,8 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">return</span> V-&gt;getAsArray();</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> Object &amp;LHS, <span class="keyword">const</span> Object &amp;RHS) {</div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="../../d3/db1/namespacellvm_1_1json.html#a36e24d077136deda0ba8c9973f56aa16">   87</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d3/db1/namespacellvm_1_1json.html#a36e24d077136deda0ba8c9973f56aa16">operator==</a>(<span class="keyword">const</span> Object &amp;LHS, <span class="keyword">const</span> Object &amp;RHS) {</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  <span class="keywordflow">if</span> (LHS.size() != RHS.size())</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;L : LHS) {</div>
@@ -180,6 +183,7 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  }</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
+</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>Array::Array(std::initializer_list&lt;Value&gt; Elements) {</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  V.reserve(Elements.size());</div>
@@ -268,7 +272,8 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>  }</div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>}</div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> Value &amp;L, <span class="keyword">const</span> Value &amp;R) {</div>
+<div class="foldopen" id="foldopen00185" data-start="{" data-end="}">
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno"><a class="line" href="../../d3/db1/namespacellvm_1_1json.html#a125c3828d051ffa4565dc15681766ce2">  185</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d3/db1/namespacellvm_1_1json.html#a36e24d077136deda0ba8c9973f56aa16">operator==</a>(<span class="keyword">const</span> Value &amp;L, <span class="keyword">const</span> Value &amp;R) {</div>
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>  <span class="keywordflow">if</span> (L.kind() != R.kind())</div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>  <span class="keywordflow">switch</span> (L.kind()) {</div>
@@ -293,20 +298,21 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>  }</div>
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>  llvm_unreachable(<span class="stringliteral">&quot;Unknown value kind&quot;</span>);</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>}</div>
+</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="keywordtype">void</span> Path::report(llvm::StringLiteral Msg) {</div>
 <div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  <span class="comment">// Walk up to the root context, and count the number of segments.</span></div>
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  <span class="keywordtype">unsigned</span> Count = 0;</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>  <span class="keyword">const</span> Path *P;</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>  <span class="keywordflow">for</span> (P = <span class="keyword">this</span>; P-&gt;Parent != <span class="keyword">nullptr</span>; P = P-&gt;Parent)</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>  <span class="keyword">const</span> Path *<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>  <span class="keywordflow">for</span> (<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> = <span class="keyword">this</span>; <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>-&gt;Parent != <span class="keyword">nullptr</span>; <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> = <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>-&gt;Parent)</div>
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    ++Count;</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>  Path::Root *R = P-&gt;Seg.root();</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>  Path::Root *R = <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>-&gt;Seg.root();</div>
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>  <span class="comment">// Fill in the error message and copy the path (in reverse order).</span></div>
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>  R-&gt;ErrorMessage = Msg;</div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>  R-&gt;ErrorPath.resize(Count);</div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>  <span class="keyword">auto</span> It = R-&gt;ErrorPath.begin();</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>  <span class="keywordflow">for</span> (P = <span class="keyword">this</span>; P-&gt;Parent != <span class="keyword">nullptr</span>; P = P-&gt;Parent)</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    *It++ = P-&gt;Seg;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>  <span class="keywordflow">for</span> (<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> = <span class="keyword">this</span>; <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>-&gt;Parent != <span class="keyword">nullptr</span>; <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> = <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>-&gt;Parent)</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    *It++ = <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>-&gt;Seg;</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>}</div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>Error Path::Root::getError()<span class="keyword"> const </span>{</div>
@@ -318,7 +324,7 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>      OS &lt;&lt; <span class="stringliteral">&quot; when parsing &quot;</span> &lt;&lt; Name;</div>
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>  } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    OS &lt;&lt; <span class="stringliteral">&quot; at &quot;</span> &lt;&lt; (Name.empty() ? <span class="stringliteral">&quot;(root)&quot;</span> : Name);</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> Path::Segment &amp;S : llvm::reverse(ErrorPath)) {</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> Path::Segment &amp;S : <a class="code hl_namespace" href="../../d9/d4a/namespacellvm.html">llvm</a>::reverse(ErrorPath)) {</div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>      <span class="keywordflow">if</span> (S.isField())</div>
 <div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        OS &lt;&lt; <span class="charliteral">&#39;.&#39;</span> &lt;&lt; S.field();</div>
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>      <span class="keywordflow">else</span></div>
@@ -357,7 +363,7 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    <span class="keywordflow">if</span> (S.size() &lt; 40) {</div>
 <div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>      JOS.value(V);</div>
 <div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>      std::string Truncated = fixUTF8(S.take_front(37));</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>      std::string Truncated = <a class="code hl_function" href="../../d3/db1/namespacellvm_1_1json.html#ab64ede9b347ffd8eb32ed5e05f2520f4">fixUTF8</a>(S.take_front(37));</div>
 <div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>      Truncated.append(<span class="stringliteral">&quot;...&quot;</span>);</div>
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>      JOS.value(Truncated);</div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    }</div>
@@ -453,13 +459,13 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span><span class="keyword">class </span>Parser {</div>
 <div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>  Parser(StringRef JSON)</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>      : Start(JSON.begin()), P(JSON.begin()), End(JSON.end()) {}</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>      : <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#ad0cf5b3bbb583824ea13371671cb6904">Start</a>(JSON.begin()), <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>(JSON.begin()), <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a>(JSON.end()) {}</div>
 <div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>
 <div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>  <span class="keywordtype">bool</span> checkUTF8() {</div>
 <div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    <span class="keywordtype">size_t</span> ErrOffset;</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    <span class="keywordflow">if</span> (isUTF8(StringRef(Start, End - Start), &amp;ErrOffset))</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="../../d3/db1/namespacellvm_1_1json.html#a1c775283f80742262cbb885e31775023">isUTF8</a>(StringRef(<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#ad0cf5b3bbb583824ea13371671cb6904">Start</a>, <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a> - <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#ad0cf5b3bbb583824ea13371671cb6904">Start</a>), &amp;ErrOffset))</div>
 <div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    P = Start + ErrOffset; <span class="comment">// For line/column calculation.</span></div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> = <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#ad0cf5b3bbb583824ea13371671cb6904">Start</a> + ErrOffset; <span class="comment">// For line/column calculation.</span></div>
 <div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    <span class="keywordflow">return</span> parseError(<span class="stringliteral">&quot;Invalid UTF-8 sequence&quot;</span>);</div>
 <div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>  }</div>
 <div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span> </div>
@@ -467,20 +473,20 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span> </div>
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>  <span class="keywordtype">bool</span> assertEnd() {</div>
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    eatWhitespace();</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>    <span class="keywordflow">if</span> (P == End)</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> == <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a>)</div>
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>    <span class="keywordflow">return</span> parseError(<span class="stringliteral">&quot;Text after end of document&quot;</span>);</div>
 <div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>  }</div>
 <div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span> </div>
 <div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>  Error takeError() {</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    assert(Err);</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>    <span class="keywordflow">return</span> std::move(*Err);</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    assert(<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a1d6fce4cec505c961773bbf78fc843ff">Err</a>);</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>    <span class="keywordflow">return</span> std::move(*<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a1d6fce4cec505c961773bbf78fc843ff">Err</a>);</div>
 <div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>  }</div>
 <div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span> </div>
 <div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>  <span class="keywordtype">void</span> eatWhitespace() {</div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>    <span class="keywordflow">while</span> (P != End &amp;&amp; (*P == <span class="charliteral">&#39; &#39;</span> || *P == <span class="charliteral">&#39;\r&#39;</span> || *P == <span class="charliteral">&#39;\n&#39;</span> || *P == <span class="charliteral">&#39;\t&#39;</span>))</div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>      ++P;</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>    <span class="keywordflow">while</span> (<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> != <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a> &amp;&amp; (*<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> == <span class="charliteral">&#39; &#39;</span> || *<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> == <span class="charliteral">&#39;\r&#39;</span> || *<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> == <span class="charliteral">&#39;\n&#39;</span> || *<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> == <span class="charliteral">&#39;\t&#39;</span>))</div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>      ++<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>;</div>
 <div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>  }</div>
 <div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span> </div>
 <div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>  <span class="comment">// On invalid syntax, parseX() functions return false and set Err.</span></div>
@@ -489,21 +495,21 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>  <span class="keywordtype">bool</span> parseUnicode(std::string &amp;Out);</div>
 <div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>  <span class="keywordtype">bool</span> parseError(<span class="keyword">const</span> <span class="keywordtype">char</span> *Msg); <span class="comment">// always returns false</span></div>
 <div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span> </div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>  <span class="keywordtype">char</span> next() { <span class="keywordflow">return</span> P == End ? 0 : *P++; }</div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>  <span class="keywordtype">char</span> peek() { <span class="keywordflow">return</span> P == End ? 0 : *P; }</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>  <span class="keywordtype">char</span> next() { <span class="keywordflow">return</span> <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> == <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a> ? 0 : *<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>++; }</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>  <span class="keywordtype">char</span> peek() { <span class="keywordflow">return</span> <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> == <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a> ? 0 : *<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>; }</div>
 <div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>  <span class="keyword">static</span> <span class="keywordtype">bool</span> isNumber(<span class="keywordtype">char</span> C) {</div>
 <div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>    <span class="keywordflow">return</span> C == <span class="charliteral">&#39;0&#39;</span> || C == <span class="charliteral">&#39;1&#39;</span> || C == <span class="charliteral">&#39;2&#39;</span> || C == <span class="charliteral">&#39;3&#39;</span> || C == <span class="charliteral">&#39;4&#39;</span> ||</div>
 <div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>           C == <span class="charliteral">&#39;5&#39;</span> || C == <span class="charliteral">&#39;6&#39;</span> || C == <span class="charliteral">&#39;7&#39;</span> || C == <span class="charliteral">&#39;8&#39;</span> || C == <span class="charliteral">&#39;9&#39;</span> ||</div>
 <div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>           C == <span class="charliteral">&#39;e&#39;</span> || C == <span class="charliteral">&#39;E&#39;</span> || C == <span class="charliteral">&#39;+&#39;</span> || C == <span class="charliteral">&#39;-&#39;</span> || C == <span class="charliteral">&#39;.&#39;</span>;</div>
 <div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>  }</div>
 <div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span> </div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>  std::optional&lt;Error&gt; Err;</div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>  <span class="keyword">const</span> <span class="keywordtype">char</span> *Start, *P, *End;</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno"><a class="line" href="../../dc/d1d/JSON_8cpp.html#a1d6fce4cec505c961773bbf78fc843ff">  414</a></span>  std::optional&lt;Error&gt; <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a1d6fce4cec505c961773bbf78fc843ff">Err</a>;</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno"><a class="line" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">  415</a></span>  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#ad0cf5b3bbb583824ea13371671cb6904">Start</a>, *<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>, *<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a>;</div>
 <div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>};</div>
 <div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span> </div>
 <div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span><span class="keywordtype">bool</span> Parser::parseValue(Value &amp;Out) {</div>
 <div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>  eatWhitespace();</div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>  <span class="keywordflow">if</span> (P == End)</div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> == <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a>)</div>
 <div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>    <span class="keywordflow">return</span> parseError(<span class="stringliteral">&quot;Unexpected EOF&quot;</span>);</div>
 <div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>  <span class="keywordflow">switch</span> (<span class="keywordtype">char</span> C = next()) {</div>
 <div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>  <span class="comment">// Bare null/true/false are easy - first char identifies them.</span></div>
@@ -532,7 +538,7 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>    Array &amp;A = *Out.getAsArray();</div>
 <div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>    eatWhitespace();</div>
 <div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>    <span class="keywordflow">if</span> (peek() == <span class="charliteral">&#39;]&#39;</span>) {</div>
-<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>      ++P;</div>
+<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>      ++<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>;</div>
 <div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>    }</div>
 <div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>    <span class="keywordflow">for</span> (;;) {</div>
@@ -556,7 +562,7 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span>    Object &amp;O = *Out.getAsObject();</div>
 <div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>    eatWhitespace();</div>
 <div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span>    <span class="keywordflow">if</span> (peek() == <span class="charliteral">&#39;}&#39;</span>) {</div>
-<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span>      ++P;</div>
+<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span>      ++<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>;</div>
 <div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span>    }</div>
 <div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span>    <span class="keywordflow">for</span> (;;) {</div>
@@ -596,13 +602,13 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>  S.push_back(First);</div>
 <div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>  <span class="keywordflow">while</span> (isNumber(peek()))</div>
 <div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>    S.push_back(next());</div>
-<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>  <span class="keywordtype">char</span> *End;</div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>  <span class="keywordtype">char</span> *<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a>;</div>
 <div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>  <span class="comment">// Try first to parse as integer, and if so preserve full 64 bits.</span></div>
 <div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>  <span class="comment">// We check for errno for out of bounds errors and for End == S.end()</span></div>
 <div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span>  <span class="comment">// to make sure that the numeric string is not malformed.</span></div>
 <div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span>  errno = 0;</div>
-<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>  int64_t I = std::strtoll(S.c_str(), &amp;End, 10);</div>
-<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>  <span class="keywordflow">if</span> (End == S.end() &amp;&amp; errno != ERANGE) {</div>
+<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>  int64_t I = std::strtoll(S.c_str(), &amp;<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a>, 10);</div>
+<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a> == S.end() &amp;&amp; errno != ERANGE) {</div>
 <div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>    Out = int64_t(I);</div>
 <div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>  }</div>
@@ -611,21 +617,21 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span>  <span class="comment">// handled in the previous block.</span></div>
 <div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>  <span class="keywordflow">if</span> (First != <span class="charliteral">&#39;-&#39;</span>) {</div>
 <div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>    errno = 0;</div>
-<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span>    uint64_t UI = std::strtoull(S.c_str(), &amp;End, 10);</div>
-<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>    <span class="keywordflow">if</span> (End == S.end() &amp;&amp; errno != ERANGE) {</div>
+<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span>    uint64_t UI = std::strtoull(S.c_str(), &amp;<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a>, 10);</div>
+<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a> == S.end() &amp;&amp; errno != ERANGE) {</div>
 <div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>      Out = UI;</div>
 <div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>    }</div>
 <div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>  }</div>
 <div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>  <span class="comment">// If it&#39;s not an integer</span></div>
-<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>  Out = std::strtod(S.c_str(), &amp;End);</div>
-<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>  <span class="keywordflow">return</span> End == S.end() || parseError(<span class="stringliteral">&quot;Invalid JSON value (number?)&quot;</span>);</div>
+<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>  Out = std::strtod(S.c_str(), &amp;<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a>);</div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a> == S.end() || parseError(<span class="stringliteral">&quot;Invalid JSON value (number?)&quot;</span>);</div>
 <div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>}</div>
 <div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span> </div>
 <div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span><span class="keywordtype">bool</span> Parser::parseString(std::string &amp;Out) {</div>
 <div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>  <span class="comment">// leading quote was already consumed.</span></div>
 <div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>  <span class="keywordflow">for</span> (<span class="keywordtype">char</span> C = next(); C != <span class="charliteral">&#39;&quot;&#39;</span>; C = next()) {</div>
-<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>    <span class="keywordflow">if</span> (LLVM_UNLIKELY(P == End))</div>
+<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>    <span class="keywordflow">if</span> (LLVM_UNLIKELY(<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> == <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a>))</div>
 <div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span>      <span class="keywordflow">return</span> parseError(<span class="stringliteral">&quot;Unterminated string&quot;</span>);</div>
 <div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span>    <span class="keywordflow">if</span> (LLVM_UNLIKELY((C &amp; 0x1f) == C))</div>
 <div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>      <span class="keywordflow">return</span> parseError(<span class="stringliteral">&quot;Control character in string&quot;</span>);</div>
@@ -734,11 +740,11 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span> </div>
 <div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>    <span class="comment">// Case 3: it&#39;s a leading surrogate. We expect a trailing one next.</span></div>
 <div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>    <span class="comment">// Case 3a: there&#39;s no trailing \u escape. Don&#39;t advance in the stream.</span></div>
-<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>    <span class="keywordflow">if</span> (LLVM_UNLIKELY(P + 2 &gt; End || *P != <span class="charliteral">&#39;\\&#39;</span> || *(P + 1) != <span class="charliteral">&#39;u&#39;</span>)) {</div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>    <span class="keywordflow">if</span> (LLVM_UNLIKELY(<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> + 2 &gt; <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a> || *<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> != <span class="charliteral">&#39;\\&#39;</span> || *(<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> + 1) != <span class="charliteral">&#39;u&#39;</span>)) {</div>
 <div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>      Invalid(); <span class="comment">// Leading surrogate was unpaired.</span></div>
 <div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>    }</div>
-<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>    P += 2;</div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>    <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> += 2;</div>
 <div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>    uint16_t Second;</div>
 <div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>    <span class="keywordflow">if</span> (!Parse4Hex(Second))</div>
 <div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
@@ -756,31 +762,34 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span> </div>
 <div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span><span class="keywordtype">bool</span> Parser::parseError(<span class="keyword">const</span> <span class="keywordtype">char</span> *Msg) {</div>
 <div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>  <span class="keywordtype">int</span> Line = 1;</div>
-<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>  <span class="keyword">const</span> <span class="keywordtype">char</span> *StartOfLine = Start;</div>
-<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">char</span> *X = Start; X &lt; P; ++X) {</div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>  <span class="keyword">const</span> <span class="keywordtype">char</span> *StartOfLine = <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#ad0cf5b3bbb583824ea13371671cb6904">Start</a>;</div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">char</span> *X = <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#ad0cf5b3bbb583824ea13371671cb6904">Start</a>; X &lt; <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>; ++X) {</div>
 <div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>    <span class="keywordflow">if</span> (*X == 0x0A) {</div>
 <div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>      ++Line;</div>
 <div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>      StartOfLine = X + 1;</div>
 <div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>    }</div>
 <div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>  }</div>
-<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>  Err.emplace(</div>
-<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>      std::make_unique&lt;ParseError&gt;(Msg, Line, P - StartOfLine, P - Start));</div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>  <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a1d6fce4cec505c961773bbf78fc843ff">Err</a>.emplace(</div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>      std::make_unique&lt;ParseError&gt;(Msg, Line, <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> - StartOfLine, <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a> - <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#ad0cf5b3bbb583824ea13371671cb6904">Start</a>));</div>
 <div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>}</div>
 <div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>} <span class="comment">// namespace</span></div>
 <div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span> </div>
-<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>Expected&lt;Value&gt; parse(StringRef JSON) {</div>
-<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>  Parser P(JSON);</div>
+<div class="foldopen" id="foldopen00686" data-start="{" data-end="}">
+<div class="line"><a id="l00686" name="l00686"></a><span class="lineno"><a class="line" href="../../d3/db1/namespacellvm_1_1json.html#a48f64da85e24f3ff8aa1c7f195a35f98">  686</a></span>Expected&lt;Value&gt; <a class="code hl_function" href="../../d3/db1/namespacellvm_1_1json.html#a48f64da85e24f3ff8aa1c7f195a35f98">parse</a>(StringRef JSON) {</div>
+<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>  Parser <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>(JSON);</div>
 <div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>  Value E = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>  <span class="keywordflow">if</span> (P.checkUTF8())</div>
-<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>    <span class="keywordflow">if</span> (P.parseValue(E))</div>
-<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>      <span class="keywordflow">if</span> (P.assertEnd())</div>
+<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>.checkUTF8())</div>
+<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>.parseValue(E))</div>
+<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>.assertEnd())</div>
 <div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>        <span class="keywordflow">return</span> std::move(E);</div>
-<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>  <span class="keywordflow">return</span> P.takeError();</div>
+<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a>.takeError();</div>
 <div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>}</div>
+</div>
 <div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span><span class="keywordtype">char</span> ParseError::ID = 0;</div>
 <div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span> </div>
-<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span><span class="keywordtype">bool</span> isUTF8(llvm::StringRef S, <span class="keywordtype">size_t</span> *ErrOffset) {</div>
+<div class="foldopen" id="foldopen00697" data-start="{" data-end="}">
+<div class="line"><a id="l00697" name="l00697"></a><span class="lineno"><a class="line" href="../../d3/db1/namespacellvm_1_1json.html#a1c775283f80742262cbb885e31775023">  697</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d3/db1/namespacellvm_1_1json.html#a1c775283f80742262cbb885e31775023">isUTF8</a>(llvm::StringRef S, <span class="keywordtype">size_t</span> *ErrOffset) {</div>
 <div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>  <span class="comment">// Fast-path for ASCII, which is valid UTF-8.</span></div>
 <div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>  <span class="keywordflow">if</span> (LLVM_LIKELY(isASCII(S)))</div>
 <div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -793,8 +802,10 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>    *ErrOffset = Rest - Data;</div>
 <div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>}</div>
+</div>
 <div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span> </div>
-<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>std::string fixUTF8(llvm::StringRef S) {</div>
+<div class="foldopen" id="foldopen00711" data-start="{" data-end="}">
+<div class="line"><a id="l00711" name="l00711"></a><span class="lineno"><a class="line" href="../../d3/db1/namespacellvm_1_1json.html#ab64ede9b347ffd8eb32ed5e05f2520f4">  711</a></span>std::string <a class="code hl_function" href="../../d3/db1/namespacellvm_1_1json.html#ab64ede9b347ffd8eb32ed5e05f2520f4">fixUTF8</a>(llvm::StringRef S) {</div>
 <div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>  <span class="comment">// This isn&#39;t particularly efficient, but is only for error-recovery.</span></div>
 <div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span>  std::vector&lt;UTF32&gt; Codepoints(S.size()); <span class="comment">// 1 codepoint per byte suffices.</span></div>
 <div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span>  <span class="keyword">const</span> UTF8 *In8 = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>UTF8 *<span class="keyword">&gt;</span>(S.data());</div>
@@ -810,6 +821,7 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span>  Res.resize(<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(Out8) - Res.data());</div>
 <div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span>  <span class="keywordflow">return</span> Res;</div>
 <div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span>}</div>
+</div>
 <div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span> </div>
 <div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span><span class="keyword">static</span> <span class="keywordtype">void</span> quote(llvm::raw_ostream &amp;OS, llvm::StringRef S) {</div>
 <div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span>  OS &lt;&lt; <span class="charliteral">&#39;\&quot;&#39;</span>;</div>
@@ -974,11 +986,11 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>  Stack.back().HasValue = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span>  Stack.emplace_back();</div>
 <div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>  Stack.back().Ctx = Singleton;</div>
-<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>  <span class="keywordflow">if</span> (LLVM_LIKELY(isUTF8(Key))) {</div>
+<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>  <span class="keywordflow">if</span> (LLVM_LIKELY(<a class="code hl_function" href="../../d3/db1/namespacellvm_1_1json.html#a1c775283f80742262cbb885e31775023">isUTF8</a>(Key))) {</div>
 <div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>    quote(OS, Key);</div>
 <div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>  } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span>    assert(<span class="keyword">false</span> &amp;&amp; <span class="stringliteral">&quot;Invalid UTF-8 in attribute key&quot;</span>);</div>
-<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>    quote(OS, fixUTF8(Key));</div>
+<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>    quote(OS, <a class="code hl_function" href="../../d3/db1/namespacellvm_1_1json.html#ab64ede9b347ffd8eb32ed5e05f2520f4">fixUTF8</a>(Key));</div>
 <div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span>  }</div>
 <div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>  OS.write(<span class="charliteral">&#39;:&#39;</span>);</div>
 <div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>  <span class="keywordflow">if</span> (IndentSize)</div>
@@ -1006,7 +1018,9 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>}</div>
 <div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span> </div>
 <div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>} <span class="comment">// namespace json</span></div>
+</div>
 <div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span>} <span class="comment">// namespace llvm</span></div>
+</div>
 <div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span> </div>
 <div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span><span class="keywordtype">void</span> llvm::format_provider&lt;llvm::json::Value&gt;::format(</div>
 <div class="line"><a id="l00926" name="l00926"></a><span class="lineno">  926</span>    <span class="keyword">const</span> llvm::json::Value &amp;E, raw_ostream &amp;OS, StringRef Options) {</div>
@@ -1015,6 +1029,15 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>    llvm_unreachable(<span class="stringliteral">&quot;json::Value format options should be an integer&quot;</span>);</div>
 <div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>  json::OStream(OS, IndentAmount).value(E);</div>
 <div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>}</div>
+<div class="ttc" id="aJSON_8cpp_html_a0b5b7aede6c44b9ea5dacba7162f5314"><div class="ttname"><a href="../../dc/d1d/JSON_8cpp.html#a0b5b7aede6c44b9ea5dacba7162f5314">End</a></div><div class="ttdeci">const char * End</div><div class="ttdef"><b>Definition</b> <a href="#l00415">JSON.cpp:415</a></div></div>
+<div class="ttc" id="aJSON_8cpp_html_a1d6fce4cec505c961773bbf78fc843ff"><div class="ttname"><a href="../../dc/d1d/JSON_8cpp.html#a1d6fce4cec505c961773bbf78fc843ff">Err</a></div><div class="ttdeci">std::optional&lt; Error &gt; Err</div><div class="ttdef"><b>Definition</b> <a href="#l00414">JSON.cpp:414</a></div></div>
+<div class="ttc" id="aJSON_8cpp_html_a5248e89c4d3a2d6a97b906bc7fe2b884"><div class="ttname"><a href="../../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884">P</a></div><div class="ttdeci">const char * P</div><div class="ttdef"><b>Definition</b> <a href="#l00415">JSON.cpp:415</a></div></div>
+<div class="ttc" id="aJSON_8cpp_html_ad0cf5b3bbb583824ea13371671cb6904"><div class="ttname"><a href="../../dc/d1d/JSON_8cpp.html#ad0cf5b3bbb583824ea13371671cb6904">Start</a></div><div class="ttdeci">const char * Start</div><div class="ttdef"><b>Definition</b> <a href="#l00415">JSON.cpp:415</a></div></div>
+<div class="ttc" id="anamespacellvm_1_1json_html_a1c775283f80742262cbb885e31775023"><div class="ttname"><a href="../../d3/db1/namespacellvm_1_1json.html#a1c775283f80742262cbb885e31775023">llvm::json::isUTF8</a></div><div class="ttdeci">bool isUTF8(llvm::StringRef S, size_t *ErrOffset)</div><div class="ttdef"><b>Definition</b> <a href="#l00697">JSON.cpp:697</a></div></div>
+<div class="ttc" id="anamespacellvm_1_1json_html_a36e24d077136deda0ba8c9973f56aa16"><div class="ttname"><a href="../../d3/db1/namespacellvm_1_1json.html#a36e24d077136deda0ba8c9973f56aa16">llvm::json::operator==</a></div><div class="ttdeci">bool operator==(const Object &amp;LHS, const Object &amp;RHS)</div><div class="ttdef"><b>Definition</b> <a href="#l00087">JSON.cpp:87</a></div></div>
+<div class="ttc" id="anamespacellvm_1_1json_html_a48f64da85e24f3ff8aa1c7f195a35f98"><div class="ttname"><a href="../../d3/db1/namespacellvm_1_1json.html#a48f64da85e24f3ff8aa1c7f195a35f98">llvm::json::parse</a></div><div class="ttdeci">Expected&lt; Value &gt; parse(StringRef JSON)</div><div class="ttdef"><b>Definition</b> <a href="#l00686">JSON.cpp:686</a></div></div>
+<div class="ttc" id="anamespacellvm_1_1json_html_ab64ede9b347ffd8eb32ed5e05f2520f4"><div class="ttname"><a href="../../d3/db1/namespacellvm_1_1json.html#ab64ede9b347ffd8eb32ed5e05f2520f4">llvm::json::fixUTF8</a></div><div class="ttdeci">std::string fixUTF8(llvm::StringRef S)</div><div class="ttdef"><b>Definition</b> <a href="#l00711">JSON.cpp:711</a></div></div>
+<div class="ttc" id="anamespacellvm_html"><div class="ttname"><a href="../../d9/d4a/namespacellvm.html">llvm</a></div><div class="ttdef"><b>Definition</b> <a href="#l00021">JSON.cpp:21</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

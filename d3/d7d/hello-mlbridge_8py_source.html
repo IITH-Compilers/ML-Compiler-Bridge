@@ -84,7 +84,7 @@ $(function() { codefold.init(1); });
   <div class="headertitle"><div class="title">hello-mlbridge.py</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">import</span> argparse</div>
+<a href="../../d3/d7d/hello-mlbridge_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="../../d2/d3c/namespacehello-mlbridge.html">    1</a></span><span class="keyword">import</span> argparse</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">from</span> PipeCompilerInterface <span class="keyword">import</span> PipeCompilerInterface</div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">from</span> GrpcCompilerInterface <span class="keyword">import</span> GrpcCompilerInterface</div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">import</span> sys</div>
@@ -94,14 +94,14 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">import</span> helloMLBridge_pb2, helloMLBridge_pb2_grpc, grpc</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">from</span> concurrent <span class="keyword">import</span> futures</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>parser = argparse.ArgumentParser()</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="../../d2/d3c/namespacehello-mlbridge.html#a0d68beb257884e1d150a0857e4eeb144">   11</a></span>parser = argparse.ArgumentParser()</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>parser.add_argument(</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="stringliteral">&quot;--use_pipe&quot;</span>, type=bool, default=<span class="keyword">False</span>, help=<span class="stringliteral">&quot;Use pipe or not&quot;</span>, required=<span class="keyword">False</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="../../d2/d3c/namespacehello-mlbridge.html#a224c234f0cfea45f973e1f2302665421">   13</a></span>    <span class="stringliteral">&quot;--use_pipe&quot;</span>, type=bool, default=<span class="keyword">False</span>, help=<span class="stringliteral">&quot;Use pipe or not&quot;</span>, required=<span class="keyword">False</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>)</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>parser.add_argument(</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="stringliteral">&quot;--data_format&quot;</span>,</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    type=str,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    choices=[<span class="stringliteral">&quot;json&quot;</span>, <span class="stringliteral">&quot;protobuf&quot;</span>, <span class="stringliteral">&quot;bytes&quot;</span>],</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../d2/d3c/namespacehello-mlbridge.html#a15dda2f10bdc397524450f445d3b00eb">   18</a></span>    choices=[<span class="stringliteral">&quot;json&quot;</span>, <span class="stringliteral">&quot;protobuf&quot;</span>, <span class="stringliteral">&quot;bytes&quot;</span>],</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    help=<span class="stringliteral">&quot;Data format to use for communication&quot;</span>,</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>)</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>parser.add_argument(</div>
@@ -111,7 +111,7 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>)</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>parser.add_argument(</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="stringliteral">&quot;--use_grpc&quot;</span>,</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    action=<span class="stringliteral">&quot;store_true&quot;</span>,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="../../d2/d3c/namespacehello-mlbridge.html#a24c6e6a60db17206cb54c24dcdf2ae8a">   28</a></span>    action=<span class="stringliteral">&quot;store_true&quot;</span>,</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    help=<span class="stringliteral">&quot;Use grpc communication&quot;</span>,</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    required=<span class="keyword">False</span>,</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    default=<span class="keyword">False</span>,</div>
@@ -122,22 +122,27 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    help=<span class="stringliteral">&quot;Server Port&quot;</span>,</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    default=5050,</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>)</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>args = parser.parse_args()</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="../../d2/d3c/namespacehello-mlbridge.html#a6bccbb37c32f1000008b3fe50646240e">   39</a></span>args = parser.parse_args()</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="foldopen" id="foldopen00042" data-start="" data-end="">
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html">   42</a></span><span class="keyword">class </span><a class="code hl_class" href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html">DummyModel</a>(nn.Module):</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">def </span>__init__(self, input_dim=10):</div>
+<div class="foldopen" id="foldopen00043" data-start="" data-end="">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html#a61ca715121484f575c53467b7bbc11b9">   43</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html#a61ca715121484f575c53467b7bbc11b9">__init__</a>(self, input_dim=10):</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        nn.Module.__init__(self)</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        self.<a class="code hl_variable" href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html#a5b6436c430f7d36fe9b660f8205a894f">fc1</a> = nn.Linear(input_dim, 1)</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html#a5b6436c430f7d36fe9b660f8205a894f">   45</a></span>        self.<a class="code hl_variable" href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html#a5b6436c430f7d36fe9b660f8205a894f">fc1</a> = nn.Linear(input_dim, 1)</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">def </span>forward(self, input):</div>
+</div>
+<div class="foldopen" id="foldopen00047" data-start="" data-end="">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html#ae6698dc4fba15889c857aaf542a4aaee">   47</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html#ae6698dc4fba15889c857aaf542a4aaee">forward</a>(self, input):</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        x = self.<a class="code hl_variable" href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html#a5b6436c430f7d36fe9b660f8205a894f">fc1</a>(input)</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">return</span> x</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">def </span>run_pipe_communication(data_format, pipe_name):</div>
+</div>
+<div class="foldopen" id="foldopen00052" data-start="" data-end="">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="../../d2/d3c/namespacehello-mlbridge.html#abca85001e0522d0f0d932a75007eb424">   52</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d2/d3c/namespacehello-mlbridge.html#abca85001e0522d0f0d932a75007eb424">run_pipe_communication</a>(data_format, pipe_name):</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    compiler_interface = <a class="code hl_class" href="../../d3/d1f/classPipeCompilerInterface_1_1PipeCompilerInterface.html">PipeCompilerInterface</a>(data_format, <span class="stringliteral">&#39;/tmp/&#39;</span> + pipe_name)</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    print(<span class="stringliteral">&quot;PipeCompilerInterface init...&quot;</span>)</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    compiler_interface.reset_pipes()</div>
@@ -160,14 +165,18 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            compiler_interface.reset_pipes()</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+</div>
 <div class="foldopen" id="foldopen00075" data-start="" data-end="">
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="../../dd/d46/classhello-mlbridge_1_1service__server.html">   75</a></span><span class="keyword">class </span><a class="code hl_class" href="../../dd/d46/classhello-mlbridge_1_1service__server.html">service_server</a>(helloMLBridge_pb2_grpc.HelloMLBridgeService):</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keyword">def </span>__init__(self):</div>
+<div class="foldopen" id="foldopen00076" data-start="" data-end="">
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="../../dd/d46/classhello-mlbridge_1_1service__server.html#a1940e5cbc9e49659d24cbdd9aaa53031">   76</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../dd/d46/classhello-mlbridge_1_1service__server.html#a1940e5cbc9e49659d24cbdd9aaa53031">__init__</a>(self):</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="comment"># self.serdes = SerDes.SerDes(data_format, pipe_name)</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="comment"># self.serdes.init()</span></div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">pass</span></div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keyword">def </span>getAdvice(self, request, context):</div>
+</div>
+<div class="foldopen" id="foldopen00081" data-start="" data-end="">
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="../../dd/d46/classhello-mlbridge_1_1service__server.html#a5f754ab7c40ce57fefe8d9b23c581b44">   81</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../dd/d46/classhello-mlbridge_1_1service__server.html#a5f754ab7c40ce57fefe8d9b23c581b44">getAdvice</a>(self, request, context):</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">try</span>:</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            print(<span class="stringliteral">&quot;Entered getAdvice&quot;</span>)</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            print(<span class="stringliteral">&quot;Data: &quot;</span>, request.tensor)</div>
@@ -179,32 +188,42 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
 </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="keyword">def </span>test_func():</div>
+</div>
+<div class="foldopen" id="foldopen00092" data-start="" data-end="">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="../../d2/d3c/namespacehello-mlbridge.html#a8d3bab5e43539e9bffca65a1e9290c5e">   92</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d2/d3c/namespacehello-mlbridge.html#a8d3bab5e43539e9bffca65a1e9290c5e">test_func</a>():</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    data = 3.24</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">import</span> struct</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    print(data, type(data))</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    print(data, <a class="code hl_variable" href="../../d2/d3c/namespacehello-mlbridge.html#a2fceaa02f66a70e8eae630846c488f90">type</a>(data))</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    byte_data = struct.pack(<span class="stringliteral">&quot;f&quot;</span>, data)</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    print(byte_data, len(byte_data))</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    print(<span class="stringliteral">&quot;decoding...&quot;</span>)</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    decoded = float(byte_data)</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    print(decoded, type(decoded))</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    print(decoded, <a class="code hl_variable" href="../../d2/d3c/namespacehello-mlbridge.html#a2fceaa02f66a70e8eae630846c488f90">type</a>(decoded))</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>:</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">if</span> args.use_pipe:</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        run_pipe_communication(args.data_format, args.pipe_name)</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <a class="code hl_function" href="../../d2/d3c/namespacehello-mlbridge.html#abca85001e0522d0f0d932a75007eb424">run_pipe_communication</a>(args.data_format, args.pipe_name)</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">elif</span> args.use_grpc:</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        compiler_interface = <a class="code hl_class" href="../../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html">GrpcCompilerInterface</a>(mode = <span class="stringliteral">&#39;server&#39;</span>, add_server_method=helloMLBridge_pb2_grpc.add_HelloMLBridgeServiceServicer_to_server, grpc_service_obj=<a class="code hl_class" href="../../dd/d46/classhello-mlbridge_1_1service__server.html">service_server</a>(), hostport= args.server_port)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="../../d2/d3c/namespacehello-mlbridge.html#a8b939d9c5d819ccaec4e4980202b64d2">  110</a></span>        compiler_interface = <a class="code hl_class" href="../../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html">GrpcCompilerInterface</a>(mode = <span class="stringliteral">&#39;server&#39;</span>, add_server_method=helloMLBridge_pb2_grpc.add_HelloMLBridgeServiceServicer_to_server, grpc_service_obj=<a class="code hl_class" href="../../dd/d46/classhello-mlbridge_1_1service__server.html">service_server</a>(), hostport= args.server_port)</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        compiler_interface.start_server()</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
 <div class="ttc" id="aclassGrpcCompilerInterface_1_1GrpcCompilerInterface_html"><div class="ttname"><a href="../../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html">GrpcCompilerInterface.GrpcCompilerInterface</a></div><div class="ttdoc">This class implements methods for communication with compiler using gRPC.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d5a/GrpcCompilerInterface_8py_source.html#l00013">GrpcCompilerInterface.py:13</a></div></div>
 <div class="ttc" id="aclassPipeCompilerInterface_1_1PipeCompilerInterface_html"><div class="ttname"><a href="../../d3/d1f/classPipeCompilerInterface_1_1PipeCompilerInterface.html">PipeCompilerInterface.PipeCompilerInterface</a></div><div class="ttdoc">This class implements methods for communication with compiler using pipes.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/dd4/PipeCompilerInterface_8py_source.html#l00007">PipeCompilerInterface.py:7</a></div></div>
 <div class="ttc" id="aclasshello-mlbridge_1_1DummyModel_html"><div class="ttname"><a href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html">hello-mlbridge.DummyModel</a></div><div class="ttdef"><b>Definition</b> <a href="#l00042">hello-mlbridge.py:42</a></div></div>
 <div class="ttc" id="aclasshello-mlbridge_1_1DummyModel_html_a5b6436c430f7d36fe9b660f8205a894f"><div class="ttname"><a href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html#a5b6436c430f7d36fe9b660f8205a894f">hello-mlbridge.DummyModel.fc1</a></div><div class="ttdeci">fc1</div><div class="ttdef"><b>Definition</b> <a href="#l00045">hello-mlbridge.py:45</a></div></div>
+<div class="ttc" id="aclasshello-mlbridge_1_1DummyModel_html_a61ca715121484f575c53467b7bbc11b9"><div class="ttname"><a href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html#a61ca715121484f575c53467b7bbc11b9">hello-mlbridge.DummyModel.__init__</a></div><div class="ttdeci">__init__(self, input_dim=10)</div><div class="ttdef"><b>Definition</b> <a href="#l00043">hello-mlbridge.py:43</a></div></div>
+<div class="ttc" id="aclasshello-mlbridge_1_1DummyModel_html_ae6698dc4fba15889c857aaf542a4aaee"><div class="ttname"><a href="../../dc/d41/classhello-mlbridge_1_1DummyModel.html#ae6698dc4fba15889c857aaf542a4aaee">hello-mlbridge.DummyModel.forward</a></div><div class="ttdeci">forward(self, input)</div><div class="ttdef"><b>Definition</b> <a href="#l00047">hello-mlbridge.py:47</a></div></div>
 <div class="ttc" id="aclasshello-mlbridge_1_1service__server_html"><div class="ttname"><a href="../../dd/d46/classhello-mlbridge_1_1service__server.html">hello-mlbridge.service_server</a></div><div class="ttdef"><b>Definition</b> <a href="#l00075">hello-mlbridge.py:75</a></div></div>
+<div class="ttc" id="aclasshello-mlbridge_1_1service__server_html_a1940e5cbc9e49659d24cbdd9aaa53031"><div class="ttname"><a href="../../dd/d46/classhello-mlbridge_1_1service__server.html#a1940e5cbc9e49659d24cbdd9aaa53031">hello-mlbridge.service_server.__init__</a></div><div class="ttdeci">__init__(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00076">hello-mlbridge.py:76</a></div></div>
+<div class="ttc" id="aclasshello-mlbridge_1_1service__server_html_a5f754ab7c40ce57fefe8d9b23c581b44"><div class="ttname"><a href="../../dd/d46/classhello-mlbridge_1_1service__server.html#a5f754ab7c40ce57fefe8d9b23c581b44">hello-mlbridge.service_server.getAdvice</a></div><div class="ttdeci">getAdvice(self, request, context)</div><div class="ttdef"><b>Definition</b> <a href="#l00081">hello-mlbridge.py:81</a></div></div>
+<div class="ttc" id="anamespacehello-mlbridge_html_a2fceaa02f66a70e8eae630846c488f90"><div class="ttname"><a href="../../d2/d3c/namespacehello-mlbridge.html#a2fceaa02f66a70e8eae630846c488f90">hello-mlbridge.type</a></div><div class="ttdeci">type</div><div class="ttdef"><b>Definition</b> <a href="#l00013">hello-mlbridge.py:13</a></div></div>
+<div class="ttc" id="anamespacehello-mlbridge_html_a8d3bab5e43539e9bffca65a1e9290c5e"><div class="ttname"><a href="../../d2/d3c/namespacehello-mlbridge.html#a8d3bab5e43539e9bffca65a1e9290c5e">hello-mlbridge.test_func</a></div><div class="ttdeci">test_func()</div><div class="ttdef"><b>Definition</b> <a href="#l00092">hello-mlbridge.py:92</a></div></div>
+<div class="ttc" id="anamespacehello-mlbridge_html_abca85001e0522d0f0d932a75007eb424"><div class="ttname"><a href="../../d2/d3c/namespacehello-mlbridge.html#abca85001e0522d0f0d932a75007eb424">hello-mlbridge.run_pipe_communication</a></div><div class="ttdeci">run_pipe_communication(data_format, pipe_name)</div><div class="ttdef"><b>Definition</b> <a href="#l00052">hello-mlbridge.py:52</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
