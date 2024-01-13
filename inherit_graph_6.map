@@ -1,11 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,96,62,121"/>
-<area shape="rect" id="Node000001" href="$db/dea/classclient_1_1RegisterAllocationClient.html" title=" " alt="" coords="127,5,287,46"/>
-<area shape="poly" id="edge6_Node000000_Node000001" title=" " alt="" coords="62,84,108,55,134,44,137,49,111,60,65,88"/>
-<area shape="rect" id="Node000002" href="$d7/db7/classclient__demo_1_1demoPassClient.html" title=" " alt="" coords="112,70,302,96"/>
-<area shape="poly" id="edge7_Node000000_Node000002" title=" " alt="" coords="77,99,114,94,115,99,78,105"/>
-<area shape="rect" id="Node000003" href="$d6/df7/classexample__client_1_1PosetRLClient.html" title=" " alt="" coords="110,120,304,145"/>
-<area shape="poly" id="edge8_Node000000_Node000003" title=" " alt="" coords="78,112,110,116,109,122,77,117"/>
-<area shape="rect" id="Node000004" href="$dc/d44/classloopDistributionClient_1_1LoopDistributionClient.html" title=" " alt="" coords="119,169,295,210"/>
-<area shape="poly" id="edge9_Node000000_Node000004" title=" " alt="" coords="66,128,111,155,137,166,135,171,108,160,63,133"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,86,56"/>
+<area shape="rect" id="Node000001" href="$dc/d41/classhello-mlbridge_1_1DummyModel.html" title=" " alt="" coords="134,5,317,31"/>
+<area shape="poly" id="edge7_Node000000_Node000001" title=" " alt="" coords="101,33,133,28,134,34,101,38"/>
+<area shape="rect" id="Node000002" href="$df/d2e/classmlbridge-test_1_1DummyModel.html" title=" " alt="" coords="136,55,315,80"/>
+<area shape="poly" id="edge8_Node000000_Node000002" title=" " alt="" coords="101,48,136,53,135,58,101,53"/>
 </map>

@@ -127,14 +127,14 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="keywordflow">case</span> json::Value::Kind::Number: {</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> x = V-&gt;getAsInteger()) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>      <span class="keywordtype">int</span> *ret = <span class="keyword">new</span> int();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>      <span class="keywordtype">long</span> *ret = <span class="keyword">new</span> long();</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      *ret = x.value();</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>      this-&gt;MessageLength = <span class="keyword">sizeof</span>(int);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>      this-&gt;MessageLength = <span class="keyword">sizeof</span>(long);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>      <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">auto</span> x = V-&gt;getAsNumber()) {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>      <span class="keywordtype">float</span> *ret = <span class="keyword">new</span> float();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>      <span class="keywordtype">double</span> *ret = <span class="keyword">new</span> double();</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>      *ret = x.value();</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>      this-&gt;MessageLength = <span class="keyword">sizeof</span>(float);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>      this-&gt;MessageLength = <span class="keyword">sizeof</span>(double);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>      <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>      llvm::errs() &lt;&lt; <span class="stringliteral">&quot;Error in desJson: Number is not int, or double\n&quot;</span>;</div>
@@ -164,18 +164,18 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordflow">switch</span> (first-&gt;kind()) {</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">case</span> json::Value::Kind::Number: {</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>      <span class="keywordflow">if</span> (<span class="keyword">auto</span> x = first-&gt;getAsInteger()) {</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        std::vector&lt;int&gt; *ret = <span class="keyword">new</span> std::vector&lt;int&gt;();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        std::vector&lt;long&gt; *ret = <span class="keyword">new</span> std::vector&lt;long&gt;();</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> it : *arr) {</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>          ret-&gt;push_back(it.getAsInteger().value());</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        }</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        this-&gt;MessageLength = ret-&gt;size() * <span class="keyword">sizeof</span>(int);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        this-&gt;MessageLength = ret-&gt;size() * <span class="keyword">sizeof</span>(long);</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">return</span> ret-&gt;data();</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">auto</span> x = first-&gt;getAsNumber()) {</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        std::vector&lt;float&gt; *ret = <span class="keyword">new</span> std::vector&lt;float&gt;();</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        std::vector&lt;double&gt; *ret = <span class="keyword">new</span> std::vector&lt;double&gt;();</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> it : *arr) {</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>          ret-&gt;push_back(it.getAsNumber().value());</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        }</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        this-&gt;MessageLength = ret-&gt;size() * <span class="keyword">sizeof</span>(float);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        this-&gt;MessageLength = ret-&gt;size() * <span class="keyword">sizeof</span>(double);</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordflow">return</span> ret-&gt;data();</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>      } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        llvm::errs() &lt;&lt; <span class="stringliteral">&quot;Error in desJson: Number is not int, or double\n&quot;</span>;</div>
