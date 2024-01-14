@@ -10,6 +10,7 @@
 #define ONNX_MODELRUNNER_ENVIRONMENT_H
 
 #include "MLModelRunner/ONNXModelRunner/agent.h"
+#include <map>
 
 typedef signed Action;
 
