@@ -84,11 +84,7 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &quot;MLModelRunner/PipeModelRunner.h&quot;</code><br />
 <code>#include &quot;MLModelRunner/MLModelRunner.h&quot;</code><br />
-<code>#include &quot;llvm/IR/LLVMContext.h&quot;</code><br />
-<code>#include &quot;llvm/MC/MCContext.h&quot;</code><br />
-<code>#include &quot;llvm/Support/ErrorHandling.h&quot;</code><br />
-<code>#include &quot;llvm/Support/FileSystem.h&quot;</code><br />
-<code>#include &quot;llvm/Support/raw_ostream.h&quot;</code><br />
+<code>#include &quot;MLModelRunner/Utils/Debug.h&quot;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
@@ -99,31 +95,23 @@ Include dependency graph for PipeModelRunner.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/d92/PipeModelRunner_8cpp__incl.png" border="0" usemap="#aMLModelRunner_2PipeModelRunner_8cpp" alt=""/></div>
 <map name="aMLModelRunner_2PipeModelRunner_8cpp" id="aMLModelRunner_2PipeModelRunner_8cpp">
-<area shape="rect" title=" " alt="" coords="1138,5,1385,31"/>
-<area shape="rect" title=" " alt="" coords="5,79,238,105"/>
-<area shape="poly" title=" " alt="" coords="1138,28,748,49,253,81,253,76,748,44,1138,23"/>
-<area shape="rect" title=" " alt="" coords="262,79,488,105"/>
-<area shape="poly" title=" " alt="" coords="1138,31,503,81,503,76,1138,26"/>
-<area shape="rect" title=" " alt="" coords="511,79,668,105"/>
-<area shape="poly" title=" " alt="" coords="1138,34,683,81,683,76,1138,29"/>
-<area shape="rect" title=" " alt="" coords="692,79,839,105"/>
-<area shape="poly" title=" " alt="" coords="1177,34,855,80,854,75,1176,29"/>
-<area shape="rect" title=" " alt="" coords="863,79,1049,105"/>
-<area shape="poly" title=" " alt="" coords="1210,34,1023,78,1022,72,1209,29"/>
-<area shape="rect" title=" " alt="" coords="1074,79,1247,105"/>
-<area shape="poly" title=" " alt="" coords="1246,34,1192,72,1188,67,1243,29"/>
-<area shape="rect" title=" " alt="" coords="1271,79,1455,105"/>
-<area shape="poly" title=" " alt="" coords="1280,29,1335,67,1331,72,1277,34"/>
-<area shape="rect" title=" " alt="" coords="1479,79,1543,105"/>
-<area shape="poly" title=" " alt="" coords="1305,29,1464,74,1463,80,1303,34"/>
-<area shape="rect" title=" " alt="" coords="1567,79,1628,105"/>
-<area shape="poly" title=" " alt="" coords="1328,29,1553,76,1552,81,1326,34"/>
-<area shape="rect" title=" " alt="" coords="1652,79,1717,105"/>
-<area shape="poly" title=" " alt="" coords="1356,29,1486,48,1637,76,1636,81,1485,54,1355,34"/>
-<area shape="rect" title=" " alt="" coords="1741,79,1812,105"/>
-<area shape="poly" title=" " alt="" coords="1386,29,1544,47,1726,76,1725,81,1543,53,1385,34"/>
-<area shape="rect" title=" " alt="" coords="1836,79,1890,105"/>
-<area shape="poly" title=" " alt="" coords="1385,23,1586,41,1703,56,1821,76,1820,81,1702,61,1585,46,1385,29"/>
+<area shape="rect" title=" " alt="" coords="634,5,881,31"/>
+<area shape="rect" title=" " alt="" coords="5,87,238,112"/>
+<area shape="poly" title=" " alt="" coords="646,34,250,82,216,86,215,81,249,76,645,29"/>
+<area shape="rect" title=" " alt="" coords="262,87,488,112"/>
+<area shape="poly" title=" " alt="" coords="699,34,449,85,448,80,698,29"/>
+<area shape="rect" title=" " alt="" coords="512,79,659,120"/>
+<area shape="poly" title=" " alt="" coords="732,34,643,75,641,70,730,29"/>
+<area shape="rect" title=" " alt="" coords="683,87,747,112"/>
+<area shape="poly" title=" " alt="" coords="753,33,731,74,726,72,749,30"/>
+<area shape="rect" title=" " alt="" coords="771,87,832,112"/>
+<area shape="poly" title=" " alt="" coords="767,30,790,72,785,74,762,33"/>
+<area shape="rect" title=" " alt="" coords="856,87,921,112"/>
+<area shape="poly" title=" " alt="" coords="779,29,857,76,854,80,776,34"/>
+<area shape="rect" title=" " alt="" coords="945,87,1016,112"/>
+<area shape="poly" title=" " alt="" coords="796,29,934,76,938,78,936,83,933,82,795,34"/>
+<area shape="rect" title=" " alt="" coords="1040,87,1094,112"/>
+<area shape="poly" title=" " alt="" coords="836,29,930,48,1029,76,1032,77,1030,82,1027,82,928,53,835,34"/>
 </map>
 </div>
 </div>
@@ -152,7 +140,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d9a/PipeModelRunner_8cpp_source.html#l00024">24</a> of file <a class="el" href="../../df/d9a/PipeModelRunner_8cpp_source.html">PipeModelRunner.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d9a/PipeModelRunner_8cpp_source.html#l00020">20</a> of file <a class="el" href="../../df/d9a/PipeModelRunner_8cpp_source.html">PipeModelRunner.cpp</a>.</p>
 
 </div>
 </div>
