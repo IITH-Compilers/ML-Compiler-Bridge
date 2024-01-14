@@ -7,6 +7,7 @@
 //===----------------------------------------------------------------------===//
 
 #include "MLModelRunner/ONNXModelRunner/agent.h"
+#include "MLModelRunner/Utils/Debug.h"
 #include <algorithm>
 #include <cmath>
 #include <iterator>
@@ -31,13 +32,11 @@ unsigned Agent::computeAction(Observation &input) {
                               model_output.end()); // [2, 4)
   int argmaxVal = std::distance(model_output.begin(), max);
 
-  LLVM_DEBUG(
-      llvm::errs() << "---------------MODEL OUTPUT VECTOR:----------------\n");
-  for (auto e : model_output) {
-    LLVM_DEBUG(llvm::errs() << e << " ");
-  }
-  LLVM_DEBUG(llvm::errs() << "\nmax value and index are " << *max << " "
-                          << argmaxVal << "\n");
+  MLBRIDGE_DEBUG(
+      std::cout << "---------------MODEL OUTPUT VECTOR:----------------\n";
+      for (auto e
+           : model_output) { std::cout << e << " "; } std::cout
+      << "\nmax value and index are " << *max << " " << argmaxVal << "\n";);
   return argmaxVal;
 }
 

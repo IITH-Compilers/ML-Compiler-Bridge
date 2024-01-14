@@ -22,8 +22,9 @@ void ONNXModelRunner::addAgent(Agent *agent, std::string name) {
     agents[name] = agent;
   } else {
     // throw error
-    std::cout << "ERROR: Agent with the name " << name
+    std::cerr << "ERROR: Agent with the name " << name
               << " already exists. Please give a different name!\n";
+    exit(1);
   }
 }
 

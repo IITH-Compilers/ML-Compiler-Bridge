@@ -1,4 +1,5 @@
-//===- SerDes/baseSerDes.h - Base class for serialization and deserialization ---*- C++ -*-===//
+//===- SerDes/baseSerDes.h - Base class for serialization and deserialization
+//---*- C++ -*-===//
 //
 // Part of the MLCompilerBridge Project
 //
@@ -7,12 +8,10 @@
 #ifndef BASE_SERDES_H
 #define BASE_SERDES_H
 
-// #ifdef __cplusplus
+#include "MLModelRunner/Utils/Debug.h"
 #include "google/protobuf/extension_set.h"
 #include "google/protobuf/message.h"
-// #endif
 
-#include "llvm/Support/raw_ostream.h"
 #include <cassert>
 #include <map>
 #include <string>
@@ -53,7 +52,7 @@ public:
 
   // a hack to set the request and response structures in protobuf serializer
   virtual void setRequest(void *Request) {
-    llvm::errs() << "In BaseSerializer setRequest...\n";
+    MLBRIDGE_DEBUG(std::cout << "In BaseSerializer setRequest...\n");
   };
   virtual void setResponse(void *Response){};
   virtual void *getSerializedData() = 0;

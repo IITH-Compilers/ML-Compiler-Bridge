@@ -14,8 +14,6 @@
 #include <cstdint>
 #include <vector>
 
-// #include "onnxruntime_cxx_api.h"
-
 namespace Ort {
 class Env;
 class Session;

@@ -1,4 +1,5 @@
-//=== SerDes/tensorflowSerDes.h - Tensorflow Serialization/Deserialization ---*- C++
+//=== SerDes/tensorflowSerDes.h - Tensorflow Serialization/Deserialization ---*-
+//C++
 //
 // Part of the MLCompilerBridge Project
 //
@@ -9,8 +10,6 @@
 
 #include "SerDes/baseSerDes.h"
 #include "tensorflow/compiler/tf2xla/xla_compiled_cpu_function.h"
-
-#include <memory>
 
 namespace MLBridge {
 class TensorflowSerDes : public BaseSerDes {

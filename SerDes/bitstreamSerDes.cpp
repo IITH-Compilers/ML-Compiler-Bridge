@@ -1,14 +1,14 @@
-//=== MLCompilerBridge/SerDes/bitstreamSerDes.cpp - Bitstream SerDes Implementation ---*- C++ -*-===//
+//=== MLCompilerBridge/SerDes/bitstreamSerDes.cpp - Bitstream SerDes
+// Implementation ---*- C++ -*-===//
 //
 // Part of the MLCompilerBridge Project
 //
 //===------------------===//
 
 #include "SerDes/bitstreamSerDes.h"
+#include "MLModelRunner/Utils/Debug.h"
 #include "MLModelRunner/Utils/JSON.h"
-#include "llvm/Support/Error.h"
-#include "llvm/Support/ErrorHandling.h"
-#include "llvm/Support/raw_ostream.h"
+
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
@@ -17,7 +17,6 @@
 #include <vector>
 
 #define DEBUG_TYPE "bitstream-serdes"
-
 
 namespace MLBridge {
 void BitstreamSerDes::setFeature(const std::string &name, const int &value) {
@@ -123,7 +122,7 @@ void *BitstreamSerDes::getSerializedData() {
   });
   J.flush();
   OS->write("\n", 1);
-  LLVM_DEBUG(llvm::errs() << "rawData.size(): " << rawData.size() << "\n");
+  MLBRIDGE_DEBUG(std::cout << "rawData.size(): " << rawData.size() << "\n");
   for (size_t I = 0; I < rawData.size(); ++I) {
     OS->write(reinterpret_cast<const char *>(rawData[I]),
               tensorSpecs[I].getTotalTensorBufferSize());

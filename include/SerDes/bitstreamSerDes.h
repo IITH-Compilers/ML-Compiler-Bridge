@@ -1,4 +1,5 @@
-//=== SerDes/bitstreamSerDes.h - Bitstream Serialization/Deserialization ---*- C++ -*-===//
+//=== SerDes/bitstreamSerDes.h - Bitstream Serialization/Deserialization ---*-
+// C++ -*-===//
 //
 // Part of the MLCompilerBridge Project
 //
@@ -9,7 +10,6 @@
 
 #include "SerDes/TensorSpec.h"
 #include "SerDes/baseSerDes.h"
-#include "llvm/Support/raw_ostream.h"
 #include <memory>
 #include <set>
 #include <string>

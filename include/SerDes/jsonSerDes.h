@@ -9,7 +9,6 @@
 
 #include "MLModelRunner/Utils/JSON.h"
 #include "SerDes/baseSerDes.h"
-#include "llvm/Support/raw_ostream.h"
 #include <string>
 #include <utility>
 

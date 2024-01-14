@@ -10,17 +10,10 @@
 // utils.
 //
 //===----------------------------------------------------------------------===//
-#include "llvm/ADT/STLExtras.h"
-// #include "llvm/Config/config.h"
-
-#include "MLModelRunner/Utils/JSON.h"
 #include "SerDes/TensorSpec.h"
-#include "llvm/ADT/StringExtras.h"
-#include "llvm/ADT/Twine.h"
-#include "llvm/Support/CommandLine.h"
+#include "MLModelRunner/Utils/JSON.h"
 #include "llvm/Support/Debug.h"
-#include "llvm/Support/ManagedStatic.h"
-#include "llvm/Support/raw_ostream.h"
+
 #include <array>
 #include <cassert>
 #include <numeric>
@@ -123,4 +116,4 @@ std::string tensorValueToString(const char *Buffer, const TensorSpec &Spec) {
   return "";
 }
 
-} // namespace llvm
+} // namespace MLBridge

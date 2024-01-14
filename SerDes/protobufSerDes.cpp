@@ -1,4 +1,5 @@
-//=== MLCompilerBridge/SerDes/protobufSerDes.cpp - Protobuf SerDes Implementation ---*- C++ -*-===//
+//=== MLCompilerBridge/SerDes/protobufSerDes.cpp - Protobuf SerDes
+// Implementation ---*- C++ -*-===//
 //
 // Part of the MLCompilerBridge Project
 //
@@ -7,8 +8,7 @@
 #include "SerDes/protobufSerDes.h"
 #include "google/protobuf/descriptor.h"
 #include "google/protobuf/message.h"
-#include "llvm/Support/ErrorHandling.h"
-#include "llvm/Support/raw_ostream.h"
+
 #include <cassert>
 #include <cstdint>
 #include <type_traits>
@@ -162,7 +162,8 @@ void *ProtobufSerDes::deserializeUntyped(void *data) {
     }
     if (field->type() == FieldDescriptor::Type::TYPE_STRING) {
       // yet to be tested
-      llvm_unreachable("vector<string> deserialization yet to be done");
+      std::cerr << "vector<string> deserialization yet to be done\n";
+      exit(1);
       std::vector<std::string> *ptr = new std::vector<std::string>();
 
       /*
@@ -214,7 +215,8 @@ void *ProtobufSerDes::deserializeUntyped(void *data) {
     return ptr;
   }
 
-  llvm_unreachable("Unknown type in protobuf serializer");
+  std::cerr << "Unknown type in protobuf serializer\n";
+  exit(1);
 }
 
 void ProtobufSerDes::cleanDataStructures() {

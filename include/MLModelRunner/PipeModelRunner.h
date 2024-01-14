@@ -13,10 +13,7 @@
 #include "MLModelRunner/MLModelRunner.h"
 #include "SerDes/TensorSpec.h"
 #include "SerDes/baseSerDes.h"
-#include "llvm/Config/llvm-config.h"
-#include "llvm/MC/MCContext.h"
 #include "llvm/Support/FileSystem.h"
-#include "llvm/Support/raw_ostream.h"
 #include <fstream>
 #include <memory>
 #include <system_error>

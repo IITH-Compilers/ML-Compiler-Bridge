@@ -1,13 +1,10 @@
 #include "MLModelRunner/C/ONNXModelRunner.h"
-// #include "MLModelRunner/MLModelRunner.h"
-// #include "MLModelRunner/ONNXModelRunner/ONNXModelRunner.h"
-// #include "MLModelRunner/ONNXModelRunner/environment.h"
 #include "MLModelRunner/ONNXModelRunner/agent.h"
 #include "MLModelRunner/ONNXModelRunner/utils.h"
+#include "MLModelRunner/Utils/Debug.h"
+#include "llvm/ADT/SmallVector.h"
 #include <cassert>
 #include <iostream>
-#include <llvm/ADT/SmallVector.h>
-#include <llvm/Support/raw_ostream.h>
 #include <map>
 #include <stdarg.h>
 #include <vector>
@@ -126,10 +123,10 @@ void evaluate(ONNXModelRunner *omr) {
     // auto current_agent = omr->agents[omr->env->getNextAgent()];
     Agent *current_agent = omr->agent;
     action = current_agent->computeAction(x);
-    llvm::errs() << "Action: " << action << "\n";
+    MLBRIDGE_DEBUG(std::cout << "Action: " << action << "\n");
     x = omr->env->step(action);
     if (omr->env->checkDone()) {
-      std::cout << "Done🎉\n";
+      MLBRIDGE_DEBUG(std::cout << "Done🎉\n");
       break;
     }
   }
@@ -138,7 +135,7 @@ void evaluate(ONNXModelRunner *omr) {
 int singleAgentEvaluate(ONNXModelRunner *obj, float *inp, int inp_size) {
   Observation obs(inp, inp + inp_size);
   Action action = obj->agent->computeAction(obs);
-  llvm::errs() << "action :: " << action << "\n";
+  MLBRIDGE_DEBUG(std::cout << "action :: " << action << "\n");
   return action;
 }
 

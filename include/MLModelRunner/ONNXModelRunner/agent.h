@@ -11,9 +11,7 @@
 
 #include "MLModelRunner/ONNXModelRunner/onnx.h"
 #include "MLModelRunner/ONNXModelRunner/utils.h"
-#include "llvm/ADT/SmallVector.h"
-#include "llvm/Support/Debug.h"
-#include "llvm/Support/raw_ostream.h"
+
 #include <stdio.h>
 #include <string>
 
@@ -26,6 +24,6 @@ public:
   Agent(std::string model_path);
   unsigned computeAction(Observation &obs);
 };
-
 } // namespace MLBridge
+
 #endif // ONNX_MODELRUNNER_AGENT_H

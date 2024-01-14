@@ -8,15 +8,12 @@
 
 #ifndef ONNX_MODELRUNNER_UTILS_H
 #define ONNX_MODELRUNNER_UTILS_H
-#include <vector>
 
 #include "llvm/ADT/SmallVector.h"
-#include "llvm/Support/Debug.h"
-
-#define DEBUG_TYPE "rl-inference-engine"
 
 namespace MLBridge {
 typedef llvm::SmallVector<float, 300> Observation;
 
 } // namespace MLBridge
+
 #endif // ONNX_MODELRUNNER_UTILS_H

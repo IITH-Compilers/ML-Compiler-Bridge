@@ -10,8 +10,7 @@
 #define GRPC_MODELRUNNER_H
 
 #include "MLModelRunner/MLModelRunner.h"
-#include "llvm/IR/LLVMContext.h"
-#include "llvm/Support/raw_ostream.h"
+
 #include <future>
 #include <google/protobuf/text_format.h>
 #include <grpcpp/grpcpp.h>
@@ -42,18 +41,17 @@ public:
     SetStub();
   }
 
-  // void *getStub() { return stub_; }
   void requestExit() override {
-    llvm::errs() << "Exit from grpc\n";
+    std::cout << "Exit from grpc\n";
     exit_requested->set_value();
   }
 
   std::promise<void> *exit_requested;
 
   void *evaluateUntyped() override {
-    if (server_mode)
-      llvm_unreachable("evaluateUntyped not implemented for gRPCModelRunner; "
-                       "Override gRPC method instead");
+    assert(!server_mode &&
+           "evaluateUntyped not implemented for gRPCModelRunner; "
+           "Override gRPC method instead");
     assert(request != nullptr && "Request cannot be null");
     grpc::ClientContext grpcCtx;
     request = getRequest();
@@ -62,7 +60,7 @@ public:
       if (Ctx)
         Ctx->emitError("gRPC failed: " + status.error_message());
       else
-        llvm_unreachable(("gRPC failed: " + status.error_message()).c_str());
+        std::cerr << "gRPC failed: " << status.error_message() << std::endl;
     return SerDes->deserializeUntyped(response);
   }
 
@@ -102,7 +100,6 @@ private:
   Response *getResponse() { return (Response *)SerDes->getResponse(); }
 
   void printMessage(const google::protobuf::Message *message) {
-    llvm::errs() << "In gRPCModelRunner printMessage...\n";
     std::string s;
     if (google::protobuf::TextFormat::PrintToString(*message, &s)) {
       std::cout << "Your message: " << s << std::endl;
