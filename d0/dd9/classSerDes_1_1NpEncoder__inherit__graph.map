@@ -1,6 +1,5 @@
 <map id="SerDes.NpEncoder" name="SerDes.NpEncoder">
 <area shape="rect" id="Node000001" title=" " alt="" coords="7,79,138,105"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,5,140,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,46,68,78,63,79,61,46"/>
-<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="84,46,82,79,77,78,79,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,46,75,79,70,79,70,46"/>
 </map>

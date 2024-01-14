@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['read_5fstream_5fiter_0',['read_stream_iter',['../d7/dab/classSerDes_1_1SerDes.html#a2638ddc74f788c46a87f8e8aeea19704',1,'SerDes::SerDes']]],
-  ['readobservationbytes_1',['readObservationBytes',['../d7/dab/classSerDes_1_1SerDes.html#a98ad345720f93d555f83766e02aa367b',1,'SerDes::SerDes']]],
-  ['readobservationjson_2',['readObservationJson',['../d7/dab/classSerDes_1_1SerDes.html#a5ef8ac43064eed9e6e3e74ab6c463e73',1,'SerDes::SerDes']]],
-  ['readobservationprotobuf_3',['readObservationProtobuf',['../d7/dab/classSerDes_1_1SerDes.html#ac777923c63856d7477b84d5e072bf2b5',1,'SerDes::SerDes']]],
-  ['readobsmap_4',['readObsMap',['../d7/dab/classSerDes_1_1SerDes.html#a2ca022006fc276a82a13c62d1ca4bc33',1,'SerDes::SerDes']]],
-  ['required_5',['required',['../d2/d3c/namespacehello-mlbridge.html#a54e805d7209ef239ec36ad2ee43304cf',1,'hello-mlbridge.required'],['../d3/d31/namespacemlbridge-test.html#a47ca2fed0fb07b74a69cba1f8d1f116e',1,'mlbridge-test.required']]],
-  ['resetfunc_6',['resetFunc',['../d0/d3c/structEnvironment.html#a676911e509543a65428225fa8cff3107',1,'Environment']]],
-  ['returned_5fdata_7',['returned_data',['../d3/d31/namespacemlbridge-test.html#a40a321e49ed03bba4d54e0c6adb69b9a',1,'mlbridge-test']]]
+  ['serdes_5fobj_0',['serdes_obj',['../de/d17/classBaseCompilerInterface_1_1BaseCompilerInterface.html#abe6b893beff97307c8441b2e1a93e589',1,'BaseCompilerInterface::BaseCompilerInterface']]],
+  ['serializebytes_1',['serializeBytes',['../d7/dab/classSerDes_1_1SerDes.html#ab7a64aae928916f493617550ef9c9133',1,'SerDes::SerDes']]],
+  ['serializejson_2',['serializeJson',['../d7/dab/classSerDes_1_1SerDes.html#a9defe1668f1e0d4e1f3b1346c36974da',1,'SerDes::SerDes']]],
+  ['serializeprotobuf_3',['serializeProtobuf',['../d7/dab/classSerDes_1_1SerDes.html#a8cb8c9a1d2f76c476e2be38bc8d1f48c',1,'SerDes::SerDes']]],
+  ['sermap_4',['serMap',['../d7/dab/classSerDes_1_1SerDes.html#ac1178a54fa264100aac4cdf9e5d3fdbb',1,'SerDes::SerDes']]],
+  ['server_5fport_5',['server_port',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a66b3d7d4cf0b01e4659856d86d6c8449',1,'GrpcCompilerInterface::GrpcCompilerInterface']]],
+  ['shape_6',['shape',['../d7/db4/classlog__reader_1_1TensorSpec.html#ab5c9028029a0a7f87bdd1543d405421a',1,'log_reader::TensorSpec']]],
+  ['start_7',['Start',['../dc/d1d/JSON_8cpp.html#ad0cf5b3bbb583824ea13371671cb6904',1,'JSON.cpp']]],
+  ['stepfunc_8',['stepFunc',['../d0/d3c/structEnvironment.html#a2c9cc7b98a105c8a56cab019e74d8460',1,'Environment']]],
+  ['stub_9',['stub',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a3781b5631c0de3f25353dcece395d03b',1,'GrpcCompilerInterface::GrpcCompilerInterface']]]
 ];

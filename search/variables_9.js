@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['log_5ffile_0',['log_file',['../d7/dab/classSerDes_1_1SerDes.html#a074b98c591ab4f3fd38096233017e5b8',1,'SerDes::SerDes']]]
+  ['mode_0',['mode',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a7d6c90e8641852fac5daa6e710ffee9b',1,'GrpcCompilerInterface::GrpcCompilerInterface']]],
+  ['model_1',['model',['../d7/d79/structPipeModelRunnerWrapper.html#a719f23ff380eeda3e1de85fc2b58ede1',1,'PipeModelRunnerWrapper']]]
 ];

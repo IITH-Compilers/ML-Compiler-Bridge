@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['default_0',['default',['../d4/d0a/classSerDes_1_1NpEncoder.html#a6f846507efc532b0c731d9c339a6b1f4',1,'SerDes.NpEncoder.default(self, obj)'],['../d4/d0a/classSerDes_1_1NpEncoder.html#a6f846507efc532b0c731d9c339a6b1f4',1,'SerDes.NpEncoder.default(self, obj)']]],
+  ['default_0',['default',['../d4/d0a/classSerDes_1_1NpEncoder.html#a6f846507efc532b0c731d9c339a6b1f4',1,'SerDes::NpEncoder']]],
   ['deserializebytes_1',['deserializeBytes',['../d7/dab/classSerDes_1_1SerDes.html#aef40928e0cddb4ddb568908e50a0e8ac',1,'SerDes::SerDes']]],
   ['deserializedata_2',['deserializeData',['../d7/dab/classSerDes_1_1SerDes.html#a7a2cad52f168a7e4145a7eb23905f566',1,'SerDes::SerDes']]],
   ['deserializejson_3',['deserializeJson',['../d7/dab/classSerDes_1_1SerDes.html#a0883e5e3886f8c9757e0c06ef333d645',1,'SerDes::SerDes']]],

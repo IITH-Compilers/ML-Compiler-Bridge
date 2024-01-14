@@ -84,7 +84,7 @@ $(function() { codefold.init(1); });
   <div class="headertitle"><div class="title">SerDes.py</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="../../da/d1d/CompilerInterface_2SerDes_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="../../da/d52/namespaceSerDes.html">    1</a></span><span class="keyword">import</span> os, io</div>
+<a href="../../d7/d8a/SerDes_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="../../da/d52/namespaceSerDes.html">    1</a></span><span class="keyword">import</span> os, io</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">import</span> json</div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">import</span> log_reader</div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">import</span> ctypes</div>
@@ -143,7 +143,7 @@ $(function() { codefold.init(1); });
 <div class="foldopen" id="foldopen00049" data-start="" data-end="">
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="../../d7/dab/classSerDes_1_1SerDes.html#aef40928e0cddb4ddb568908e50a0e8ac">   49</a></span>    <span class="keyword">def </span><a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a6ff767c16661960955c4b2e4ad1bd75b">deserializeBytes</a>(self, datastream):</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">if</span> self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a2638ddc74f788c46a87f8e8aeea19704">read_stream_iter</a> <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a2638ddc74f788c46a87f8e8aeea19704">read_stream_iter</a> = <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a74c8aa46b334142ebc93060a7b32e3f6">log_reader.read_stream2</a>(</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            self.<a class="code hl_variable" href="../../d7/dab/classSerDes_1_1SerDes.html#a2638ddc74f788c46a87f8e8aeea19704">read_stream_iter</a> = <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#abe185aedde809d51166c20f13603159a">log_reader.read_stream2</a>(</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                datastream</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            )  <span class="comment"># try to make it indep</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        hdr = datastream.read(8)</div>
@@ -231,7 +231,7 @@ $(function() { codefold.init(1); });
 <div class="ttc" id="aclassSerDes_1_1SerDes_html_ac18eeb662f2b265bffec2c313940449e"><div class="ttname"><a href="../../d7/dab/classSerDes_1_1SerDes.html#ac18eeb662f2b265bffec2c313940449e">SerDes.SerDes.desMap</a></div><div class="ttdeci">desMap</div><div class="ttdef"><b>Definition</b> <a href="#l00029">SerDes.py:29</a></div></div>
 <div class="ttc" id="aclassSerDes_1_1SerDes_html_ad44d1504d1fe25badcee4a469771ac95"><div class="ttname"><a href="../../d7/dab/classSerDes_1_1SerDes.html#ad44d1504d1fe25badcee4a469771ac95">SerDes.SerDes.serializeProtobuf</a></div><div class="ttdeci">serializeProtobuf(self, data)</div><div class="ttdef"><b>Definition</b> <a href="#l00093">SerDes.py:93</a></div></div>
 <div class="ttc" id="aclassSerDes_1_1SerDes_html_aef40928e0cddb4ddb568908e50a0e8ac"><div class="ttname"><a href="../../d7/dab/classSerDes_1_1SerDes.html#aef40928e0cddb4ddb568908e50a0e8ac">SerDes.SerDes.deserializeBytes</a></div><div class="ttdeci">deserializeBytes(self, datastream)</div><div class="ttdoc">Deserializes and returns bitstream data.</div><div class="ttdef"><b>Definition</b> <a href="#l00049">SerDes.py:49</a></div></div>
-<div class="ttc" id="anamespacelog__reader_html_a74c8aa46b334142ebc93060a7b32e3f6"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#a74c8aa46b334142ebc93060a7b32e3f6">log_reader.read_stream2</a></div><div class="ttdeci">read_stream2(io.BufferedReader f)</div><div class="ttdef"><b>Definition</b> <a href="../../d8/de3/CompilerInterface_2log__reader_8py_source.html#l00123">log_reader.py:123</a></div></div>
+<div class="ttc" id="anamespacelog__reader_html_abe185aedde809d51166c20f13603159a"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#abe185aedde809d51166c20f13603159a">log_reader.read_stream2</a></div><div class="ttdeci">read_stream2(io.BufferedReader f)</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d61/log__reader_8py_source.html#l00123">log_reader.py:123</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
