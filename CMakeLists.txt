@@ -12,13 +12,27 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti -fPIC")
 set (CMAKE_CXX_STANDARD 17)
 
 option(LLVM_MLBRIDGE "MLCompilerBridge install for LLVM" OFF)
-option(DEBUG "Enable debug mode" ON)
+
+if (NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
+string( TOLOWER "${CMAKE_BUILD_TYPE}" MLBRIDGE_CMAKE_BUILD_TYPE)
+if(MLBRIDGE_CMAKE_BUILD_TYPE MATCHES debug)
+  option(MLBRIDGE_DEBUG_MODE "Enable debug mode" ON)
+else()
+  option(MLBRIDGE_DEBUG_MODE "Enable debug mode" OFF)
+endif()
 
 if(NOT LLVM_MLBRIDGE)
   find_package(LLVM 10.0.0 REQUIRED CONFIG)
   include_directories(${LLVM_INCLUDE_DIRS})
   link_directories(${LLVM_LIBRARY_DIR})
   add_compile_definitions(C_LIBRARY)
+endif()
+
+if(MLBRIDGE_DEBUG_MODE)
+  add_compile_definitions(DEBUG_MODE)
 endif()
 
 add_subdirectory(MLModelRunner)
@@ -42,11 +56,10 @@ if(LLVM_MLBRIDGE)
   tf_xla_runtime
   protobuf::libprotobuf
   )
+  
+
   target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
   install(TARGETS LLVMMLBridge DESTINATION lib)
-  if(DEBUG)
-    target_compile_definitions(LLVMMLBridge PRIVATE DEBUG)
-  endif()
 
 else()
   llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)
@@ -66,11 +79,6 @@ else()
   set_property(TARGET MLCompilerBridgeC PROPERTY POSITION_INDEPENDENT_CODE 1)
   install(TARGETS MLCompilerBridgeC DESTINATION lib)
   install(TARGETS MLCompilerBridge DESTINATION lib)
-
-  if(DEBUG)
-  target_compile_definitions(MLCompilerBridge PRIVATE DEBUG)
-  target_compile_definitions(MLCompilerBridgeC PRIVATE DEBUG)
-  endif()
 endif(LLVM_MLBRIDGE)
 
 install(DIRECTORY include/ DESTINATION include)
