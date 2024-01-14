@@ -7,6 +7,7 @@
 #include "SerDes/jsonSerDes.h"
 #include "MLModelRunner/Utils/Debug.h"
 #include "MLModelRunner/Utils/JSON.h"
+#include "MLModelRunner/Utils/DataTypes.h"
 #include "SerDes/baseSerDes.h"
 #include "llvm/Support/Debug.h"
 #include <cstdint>
@@ -52,14 +53,14 @@ void *JsonSerDes::desJson(json::Value *V) {
     return nullptr;
   case json::Value::Kind::Number: {
     if (auto x = V->getAsInteger()) {
-      long *ret = new long();
+      IntegerType *ret = new IntegerType();
       *ret = x.value();
-      this->MessageLength = sizeof(long);
+      this->MessageLength = sizeof(IntegerType);
       return ret;
     } else if (auto x = V->getAsNumber()) {
-      double *ret = new double();
+      RealType *ret = new RealType();
       *ret = x.value();
-      this->MessageLength = sizeof(double);
+      this->MessageLength = sizeof(RealType);
       return ret;
     } else {
       std::cerr << "Error in desJson: Number is not int, or double\n";
@@ -89,18 +90,18 @@ void *JsonSerDes::desJson(json::Value *V) {
     switch (first->kind()) {
     case json::Value::Kind::Number: {
       if (auto x = first->getAsInteger()) {
-        std::vector<long> *ret = new std::vector<long>();
+        std::vector<IntegerType> *ret = new std::vector<IntegerType>();
         for (auto it : *arr) {
           ret->push_back(it.getAsInteger().value());
         }
-        this->MessageLength = ret->size() * sizeof(long);
+        this->MessageLength = ret->size() * sizeof(IntegerType);
         return ret->data();
       } else if (auto x = first->getAsNumber()) {
-        std::vector<double> *ret = new std::vector<double>();
+        std::vector<RealType> *ret = new std::vector<RealType>();
         for (auto it : *arr) {
           ret->push_back(it.getAsNumber().value());
         }
-        this->MessageLength = ret->size() * sizeof(double);
+        this->MessageLength = ret->size() * sizeof(RealType);
         return ret->data();
       } else {
         std::cerr << "Error in desJson: Number is not int, or double\n";
