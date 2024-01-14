@@ -18,8 +18,6 @@
 
 #define DEBUG_TYPE "bitstream-serdes"
 
-using namespace llvm;
-using namespace std;
 
 namespace MLBridge {
 void BitstreamSerDes::setFeature(const std::string &name, const int &value) {
@@ -113,9 +111,9 @@ void BitstreamSerDes::setFeature(const std::string &name,
 }
 
 void *BitstreamSerDes::getSerializedData() {
-  std::unique_ptr<raw_ostream> OS =
-      std::make_unique<raw_string_ostream>(Buffer);
-  json::OStream J(*OS);
+  std::unique_ptr<llvm::raw_ostream> OS =
+      std::make_unique<llvm::raw_string_ostream>(Buffer);
+  llvm::json::OStream J(*OS);
   J.object([&]() {
     J.attributeArray("features", [&]() {
       for (size_t I = 0; I < tensorSpecs.size(); ++I) {
@@ -125,7 +123,7 @@ void *BitstreamSerDes::getSerializedData() {
   });
   J.flush();
   OS->write("\n", 1);
-  LLVM_DEBUG(errs() << "rawData.size(): " << rawData.size() << "\n");
+  LLVM_DEBUG(llvm::errs() << "rawData.size(): " << rawData.size() << "\n");
   for (size_t I = 0; I < rawData.size(); ++I) {
     OS->write(reinterpret_cast<const char *>(rawData[I]),
               tensorSpecs[I].getTotalTensorBufferSize());

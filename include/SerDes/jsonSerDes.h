@@ -13,8 +13,6 @@
 #include <string>
 #include <utility>
 
-using namespace std;
-using namespace llvm;
 namespace MLBridge {
 class JsonSerDes : public BaseSerDes {
 public:
@@ -30,21 +28,21 @@ public:
   }                                                                            \
   void setFeature(const std::string &name, const std::vector<TYPE> &value)     \
       override {                                                               \
-    J[name] = json::Array(value);                                              \
+    J[name] = llvm::json::Array(value);                                              \
   }
   SUPPORTED_TYPES(SET_FEATURE)
 #undef SET_FEATURE
 
   void *getSerializedData() override;
 
-  void cleanDataStructures() override { J = json::Object(); }
+  void cleanDataStructures() override { J = llvm::json::Object(); }
 
 private:
   void *deserializeUntyped(void *data) override;
-  void *desJson(json::Value *V);
+  void *desJson(llvm::json::Value *V);
 
 private:
-  json::Object J;
+  llvm::json::Object J;
 };
 } // namespace MLBridge
 

@@ -82,19 +82,19 @@ public:
 
 protected:
   MLModelRunner(Kind Type, BaseSerDes::Kind SerDesType,
-                LLVMContext *Ctx = nullptr)
+                llvm::LLVMContext *Ctx = nullptr)
       : Ctx(Ctx), Type(Type), SerDesType(SerDesType) {
     assert(Type != Kind::Unknown);
     initSerDes();
   }
-  MLModelRunner(Kind Type, LLVMContext *Ctx = nullptr)
+  MLModelRunner(Kind Type, llvm::LLVMContext *Ctx = nullptr)
       : Ctx(Ctx), Type(Type), SerDesType(BaseSerDes::Kind::Unknown) {
     SerDes = nullptr;
   };
 
   virtual void *evaluateUntyped() = 0;
 
-  LLVMContext *Ctx;
+  llvm::LLVMContext *Ctx;
   const Kind Type;
   const BaseSerDes::Kind SerDesType;
 

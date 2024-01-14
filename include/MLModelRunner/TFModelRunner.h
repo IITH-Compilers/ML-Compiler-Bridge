@@ -29,9 +29,9 @@ template <class TGen> class TFModelRunner final : public MLModelRunner {
 public:
   /// FeatureNames' type should be an indexed collection of std::string, like
   /// std::array or std::vector, that has a size() method.
-  TFModelRunner(StringRef DecisionName, LLVMContext &Ctx,
-                StringRef FeedPrefix = "feed_",
-                StringRef FetchPrefix = "fetch_")
+  TFModelRunner(llvm::StringRef DecisionName, llvm::LLVMContext &Ctx,
+                llvm::StringRef FeedPrefix = "feed_",
+                llvm::StringRef FetchPrefix = "fetch_")
       : MLModelRunner(MLModelRunner::Kind::TFAOT, BaseSerDes::Kind::Tensorflow,
                       &Ctx),
         CompiledModel(std::make_unique<TGen>()) {
@@ -44,8 +44,8 @@ public:
                                                    DecisionName.str());
     assert(ResultIndex >= 0 && "Cannot find DecisionName in inlining model");
   }
-  TFModelRunner(StringRef DecisionName, StringRef FeedPrefix = "feed_",
-                StringRef FetchPrefix = "fetch_")
+  TFModelRunner(llvm::StringRef DecisionName, llvm::StringRef FeedPrefix = "feed_",
+                llvm::StringRef FetchPrefix = "fetch_")
       : MLModelRunner(MLModelRunner::Kind::TFAOT, BaseSerDes::Kind::Tensorflow),
         CompiledModel(std::make_unique<TGen>()) {
 

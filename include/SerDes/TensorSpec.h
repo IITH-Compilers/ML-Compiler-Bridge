@@ -18,7 +18,6 @@
 #include <optional>
 #include <vector>
 
-using namespace llvm;
 namespace MLBridge {
 /// TensorSpec encapsulates the specification of a tensor: its dimensions, or
 /// "shape" (row-major), its type (see TensorSpec::getDataType specializations
@@ -91,7 +90,7 @@ public:
       : TensorSpec(NewName, Other.Port, Other.Type, Other.ElementSize,
                    Other.Shape) {}
 
-  void toJSON(json::OStream &OS) const;
+  void toJSON(llvm::json::OStream &OS) const;
 
 private:
   TensorSpec(const std::string &Name, int Port, TensorType Type,
@@ -117,8 +116,8 @@ std::string tensorValueToString(const char *Buffer, const TensorSpec &Spec);
 ///   "shape": <array of ints> }
 /// For the "type" field, see the C++ primitive types used in
 /// TFUTILS_SUPPORTED_TYPES.
-std::optional<TensorSpec> getTensorSpecFromJSON(LLVMContext &Ctx,
-                                                const json::Value &Value);
+std::optional<TensorSpec> getTensorSpecFromJSON(llvm::LLVMContext &Ctx,
+                                                const llvm::json::Value &Value);
 
 #define TFUTILS_GETDATATYPE_DEF(T, Name)                                       \
   template <> TensorType TensorSpec::getDataType<T>();

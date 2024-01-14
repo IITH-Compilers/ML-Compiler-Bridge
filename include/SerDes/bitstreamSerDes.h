@@ -16,15 +16,14 @@
 #include <utility>
 #include <vector>
 
-using namespace std;
 
 namespace MLBridge {
 class BitstreamSerDes : public BaseSerDes {
 public:
   BitstreamSerDes() : BaseSerDes(Kind::Bitstream) {
     Buffer = "";
-    tensorSpecs = vector<TensorSpec>();
-    rawData = vector<const void *>();
+    tensorSpecs = std::vector<TensorSpec>();
+    rawData = std::vector<const void *>();
 
 #define TEMPORARY_STORAGE_INIT(TYPE)                                           \
   features##TYPE = {};                                                         \
@@ -42,8 +41,8 @@ public:
 
   void cleanDataStructures() override {
     Buffer = "";
-    tensorSpecs = vector<TensorSpec>();
-    rawData = vector<const void *>();
+    tensorSpecs = std::vector<TensorSpec>();
+    rawData = std::vector<const void *>();
 
 #define TEMPORARY_STORAGE_CLEAN(TYPE)                                          \
   for (auto &it : features##TYPE) {                                            \
@@ -62,9 +61,9 @@ public:
 
 private:
   void *deserializeUntyped(void *) override;
-  vector<TensorSpec> tensorSpecs;
-  vector<const void *> rawData;
-  string Buffer;
+  std::vector<TensorSpec> tensorSpecs;
+  std::vector<const void *> rawData;
+  std::string Buffer;
 
 #define TEMPORARY_STORAGE_DEF(TYPE)                                            \
   std::map<std::string, TYPE *> features##TYPE;                                \

@@ -14,6 +14,8 @@
 
 #define DEBUG_TYPE "json-serdes"
 
+using namespace llvm;
+
 namespace MLBridge {
 void *JsonSerDes::getSerializedData() {
   auto tempJO = J;

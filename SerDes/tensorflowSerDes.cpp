@@ -21,7 +21,7 @@ SUPPORTED_TYPES(SET_FEATURE)
 #undef SET_FEATURE
 
 void TensorflowSerDes::setFeature(const std::string &Name,
-                                  const vector<int64_t> &Value) {
+                                  const std::vector<int64_t> &Value) {
   std::string prefix = "feed_";
   const int Index = CompiledModel->LookupArgIndex(prefix + Name);
   std::copy(Value.begin(), Value.end(),
@@ -29,7 +29,7 @@ void TensorflowSerDes::setFeature(const std::string &Name,
 }
 
 void TensorflowSerDes::setFeature(const std::string &Name,
-                                  const vector<float> &Value) {
+                                  const std::vector<float> &Value) {
   std::string prefix = "feed_";
   const int Index = CompiledModel->LookupArgIndex(prefix + Name);
   std::copy(Value.begin(), Value.end(),
@@ -37,7 +37,7 @@ void TensorflowSerDes::setFeature(const std::string &Name,
 }
 
 void TensorflowSerDes::setFeature(const std::string &Name,
-                                  const vector<double> &Value) {
+                                  const std::vector<double> &Value) {
   std::string prefix = "feed_";
   const int Index = CompiledModel->LookupArgIndex(prefix + Name);
   std::copy(Value.begin(), Value.end(),
@@ -45,7 +45,7 @@ void TensorflowSerDes::setFeature(const std::string &Name,
 }
 
 void TensorflowSerDes::setFeature(const std::string &Name,
-                                  const vector<std::string> &Value) {
+                                  const std::vector<std::string> &Value) {
   std::string prefix = "feed_";
   const int Index = CompiledModel->LookupArgIndex(prefix + Name);
   std::copy(Value.begin(), Value.end(),
@@ -53,7 +53,7 @@ void TensorflowSerDes::setFeature(const std::string &Name,
 }
 
 void TensorflowSerDes::setFeature(const std::string &Name,
-                                  const vector<bool> &Value) {
+                                  const std::vector<bool> &Value) {
   std::string prefix = "feed_";
   const int Index = CompiledModel->LookupArgIndex(prefix + Name);
   std::copy(Value.begin(), Value.end(),
@@ -61,7 +61,7 @@ void TensorflowSerDes::setFeature(const std::string &Name,
 }
 
 void TensorflowSerDes::setFeature(const std::string &Name,
-                                  const vector<int> &Value) {
+                                  const std::vector<int> &Value) {
   std::string prefix = "feed_";
   const int Index = CompiledModel->LookupArgIndex(prefix + Name);
   std::copy(Value.begin(), Value.end(),

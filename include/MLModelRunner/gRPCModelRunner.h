@@ -24,7 +24,7 @@ template <class Client, class Stub, class Request, class Response>
 class gRPCModelRunner : public MLModelRunner {
 public:
   gRPCModelRunner(std::string server_address, grpc::Service *s,
-                  LLVMContext *Ctx = nullptr) // For server mode
+                  llvm::LLVMContext *Ctx = nullptr) // For server mode
       : MLModelRunner(MLModelRunner::Kind::gRPC, BaseSerDes::Kind::Protobuf,
                       Ctx),
         server_address(server_address), request(nullptr), response(nullptr),
@@ -34,7 +34,7 @@ public:
 
   gRPCModelRunner(std::string server_address, Request *request,
                   Response *response,
-                  LLVMContext *Ctx = nullptr) // For client mode
+                  llvm::LLVMContext *Ctx = nullptr) // For client mode
       : MLModelRunner(MLModelRunner::Kind::gRPC, BaseSerDes::Kind::Protobuf,
                       Ctx),
         server_address(server_address), request(request), response(response),
@@ -44,7 +44,7 @@ public:
 
   // void *getStub() { return stub_; }
   void requestExit() override {
-    errs() << "Exit from grpc\n";
+    llvm::errs() << "Exit from grpc\n";
     exit_requested->set_value();
   }
 
@@ -102,7 +102,7 @@ private:
   Response *getResponse() { return (Response *)SerDes->getResponse(); }
 
   void printMessage(const google::protobuf::Message *message) {
-    errs() << "In gRPCModelRunner printMessage...\n";
+    llvm::errs() << "In gRPCModelRunner printMessage...\n";
     std::string s;
     if (google::protobuf::TextFormat::PrintToString(*message, &s)) {
       std::cout << "Your message: " << s << std::endl;

@@ -23,6 +23,8 @@
 
 #define DEBUG_TYPE "pipe-model-runner"
 
+using namespace llvm;
+
 namespace MLBridge {
 PipeModelRunner::PipeModelRunner(StringRef OutboundName, StringRef InboundName,
                                  BaseSerDes::Kind SerDesType, LLVMContext *Ctx)

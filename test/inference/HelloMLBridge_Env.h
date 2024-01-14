@@ -3,7 +3,6 @@
 #include "llvm/IR/Module.h"
 #include "llvm/Support/raw_ostream.h"
 
-using namespace llvm;
 using namespace MLBridge;
 class HelloMLBridgeEnv : public Environment {
   Observation CurrObs;
@@ -22,7 +21,7 @@ Observation& HelloMLBridgeEnv::step(Action Action) {
   CurrObs.clear();
   std::copy(FeatureVector.begin(), FeatureVector.end(),
             std::back_inserter(CurrObs));
-  outs() << "Action: " << Action << "\n";
+  llvm::outs() << "Action: " << Action << "\n";
   setDone();
   return CurrObs;
 }
