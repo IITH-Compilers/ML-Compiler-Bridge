@@ -4,6 +4,12 @@
 // See the LICENSE.txt file under ml-llvm-tools directory for license
 // information.
 //
+// Base Environment class to support ML model inference
+//
+// How to use?
+// 1. Create an environment class inheriting from MLBridge::Environment
+// 2. Implement the step() and reset() methods
+// 3. Create an ONNXModelRunner object with the environment and the agents
 //===----------------------------------------------------------------------===//
 
 #ifndef ONNX_MODELRUNNER_ENVIRONMENT_H

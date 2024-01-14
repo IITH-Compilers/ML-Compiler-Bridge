@@ -3,6 +3,13 @@
 //
 // Part of the MLCompilerBridge Project
 //
+// Base class for serialization and deserialization
+//
+// How to support a new serializtion technique:
+// 1. Create a new class which inherits from BaseSerDes.
+// 2. Implement the setFeature(), getSerializedData()
+// cleanDataStructures() and deserializeUntyped()
+// methods.
 //===------------------===//
 
 #ifndef BASE_SERDES_H

@@ -2,6 +2,7 @@
 //
 // Part of the MLCompilerBridge Project
 //
+// Json Serialization/Deserialization using LLVM's json library
 //===------------------===//
 
 #ifndef JSON_SERIALIZER_H

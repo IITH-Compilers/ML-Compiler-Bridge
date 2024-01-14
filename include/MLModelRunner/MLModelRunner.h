@@ -4,6 +4,12 @@
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
+// Base MLModelRunner class which exposes APIs to set the features
+// to be send to the ML model and get the result back from the model.
+//
+// How to support a new ModelRunner:
+// 1. Create a new class which inherits from MLModelRunner.
+// 2. Implement the evaluateUntyped() method.
 //===----------------------------------------------------------------------===//
 //
 

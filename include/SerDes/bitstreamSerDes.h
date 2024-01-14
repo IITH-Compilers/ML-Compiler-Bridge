@@ -3,6 +3,9 @@
 //
 // Part of the MLCompilerBridge Project
 //
+// Bitstream Serialization/Deserialization which sends header information
+// followed by the raw data.
+//
 //===------------------===//
 
 #ifndef BITSTREAM_SERIALIZER_H

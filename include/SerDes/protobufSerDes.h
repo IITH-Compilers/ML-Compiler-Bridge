@@ -2,6 +2,7 @@
 //
 // Part of the MLCompilerBridge Project
 //
+// Protobuf Serialization/Deserialization to support gRPC communication
 //===------------------===//
 
 #ifndef PROTOBUF_SERIALIZER_H

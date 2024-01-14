@@ -4,7 +4,16 @@
 // See the LICENSE.txt file under ml-llvm-tools directory for license
 // information.
 //
-//===----------------------------------------------------------------------===//
+// gRPCModelRunner class supporting communication via gRPC
+//
+// How to use?
+// 1. Create a .proto file with the service and message definitions
+// 2. Generate the stubs using protoc
+// 3. Create a gRPCModelRunner object with the server address, stub, request and
+// response
+// 4. Populate the features to be sent to the model
+// 5. Call evaluate() to get the result back from the model
+// ===----------------------------------------------------------------------===//
 
 #ifndef GRPC_MODELRUNNER_H
 #define GRPC_MODELRUNNER_H

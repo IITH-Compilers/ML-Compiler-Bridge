@@ -4,6 +4,12 @@
 // See the LICENSE.txt file under ml-llvm-tools directory for license
 // information.
 //
+// Agent class to support ML model inference
+//
+// How to use?
+// 1. Construct an agent object with the path to the ONNX model
+// 2. Call computeAction() to get the action from the model
+//
 //===----------------------------------------------------------------------===//
 
 #ifndef ONNX_MODELRUNNER_AGENT_H

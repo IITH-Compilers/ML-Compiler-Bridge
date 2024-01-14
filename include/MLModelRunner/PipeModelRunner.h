@@ -1,11 +1,18 @@
-//===- PipeModelRunner.h ---- "gym" ML model runner  -----*- C++ -*-===//
+//===- PipeModelRunner.h ---- PipeModelRunner  -----*- C++ -*-===//
 //
 // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
-//===----------------------------------------------------------------------===//
+// PipeModelRunner class supporting communication via OS pipes
+// 
+// How to use?
+// 1. Create a PipeModelRunner object with the names of the pipes, and the
+// serialization technique
+// 2. Populate the features to be sent to the model
+// 3. Call evaluate() to get the result back from the model
 //
+//===----------------------------------------------------------------------===//
 
 #ifndef PipeModelRunner_H
 #define PipeModelRunner_H
@@ -23,9 +30,7 @@ namespace MLBridge {
 /// A MLModelRunner that asks for advice from an external agent, or host. It
 /// uses 2 files - ideally named pipes - one to send data to that agent, and
 /// one to receive advice.
-/// The data exchange uses the training logger (Utils/TrainingLogger.h) format.
-/// Specifically, the compiler will send the log header, set the context, and
-/// send observations; the host is expected to reply with a tensor value after
+/// The compiler will send observations; the host is expected to reply with a tensor value after
 /// each observation as a binary buffer that's conforming to the shape of the
 /// advice. Interleaved, the data closely resembles the training log for a
 /// log where we don't capture the reward signal.
