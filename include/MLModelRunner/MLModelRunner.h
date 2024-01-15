@@ -1,17 +1,36 @@
 //===- MLModelRunner.h ---- ML model runner interface -----------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
-// See https://llvm.org/LICENSE.txt for license information.
-// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
 //
-// Base MLModelRunner class which exposes APIs to set the features
-// to be send to the ML model and get the result back from the model.
+// (Preliminary version adopted from MLModelRunner.h of LLVM 17.X)
 //
-// How to support a new ModelRunner:
-// 1. Create a new class which inherits from MLModelRunner.
-// 2. Implement the evaluateUntyped() method.
 //===----------------------------------------------------------------------===//
 //
+// The MLModelRunner class is the main interface for interacting with the
+// ML models. The MLCompilerBridge uses the MLModelRunner class to set the
+// features to be sent to the model and get the result back from the model.
+//
+// This class internally uses the SerDes class to serialize and deserialize the
+// features and result.
+//
+// The MLModelRunner class is an abstract class and cannot be instantiated.
+//
+// This class internally uses the SerDes class to serialize and deserialize the
+// features and result.
+//
+// Supporting new Model Runners:
+// 1. Create a new class inheriting the MLModelRunner class.
+// 2. Override evaluateUntyped() method to call the model and get the result.
+//
+// Using any of the existing Model Runners:
+// 1. Instantiate the model runner object with the appropriate arguments.
+// 2. Call populateFeatures() to set the features to be sent to the model.
+// 3. Call evaluate() to get the send and receive the result from the model.
+// Similar flows apply for both training and inference.
+
+//===----------------------------------------------------------------------===//
 
 #ifndef ML_MODEL_RUNNER_H
 #define ML_MODEL_RUNNER_H

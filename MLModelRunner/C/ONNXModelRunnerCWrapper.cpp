@@ -1,3 +1,15 @@
+//=== MLModelRunner/C/ONNXModelRunner.cpp - C API for ONNXModelRunner -----===//
+//
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
+//
+//===----------------------------------------------------------------------===//
+//
+// This file defines the C APIs for ONNXModelRunner.
+//
+//===----------------------------------------------------------------------===//
+
 #include "MLModelRunner/C/ONNXModelRunner.h"
 #include "MLModelRunner/ONNXModelRunner/agent.h"
 #include "MLModelRunner/ONNXModelRunner/utils.h"

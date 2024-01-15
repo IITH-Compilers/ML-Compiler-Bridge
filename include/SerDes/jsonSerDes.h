@@ -1,9 +1,14 @@
-//=== SerDes/jsonSerDes.h - Json Serialization/Deserialization ---*- C++
+//=== SerDes/jsonSerDes.h -Json Serialization/Deserialization ---*- C++ ---===//
 //
-// Part of the MLCompilerBridge Project
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
 //
-// Json Serialization/Deserialization using LLVM's json library
-//===------------------===//
+//===----------------------------------------------------------------------===//
+//
+// Json Serialization/Deserialization using LLVM's json library.
+//
+//===----------------------------------------------------------------------===//
 
 #ifndef JSON_SERIALIZER_H
 #define JSON_SERIALIZER_H
@@ -28,7 +33,7 @@ public:
   }                                                                            \
   void setFeature(const std::string &name, const std::vector<TYPE> &value)     \
       override {                                                               \
-    J[name] = llvm::json::Array(value);                                              \
+    J[name] = llvm::json::Array(value);                                        \
   }
   SUPPORTED_TYPES(SET_FEATURE)
 #undef SET_FEATURE

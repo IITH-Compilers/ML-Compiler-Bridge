@@ -1,8 +1,10 @@
 //===- TensorSpec.cpp - tensor type abstraction ---------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
-// See https://llvm.org/LICENSE.txt for license information.
-// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
+//
+// (Preliminary version adopted from TensorSpec.cpp of LLVM 12.X)
 //
 //===----------------------------------------------------------------------===//
 //
@@ -10,6 +12,7 @@
 // utils.
 //
 //===----------------------------------------------------------------------===//
+
 #include "SerDes/TensorSpec.h"
 #include "MLModelRunner/Utils/JSON.h"
 #include "llvm/Support/Debug.h"

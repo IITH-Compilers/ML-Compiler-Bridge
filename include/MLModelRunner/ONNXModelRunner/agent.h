@@ -1,12 +1,14 @@
-//===----------------------------------------------------------------------===//
+//=== MLModelRunner/ONNXModelRunner/agent.h - Agent Model Helper - C++ -===//
 //
-// Part of the ml-llvm-tools Project, under the BSD 4-Clause License.
-// See the LICENSE.txt file under ml-llvm-tools directory for license
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
 // information.
 //
-// Agent class to support ML model inference
+//===---------------------------------------------------------------------===//
 //
-// How to use?
+// Agent class to support ML/RL model inference via ONNX
+//
+// Usage:
 // 1. Construct an agent object with the path to the ONNX model
 // 2. Call computeAction() to get the action from the model
 //
@@ -20,8 +22,6 @@
 
 #include <stdio.h>
 #include <string>
-
-#define DEBUG_TYPE "rl-inference-engine"
 
 namespace MLBridge {
 class Agent {

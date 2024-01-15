@@ -1,9 +1,14 @@
-//=== SerDes/tensorflowSerDes.h - Tensorflow Serialization/Deserialization ---*-
-//C++
+//=== SerDes/tensorflowSerDes.h - SerDes for TF support ---*- C++ ---------===//
 //
-// Part of the MLCompilerBridge Project
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
 //
-//===------------------===//
+//===----------------------------------------------------------------------===//
+//
+// Serialization/Deserialization to support TF AOT models.
+//
+//===----------------------------------------------------------------------===//
 
 #ifndef TENSORFLOW_SERIALIZER_H
 #define TENSORFLOW_SERIALIZER_H

@@ -1,12 +1,15 @@
-//=== SerDes/bitstreamSerDes.h - Bitstream Serialization/Deserialization ---*-
-// C++ -*-===//
+//=== SerDes/bitstreamSerDes.h -Bitstream Serialization/Deserialization-C++===//
 //
-// Part of the MLCompilerBridge Project
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
+//
+//===----------------------------------------------------------------------===//
 //
 // Bitstream Serialization/Deserialization which sends header information
 // followed by the raw data.
 //
-//===------------------===//
+//===----------------------------------------------------------------------===//
 
 #ifndef BITSTREAM_SERIALIZER_H
 #define BITSTREAM_SERIALIZER_H
@@ -18,7 +21,6 @@
 #include <string>
 #include <utility>
 #include <vector>
-
 
 namespace MLBridge {
 class BitstreamSerDes : public BaseSerDes {

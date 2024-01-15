@@ -1,9 +1,17 @@
-//=== MLCompilerBridge/SerDes/protobufSerDes.cpp - Protobuf SerDes
-// Implementation ---*- C++ -*-===//
+//===- protobufSerDes.cpp - Protobuf Serializer for gRPC  -------*- C++ -*-===//
 //
-// Part of the MLCompilerBridge Project
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
 //
-//===------------------===//
+//===----------------------------------------------------------------------===//
+//
+// This file defines the ProtobufSerDes class, which is a wrapper around the
+// protobuf C++ interface to support gRPC communication between the client and
+// server. The protobuf C++ interface is used to serialize and deserialize
+// messages.
+//
+//===----------------------------------------------------------------------===//
 
 #include "SerDes/protobufSerDes.h"
 #include "google/protobuf/descriptor.h"

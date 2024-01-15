@@ -1,3 +1,18 @@
+# ------------------------------------------------------------------------------
+#
+# Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+# See the LICENSE file under home directory for license and copyright
+# information.
+#
+# ------------------------------------------------------------------------------
+#
+# This file contains the abstract class for compiler interface. It specifies the
+# methods for communication with compiler. It also initializes the correct
+# SerDes object for serialization and deserialization of data.
+#
+# ------------------------------------------------------------------------------
+
+
 from abc import ABC, abstractmethod
 from SerDes import SerDes
 import os

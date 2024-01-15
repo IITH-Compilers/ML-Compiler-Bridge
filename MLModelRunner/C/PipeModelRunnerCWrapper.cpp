@@ -1,3 +1,15 @@
+//=== MLModelRunner/C/PipeModelRunner.cpp - C API for PipeModelRunner -----===//
+//
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
+//
+//===----------------------------------------------------------------------===//
+//
+// This file defines the C APIs for PipeModelRunner.
+//
+//===----------------------------------------------------------------------===//
+
 #include "MLModelRunner/C/PipeModelRunner.h"
 
 #include "MLModelRunner/MLModelRunner.h"
@@ -15,7 +27,7 @@ PipeModelRunnerWrapper *createPipeModelRunner(const char *OutboundName,
                                               int SerDesType) {
   PipeModelRunnerWrapper *obj = new PipeModelRunnerWrapper();
   obj->model = new PipeModelRunner(OutboundName, InboundName,
-                                         (BaseSerDes::Kind)SerDesType);
+                                   (BaseSerDes::Kind)SerDesType);
   return obj;
 }
 

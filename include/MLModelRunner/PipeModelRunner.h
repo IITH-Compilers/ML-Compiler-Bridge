@@ -1,16 +1,24 @@
-//===- PipeModelRunner.h ---- PipeModelRunner  -----*- C++ -*-===//
+//===- PipeModelRunner.h ---- PipeModelRunner  ------*- C++ -*-------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
-// See https://llvm.org/LICENSE.txt for license information.
-// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
 //
-// PipeModelRunner class supporting communication via OS pipes
-// 
-// How to use?
+// (Preliminary version adopted from InteractiveModelRunner.h of LLVM 17.X)
+//
+//===----------------------------------------------------------------------===//
+//
+// PipeModelRunner class supporting communication via OS pipes between the
+// compiler and an external ML agent.
+//
+// Usage:
 // 1. Create a PipeModelRunner object with the names of the pipes, and the
-// serialization technique
-// 2. Populate the features to be sent to the model
-// 3. Call evaluate() to get the result back from the model
+// serialization technique.
+// 2. Populate the features to be sent to the model.
+// 3. Call evaluate() to get the result back from the model.
+//
+// This supports both training and inference. Supports interleaved
+// communication.
 //
 //===----------------------------------------------------------------------===//
 
@@ -30,10 +38,10 @@ namespace MLBridge {
 /// A MLModelRunner that asks for advice from an external agent, or host. It
 /// uses 2 files - ideally named pipes - one to send data to that agent, and
 /// one to receive advice.
-/// The compiler will send observations; the host is expected to reply with a tensor value after
-/// each observation as a binary buffer that's conforming to the shape of the
-/// advice. Interleaved, the data closely resembles the training log for a
-/// log where we don't capture the reward signal.
+/// The compiler will send observations; the host is expected to reply with a
+/// tensor value after each observation as a binary buffer that's conforming to
+/// the shape of the advice. Interleaved, the data closely resembles the
+/// training log for a log where we don't capture the reward signal.
 ///
 /// Note that the correctness of the received data is the responsibility of the
 /// host. In particular, if insufficient data were sent, the compiler will block
