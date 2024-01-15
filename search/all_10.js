@@ -15,7 +15,8 @@ var searchData=
   ['resetdone_12',['resetDone',['../d0/d3c/structEnvironment.html#a59a9f3c05ae3e8156de973aacb9dccfa',1,'Environment']]],
   ['resetfunc_13',['resetFunc',['../d0/d3c/structEnvironment.html#a676911e509543a65428225fa8cff3107',1,'Environment']]],
   ['returned_5fdata_14',['returned_data',['../d3/d31/namespacemlbridge-test.html#a40a321e49ed03bba4d54e0c6adb69b9a',1,'mlbridge-test']]],
-  ['rl_20agent_20class_15',['RL Agent Class',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md7',1,'']]],
-  ['rl_20inferenceengine_20class_16',['RL InferenceEngine Class',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md8',1,'']]],
-  ['run_5fpipe_5fcommunication_17',['run_pipe_communication',['../d2/d3c/namespacehello-mlbridge.html#abca85001e0522d0f0d932a75007eb424',1,'hello-mlbridge.run_pipe_communication()'],['../d3/d31/namespacemlbridge-test.html#a0ddb6a53c068887b7574270e6c930c8f',1,'mlbridge-test.run_pipe_communication()']]]
+  ['rl_20agent_20class_15',['RL Agent Class',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md6',1,'']]],
+  ['rl_20inferenceengine_20class_16',['RL InferenceEngine Class',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md7',1,'']]],
+  ['run_5fpipe_5fcommunication_17',['run_pipe_communication',['../d2/d3c/namespacehello-mlbridge.html#abca85001e0522d0f0d932a75007eb424',1,'hello-mlbridge.run_pipe_communication()'],['../d3/d31/namespacemlbridge-test.html#a0ddb6a53c068887b7574270e6c930c8f',1,'mlbridge-test.run_pipe_communication()']]],
+  ['runner_20in_20process_20model_20runner_18',['ONNX Model Runner  (In-Process Model Runner)',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html',1,'']]]
 ];

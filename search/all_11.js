@@ -23,6 +23,5 @@ var searchData=
   ['start_5fserver_20',['start_server',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#afb51de2021f1d7cf607e592a53dc3939',1,'GrpcCompilerInterface::GrpcCompilerInterface']]],
   ['step_21',['step',['../d0/d3c/structEnvironment.html#a573c94e0d53727915fa406cacfc51532',1,'Environment']]],
   ['stepfunc_22',['stepFunc',['../d0/d3c/structEnvironment.html#a2c9cc7b98a105c8a56cab019e74d8460',1,'Environment']]],
-  ['structure_23',['Directory structure',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md5',1,'']]],
-  ['stub_24',['stub',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a3781b5631c0de3f25353dcece395d03b',1,'GrpcCompilerInterface::GrpcCompilerInterface']]]
+  ['stub_23',['stub',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a3781b5631c0de3f25353dcece395d03b',1,'GrpcCompilerInterface::GrpcCompilerInterface']]]
 ];

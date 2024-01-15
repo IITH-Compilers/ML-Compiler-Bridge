@@ -7,7 +7,7 @@ var indexSectionsWithContent =
   4: "_cdefgimoprst",
   5: "_abcdefghmnprst",
   6: "_dpst",
-  7: "aegilmt"
+  7: "agilmoprt"
 };
 
 var indexSectionNames =

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['grpc_3aregister_20allocation_0',['LLVM-GRPC:Register-Allocation',['../df/ddf/md_MLModelRunner_2gRPCModelRunner_2README.html',1,'']]]
+  ['in_20process_20model_20runner_0',['ONNX Model Runner  (In-Process Model Runner)',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html',1,'']]]
 ];

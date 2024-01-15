@@ -9,5 +9,6 @@ var searchData=
   ['mlconfig_2ecpp_6',['MLConfig.cpp',['../d8/d8f/MLConfig_8cpp.html',1,'']]],
   ['mode_7',['mode',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a7d6c90e8641852fac5daa6e710ffee9b',1,'GrpcCompilerInterface::GrpcCompilerInterface']]],
   ['model_8',['model',['../d7/d79/structPipeModelRunnerWrapper.html#a719f23ff380eeda3e1de85fc2b58ede1',1,'PipeModelRunnerWrapper']]],
-  ['model_20integration_9',['Trained model integration',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md4',1,'']]]
+  ['model_20integration_9',['Trained model integration',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md4',1,'']]],
+  ['model_20runner_20in_20process_20model_20runner_10',['ONNX Model Runner  (In-Process Model Runner)',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html',1,'']]]
 ];

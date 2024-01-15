@@ -11,8 +11,7 @@ var searchData=
   ['destroyenvironment_8',['destroyEnvironment',['../dd/dbf/ONNXModelRunnerCWrapper_8cpp.html#afa27b4d26dfc823f326ea8c59a91240a',1,'ONNXModelRunnerCWrapper.cpp']]],
   ['destroyonnxmodelrunner_9',['destroyONNXModelRunner',['../dd/dbf/ONNXModelRunnerCWrapper_8cpp.html#a640e7ca2560e58a56910125a55e8d163',1,'ONNXModelRunnerCWrapper.cpp']]],
   ['destroypipemodelrunner_10',['destroyPipeModelRunner',['../d3/d5c/PipeModelRunnerCWrapper_8cpp.html#a095141739f1d5de3861abd9f323401bd',1,'PipeModelRunnerCWrapper.cpp']]],
-  ['directory_20structure_11',['Directory structure',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md5',1,'']]],
-  ['done_12',['done',['../d0/d3c/structEnvironment.html#a2051c6520814e379b4718634e4d435c7',1,'Environment']]],
-  ['dummy_13',['dummy',['../d3/d62/tools_8cpp.html#a100d09f9a57d44745299c28c63c98745',1,'tools.cpp']]],
-  ['dummymodel_14',['DummyModel',['../dc/d41/classhello-mlbridge_1_1DummyModel.html',1,'hello-mlbridge.DummyModel'],['../df/d2e/classmlbridge-test_1_1DummyModel.html',1,'mlbridge-test.DummyModel']]]
+  ['done_11',['done',['../d0/d3c/structEnvironment.html#a2051c6520814e379b4718634e4d435c7',1,'Environment']]],
+  ['dummy_12',['dummy',['../d3/d62/tools_8cpp.html#a100d09f9a57d44745299c28c63c98745',1,'tools.cpp']]],
+  ['dummymodel_13',['DummyModel',['../dc/d41/classhello-mlbridge_1_1DummyModel.html',1,'hello-mlbridge.DummyModel'],['../df/d2e/classmlbridge-test_1_1DummyModel.html',1,'mlbridge-test.DummyModel']]]
 ];
