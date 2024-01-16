@@ -222,7 +222,7 @@ private:
     auto serveFn = [&]() { server->Wait(); };
     std::thread serving_thread(serveFn);
     auto f = exit_requested->get_future();
-    this->requestExit();
+    // this->requestExit();
     f.wait();
     server->Shutdown();
     serving_thread.join();
