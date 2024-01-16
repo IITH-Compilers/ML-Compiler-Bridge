@@ -998,6 +998,7 @@ FILE_PATTERNS          = *.c \
                          *.ccm \
                          *.c++ \
                          *.c++m \
+                         *.h \
                          *.py \
                          README.md
 

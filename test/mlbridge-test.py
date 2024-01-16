@@ -1,17 +1,22 @@
 import argparse
-from PipeCompilerInterface import PipeCompilerInterface
-from GrpcCompilerInterface import GrpcCompilerInterface
 import numpy as np
 import ctypes
 
 import sys
 import torch, torch.nn as nn
 
+sys.path.append("../CompilerInterface")
+from PipeCompilerInterface import PipeCompilerInterface
+from GrpcCompilerInterface import GrpcCompilerInterface
+
 sys.path.append(
     "../MLModelRunner/gRPCModelRunner/Python-Utilities"
 )
 import helloMLBridge_pb2, helloMLBridge_pb2_grpc, grpc
 from concurrent import futures
+
+FAIL = 1
+SUCCESS = 0
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--use_pipe", type=bool, default=False, help="Use pipe or not", required=False)
@@ -25,6 +30,12 @@ parser.add_argument(
     "--pipe_name",
     type=str,
     help="Pipe Name",
+)
+parser.add_argument(
+    "--silent",
+    type=bool,
+    help="Only prints errors when set to true",
+    default=False
 )
 parser.add_argument(
     "--use_grpc",
@@ -48,8 +59,7 @@ class DummyModel(nn.Module):
 
     def forward(self, input):
         x = self.fc1(input)
-        return x
-    
+        return x    
 
 expected_type = {
     1: 'int',
@@ -72,7 +82,7 @@ expected_data = {
     5: ord('a'),
     6: True,
     7: [11,22,33],
-    8: [111,222,333],
+    8: [123456780,222,333],
     9: [11.1,22.2,33.3],
     10: [-1.1111111111,-2.2222222222,-3.3333333333],
 }
@@ -90,10 +100,19 @@ returned_data = {
     10: [ctypes.c_double(1.12345678912345670), ctypes.c_double(-1.12345678912345671)]
 }
 
+# may not be configured for extended types
+if args.data_format == "json":
+    returned_data[2] = ctypes.c_long(12345)
+    returned_data[8] = [ctypes.c_long(6780),ctypes.c_long(6781),ctypes.c_long(6782)] #[ctypes.c_long(6780),ctypes.c_long(6781),ctypes.c_long(6782)],
+
+
 def run_pipe_communication(data_format, pipe_name):
     compiler_interface = PipeCompilerInterface(data_format, '/tmp/' + pipe_name)
-    print("PipeCompilerInterface init...")
+    if not args.silent: 
+        print("PipeCompilerInterface init...")
     compiler_interface.reset_pipes()
+
+    status = SUCCESS
     i = 0
     while True:
         i += 1 
@@ -107,19 +126,26 @@ def run_pipe_communication(data_format, pipe_name):
                 if len(data) == 1:
                     data = data[0]
 
-            print(expected_type[i], "request:", data)
+            if not args.silent:
+                print(" ", expected_type[i], "request:", data)
 
             if isinstance(expected_data[i], list):
                 for e,d in zip(expected_data[i],data):
                     if abs(e-d)>10e-6:
-                        print(f"Mismatch in {expected_type[i]}")
+                        print(f"Error: Expected {expected_type[i]} request: {expected_data[i]}, Received: {data}")
+                        status = FAIL
                         # raise Exception(f"Mismatch in {expected_type[i]}")
 
             elif abs(data - expected_data[i]) >10e-6: 
-                print(f"Mismatch in {expected_type[i]}")
+                print(f"Error: Expected {expected_type[i]} request: {expected_data[i]}, Received: {data}")
+                status = FAIL
                 # raise Exception(f"Mismatch in {expected_type[i]}")
 
             compiler_interface.populate_buffer(returned_data[i])
+
+            if i == len(expected_type):
+                data = compiler_interface.evaluate(mode='exit')
+                exit(status)
         except Exception as e:
             print("*******Exception*******", e)
             compiler_interface.reset_pipes()
