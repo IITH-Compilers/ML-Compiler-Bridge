@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['set_5ffeature_0',['SET_FEATURE',['../d3/d15/tensorflowSerDes_8cpp.html#ad0c3185874c1450a2f28e0641b00411d',1,'tensorflowSerDes.cpp']]]
+  ['parse_5ftype_0',['PARSE_TYPE',['../df/d39/TensorSpec_8cpp.html#a0371cdafafcfbe22778b02ffab361052',1,'TensorSpec.cpp']]]
 ];

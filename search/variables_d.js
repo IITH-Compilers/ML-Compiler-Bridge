@@ -1,13 +1,10 @@
 var searchData=
 [
-  ['serdes_5fobj_0',['serdes_obj',['../de/d17/classBaseCompilerInterface_1_1BaseCompilerInterface.html#abe6b893beff97307c8441b2e1a93e589',1,'BaseCompilerInterface::BaseCompilerInterface']]],
-  ['serializebytes_1',['serializeBytes',['../d7/dab/classSerDes_1_1SerDes.html#ab7a64aae928916f493617550ef9c9133',1,'SerDes::SerDes']]],
-  ['serializejson_2',['serializeJson',['../d7/dab/classSerDes_1_1SerDes.html#a9defe1668f1e0d4e1f3b1346c36974da',1,'SerDes::SerDes']]],
-  ['serializeprotobuf_3',['serializeProtobuf',['../d7/dab/classSerDes_1_1SerDes.html#a8cb8c9a1d2f76c476e2be38bc8d1f48c',1,'SerDes::SerDes']]],
-  ['sermap_4',['serMap',['../d7/dab/classSerDes_1_1SerDes.html#ac1178a54fa264100aac4cdf9e5d3fdbb',1,'SerDes::SerDes']]],
-  ['server_5fport_5',['server_port',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a66b3d7d4cf0b01e4659856d86d6c8449',1,'GrpcCompilerInterface::GrpcCompilerInterface']]],
-  ['shape_6',['shape',['../d7/db4/classlog__reader_1_1TensorSpec.html#ab5c9028029a0a7f87bdd1543d405421a',1,'log_reader::TensorSpec']]],
-  ['start_7',['Start',['../dc/d1d/JSON_8cpp.html#ad0cf5b3bbb583824ea13371671cb6904',1,'JSON.cpp']]],
-  ['stepfunc_8',['stepFunc',['../d0/d3c/structEnvironment.html#a2c9cc7b98a105c8a56cab019e74d8460',1,'Environment']]],
-  ['stub_9',['stub',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a3781b5631c0de3f25353dcece395d03b',1,'GrpcCompilerInterface::GrpcCompilerInterface']]]
+  ['m_0',['M',['../db/d74/classllvm_1_1json_1_1Object.html#aab78df8d7908d32d0eab660a2a96c1e7',1,'llvm::json::Object']]],
+  ['messagelength_1',['MessageLength',['../df/d69/classMLBridge_1_1BaseSerDes.html#aca7e98198831ec27d302c89caa28766c',1,'MLBridge::BaseSerDes']]],
+  ['mlconfig_2',['mlconfig',['../d2/da7/classMLBridge_1_1MLConfig.html#a1cbc30135591db46d0d9bc29a3fcb754',1,'MLBridge::MLConfig']]],
+  ['mode_3',['mode',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a7d6c90e8641852fac5daa6e710ffee9b',1,'GrpcCompilerInterface::GrpcCompilerInterface']]],
+  ['model_4',['model',['../db/d06/classMLBridge_1_1Agent.html#aa9b86354c29cb48e1f6978003874a09e',1,'MLBridge::Agent::model'],['../d7/d79/structPipeModelRunnerWrapper.html#a719f23ff380eeda3e1de85fc2b58ede1',1,'PipeModelRunnerWrapper::model']]],
+  ['model_5fpath_5',['model_path',['../da/d65/classONNXModel.html#a065d28633433d86c1c1e21402615f649',1,'ONNXModel']]],
+  ['msg_6',['Msg',['../d6/d31/classllvm_1_1json_1_1ParseError.html#a9bb8b08860705dd9cabb8771de4cffeb',1,'llvm::json::ParseError']]]
 ];

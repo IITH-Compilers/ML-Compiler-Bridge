@@ -97,44 +97,55 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">//</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">//===----------------------------------------------------------------------===//</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;MLModelRunner/ONNXModelRunner/agent.h&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;MLModelRunner/Utils/Debug.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="../../de/d9e/agent_8h.html">MLModelRunner/ONNXModelRunner/agent.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="../../d4/deb/Debug_8h.html">MLModelRunner/Utils/Debug.h</a>&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;iterator&gt;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d5/d9c/namespaceMLBridge.html">   20</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d5/d9c/namespaceMLBridge.html">MLBridge</a> {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d5/d9c/namespaceMLBridge.html">MLBridge</a> {</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>Agent::Agent(std::string modelPath) {</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../db/d06/classMLBridge_1_1Agent.html#ac9b024826252c5d5a303acd895a2786e">   22</a></span><a class="code hl_function" href="../../db/d06/classMLBridge_1_1Agent.html#ac9b024826252c5d5a303acd895a2786e">Agent::Agent</a>(std::string modelPath) {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="comment">// Create model object here</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  this-&gt;model = <span class="keyword">new</span> ONNXModel(modelPath.c_str());</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  this-&gt;<a class="code hl_variable" href="../../db/d06/classMLBridge_1_1Agent.html#aa9b86354c29cb48e1f6978003874a09e">model</a> = <span class="keyword">new</span> <a class="code hl_class" href="../../da/d65/classONNXModel.html">ONNXModel</a>(modelPath.c_str());</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}</div>
+</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">unsigned</span> Agent::computeAction(Observation &amp;input) {</div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../db/d06/classMLBridge_1_1Agent.html#aebdecef3ce4de98b43aa422f4a442673">   27</a></span><span class="keywordtype">unsigned</span> <a class="code hl_function" href="../../db/d06/classMLBridge_1_1Agent.html#aebdecef3ce4de98b43aa422f4a442673">Agent::computeAction</a>(<a class="code hl_typedef" href="../../d5/d9c/namespaceMLBridge.html#af57e2060b414c240cc2e8e848b663183">Observation</a> &amp;input) {</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="comment">// Call model on input</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  assert(input.size() &gt; 0);</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  llvm::SmallVector&lt;float, 100&gt; model_input(input.begin(), input.end());</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  llvm::SmallVector&lt;float, 100&gt; model_output;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  this-&gt;model-&gt;run(model_input, model_output);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  this-&gt;<a class="code hl_variable" href="../../db/d06/classMLBridge_1_1Agent.html#aa9b86354c29cb48e1f6978003874a09e">model</a>-&gt;<a class="code hl_function" href="../../da/d65/classONNXModel.html#acd5859dab5fa9e9d09ffd0ceaced6270">run</a>(model_input, model_output);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="comment">// select action from model output</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="keyword">auto</span> max = std::max_element(model_output.begin(),</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                              model_output.end()); <span class="comment">// [2, 4)</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keywordtype">int</span> argmaxVal = std::distance(model_output.begin(), max);</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  MLBRIDGE_DEBUG(</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <a class="code hl_define" href="../../d4/deb/Debug_8h.html#acead4fa3a5885707b2d1cd9dc3929821">MLBRIDGE_DEBUG</a>(</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;---------------MODEL OUTPUT VECTOR:----------------\n&quot;</span>;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>      <span class="keywordflow">for</span> (<span class="keyword">auto</span> e</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>           : model_output) { std::cout &lt;&lt; e &lt;&lt; <span class="stringliteral">&quot; &quot;</span>; } std::cout</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>      &lt;&lt; <span class="stringliteral">&quot;\nmax value and index are &quot;</span> &lt;&lt; *max &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; argmaxVal &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keywordflow">return</span> argmaxVal;</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
+</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>} <span class="comment">// namespace MLBridge</span></div>
-</div>
-<div class="ttc" id="anamespaceMLBridge_html"><div class="ttname"><a href="../../d5/d9c/namespaceMLBridge.html">MLBridge</a></div><div class="ttdef"><b>Definition</b> <a href="#l00020">agent.cpp:20</a></div></div>
+<div class="ttc" id="aDebug_8h_html"><div class="ttname"><a href="../../d4/deb/Debug_8h.html">Debug.h</a></div></div>
+<div class="ttc" id="aDebug_8h_html_acead4fa3a5885707b2d1cd9dc3929821"><div class="ttname"><a href="../../d4/deb/Debug_8h.html#acead4fa3a5885707b2d1cd9dc3929821">MLBRIDGE_DEBUG</a></div><div class="ttdeci">#define MLBRIDGE_DEBUG(X)</div><div class="ttdef"><b>Definition</b> <a href="../../d4/deb/Debug_8h_source.html#l00024">Debug.h:24</a></div></div>
+<div class="ttc" id="aagent_8h_html"><div class="ttname"><a href="../../de/d9e/agent_8h.html">agent.h</a></div></div>
+<div class="ttc" id="aclassMLBridge_1_1Agent_html_aa9b86354c29cb48e1f6978003874a09e"><div class="ttname"><a href="../../db/d06/classMLBridge_1_1Agent.html#aa9b86354c29cb48e1f6978003874a09e">MLBridge::Agent::model</a></div><div class="ttdeci">ONNXModel * model</div><div class="ttdef"><b>Definition</b> <a href="../../de/d9e/agent_8h_source.html#l00029">agent.h:29</a></div></div>
+<div class="ttc" id="aclassMLBridge_1_1Agent_html_ac9b024826252c5d5a303acd895a2786e"><div class="ttname"><a href="../../db/d06/classMLBridge_1_1Agent.html#ac9b024826252c5d5a303acd895a2786e">MLBridge::Agent::Agent</a></div><div class="ttdeci">Agent(std::string model_path)</div><div class="ttdef"><b>Definition</b> <a href="#l00022">agent.cpp:22</a></div></div>
+<div class="ttc" id="aclassMLBridge_1_1Agent_html_aebdecef3ce4de98b43aa422f4a442673"><div class="ttname"><a href="../../db/d06/classMLBridge_1_1Agent.html#aebdecef3ce4de98b43aa422f4a442673">MLBridge::Agent::computeAction</a></div><div class="ttdeci">unsigned computeAction(Observation &amp;obs)</div><div class="ttdef"><b>Definition</b> <a href="#l00027">agent.cpp:27</a></div></div>
+<div class="ttc" id="aclassONNXModel_html"><div class="ttname"><a href="../../da/d65/classONNXModel.html">ONNXModel</a></div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5d/onnx_8h_source.html#l00027">onnx.h:27</a></div></div>
+<div class="ttc" id="aclassONNXModel_html_acd5859dab5fa9e9d09ffd0ceaced6270"><div class="ttname"><a href="../../da/d65/classONNXModel.html#acd5859dab5fa9e9d09ffd0ceaced6270">ONNXModel::run</a></div><div class="ttdeci">void run(llvm::SmallVector&lt; float, 100 &gt; &amp;input, llvm::SmallVector&lt; float, 100 &gt; &amp;output)</div><div class="ttdoc">Runs the ONNX model on the input and returns the output.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/df5/onnx_8cpp_source.html#l00028">onnx.cpp:28</a></div></div>
+<div class="ttc" id="anamespaceMLBridge_html"><div class="ttname"><a href="../../d5/d9c/namespaceMLBridge.html">MLBridge</a></div><div class="ttdef"><b>Definition</b> <a href="../../d4/d7b/gRPCModelRunner_8h_source.html#l00075">gRPCModelRunner.h:75</a></div></div>
+<div class="ttc" id="anamespaceMLBridge_html_af57e2060b414c240cc2e8e848b663183"><div class="ttname"><a href="../../d5/d9c/namespaceMLBridge.html#af57e2060b414c240cc2e8e848b663183">MLBridge::Observation</a></div><div class="ttdeci">llvm::SmallVector&lt; float, 300 &gt; Observation</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d60/utils_8h_source.html#l00015">utils.h:15</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -82,10 +82,10 @@ $(function() {
   <div class="headertitle"><div class="title">ONNXModelRunnerCWrapper.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;MLModelRunner/C/ONNXModelRunner.h&quot;</code><br />
-<code>#include &quot;MLModelRunner/ONNXModelRunner/agent.h&quot;</code><br />
-<code>#include &quot;MLModelRunner/ONNXModelRunner/utils.h&quot;</code><br />
-<code>#include &quot;MLModelRunner/Utils/Debug.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html">MLModelRunner/C/ONNXModelRunner.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../de/d9e/agent_8h_source.html">MLModelRunner/ONNXModelRunner/agent.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/d60/utils_8h_source.html">MLModelRunner/ONNXModelRunner/utils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d4/deb/Debug_8h_source.html">MLModelRunner/Utils/Debug.h</a>&quot;</code><br />
 <code>#include &quot;llvm/ADT/SmallVector.h&quot;</code><br />
 <code>#include &lt;cassert&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
@@ -97,27 +97,39 @@ Include dependency graph for ONNXModelRunnerCWrapper.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d27/ONNXModelRunnerCWrapper_8cpp__incl.png" border="0" usemap="#aMLModelRunner_2C_2ONNXModelRunnerCWrapper_8cpp" alt=""/></div>
 <map name="aMLModelRunner_2C_2ONNXModelRunnerCWrapper_8cpp" id="aMLModelRunner_2C_2ONNXModelRunnerCWrapper_8cpp">
-<area shape="rect" title=" " alt="" coords="972,5,1179,46"/>
-<area shape="rect" title=" " alt="" coords="5,94,213,135"/>
-<area shape="poly" title=" " alt="" coords="972,35,645,57,439,74,229,96,228,91,439,69,645,51,972,30"/>
-<area shape="rect" title=" " alt="" coords="237,94,472,135"/>
-<area shape="poly" title=" " alt="" coords="972,40,488,96,487,91,971,35"/>
-<area shape="rect" title=" " alt="" coords="497,94,732,135"/>
-<area shape="poly" title=" " alt="" coords="972,49,735,93,734,88,971,44"/>
-<area shape="rect" title=" " alt="" coords="757,94,904,135"/>
-<area shape="poly" title=" " alt="" coords="1021,49,901,91,899,86,1019,44"/>
-<area shape="rect" title=" " alt="" coords="928,102,1088,127"/>
-<area shape="poly" title=" " alt="" coords="1062,48,1028,91,1024,88,1058,45"/>
-<area shape="rect" title=" " alt="" coords="1112,102,1176,127"/>
-<area shape="poly" title=" " alt="" coords="1093,45,1127,88,1123,91,1089,48"/>
-<area shape="rect" title=" " alt="" coords="1200,102,1271,127"/>
-<area shape="poly" title=" " alt="" coords="1113,44,1201,91,1199,96,1111,49"/>
-<area shape="rect" title=" " alt="" coords="1295,102,1342,127"/>
-<area shape="poly" title=" " alt="" coords="1149,44,1216,65,1285,92,1285,92,1283,97,1283,96,1214,70,1147,49"/>
-<area shape="rect" title=" " alt="" coords="1366,102,1433,127"/>
-<area shape="poly" title=" " alt="" coords="1173,44,1261,65,1354,91,1359,93,1357,98,1352,97,1260,70,1172,49"/>
-<area shape="rect" title=" " alt="" coords="1458,102,1515,127"/>
-<area shape="poly" title=" " alt="" coords="1180,36,1308,57,1378,73,1446,91,1450,93,1448,98,1444,97,1377,78,1307,62,1179,41"/>
+<area shape="rect" title=" " alt="" coords="932,5,1139,46"/>
+<area shape="rect" href="../../d0/d16/C_2ONNXModelRunner_8h.html" title=" " alt="" coords="5,94,213,135"/>
+<area shape="poly" title=" " alt="" coords="932,36,618,59,232,97,229,97,228,92,231,91,618,54,931,31"/>
+<area shape="rect" href="../../de/d9e/agent_8h.html" title=" " alt="" coords="709,94,944,135"/>
+<area shape="poly" title=" " alt="" coords="989,49,889,90,887,85,987,44"/>
+<area shape="rect" title=" " alt="" coords="325,271,485,297"/>
+<area shape="poly" title=" " alt="" coords="932,35,760,48,661,60,562,75,468,95,385,119,320,149,295,166,278,184,271,203,278,222,302,246,333,263,330,268,299,251,273,225,265,203,273,181,292,162,317,145,383,114,466,90,561,70,661,55,760,43,931,29"/>
+<area shape="rect" title=" " alt="" coords="835,271,892,297"/>
+<area shape="poly" title=" " alt="" coords="1029,47,1009,95,997,132,989,163,979,192,958,225,933,248,906,266,903,261,930,244,954,222,974,190,984,161,991,131,1004,93,1025,45"/>
+<area shape="rect" href="../../d5/d60/utils_8h.html" title=" " alt="" coords="287,183,523,223"/>
+<area shape="poly" title=" " alt="" coords="932,46,819,67,698,97,573,137,466,179,464,174,572,132,696,91,818,62,931,41"/>
+<area shape="rect" href="../../d4/deb/Debug_8h.html" title=" " alt="" coords="1018,94,1165,135"/>
+<area shape="poly" title=" " alt="" coords="1051,45,1073,79,1068,82,1046,48"/>
+<area shape="rect" title=" " alt="" coords="1189,102,1253,127"/>
+<area shape="poly" title=" " alt="" coords="1079,44,1183,92,1180,97,1077,49"/>
+<area shape="rect" title=" " alt="" coords="1277,102,1349,127"/>
+<area shape="poly" title=" " alt="" coords="1110,44,1266,91,1271,93,1269,98,1264,97,1108,49"/>
+<area shape="rect" title=" " alt="" coords="1373,102,1419,127"/>
+<area shape="poly" title=" " alt="" coords="1140,38,1248,59,1362,91,1363,92,1361,97,1360,97,1247,64,1139,43"/>
+<area shape="rect" title=" " alt="" coords="1443,102,1511,127"/>
+<area shape="poly" title=" " alt="" coords="1140,36,1279,57,1356,73,1431,91,1437,93,1435,98,1430,97,1355,78,1278,62,1139,41"/>
+<area shape="rect" href="../../d4/d5d/onnx_8h.html" title=" " alt="" coords="547,183,783,223"/>
+<area shape="poly" title=" " alt="" coords="791,138,716,177,714,173,788,133"/>
+<area shape="poly" title=" " alt="" coords="731,138,516,182,515,176,730,133"/>
+<area shape="rect" title=" " alt="" coords="807,190,867,216"/>
+<area shape="poly" title=" " alt="" coords="831,135,836,174,831,175,826,136"/>
+<area shape="rect" title=" " alt="" coords="890,190,944,216"/>
+<area shape="poly" title=" " alt="" coords="849,133,895,178,892,181,845,137"/>
+<area shape="poly" title=" " alt="" coords="601,226,460,269,459,264,599,221"/>
+<area shape="rect" title=" " alt="" coords="635,271,695,297"/>
+<area shape="poly" title=" " alt="" coords="668,224,668,256,662,256,662,224"/>
+<area shape="poly" title=" " alt="" coords="716,221,821,263,819,268,714,226"/>
+<area shape="poly" title=" " alt="" coords="408,224,408,256,402,256,402,224"/>
 </map>
 </div>
 </div>
@@ -132,33 +144,33 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a663f34bd74490d20e8c553f297b17f56" id="r_a663f34bd74490d20e8c553f297b17f56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a663f34bd74490d20e8c553f297b17f56">createEnvironment</a> ()</td></tr>
+<tr class="memitem:a663f34bd74490d20e8c553f297b17f56" id="r_a663f34bd74490d20e8c553f297b17f56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a663f34bd74490d20e8c553f297b17f56">createEnvironment</a> ()</td></tr>
 <tr class="separator:a663f34bd74490d20e8c553f297b17f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8c320a7ad87eff8d35f11f6926ee86f" id="r_aa8c320a7ad87eff8d35f11f6926ee86f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8c320a7ad87eff8d35f11f6926ee86f">env_setDone</a> (<a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *env)</td></tr>
+<tr class="memitem:aa8c320a7ad87eff8d35f11f6926ee86f" id="r_aa8c320a7ad87eff8d35f11f6926ee86f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8c320a7ad87eff8d35f11f6926ee86f">env_setDone</a> (<a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *env)</td></tr>
 <tr class="separator:aa8c320a7ad87eff8d35f11f6926ee86f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac22805ecf1eae180c9eb3a59e755a11d" id="r_ac22805ecf1eae180c9eb3a59e755a11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac22805ecf1eae180c9eb3a59e755a11d">env_resetDone</a> (<a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *env)</td></tr>
+<tr class="memitem:ac22805ecf1eae180c9eb3a59e755a11d" id="r_ac22805ecf1eae180c9eb3a59e755a11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac22805ecf1eae180c9eb3a59e755a11d">env_resetDone</a> (<a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *env)</td></tr>
 <tr class="separator:ac22805ecf1eae180c9eb3a59e755a11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e9404ec6eabdff4d2312d163f8a3b4b" id="r_a9e9404ec6eabdff4d2312d163f8a3b4b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e9404ec6eabdff4d2312d163f8a3b4b">env_checkDone</a> (<a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *env)</td></tr>
+<tr class="memitem:a9e9404ec6eabdff4d2312d163f8a3b4b" id="r_a9e9404ec6eabdff4d2312d163f8a3b4b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e9404ec6eabdff4d2312d163f8a3b4b">env_checkDone</a> (<a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *env)</td></tr>
 <tr class="separator:a9e9404ec6eabdff4d2312d163f8a3b4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad111359c78a4dc47c1ea32eccc555f7e" id="r_ad111359c78a4dc47c1ea32eccc555f7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad111359c78a4dc47c1ea32eccc555f7e">env_setNumFeatures</a> (<a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *env, int numFeatures)</td></tr>
+<tr class="memitem:ad111359c78a4dc47c1ea32eccc555f7e" id="r_ad111359c78a4dc47c1ea32eccc555f7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad111359c78a4dc47c1ea32eccc555f7e">env_setNumFeatures</a> (<a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *env, int numFeatures)</td></tr>
 <tr class="separator:ad111359c78a4dc47c1ea32eccc555f7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30fdc9e6775c1c1dae02e676e54defb6" id="r_a30fdc9e6775c1c1dae02e676e54defb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30fdc9e6775c1c1dae02e676e54defb6">env_setStepFunc</a> (<a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *env, float *(*stepFunc)(Action action))</td></tr>
+<tr class="memitem:a30fdc9e6775c1c1dae02e676e54defb6" id="r_a30fdc9e6775c1c1dae02e676e54defb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30fdc9e6775c1c1dae02e676e54defb6">env_setStepFunc</a> (<a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *env, float *(*stepFunc)(<a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h.html#aa80c0747f7b1243c91b0b96069dc4900">Action</a> action))</td></tr>
 <tr class="separator:a30fdc9e6775c1c1dae02e676e54defb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a939676a39a04be45800150e2270d563d" id="r_a939676a39a04be45800150e2270d563d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a939676a39a04be45800150e2270d563d">env_setResetFunc</a> (<a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *env, float *(*resetFunc)())</td></tr>
+<tr class="memitem:a939676a39a04be45800150e2270d563d" id="r_a939676a39a04be45800150e2270d563d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a939676a39a04be45800150e2270d563d">env_setResetFunc</a> (<a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *env, float *(*resetFunc)())</td></tr>
 <tr class="separator:a939676a39a04be45800150e2270d563d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d8d0cf955595617fe7c2e9ee2c2c970" id="r_a9d8d0cf955595617fe7c2e9ee2c2c970"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d8d0cf955595617fe7c2e9ee2c2c970">env_setNextAgent</a> (<a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *env, char *agentName)</td></tr>
+<tr class="memitem:a9d8d0cf955595617fe7c2e9ee2c2c970" id="r_a9d8d0cf955595617fe7c2e9ee2c2c970"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d8d0cf955595617fe7c2e9ee2c2c970">env_setNextAgent</a> (<a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *env, char *agentName)</td></tr>
 <tr class="separator:a9d8d0cf955595617fe7c2e9ee2c2c970"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04cde6322384973f19aef0e080016125" id="r_a04cde6322384973f19aef0e080016125"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04cde6322384973f19aef0e080016125">createONNXModelRunner</a> (<a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *env, int numAgents,...)</td></tr>
+<tr class="memitem:a04cde6322384973f19aef0e080016125" id="r_a04cde6322384973f19aef0e080016125"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dd7/classMLBridge_1_1ONNXModelRunner.html">ONNXModelRunner</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04cde6322384973f19aef0e080016125">createONNXModelRunner</a> (<a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *env, int numAgents,...)</td></tr>
 <tr class="separator:a04cde6322384973f19aef0e080016125"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02fd63fe8c71dc75b936664d99ebc809" id="r_a02fd63fe8c71dc75b936664d99ebc809"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02fd63fe8c71dc75b936664d99ebc809">createSingleAgentOMR</a> (char *agent_path)</td></tr>
+<tr class="memitem:a02fd63fe8c71dc75b936664d99ebc809" id="r_a02fd63fe8c71dc75b936664d99ebc809"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dd7/classMLBridge_1_1ONNXModelRunner.html">ONNXModelRunner</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02fd63fe8c71dc75b936664d99ebc809">createSingleAgentOMR</a> (char *agent_path)</td></tr>
 <tr class="separator:a02fd63fe8c71dc75b936664d99ebc809"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d024074c413d2a12304c3306d5a5a2d" id="r_a8d024074c413d2a12304c3306d5a5a2d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d024074c413d2a12304c3306d5a5a2d">evaluate</a> (<a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> *omr)</td></tr>
+<tr class="memitem:a8d024074c413d2a12304c3306d5a5a2d" id="r_a8d024074c413d2a12304c3306d5a5a2d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d024074c413d2a12304c3306d5a5a2d">evaluate</a> (<a class="el" href="../../d5/dd7/classMLBridge_1_1ONNXModelRunner.html">ONNXModelRunner</a> *omr)</td></tr>
 <tr class="separator:a8d024074c413d2a12304c3306d5a5a2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada3d2816b0237b681e357d654a0dde73" id="r_ada3d2816b0237b681e357d654a0dde73"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada3d2816b0237b681e357d654a0dde73">singleAgentEvaluate</a> (<a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> *obj, float *inp, int inp_size)</td></tr>
+<tr class="memitem:ada3d2816b0237b681e357d654a0dde73" id="r_ada3d2816b0237b681e357d654a0dde73"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada3d2816b0237b681e357d654a0dde73">singleAgentEvaluate</a> (<a class="el" href="../../d5/dd7/classMLBridge_1_1ONNXModelRunner.html">ONNXModelRunner</a> *obj, float *inp, int inp_size)</td></tr>
 <tr class="separator:ada3d2816b0237b681e357d654a0dde73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa27b4d26dfc823f326ea8c59a91240a" id="r_afa27b4d26dfc823f326ea8c59a91240a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa27b4d26dfc823f326ea8c59a91240a">destroyEnvironment</a> (<a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *env)</td></tr>
+<tr class="memitem:afa27b4d26dfc823f326ea8c59a91240a" id="r_afa27b4d26dfc823f326ea8c59a91240a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa27b4d26dfc823f326ea8c59a91240a">destroyEnvironment</a> (<a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *env)</td></tr>
 <tr class="separator:afa27b4d26dfc823f326ea8c59a91240a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a640e7ca2560e58a56910125a55e8d163" id="r_a640e7ca2560e58a56910125a55e8d163"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a640e7ca2560e58a56910125a55e8d163">destroyONNXModelRunner</a> (<a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> *omr)</td></tr>
+<tr class="memitem:a640e7ca2560e58a56910125a55e8d163" id="r_a640e7ca2560e58a56910125a55e8d163"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a640e7ca2560e58a56910125a55e8d163">destroyONNXModelRunner</a> (<a class="el" href="../../d5/dd7/classMLBridge_1_1ONNXModelRunner.html">ONNXModelRunner</a> *omr)</td></tr>
 <tr class="separator:a640e7ca2560e58a56910125a55e8d163"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -169,7 +181,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> * createEnvironment </td>
+          <td class="memname"><a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> * createEnvironment </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -188,9 +200,9 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> * createONNXModelRunner </td>
+          <td class="memname"><a class="el" href="../../d5/dd7/classMLBridge_1_1ONNXModelRunner.html">ONNXModelRunner</a> * createONNXModelRunner </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em>, </span></td>
+          <td class="paramtype"><a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -216,7 +228,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> * createSingleAgentOMR </td>
+          <td class="memname"><a class="el" href="../../d5/dd7/classMLBridge_1_1ONNXModelRunner.html">ONNXModelRunner</a> * createSingleAgentOMR </td>
           <td>(</td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>agent_path</em></span></td><td>)</td>
           <td></td>
@@ -237,7 +249,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void destroyEnvironment </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -256,7 +268,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void destroyONNXModelRunner </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> *</td>          <td class="paramname"><span class="paramname"><em>omr</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d5/dd7/classMLBridge_1_1ONNXModelRunner.html">ONNXModelRunner</a> *</td>          <td class="paramname"><span class="paramname"><em>omr</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -275,7 +287,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">bool env_checkDone </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -294,7 +306,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void env_resetDone </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -313,7 +325,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void env_setDone </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -332,7 +344,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void env_setNextAgent </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em>, </span></td>
+          <td class="paramtype"><a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -355,7 +367,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void env_setNumFeatures </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em>, </span></td>
+          <td class="paramtype"><a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -378,7 +390,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void env_setResetFunc </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em>, </span></td>
+          <td class="paramtype"><a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -401,12 +413,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void env_setStepFunc </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em>, </span></td>
+          <td class="paramtype"><a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> *</td>          <td class="paramname"><span class="paramname"><em>env</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float *(*)(Action action)</td>          <td class="paramname"><span class="paramname"><em>stepFunc</em></span>&#160;)</td>
+          <td class="paramtype">float *(*)(<a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h.html#aa80c0747f7b1243c91b0b96069dc4900">Action</a> action)</td>          <td class="paramname"><span class="paramname"><em>stepFunc</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -424,7 +436,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void evaluate </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> *</td>          <td class="paramname"><span class="paramname"><em>omr</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d5/dd7/classMLBridge_1_1ONNXModelRunner.html">ONNXModelRunner</a> *</td>          <td class="paramname"><span class="paramname"><em>omr</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -443,7 +455,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int singleAgentEvaluate </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> *</td>          <td class="paramname"><span class="paramname"><em>obj</em>, </span></td>
+          <td class="paramtype"><a class="el" href="../../d5/dd7/classMLBridge_1_1ONNXModelRunner.html">ONNXModelRunner</a> *</td>          <td class="paramname"><span class="paramname"><em>obj</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>

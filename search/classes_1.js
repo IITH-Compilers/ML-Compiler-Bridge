@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['dummymodel_0',['DummyModel',['../dc/d41/classhello-mlbridge_1_1DummyModel.html',1,'hello-mlbridge.DummyModel'],['../df/d2e/classmlbridge-test_1_1DummyModel.html',1,'mlbridge-test.DummyModel']]]
+  ['basecompilerinterface_0',['BaseCompilerInterface',['../de/d17/classBaseCompilerInterface_1_1BaseCompilerInterface.html',1,'BaseCompilerInterface']]],
+  ['baseserdes_1',['BaseSerDes',['../df/d69/classMLBridge_1_1BaseSerDes.html',1,'MLBridge']]],
+  ['bitstreamserdes_2',['BitstreamSerDes',['../da/de4/classMLBridge_1_1BitstreamSerDes.html',1,'MLBridge']]]
 ];

@@ -1,14 +1,13 @@
 var searchData=
 [
-  ['main_0',['main',['../d0/d86/namespacelog__reader.html#a00a10719af7fe8bd112870799e9472d1',1,'log_reader.main()'],['../db/d4f/MLBridgeTest_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;MLBridgeTest.cpp']]],
-  ['ml_20llvm_20tools_1',['ml-llvm-tools',['../index.html',1,'']]],
-  ['mlbridge_2',['MLBridge',['../d5/d9c/namespaceMLBridge.html',1,'']]],
-  ['mlbridge_2dtest_3',['mlbridge-test',['../d3/d31/namespacemlbridge-test.html',1,'']]],
-  ['mlbridge_2dtest_2epy_4',['mlbridge-test.py',['../d1/d25/mlbridge-test_8py.html',1,'']]],
-  ['mlbridgetest_2ecpp_5',['MLBridgeTest.cpp',['../db/d4f/MLBridgeTest_8cpp.html',1,'']]],
-  ['mlconfig_2ecpp_6',['MLConfig.cpp',['../d8/d8f/MLConfig_8cpp.html',1,'']]],
-  ['mode_7',['mode',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a7d6c90e8641852fac5daa6e710ffee9b',1,'GrpcCompilerInterface::GrpcCompilerInterface']]],
-  ['model_8',['model',['../d7/d79/structPipeModelRunnerWrapper.html#a719f23ff380eeda3e1de85fc2b58ede1',1,'PipeModelRunnerWrapper']]],
-  ['model_20integration_9',['Trained model integration',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md4',1,'']]],
-  ['model_20runner_20in_20process_20model_20runner_10',['ONNX Model Runner  (In-Process Model Runner)',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html',1,'']]]
+  ['line_0',['Line',['../d6/d31/classllvm_1_1json_1_1ParseError.html#a7199a3eaa08bb905c7e03923e4e97656',1,'llvm::json::ParseError']]],
+  ['llvm_1',['llvm',['../d9/d4a/namespacellvm.html',1,'']]],
+  ['llvm_20grpc_2',['Building LLVM-GRPC',['../df/ddf/md_MLModelRunner_2gRPCModelRunner_2README.html#autotoc_md2',1,'']]],
+  ['llvm_20grpc_3aregister_20allocation_3',['LLVM-GRPC:Register-Allocation',['../df/ddf/md_MLModelRunner_2gRPCModelRunner_2README.html',1,'']]],
+  ['llvm_20pass_4',['Integration with LLVM Pass',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md8',1,'']]],
+  ['llvm_20tools_5',['ml-llvm-tools',['../index.html',1,'']]],
+  ['llvm_3a_3ajson_6',['json',['../d3/db1/namespacellvm_1_1json.html',1,'llvm']]],
+  ['log_7',['log',['../d6/d31/classllvm_1_1json_1_1ParseError.html#a4b78e730c728a72802590c3c4efd941b',1,'llvm::json::ParseError']]],
+  ['log_5freader_8',['log_reader',['../d0/d86/namespacelog__reader.html',1,'']]],
+  ['log_5freader_2epy_9',['log_reader.py',['../d6/d61/log__reader_8py.html',1,'']]]
 ];

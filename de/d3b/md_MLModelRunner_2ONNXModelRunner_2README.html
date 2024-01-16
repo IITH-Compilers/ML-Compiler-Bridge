@@ -81,19 +81,19 @@ Trained model integration</h1>
 <p>Integration of a trained model happnes in two steps.</p>
 <ul>
 <li>Step 1: The model trained on some native environment need to be exported in ONNX format</li>
-<li>Step 2: The model can be queried anywhere in the compiler environment by creating a instance of ONNXModel class provided by setting the ONNX model's path.</li>
+<li>Step 2: The model can be queried anywhere in the compiler environment by creating a instance of <a class="el" href="../../da/d65/classONNXModel.html">ONNXModel</a> class provided by setting the ONNX model's path.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md5"></a>
 Example Usage:</h1>
 <h3><a class="anchor" id="autotoc_md6"></a>
 RL Agent Class</h3>
-<p>The below example show how a RL agent can create a instance of ONNXModel class and query it at the time of computing action.</p>
+<p>The below example show how a RL agent can create a instance of <a class="el" href="../../da/d65/classONNXModel.html">ONNXModel</a> class and query it at the time of computing action.</p>
 <div class="fragment"><div class="line"> ++</div>
-<div class="line"><span class="preprocessor">#include &quot;agent.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="../../de/d9e/agent_8h.html">agent.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;onnxUtil.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line">Agent::Agent(std::string modelPath, <span class="keywordtype">int</span> inputSize) {</div>
-<div class="line"> this-&gt;model = <span class="keyword">new</span> ONNXModel(modelPath.c_str());</div>
+<div class="line"> this-&gt;model = <span class="keyword">new</span> <a class="code hl_class" href="../../da/d65/classONNXModel.html">ONNXModel</a>(modelPath.c_str());</div>
 <div class="line"> this-&gt;inputSize = inputSize;</div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -103,9 +103,11 @@ RL Agent Class</h3>
 <div class="line"> ...</div>
 <div class="line">return argmaxVal;</div>
 <div class="line">}</div>
+<div class="ttc" id="aagent_8h_html"><div class="ttname"><a href="../../de/d9e/agent_8h.html">agent.h</a></div></div>
+<div class="ttc" id="aclassONNXModel_html"><div class="ttname"><a href="../../da/d65/classONNXModel.html">ONNXModel</a></div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5d/onnx_8h_source.html#l00027">onnx.h:27</a></div></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
 RL InferenceEngine Class</h3>
-<p>The below example showing a demo class to query the RL model, which can be called from pass. DriverService class is defined by inherithing InferenceEngine base class. It will also define the supporting fuction e.g. getPredictions which will query the ONNXModel and return the responce.</p>
+<p>The below example showing a demo class to query the RL model, which can be called from pass. DriverService class is defined by inherithing InferenceEngine base class. It will also define the supporting fuction e.g. getPredictions which will query the <a class="el" href="../../da/d65/classONNXModel.html">ONNXModel</a> and return the responce.</p>
 <div class="fragment"><div class="line"> ++</div>
 <div class="line"><span class="preprocessor">#include &quot;inference-engine.h&quot;</span></div>
 <div class="line"> </div>
@@ -118,7 +120,7 @@ RL InferenceEngine Class</h3>
 <div class="line"> </div>
 <div class="line">InferenceEngine(std::string modelPath, <span class="keywordtype">int</span> inputSize) {</div>
 <div class="line"> <span class="comment">// Creat instance of ONNXModel</span></div>
-<div class="line"> this-&gt;model = <span class="keyword">new</span> ONNXModel(modelPath.c_str());</div>
+<div class="line"> this-&gt;model = <span class="keyword">new</span> <a class="code hl_class" href="../../da/d65/classONNXModel.html">ONNXModel</a>(modelPath.c_str());</div>
 <div class="line"> this-&gt;inputSize = inputSize;</div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -131,7 +133,7 @@ RL InferenceEngine Class</h3>
 Integration with LLVM Pass</h3>
 <p>The below example show how to call the InferenceEngine from a LLVM Pass.</p>
 <div class="fragment"><div class="line"> ++</div>
-<div class="line"><span class="preprocessor">#include &quot;environment.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="../../de/d26/environment_8h.html">environment.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;driver-service.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>Hello : <span class="keyword">public</span> FunctionPass, <a class="code hl_struct" href="../../d0/d3c/structEnvironment.html">Environment</a> {</div>
@@ -143,6 +145,7 @@ Integration with LLVM Pass</h3>
 <div class="line"> inference_driver-&gt;getPredictions(PassData passData, OptInfo &amp;predictions);</div>
 <div class="line"> ...</div>
 <div class="line">}</div>
+<div class="ttc" id="aenvironment_8h_html"><div class="ttname"><a href="../../de/d26/environment_8h.html">environment.h</a></div></div>
 <div class="ttc" id="astructEnvironment_html"><div class="ttname"><a href="../../d0/d3c/structEnvironment.html">Environment</a></div><div class="ttdef"><b>Definition</b> <a href="../../dd/dbf/ONNXModelRunnerCWrapper_8cpp_source.html#l00035">ONNXModelRunnerCWrapper.cpp:35</a></div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
