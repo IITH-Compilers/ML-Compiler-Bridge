@@ -190,7 +190,10 @@ public:
       else {
         request->Clear();
         if (!status.ok())
-          Ctx->emitError("gRPC failed: " + status.error_message());
+          if (Ctx)
+            Ctx->emitError("gRPC failed: " + status.error_message());
+          else
+            std::cerr << "gRPC failed: " << status.error_message() << std::endl;
         // auto *action = new int(); // Hard wired for PosetRL case, should be fixed
         // *action = response->action();
         // return action;
