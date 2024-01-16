@@ -1,7 +1,7 @@
-//===----------------------------------------------------------------------===//
+//=== MLModelRunner/ONNXModelRunner/utils.h - C++ ------------------------===//
 //
-// Part of the ml-llvm-tools Project, under the BSD 4-Clause License.
-// See the LICENSE.txt file under ml-llvm-tools directory for license
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
 // information.
 //
 //===----------------------------------------------------------------------===//

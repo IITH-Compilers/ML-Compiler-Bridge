@@ -1,3 +1,17 @@
+# ------------------------------------------------------------------------------
+#
+# Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+# See the LICENSE file under home directory for license and copyright
+# information.
+#
+# ------------------------------------------------------------------------------
+#
+# Compiler interface for gRPC. This class implements methods for communication
+# with compiler using gRPC.
+#
+# ------------------------------------------------------------------------------
+
+
 from abc import ABC, abstractmethod
 from BaseCompilerInterface import BaseCompilerInterface
 import os

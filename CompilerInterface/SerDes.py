@@ -1,8 +1,21 @@
+# ------------------------------------------------------------------------------
+#
+# Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+# See the LICENSE file under home directory for license and copyright
+# information.
+#
+# ------------------------------------------------------------------------------
+#
+# SerDes for JSON and bitstream data.
+#
+# ------------------------------------------------------------------------------
+
 import os, io
 import json
 import log_reader
 import ctypes
 import struct
+
 
 class NpEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -11,6 +24,7 @@ class NpEncoder(json.JSONEncoder):
         if isinstance(obj, ctypes.c_double):
             return obj.value
         return super(NpEncoder, self).default(obj)
+
 
 ## Class for serialization and deserialization in various formats for communication.
 class SerDes:
@@ -77,14 +91,14 @@ class SerDes:
             elif isinstance(data, float):
                 return struct.pack("f", data)
             elif isinstance(data, str) and len(data) == 1:
-                return struct.pack('c', data)
+                return struct.pack("c", data)
             elif isinstance(data, ctypes.c_double):
-                return struct.pack('d', data.value)
+                return struct.pack("d", data.value)
             elif isinstance(data, ctypes.c_long):
-                return struct.pack('l', data.value)
+                return struct.pack("l", data.value)
             elif isinstance(data, list):
                 return b"".join([_pack(x) for x in data])
-      
+
         msg = _pack(data)
         hdr = len(msg).to_bytes(8, "little")
         self.buffer = hdr + msg

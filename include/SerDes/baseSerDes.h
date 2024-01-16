@@ -1,16 +1,22 @@
-//===- SerDes/baseSerDes.h - Base class for serialization and deserialization
-//---*- C++ -*-===//
+//=== SerDes/baseSerDes.h - Base for serialization and deserialization C++ ===//
 //
-// Part of the MLCompilerBridge Project
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
 //
-// Base class for serialization and deserialization
+//===----------------------------------------------------------------------===//
 //
-// How to support a new serializtion technique:
+// This is the base class for SerDes. It defines the interface for the
+// serialization and deserialization of the data structures used for the
+// communication by the MLModelRunner.
+//
+// Supporting new SerDes:
 // 1. Create a new class which inherits from BaseSerDes.
-// 2. Implement the setFeature(), getSerializedData()
-// cleanDataStructures() and deserializeUntyped()
-// methods.
-//===------------------===//
+// 2. Implement the setFeature(), getSerializedData(), cleanDataStructures() and
+// deserializeUntyped() methods.
+// 3. Add the new SerDes to the enum class Kind in this class.
+//
+//===----------------------------------------------------------------------===//
 
 #ifndef BASE_SERDES_H
 #define BASE_SERDES_H

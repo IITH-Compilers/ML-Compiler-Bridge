@@ -1,9 +1,14 @@
-//=== SerDes/protobufSerDes.h - Protobuf Serialization/Deserialization ---*- C++
+//=== SerDes/protobufSerDes.h - Protobuf Serialization/Deserialization C++-===//
 //
-// Part of the MLCompilerBridge Project
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
 //
-// Protobuf Serialization/Deserialization to support gRPC communication
-//===------------------===//
+//===----------------------------------------------------------------------===//
+//
+// Protobuf Serialization/Deserialization to support gRPC communication.
+//
+//===----------------------------------------------------------------------===//
 
 #ifndef PROTOBUF_SERIALIZER_H
 #define PROTOBUF_SERIALIZER_H

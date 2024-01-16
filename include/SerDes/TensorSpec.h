@@ -1,11 +1,13 @@
 //===- TensorSpec.h - type descriptor for a tensor --------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
-// See https://llvm.org/LICENSE.txt for license information.
-// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
+//
+// (Preliminary version adopted from TensorSpec.h of LLVM 17.X)
 //
 //===----------------------------------------------------------------------===//
-//
+
 #ifndef MLBRIDGE_TENSORSPEC_H
 #define MLBRIDGE_TENSORSPEC_H
 

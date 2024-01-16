@@ -1,8 +1,15 @@
-//=== MLCompilerBridge/SerDes/tensorflowSerDes.cpp - Tensorflow SerDes Implementation ---*- C++ -*-===//
+//===- tensorflowSerDes.cpp - Serializer support for TF ---------*- C++ -*-===//
 //
-// Part of the MLCompilerBridge Project
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
 //
-//===------------------===//
+//===----------------------------------------------------------------------===//
+//
+// This file defines the TensorflowSerDes class, to support interfacing with
+// Tensorflow AOT models via TFModelRunner.
+//
+//===----------------------------------------------------------------------===//
 
 #include "SerDes/tensorflowSerDes.h"
 #include "SerDes/baseSerDes.h"

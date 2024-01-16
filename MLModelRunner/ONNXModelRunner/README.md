@@ -1,6 +1,6 @@
-# LLVM Inference Engine
+# ONNX Model Runner  (In-Process Model Runner)
 
-This directory contains the source code for LLVM Inference Engine. A ONNX based framework to support integrtion of trained models with LLVM pass.
+A ONNX based Model Runner to support integrtion of trained models with the compiler during inference.
 
 ## Trained model integration
 
@@ -8,24 +8,7 @@ Integration of a trained model happnes in two steps.
 
 * Step 1: The model trained on some native environment need to be exported in ONNX format
 
-* Step 2: The model can be quried anywhere in the LLVM environment by creating a instance of ONNXModel class provired by passing ONNX model file path
-
-## Directory structure
-
-The direcory and its subdirctories contain source code for OONX model integrations as well as base classes of vaious components used by and RL algorithm.
-
-    .
-    ├── onnx.cpp                # Defination of ONNXModel class
-    ├── agent.cpp               # RL Agent class which will compute action by quring model
-    ├── Include
-    │   ├── agent.h             # Declare RL agent class
-    │   ├── driver.h            # A interface class to query RL baaed model
-    │   ├── environment.h       # Declare a base Environment class which can be extended further
-    │   ├── onnx.h              # Declaration of ONNXModel class
-    │   └── utils.h             # Utility defination used my Agent class
-    └── CMakeLists.txt          # Build file for LLVM Inference Engine
-
-The classes can be further inherited to implement the pass related logic.
+* Step 2: The model can be queried anywhere in the compiler environment by creating a instance of ONNXModel class provided by setting the ONNX model's path.
 
 ## Example Usage:
 

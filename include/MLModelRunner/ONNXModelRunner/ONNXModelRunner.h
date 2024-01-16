@@ -1,17 +1,28 @@
-//===----------------------------------------------------------------------===//
+//=== MLModelRunner/ONNXModelRunner/ONNXModelRunner.h - C++ --------------===//
 //
-// Part of the ml-llvm-tools Project, under the BSD 4-Clause License.
-// See the LICENSE.txt file under ml-llvm-tools directory for license
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
 // information.
 //
-// ONNXModelRunner class supporting communication via ONNX Runtime
+//===----------------------------------------------------------------------===//
 //
-// How to use?
-// 1. Create agent objects with the path to the ONNX model
-// 2. Create an environment object inheriting from MLBridge::Environment
-// 3. Create an ONNXModelRunner object with the environment and the agents
-// 4. Populate the features to be sent to the model
-// 5. Call evaluate() to get the result back from the model
+// ONNXModelRunner class supporting communication via ONNX C++ Runtime.
+// Only inference is supported.
+//
+// This class interfaces with Environment and Agent classes to support
+// ML/RL model inference via ONNXModel.
+//
+// Usage:
+// 1. Construct an ONNXModelRunner object with the environment and the agents.
+//    Environment and agents are created by the user by inheriting from the
+//    Environment class and using the Agent class.
+// 2. Multiple agents can be added to the ONNXModelRunner object using the
+//    addAgent() method. The agents are identified by a unique name.
+// 3. Call evaluate() to get the result from the model.
+//
+// Internally the ONNXModelRunner object will call the step() method of the
+// environment to get the next observation and the computeAction() method of the
+// agent to get the action corresponding to the observation.
 //
 //===----------------------------------------------------------------------===//
 
@@ -28,8 +39,10 @@ public:
   ONNXModelRunner(MLBridge::Environment *env,
                   std::map<std::string, Agent *> agents,
                   llvm::LLVMContext *Ctx = nullptr);
+
   void setEnvironment(MLBridge::Environment *_env) { env = _env; }
   MLBridge::Environment *getEnvironment() { return env; }
+
   void addAgent(Agent *agent, std::string name);
   void computeAction(Observation &obs);
 

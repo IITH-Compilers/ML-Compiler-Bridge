@@ -1,8 +1,10 @@
-//===- ReleaseModeModelRunner.h - Fast, precompiled model runner  ---------===//
+//===- TFModelRunner.h ---- TF precompiled model runner  ------*- C++-*----===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
-// See https://llvm.org/LICENSE.txt for license information.
-// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
+//
+// (Preliminary version adopted from ReleaseModeModelRunner.h of LLVM 17.X)
 //
 //===----------------------------------------------------------------------===//
 //
@@ -43,7 +45,8 @@ public:
                                                    DecisionName.str());
     assert(ResultIndex >= 0 && "Cannot find DecisionName in inlining model");
   }
-  TFModelRunner(llvm::StringRef DecisionName, llvm::StringRef FeedPrefix = "feed_",
+  TFModelRunner(llvm::StringRef DecisionName,
+                llvm::StringRef FeedPrefix = "feed_",
                 llvm::StringRef FetchPrefix = "fetch_")
       : MLModelRunner(MLModelRunner::Kind::TFAOT, BaseSerDes::Kind::Tensorflow),
         CompiledModel(std::make_unique<TGen>()) {

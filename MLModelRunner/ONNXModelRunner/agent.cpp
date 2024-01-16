@@ -1,8 +1,13 @@
+//===- agent.cpp - RL Agent/Model for ONNX Runner --------------*- C++ -*-===//
+//
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
+//
 //===----------------------------------------------------------------------===//
 //
-// Part of the ml-llvm-tools Project, under the BSD 4-Clause License.
-// See the LICENSE.txt file under ml-llvm-tools directory for license
-// information.
+// This file defines the Agent class, which is a wrapper around the ONNXModel
+// class.
 //
 //===----------------------------------------------------------------------===//
 

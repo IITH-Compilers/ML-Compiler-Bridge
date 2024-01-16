@@ -1,13 +1,20 @@
-//=== MLCBridge/SerDes/jsonSerDes.cpp - JsonSerDes class definition ===//
+//===- jsonstreamSerDes.cpp - Serializer for JSON ---------------*- C++ -*-===//
 //
-// Part of the MLCompilerBridge Project
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
 //
-//===------------------===//
+//===----------------------------------------------------------------------===//
+//
+// This file defines the JsonSerDes class, which is a wrapper around the JSON
+// C++ interface to serialize and deserialize data to and from JSON.
+//
+//===----------------------------------------------------------------------===//
 
 #include "SerDes/jsonSerDes.h"
+#include "MLModelRunner/Utils/DataTypes.h"
 #include "MLModelRunner/Utils/Debug.h"
 #include "MLModelRunner/Utils/JSON.h"
-#include "MLModelRunner/Utils/DataTypes.h"
 #include "SerDes/baseSerDes.h"
 #include "llvm/Support/Debug.h"
 #include <cstdint>

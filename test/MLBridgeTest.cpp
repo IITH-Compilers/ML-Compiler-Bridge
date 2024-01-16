@@ -1,3 +1,11 @@
+//===----------------------------------------------------------------------===//
+//
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
+//
+//===----------------------------------------------------------------------===//
+
 #include "MLModelRunner/MLModelRunner.h"
 #include "MLModelRunner/ONNXModelRunner/ONNXModelRunner.h"
 #include "MLModelRunner/PipeModelRunner.h"
@@ -19,18 +27,19 @@
 #include <random>
 #include <string>
 
-static cl::opt<std::string>
-    cl_server_address("test-server-address", cl::Hidden,
-                      cl::desc("Server address, format <ip>:<port>"),
-                      cl::init("localhost:5050"));
+static llvm::cl::opt<std::string>
+    cl_server_address("test-server-address", llvm::cl::Hidden,
+                      llvm::cl::desc("Server address, format <ip>:<port>"),
+                      llvm::cl::init("localhost:5050"));
 
-static cl::opt<std::string> cl_pipe_name("test-pipe-name", cl::Hidden,
-                                         cl::init("hellopipe"),
-                                         cl::desc("Name for pipe file"));
+static llvm::cl::opt<std::string>
+    cl_pipe_name("test-pipe-name", llvm::cl::Hidden,
+                 llvm::cl::init("hellopipe"),
+                 llvm::cl::desc("Name for pipe file"));
 
-static cl::opt<std::string>
-    cl_test_config("test-config", cl::Hidden, cl::init("pipe-bytes"),
-                   cl::desc("Method for communication with python model"));
+static llvm::cl::opt<std::string> cl_test_config(
+    "test-config", llvm::cl::Hidden, llvm::cl::init("pipe-bytes"),
+    llvm::cl::desc("Method for communication with python model"));
 
 namespace {
 std::unique_ptr<MLModelRunner> MLRunner;
@@ -135,7 +144,7 @@ int testONNX() { return 0; }
 } // namespace
 
 int main(int argc, char **argv) {
-  cl::ParseCommandLineOptions(argc, argv);
+  llvm::cl::ParseCommandLineOptions(argc, argv);
   test_config = cl_test_config.getValue();
   pipe_name = cl_pipe_name.getValue();
   server_address = cl_server_address.getValue();

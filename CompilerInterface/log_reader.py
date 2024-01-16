@@ -1,7 +1,16 @@
-"""Reader for training log.
+# ------------------------------------------------------------------------------
+#
+# Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+# See the LICENSE file under home directory for license and copyright
+# information.
+#
+# ------------------------------------------------------------------------------
+#
+# Reader for training log.
+# See lib/Analysis/TrainingLogger.cpp for a description of the format.
+#
+# ------------------------------------------------------------------------------
 
-See lib/Analysis/TrainingLogger.cpp for a description of the format.
-"""
 import ctypes
 import dataclasses
 import io

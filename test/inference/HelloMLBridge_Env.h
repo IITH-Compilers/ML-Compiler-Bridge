@@ -1,3 +1,11 @@
+//===----------------------------------------------------------------------===//
+//
+// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
+// See the LICENSE file under home directory for license and copyright
+// information.
+//
+//===----------------------------------------------------------------------===//
+
 #include "MLModelRunner/ONNXModelRunner/environment.h"
 #include "MLModelRunner/ONNXModelRunner/utils.h"
 #include "llvm/IR/Module.h"
@@ -6,18 +14,17 @@
 using namespace MLBridge;
 class HelloMLBridgeEnv : public Environment {
   Observation CurrObs;
+
 public:
-  HelloMLBridgeEnv() {
-    setNextAgent("agent");
-  };
-  Observation& reset() override;
-  Observation& step(Action) override;
+  HelloMLBridgeEnv() { setNextAgent("agent"); };
+  Observation &reset() override;
+  Observation &step(Action) override;
 
 protected:
   std::vector<float> FeatureVector;
 };
 
-Observation& HelloMLBridgeEnv::step(Action Action) {
+Observation &HelloMLBridgeEnv::step(Action Action) {
   CurrObs.clear();
   std::copy(FeatureVector.begin(), FeatureVector.end(),
             std::back_inserter(CurrObs));
@@ -26,7 +33,7 @@ Observation& HelloMLBridgeEnv::step(Action Action) {
   return CurrObs;
 }
 
-Observation& HelloMLBridgeEnv::reset() {
+Observation &HelloMLBridgeEnv::reset() {
   std::copy(FeatureVector.begin(), FeatureVector.end(),
             std::back_inserter(CurrObs));
   return CurrObs;
