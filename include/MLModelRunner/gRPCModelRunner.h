@@ -51,9 +51,56 @@ public:
   }
 
   void requestExit() override {
-    std::cout << "Exit from grpc\n";
-    exit_requested->set_value();
+    sigset_t wset;
+    sigemptyset(&wset);
+    sigaddset(&wset, SIGKILL);
+    sigaddset(&wset, SIGTERM);
+    sigaddset(&wset, SIGQUIT);
+    int sig;
+    if (sigwait(&wset, &sig) != -1) {
+      this->exit_requested->set_value();
+    } else {
+      std::cout << "Problem while closing server\n";
+    }
   }
+
+  // checks whether a port number is available or not
+  bool isPortAvailable(std::string addr) {
+    int max_retries = 30, attempts = 0;
+    double wait_seconds = 0.2, backoff_exp = 1.2;
+
+    int idx = addr.find(":");
+    int port = stoi(addr.substr(idx + 1, addr.size() - idx - 1));
+
+    while (attempts < max_retries) {
+      std::string command = "lsof -i :" + std::to_string(port);
+      FILE* pipe = popen(command.c_str(), "r");
+      if (!pipe) {
+          std::cerr << "Error executing command: " << std::strerror(errno) << std::endl;
+          return false;
+      }
+
+      char buffer[256];
+      std::string result = "";
+      while (!feof(pipe)) {
+          if (fgets(buffer, 256, pipe) != nullptr)
+              result += buffer;
+      }
+      pclose(pipe);
+
+      if (result.empty()) {
+          return true;
+      }
+      attempts++;
+      std::cout << "Port is unavailable retrying! attempt: " << attempts << std::endl;
+      std::this_thread::sleep_for(std::chrono::duration<double>(wait_seconds));
+      wait_seconds *= backoff_exp;
+    }
+
+    std::cout << "Port is unavailable now!" << std::endl;
+    return false;
+  }
+
 
   std::promise<void> *exit_requested;
 
@@ -62,15 +109,50 @@ public:
            "evaluateUntyped not implemented for gRPCModelRunner; "
            "Override gRPC method instead");
     assert(request != nullptr && "Request cannot be null");
-    grpc::ClientContext grpcCtx;
-    request = getRequest();
-    auto status = stub_->getAdvice(&grpcCtx, *request, response);
-    if (!status.ok())
-      if (Ctx)
-        Ctx->emitError("gRPC failed: " + status.error_message());
-      else
-        std::cerr << "gRPC failed: " << status.error_message() << std::endl;
-    return SerDes->deserializeUntyped(response);
+    
+    int max_retries = 30, attempts = 0;
+    double retries_wait_secs = 0.2;
+    int deadline_time = 1000;
+    int deadline_max_retries = 30, deadline_attpts = 0;
+    double retry_wait_backoff_exponent = 1.5;
+
+    // setting a deadline
+    auto deadline = std::chrono::system_clock::now() + std::chrono::milliseconds(deadline_time);
+
+    while (attempts < max_retries && deadline_attpts < deadline_max_retries) {
+      grpc::ClientContext grpcCtx;
+      request = getRequest();
+      grpc::Status status;
+      grpcCtx.set_deadline(deadline);
+      
+      status = stub_->getAdvice(&grpcCtx, *request, response);
+
+      if (status.error_code() == grpc::StatusCode::DEADLINE_EXCEEDED) {
+        deadline_attpts++;
+        int ext_deadline = 2 * deadline_time;
+        deadline_time = ext_deadline;
+        std::cout << "Deadline Exceeded for Request! sending the message again with extended deadline : " << deadline_time << "\n";
+        deadline = std::chrono::system_clock::now() + std::chrono::milliseconds(deadline_time);
+      }
+      else if (status.error_code() == grpc::StatusCode::UNAVAILABLE) {
+        attempts++;
+        std::cout << "Server is unavailable retrying! attempt: " << attempts << "\n";
+        std::this_thread::sleep_for(std::chrono::duration<double>(retries_wait_secs));
+        retries_wait_secs *= retry_wait_backoff_exponent;
+      }
+      else {
+        request->Clear();
+        if (!status.ok())
+          Ctx->emitError("gRPC failed: " + status.error_message());
+        // auto *action = new int(); // Hard wired for PosetRL case, should be fixed
+        // *action = response->action();
+        // return action;
+        return SerDes->deserializeUntyped(response);
+      }
+    }
+
+    std::cout << "Server is unavailable now!!!\n";
+    return new int(-1);
   }
 
 private:
@@ -79,10 +161,13 @@ private:
   Request *request;
   Response *response;
   bool server_mode;
+  // std::mutex lock_server;
 
   int RunService(grpc::Service *s) {
     exit_requested = new std::promise<void>();
     grpc::ServerBuilder builder;
+    // lock_server.lock();
+    // if (!this->isPortAvailable(server_address)) return -1;
     builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
     builder.RegisterService(s);
     std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
@@ -90,9 +175,11 @@ private:
     auto serveFn = [&]() { server->Wait(); };
     std::thread serving_thread(serveFn);
     auto f = exit_requested->get_future();
+    this->requestExit();
     f.wait();
     server->Shutdown();
     serving_thread.join();
+    // lock_server.unlock();
     return 0;
   }
 
