@@ -20,6 +20,7 @@
 #include <utility>
 
 namespace MLBridge {
+/// JsonSerDes - Json Serialization/Deserialization using LLVM's json library.
 class JsonSerDes : public BaseSerDes {
 public:
   JsonSerDes() : BaseSerDes(BaseSerDes::Kind::Json){};

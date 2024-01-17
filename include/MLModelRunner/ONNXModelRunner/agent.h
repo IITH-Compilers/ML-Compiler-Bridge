@@ -25,10 +25,14 @@
 #include <string>
 
 namespace MLBridge {
+/// Agent is a wrapper around the ONNXModel class, interfaces with the
+/// Environment class to support ML/RL model inference via ONNXModel.
 class Agent {
-public:
   ONNXModel *model;
+
+public:
   Agent(std::string model_path);
+  /// Runs the ONNX model on the input Observation and returns the output
   unsigned computeAction(Observation &obs);
 };
 } // namespace MLBridge

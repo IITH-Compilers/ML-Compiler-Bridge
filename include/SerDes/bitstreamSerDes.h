@@ -24,6 +24,8 @@
 #include <vector>
 
 namespace MLBridge {
+/// BitstreamSerDes - Bitstream Serialization/Deserialization which sends header
+/// information followed by the raw data.
 class BitstreamSerDes : public BaseSerDes {
 public:
   BitstreamSerDes() : BaseSerDes(Kind::Bitstream) {

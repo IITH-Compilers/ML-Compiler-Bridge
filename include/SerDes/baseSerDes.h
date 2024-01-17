@@ -45,8 +45,6 @@ namespace MLBridge {
 /// Vectors of these types are supported as well.
 class BaseSerDes {
 public:
-  // setRepeatedField as pushback
-  // setFeature as setFeature, setAttribute
   enum class Kind : int { Unknown, Json, Bitstream, Protobuf, Tensorflow };
   Kind getKind() const { return Type; }
 

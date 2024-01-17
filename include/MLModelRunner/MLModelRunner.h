@@ -51,6 +51,8 @@
 #include "SerDes/tensorflowSerDes.h"
 #endif
 namespace MLBridge {
+
+/// MLModelRunner - The main interface for interacting with the ML models.
 class MLModelRunner {
 public:
   // Disallows copy and assign.
@@ -58,13 +60,13 @@ public:
   MLModelRunner &operator=(const MLModelRunner &) = delete;
   virtual ~MLModelRunner() = default;
 
-  /// Main user-facing interface for interacting with the ML models
+  /// Main user-facing method for interacting with the ML models
   template <typename T>
   typename std::enable_if<std::is_fundamental<T>::value, T>::type evaluate() {
     return *reinterpret_cast<T *>(evaluateUntyped());
   }
 
-  /// Main user-facing interface for interacting with the ML models
+  /// Main user-facing method for interacting with the ML models
   template <typename T>
   typename std::enable_if<
       std::is_fundamental<typename std::remove_pointer<T>::type>::value,
@@ -100,9 +102,12 @@ public:
 
   void populateFeatures() {}
 
-  /// Mainly used in the case of gRPC where the request and response objects are
+  /// Mainly used in the case of gRPC where the request object is
   /// not known explicitly.
   void setRequest(void *request) { SerDes->setRequest(request); }
+
+  /// Mainly used in the case of gRPC where the response object is
+  /// not known explicitly.
   void setResponse(void *response) { SerDes->setResponse(response); }
 
 protected:

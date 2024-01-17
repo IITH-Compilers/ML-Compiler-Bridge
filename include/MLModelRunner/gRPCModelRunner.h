@@ -112,7 +112,8 @@ public:
     }
   }
 
-  // checks whether a port number is available or not
+private:
+  /// checks whether a port number is available or not
   bool isPortAvailable(std::string addr) {
     int max_retries = 30, attempts = 0;
     double wait_seconds = 0.2, backoff_exp = 1.2;
@@ -212,7 +213,6 @@ public:
     return new int(-1);
   }
 
-private:
   Stub *stub_;
   std::string server_address;
   Request *request;

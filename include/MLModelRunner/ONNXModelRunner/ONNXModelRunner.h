@@ -35,6 +35,10 @@
 #include "MLModelRunner/ONNXModelRunner/environment.h"
 
 namespace MLBridge {
+
+/// ONNXModelRunner is the main user facing class that interfaces with the
+/// Environment and Agent classes to support ML/RL model inference via
+/// ONNXModel.
 class ONNXModelRunner : public MLModelRunner {
 public:
   ONNXModelRunner(MLBridge::Environment *env,
@@ -45,15 +49,14 @@ public:
   MLBridge::Environment *getEnvironment() { return env; }
 
   void addAgent(Agent *agent, std::string name);
-  void computeAction(Observation &obs);
 
   void requestExit() override {}
-
-  void *evaluateUntyped() override;
 
 private:
   MLBridge::Environment *env;
   std::map<std::string, Agent *> agents;
+  void computeAction(Observation &obs);
+  void *evaluateUntyped() override;
 };
 } // namespace MLBridge
 #endif // ONNX_MODELRUNNER_H

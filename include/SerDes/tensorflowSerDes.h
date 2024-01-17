@@ -18,6 +18,7 @@
 #include "tensorflow/compiler/tf2xla/xla_compiled_cpu_function.h"
 
 namespace MLBridge {
+/// TensorflowSerDes - Serialization/Deserialization to support TF AOT models.
 class TensorflowSerDes : public BaseSerDes {
 public:
   TensorflowSerDes() : BaseSerDes(Kind::Tensorflow) {}

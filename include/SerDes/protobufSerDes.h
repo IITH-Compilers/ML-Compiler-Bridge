@@ -21,6 +21,8 @@
 using namespace google::protobuf;
 
 namespace MLBridge {
+/// ProtobufSerDes - Protobuf Serialization/Deserialization to support gRPC
+/// communication.
 class ProtobufSerDes : public BaseSerDes {
 public:
   ProtobufSerDes() : BaseSerDes(Kind::Protobuf){};
