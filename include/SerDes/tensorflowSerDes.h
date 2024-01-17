@@ -36,11 +36,11 @@ public:
         reinterpret_cast<tensorflow::XlaCompiledCpuFunction *>(request);
   }
 
-  void *getSerializedData() override{};
+  void *getSerializedData() override{ return nullptr; };
   void cleanDataStructures() override{};
 
 private:
-  void *deserializeUntyped(void *data) override{};
+  void *deserializeUntyped(void *data) override{ return nullptr; };
   tensorflow::XlaCompiledCpuFunction *CompiledModel;
 };
 } // namespace MLBridge

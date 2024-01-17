@@ -138,5 +138,6 @@ void *JsonSerDes::desJson(json::Value *V) {
     }
   }
   }
+  return nullptr;
 }
 } // namespace MLBridge
