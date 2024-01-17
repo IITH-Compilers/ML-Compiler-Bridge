@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(MLCompilerBridge)
-
+add_compile_options("$<$<CONFIG:${CMAKE_BUILD_TYPE}>:-UNDEBUG>")
 set(protobuf_MODULE_COMPATIBLE TRUE)
 find_package(Protobuf CONFIG REQUIRED)
 set(protobuf_MODULE_COMPATIBLE TRUE)
@@ -65,18 +65,23 @@ else()
   llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)
 
   add_library(MLCompilerBridge STATIC tools.cpp)
-  target_link_libraries(MLCompilerBridge PUBLIC SerDesLib ModelRunnerLib ONNXModelRunnerLib LLVM-10 ${llvm_libs})
+  target_link_libraries(MLCompilerBridge PUBLIC SerDesLib ModelRunnerLib ONNXModelRunnerLib ${llvm_libs})
 
   add_executable(MLCompilerBridgeTest $<TARGET_OBJECTS:MLBridgeCPPTest>)
   target_link_libraries(MLCompilerBridgeTest PUBLIC MLCompilerBridge)
   set_property(TARGET MLCompilerBridge PROPERTY POSITION_INDEPENDENT_CODE 1)
+  set_target_properties(MLCompilerBridgeTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+  install(TARGETS MLCompilerBridgeTest DESTINATION bin)
 
   add_library(MLCompilerBridgeC STATIC $<TARGET_OBJECTS:ModelRunnerCWrapper>)
-  target_link_libraries(MLCompilerBridgeC PUBLIC SerDesCLib ModelRunnerCLib ONNXModelRunnerLib LLVM-10 ${llvm_libs})
+  target_link_libraries(MLCompilerBridgeC PUBLIC SerDesCLib ModelRunnerCLib ONNXModelRunnerLib ${llvm_libs})
   target_include_directories(MLCompilerBridgeC PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${LLVM_INCLUDE_DIRS})
 
   target_compile_features(MLCompilerBridgeC PRIVATE cxx_std_17)
   set_property(TARGET MLCompilerBridgeC PROPERTY POSITION_INDEPENDENT_CODE 1)
+  
+  set_target_properties(MLCompilerBridge PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+  set_target_properties(MLCompilerBridgeC PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
   install(TARGETS MLCompilerBridgeC DESTINATION lib)
   install(TARGETS MLCompilerBridge DESTINATION lib)
 endif(LLVM_MLBRIDGE)

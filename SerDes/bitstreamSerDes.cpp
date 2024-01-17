@@ -83,7 +83,7 @@ void BitstreamSerDes::setFeature(const std::string &name,
   auto *valuePtr = new std::vector<long>(value);
   featuresVectorlong[name] = valuePtr;
   tensorSpecs.push_back(
-      TensorSpec::createSpec<int>(name, {static_cast<long>(valuePtr->size())}));
+      TensorSpec::createSpec<long>(name, {static_cast<long>(valuePtr->size())}));
   rawData.push_back(valuePtr->data());
 }
 

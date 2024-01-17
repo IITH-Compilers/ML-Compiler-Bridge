@@ -1,8 +1,10 @@
 import argparse
-from PipeCompilerInterface import PipeCompilerInterface
-from GrpcCompilerInterface import GrpcCompilerInterface
 import sys
 import torch, torch.nn as nn
+
+sys.path.append("../CompilerInterface")
+from PipeCompilerInterface import PipeCompilerInterface
+from GrpcCompilerInterface import GrpcCompilerInterface
 
 sys.path.append("../MLModelRunner/gRPCModelRunner/Python-Utilities")
 import helloMLBridge_pb2, helloMLBridge_pb2_grpc, grpc

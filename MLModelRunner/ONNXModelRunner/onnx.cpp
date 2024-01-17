@@ -25,13 +25,8 @@ ONNXModel::ONNXModel(const char *model_path) : model_path(model_path) {
   session = new Ort::Session(*env, model_path, Ort::SessionOptions{nullptr});
 }
 
-void ONNXModel::run(llvm::SmallVector<float, 100> &input,
-                    llvm::SmallVector<float, 100> &output) {
-  Ort::AllocatorWithDefaultOptions allocator;
-  auto inputName = session->GetInputNameAllocated(0, allocator);
-  auto inputNameStr = inputName.get();
-
-  auto typeInfo = session->GetInputTypeInfo(0);
+Ort::Value ONNXModel::getInputValue(llvm::SmallVector<float, 100> &input, int inputIdx) {
+  auto typeInfo = session->GetInputTypeInfo(inputIdx);
   auto tensorInfo = typeInfo.GetTensorTypeAndShapeInfo();
   auto inputDims = tensorInfo.GetShape();
   std::replace_if(
@@ -48,12 +43,44 @@ void ONNXModel::run(llvm::SmallVector<float, 100> &input,
       inputDims.size());
   auto inputTensor = &inputTmp;
   assert(inputTensor->IsTensor());
+  return inputTmp;
+}
+
+void ONNXModel::run(llvm::SmallVector<float, 100> &input,
+                        llvm::SmallVector<float, 100> &output) {
+  Ort::AllocatorWithDefaultOptions allocator;
+
+  int input_count = session->GetInputCount();
+  llvm::SmallVector<llvm::SmallVector<float, 100>, 10> inputList;
+  inputList.push_back(input);
+  llvm::SmallVector<float, 100> dummy_input;
+  dummy_input.insert(dummy_input.end(), 1);
+  for (int i = 1; i < input_count; i++) {
+      inputList.push_back(dummy_input);
+  }
+
+  llvm::SmallVector<std::string, 10> inputNameList;
+  for (int i = 0; i < input_count; i++) {
+    auto inputName = session->GetInputNameAllocated(i, allocator);
+    auto inputNameStr = inputName.get();
+    inputNameList.push_back(inputNameStr);
+  }
+
+  std::vector<Ort::Value> input_final;
+  llvm::SmallVector<const char *, 10> inputNameStr_final;
+
+  for (int i = 0; i < input_count; i++){
+    input_final.insert(input_final.end(), getInputValue(inputList[i], i));
+    inputNameStr_final.insert(inputNameStr_final.end(), inputNameList[i].c_str());
+  }
 
   auto outputName = session->GetOutputNameAllocated(0, allocator);
   auto outputNameStr = outputName.get();
-  // std::cout << inputNameStr << " --- " << outputNameStr << "\n";
-  auto outputTensors = session->Run(Ort::RunOptions{nullptr}, &inputNameStr,
-                                    inputTensor, 1, &outputNameStr, 1);
+
+  auto outputTensors =
+      session->Run(Ort::RunOptions{nullptr}, inputNameStr_final.data(),
+                   input_final.data(), input_count, &outputNameStr, 1);
+
   assert(outputTensors.size() == 1 && outputTensors.front().IsTensor());
 
   auto outputDims =
