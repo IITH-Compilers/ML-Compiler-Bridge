@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MLCompilerBridge: ml-llvm-tools</title>
+<title>MLCompilerBridge: MLCompilerBridge</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -72,19 +72,99 @@ $(function() {
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">ml-llvm-tools </div></div>
+  <div class="headertitle"><div class="title">MLCompilerBridge </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a><code>ml-llvm-tools</code> provide tools for training and inferencing ML models for compiler optimizations.</p>
-<p>Training is facilitated by a <a href="./llvm-grpc">gRPC based framework</a> and inference is supported using <a href="./llvm-inference-engine">ONNX based framework</a>. Please see <a href="https://compilers.cse.iith.ac.in/publications/ml-llvm-tools/">ML-LLVM-Tools tech talk @EuroLLVM'23</a> for more details.</p>
-<h1><a class="anchor" id="autotoc_md10"></a>
-Prerequisites</h1>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <code>MLCompilerBridge</code> is a compiler agnostic library to aid in ML-Enabled Compiler Optimizations. MLCompilerBridge supports both training and inference scenarios. Library exposes Python and C/C++ APIs to interface with the Python-based ML models and a C/C++ compiler. This design allows ML model development within a traditional Python framework while making end-to-end integration with an optimizing compiler possible and efficient.</p>
+<p>This repo contains the source code and relevant information described in our paper, <a href="https://arxiv.org/abs/2311.10800">"The Next 700 ML-Enabled Compiler Optimizations"</a>. Please see <a href="https://iith-compilers.github.io/MLCompilerBridge/">here</a> for documentation and other details.</p>
+<blockquote class="doxtable">
+<p>&zwj;The Next 700 ML-Enabled Compiler Optimizations, S. VenkataKeerthy, Siddharth Jain, Umesh Kalvakuntla, Pranav Sai Gorantla, Rajiv Shailesh Chitale, Eugene Brevdo, Albert Cohen, Mircea Trofin and Ramakrishna Upadrasta. CC 2024. </p>
+</blockquote>
+<p><img src="images/component-ml-compiler-bridge.png" alt="Image" class="inline"/></p>
+<h1><a class="anchor" id="autotoc_md15"></a>
+Features</h1>
 <ul>
+<li><b>Unified Framework:</b> Comes with a suite of two inter-process and two in-process model runners and three serialization-deserialization mechanisms to support interleaved and non-interleaved communication between models and compiler.</li>
+<li><b>Multi-language Support:</b> Exposes C++ and C APIs to interface model runners and serializers with the compilers and Python APIs to interface inter-process model runners with ML models.</li>
+<li><b>Compiler and ML-Framework Independence:</b> Provides compiler and ML-Framework independent APIs, and supports easier integration with compilers like LLVM, MLIR, and Pluto and ML Frameworks like TensorFlow, PyTorch, JAX, etc.</li>
+<li><b>Deeper Integration:</b> Enables deeper integration of ML models within the compiler in a framework-independent manner to support easier inference in case of ML driven compiler optimizations.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md16"></a>
+Requirements</h1>
+<ul>
+<li>cmake (&gt;= 3.10)</li>
+<li>GNU Make (4.2.1)</li>
+<li>LLVM (10.X) - <a href="https://github.com/llvm/llvm-project/tree/release/10.x">src</a>, <a href="https://releases.llvm.org/download.html#10.0.1">release</a></li>
+<li>Python (3.10), C++17</li>
+<li>gRPC v1.34 and protobuf v3.13 - for gRPC Model Runner<ul>
 <li>Building GRPC from Source: Please follow <a href="https://grpc.io/docs/languages/cpp/quickstart/"><code>Build GRPC with cmake</code></a> v1.34 (protobuf v3.13) to build GRPC from source.</li>
 <li>In the above tutorial setting <code>DCMAKE_INSTALL_PREFIX</code> may not be necessary and the default install prefix can be used.</li>
-<li>The following dependencies will be required for Python: <code>pip install grpcio-tools</code></li>
-<li>Install <a href="https://github.com/microsoft/onnxruntime/releases">ONNXRuntime</a> and set the path of ONNX installation path to <code>ONNXRUNTIME_ROOTDIR</code> variable during <code>cmake</code> of LLVM, as <code>DONNXRUNTIME_ROOTDIR=&lt;path_to_onnx_install_dir&gt;</code> </li>
+<li>The following dependencies will be required for Python: <code>pip install grpcio-tools</code>.</li>
 </ul>
+</li>
+<li><a href="https://github.com/microsoft/onnxruntime/releases">ONNXRuntime</a> v1.13.1</li>
+<li>TensorFlow - for TF Model Runner (AOT flow)<ul>
+<li>Tested with TensorFlow 2.13.0</li>
+</ul>
+</li>
+<li>Other python requirements are available in <a href="./mlbridge.yml">mlbridge.yml</a><ul>
+<li>Conda/Anaconda based virtual environment is assumed</li>
+</ul>
+</li>
+</ul>
+<p>(Experiments are done on an Ubuntu 20.04 machine)</p>
+<h1><a class="anchor" id="autotoc_md17"></a>
+Setup</h1>
+<p><code>MLCompilerBridge</code> can be built as a stand-alone library to generate <code>.a</code> files that can in turn be linked with any compiler.</p><ol type="1">
+<li><code>mkdir build &amp;&amp; cd build</code></li>
+<li><code>cmake [-DCMAKE_BUILD_TYPE=Release|Debug] [-DCMAKE_INSTALL_PREFIX=&lt;Install_path&gt;] -DONNXRUNTIME_ROOTDIR=&lt;Path to ONNX install dir&gt; -DTENSORFLOW_AOT_PATH=&lt;Path to TensorFlow pip install dir&gt; ../</code></li>
+<li><code>make -j [&amp;&amp; make install]</code></li>
+</ol>
+<p>This process would generate <code>libMLCompilerBridge.a</code> and <code>libMLCompilerBridgeC.a</code> libraries under <code>build/lib</code> directory, required headers under <code>build/include</code> directory. <code>libMLCompilerBridgeC.a</code> exposes C APIs for using with C-based compilers like Pluto, where as <code>libMLCompilerBridge.a</code> exposes C++ APIs that can be used with any compiler written in C++.</p>
+<p>Python end points are available under <a href="./CompilerInterface/"><code>CompilerInterface</code></a>.</p>
+<p>To ensure the correctness, run <code>make verify-all</code></p>
+<h2><a class="anchor" id="autotoc_md18"></a>
+Using MLCompilerBridge with LLVM and MLIR</h2>
+<p><code>MLCompilerBridge</code> can be integrated and built along with the LLVM project. This can be done by adding this repository as a new project and setting <code>LLVM_MLBRIDGE</code> option to <code>ON</code>.</p>
+<p>You can check the <a href="https://github.com/IITH-Compilers/ml-llvm-project/blob/mlbridge-lib/llvm/CMakeLists.txt">CMakeLists.txt</a> of the <a href="https://github.com/IITH-Compilers/ml-llvm-project/tree/mlbridge-lib"><code>ml-llvm-project</code></a> repository which demonstrates such an integration.</p>
+<p>The passes that need to make use of this library can then just link with <code>LLVMMLBridge</code>.</p>
+<p>Example <code>CMakeLists.txt</code> of an LLVM pass that would use the library is shown below.</p>
+<div class="fragment"><div class="line"> .txt</div>
+<div class="line">add_llvm_component_library(LLVMMLPass</div>
+<div class="line">pass.cpp</div>
+<div class="line">ml.cpp</div>
+<div class="line"> </div>
+<div class="line">ADDITIONAL_HEADER_DIRS</div>
+<div class="line">  ${CMAKE_CURRENT_SOURCE_DIR}/includes</div>
+<div class="line"> </div>
+<div class="line">DEPENDS</div>
+<div class="line">  LLVMMLBridge</div>
+<div class="line">  intrinsics_gen</div>
+<div class="line">)</div>
+<div class="line">target_link_libraries(LLVMMLPass PRIVATE LLVMMLBridge)</div>
+</div><!-- fragment --><p> To use TensorFlow AOT Model Runner, you need to make use of <code>tf_find_and_compile</code> method exposed in <a href="cmake/modules/TensorFlowCompile.cmake"><code>cmake/modules/TensorFlowCompile.cmake</code></a> in the CMakeLists.txt of your pass with appropriate arguments. An example of integrating TF AOT Model with inlining pass is shown <a href="https://github.com/IITH-Compilers/ml-llvm-project/blob/tfmodel/llvm/lib/Analysis/CMakeLists.txt">here</a>.</p>
+<h1><a class="anchor" id="autotoc_md19"></a>
+Examples</h1>
+<p>TBD</p>
+<h1><a class="anchor" id="autotoc_md20"></a>
+Artifacts</h1>
+<p>Libraries are autogenerated for every relevant check-in with GitHub actions. Such generated artifacts are tagged along with the successful runs of [<code>Publish</code>]() action.</p>
+<h1><a class="anchor" id="autotoc_md21"></a>
+Citation</h1>
+<div class="fragment"><div class="line">@misc{venkatakeerthy-2023-MLCompilerBridge,</div>
+<div class="line">      title={The Next 700 ML-Enabled Compiler Optimizations},</div>
+<div class="line">      author={S. VenkataKeerthy and Siddharth Jain and Umesh Kalvakuntla and Pranav Sai Gorantla and Rajiv Shailesh Chitale and Eugene Brevdo and Albert Cohen and Mircea Trofin and Ramakrishna Upadrasta},</div>
+<div class="line">      year={2023},</div>
+<div class="line">      eprint={2311.10800},</div>
+<div class="line">      archivePrefix={arXiv},</div>
+<div class="line">      primaryClass={cs.PL}</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md22"></a>
+Contributions</h1>
+<p>Please feel free to raise issues to file a bug, pose a question, or initiate any related discussions. Pull requests are welcome :)</p>
+<h1><a class="anchor" id="autotoc_md23"></a>
+License</h1>
+<p>MLCompilerBridge is released under Apache 2.0 license with LLVM Exceptions. See LICENSE file for more details. </p>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"/>
 </div><!-- contents -->

@@ -1,5 +1,5 @@
 <map id="MLBridge::gRPCModelRunner&lt; Client, Stub, Request, Response &gt;" name="MLBridge::gRPCModelRunner&lt; Client, Stub, Request, Response &gt;">
-<area shape="rect" id="Node000001" title="grpc model runner requires service, stub, request and response" alt="" coords="5,79,199,135"/>
-<area shape="rect" id="Node000002" href="$dc/d4e/classMLBridge_1_1MLModelRunner.html" title=" " alt="" coords="13,5,191,31"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,79,199,135"/>
+<area shape="rect" id="Node000002" href="$dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner &#45; The main interface for interacting with the ML models." alt="" coords="13,5,191,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,47,105,78,99,78,99,47"/>
 </map>

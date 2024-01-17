@@ -86,111 +86,109 @@ $(function() { codefold.init(1); });
 <div class="contents">
 <a href="../../d9/df5/onnx_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//===- onnx.cpp - ONNX Interface with CPP Runtime --------------*- C++ -*-===//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Part of the MLCompilerBridge Project, under the Apache 2.0 License.</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// See the LICENSE file under home directory for license and copyright</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// information.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Part of the MLCompilerBridge Project, under the Apache License v2.0 with LLVM</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Exceptions. See the LICENSE file for license information.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">//</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">//===----------------------------------------------------------------------===//</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// This file defines the ONNXModel class, which is a wrapper around the ONNX</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// C++ interface.</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">//</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">//===----------------------------------------------------------------------===//</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="../../d4/d5d/onnx_8h.html">MLModelRunner/ONNXModelRunner/onnx.h</a>&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;onnxruntime_cxx_api.h&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;numeric&gt;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="../../da/d65/classONNXModel.html#ab5b5699438cc672cb487267d2d0c1a03">   23</a></span><a class="code hl_function" href="../../da/d65/classONNXModel.html#ab5b5699438cc672cb487267d2d0c1a03">ONNXModel::ONNXModel</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *model_path) : model_path(model_path) {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a65bde4f518a53563b94374ec9eec342f">env</a> = <span class="keyword">new</span> Ort::Env(ORT_LOGGING_LEVEL_WARNING, <span class="stringliteral">&quot;test&quot;</span>);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">session</a> = <span class="keyword">new</span> Ort::Session(*<a class="code hl_variable" href="../../da/d65/classONNXModel.html#a65bde4f518a53563b94374ec9eec342f">env</a>, <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a065d28633433d86c1c1e21402615f649">model_path</a>, Ort::SessionOptions{<span class="keyword">nullptr</span>});</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">//===----------------------------------------------------------------------===//</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="../../d4/d5d/onnx_8h.html">MLModelRunner/ONNXModelRunner/onnx.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;onnxruntime_cxx_api.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;assert.h&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;numeric&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="../../da/d65/classONNXModel.html#ab5b5699438cc672cb487267d2d0c1a03">   24</a></span><a class="code hl_function" href="../../da/d65/classONNXModel.html#ab5b5699438cc672cb487267d2d0c1a03">ONNXModel::ONNXModel</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *model_path) : model_path(model_path) {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a65bde4f518a53563b94374ec9eec342f">env</a> = <span class="keyword">new</span> Ort::Env(ORT_LOGGING_LEVEL_WARNING, <span class="stringliteral">&quot;test&quot;</span>);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">session</a> = <span class="keyword">new</span> Ort::Session(*<a class="code hl_variable" href="../../da/d65/classONNXModel.html#a65bde4f518a53563b94374ec9eec342f">env</a>, <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a065d28633433d86c1c1e21402615f649">model_path</a>, Ort::SessionOptions{<span class="keyword">nullptr</span>});</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
 </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="../../da/d65/classONNXModel.html#a1ce422500fc37d345033de60bf68d31f">   28</a></span>Ort::Value <a class="code hl_function" href="../../da/d65/classONNXModel.html#a1ce422500fc37d345033de60bf68d31f">ONNXModel::getInputValue</a>(llvm::SmallVector&lt;float, 100&gt; &amp;input, <span class="keywordtype">int</span> inputIdx) {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keyword">auto</span> typeInfo = <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">session</a>-&gt;GetInputTypeInfo(inputIdx);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="keyword">auto</span> tensorInfo = typeInfo.GetTensorTypeAndShapeInfo();</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keyword">auto</span> inputDims = tensorInfo.GetShape();</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  std::replace_if(</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>      inputDims.begin(), inputDims.end(), [](int64_t &amp;i) { return i &lt; 0; }, 1);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="keywordtype">size_t</span> inputTensorSize = std::accumulate(inputDims.begin(), inputDims.end(),</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                                           1, std::multiplies&lt;int&gt;());</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  assert(inputTensorSize == input.size());</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keyword">auto</span> memory_info =</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>      Ort::MemoryInfo::CreateCpu(OrtArenaAllocator, OrtMemTypeDefault);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="keyword">auto</span> inputTmp = Ort::Value::CreateTensor&lt;float&gt;(</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>      memory_info, input.data(), inputTensorSize, inputDims.data(),</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>      inputDims.size());</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="keyword">auto</span> inputTensor = &amp;inputTmp;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  assert(inputTensor-&gt;IsTensor());</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keywordflow">return</span> inputTmp;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../da/d65/classONNXModel.html#a1ce422500fc37d345033de60bf68d31f">   29</a></span>Ort::Value <a class="code hl_function" href="../../da/d65/classONNXModel.html#a1ce422500fc37d345033de60bf68d31f">ONNXModel::getInputValue</a>(llvm::SmallVector&lt;float, 100&gt; &amp;input,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                                    <span class="keywordtype">int</span> inputIdx) {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keyword">auto</span> typeInfo = <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">session</a>-&gt;GetInputTypeInfo(inputIdx);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keyword">auto</span> tensorInfo = typeInfo.GetTensorTypeAndShapeInfo();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="keyword">auto</span> inputDims = tensorInfo.GetShape();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  std::replace_if(</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>      inputDims.begin(), inputDims.end(), [](int64_t &amp;i) { return i &lt; 0; }, 1);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="keywordtype">size_t</span> inputTensorSize = std::accumulate(inputDims.begin(), inputDims.end(),</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                                           1, std::multiplies&lt;int&gt;());</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  assert(inputTensorSize == input.size());</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="keyword">auto</span> memory_info =</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>      Ort::MemoryInfo::CreateCpu(OrtArenaAllocator, OrtMemTypeDefault);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <span class="keyword">auto</span> inputTmp = Ort::Value::CreateTensor&lt;float&gt;(</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>      memory_info, input.data(), inputTensorSize, inputDims.data(),</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      inputDims.size());</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keyword">auto</span> inputTensor = &amp;inputTmp;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  assert(inputTensor-&gt;IsTensor());</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keywordflow">return</span> inputTmp;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
 </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="../../da/d65/classONNXModel.html#acd5859dab5fa9e9d09ffd0ceaced6270">   49</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d65/classONNXModel.html#acd5859dab5fa9e9d09ffd0ceaced6270">ONNXModel::run</a>(llvm::SmallVector&lt;float, 100&gt; &amp;input,</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                        llvm::SmallVector&lt;float, 100&gt; &amp;output) {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  Ort::AllocatorWithDefaultOptions allocator;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keywordtype">int</span> input_count = <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">session</a>-&gt;GetInputCount();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  llvm::SmallVector&lt;llvm::SmallVector&lt;float, 100&gt;, 10&gt; inputList;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  inputList.push_back(input);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  llvm::SmallVector&lt;float, 100&gt; dummy_input;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  dummy_input.insert(dummy_input.end(), 1);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; input_count; i++) {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>      inputList.push_back(dummy_input);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  }</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  llvm::SmallVector&lt;std::string, 10&gt; inputNameList;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; input_count; i++) {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">auto</span> inputName = <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">session</a>-&gt;GetInputNameAllocated(i, allocator);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keyword">auto</span> inputNameStr = inputName.get();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    inputNameList.push_back(inputNameStr);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  std::vector&lt;Ort::Value&gt; input_final;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  llvm::SmallVector&lt;const char *, 10&gt; inputNameStr_final;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; input_count; i++){</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    input_final.insert(input_final.end(), <a class="code hl_function" href="../../da/d65/classONNXModel.html#a1ce422500fc37d345033de60bf68d31f">getInputValue</a>(inputList[i], i));</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    inputNameStr_final.insert(inputNameStr_final.end(), inputNameList[i].c_str());</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  }</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keyword">auto</span> outputName = <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">session</a>-&gt;GetOutputNameAllocated(0, allocator);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <span class="keyword">auto</span> outputNameStr = outputName.get();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="../../da/d65/classONNXModel.html#acd5859dab5fa9e9d09ffd0ceaced6270">   51</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d65/classONNXModel.html#acd5859dab5fa9e9d09ffd0ceaced6270">ONNXModel::run</a>(llvm::SmallVector&lt;float, 100&gt; &amp;input,</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                    llvm::SmallVector&lt;float, 100&gt; &amp;output) {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  Ort::AllocatorWithDefaultOptions allocator;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keywordtype">int</span> input_count = <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">session</a>-&gt;GetInputCount();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  llvm::SmallVector&lt;llvm::SmallVector&lt;float, 100&gt;, 10&gt; inputList;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  inputList.push_back(input);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  llvm::SmallVector&lt;float, 100&gt; dummy_input;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  dummy_input.insert(dummy_input.end(), 1);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; input_count; i++) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    inputList.push_back(dummy_input);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  llvm::SmallVector&lt;std::string, 10&gt; inputNameList;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; input_count; i++) {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">auto</span> inputName = <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">session</a>-&gt;GetInputNameAllocated(i, allocator);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keyword">auto</span> inputNameStr = inputName.get();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    inputNameList.push_back(inputNameStr);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  std::vector&lt;Ort::Value&gt; input_final;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  llvm::SmallVector&lt;const char *, 10&gt; inputNameStr_final;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; input_count; i++) {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    input_final.insert(input_final.end(), <a class="code hl_function" href="../../da/d65/classONNXModel.html#a1ce422500fc37d345033de60bf68d31f">getInputValue</a>(inputList[i], i));</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    inputNameStr_final.insert(inputNameStr_final.end(),</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                              inputNameList[i].c_str());</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  }</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keyword">auto</span> outputTensors =</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>      <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">session</a>-&gt;Run(Ort::RunOptions{<span class="keyword">nullptr</span>}, inputNameStr_final.data(),</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                   input_final.data(), input_count, &amp;outputNameStr, 1);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  assert(outputTensors.size() == 1 &amp;&amp; outputTensors.front().IsTensor());</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  <span class="keyword">auto</span> outputDims =</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>      outputTensors.front().GetTensorTypeAndShapeInfo().GetShape()[1];</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keyword">auto</span> outputName = <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">session</a>-&gt;GetOutputNameAllocated(0, allocator);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <span class="keyword">auto</span> outputNameStr = outputName.get();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  <span class="keyword">auto</span> outputTensors =</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>      <a class="code hl_variable" href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">session</a>-&gt;Run(Ort::RunOptions{<span class="keyword">nullptr</span>}, inputNameStr_final.data(),</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                   input_final.data(), input_count, &amp;outputNameStr, 1);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  assert(outputTensors.size() == 1 &amp;&amp; outputTensors.front().IsTensor());</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="keyword">auto</span> outVal = outputTensors.front().GetTensorMutableData&lt;<span class="keywordtype">float</span>&gt;();</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  output = llvm::SmallVector&lt;float, 100&gt;(outVal, outVal + outputDims);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  std::replace_if(</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>      output.begin(), output.end(), [](<span class="keywordtype">double</span> x) { return std::isnan(x); },</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>      -1.17549e+038);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="keyword">auto</span> outputDims =</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>      outputTensors.front().GetTensorTypeAndShapeInfo().GetShape()[1];</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  <span class="keyword">auto</span> outVal = outputTensors.front().GetTensorMutableData&lt;<span class="keywordtype">float</span>&gt;();</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  output = llvm::SmallVector&lt;float, 100&gt;(outVal, outVal + outputDims);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  std::replace_if(</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>      output.begin(), output.end(), [](<span class="keywordtype">double</span> x) { return std::isnan(x); },</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>      -1.17549e+038);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}</div>
 </div>
-<div class="ttc" id="aclassONNXModel_html_a065d28633433d86c1c1e21402615f649"><div class="ttname"><a href="../../da/d65/classONNXModel.html#a065d28633433d86c1c1e21402615f649">ONNXModel::model_path</a></div><div class="ttdeci">const char * model_path</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5d/onnx_8h_source.html#l00030">onnx.h:30</a></div></div>
-<div class="ttc" id="aclassONNXModel_html_a12fed7dccfbf589448ce0e4f99fc356e"><div class="ttname"><a href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">ONNXModel::session</a></div><div class="ttdeci">Ort::Session * session</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5d/onnx_8h_source.html#l00031">onnx.h:31</a></div></div>
-<div class="ttc" id="aclassONNXModel_html_a1ce422500fc37d345033de60bf68d31f"><div class="ttname"><a href="../../da/d65/classONNXModel.html#a1ce422500fc37d345033de60bf68d31f">ONNXModel::getInputValue</a></div><div class="ttdeci">Ort::Value getInputValue(llvm::SmallVector&lt; float, 100 &gt; &amp;input, int inputIdx)</div><div class="ttdef"><b>Definition</b> <a href="#l00028">onnx.cpp:28</a></div></div>
-<div class="ttc" id="aclassONNXModel_html_a65bde4f518a53563b94374ec9eec342f"><div class="ttname"><a href="../../da/d65/classONNXModel.html#a65bde4f518a53563b94374ec9eec342f">ONNXModel::env</a></div><div class="ttdeci">Ort::Env * env</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5d/onnx_8h_source.html#l00029">onnx.h:29</a></div></div>
-<div class="ttc" id="aclassONNXModel_html_ab5b5699438cc672cb487267d2d0c1a03"><div class="ttname"><a href="../../da/d65/classONNXModel.html#ab5b5699438cc672cb487267d2d0c1a03">ONNXModel::ONNXModel</a></div><div class="ttdeci">ONNXModel(const char *model_path)</div><div class="ttdef"><b>Definition</b> <a href="#l00023">onnx.cpp:23</a></div></div>
-<div class="ttc" id="aclassONNXModel_html_acd5859dab5fa9e9d09ffd0ceaced6270"><div class="ttname"><a href="../../da/d65/classONNXModel.html#acd5859dab5fa9e9d09ffd0ceaced6270">ONNXModel::run</a></div><div class="ttdeci">void run(llvm::SmallVector&lt; float, 100 &gt; &amp;input, llvm::SmallVector&lt; float, 100 &gt; &amp;output)</div><div class="ttdoc">Runs the ONNX model on the input and returns the output.</div><div class="ttdef"><b>Definition</b> <a href="#l00049">onnx.cpp:49</a></div></div>
+<div class="ttc" id="aclassONNXModel_html_a065d28633433d86c1c1e21402615f649"><div class="ttname"><a href="../../da/d65/classONNXModel.html#a065d28633433d86c1c1e21402615f649">ONNXModel::model_path</a></div><div class="ttdeci">const char * model_path</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5d/onnx_8h_source.html#l00031">onnx.h:31</a></div></div>
+<div class="ttc" id="aclassONNXModel_html_a12fed7dccfbf589448ce0e4f99fc356e"><div class="ttname"><a href="../../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e">ONNXModel::session</a></div><div class="ttdeci">Ort::Session * session</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5d/onnx_8h_source.html#l00032">onnx.h:32</a></div></div>
+<div class="ttc" id="aclassONNXModel_html_a1ce422500fc37d345033de60bf68d31f"><div class="ttname"><a href="../../da/d65/classONNXModel.html#a1ce422500fc37d345033de60bf68d31f">ONNXModel::getInputValue</a></div><div class="ttdeci">Ort::Value getInputValue(llvm::SmallVector&lt; float, 100 &gt; &amp;input, int inputIdx)</div><div class="ttdef"><b>Definition</b> <a href="#l00029">onnx.cpp:29</a></div></div>
+<div class="ttc" id="aclassONNXModel_html_a65bde4f518a53563b94374ec9eec342f"><div class="ttname"><a href="../../da/d65/classONNXModel.html#a65bde4f518a53563b94374ec9eec342f">ONNXModel::env</a></div><div class="ttdeci">Ort::Env * env</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5d/onnx_8h_source.html#l00030">onnx.h:30</a></div></div>
+<div class="ttc" id="aclassONNXModel_html_ab5b5699438cc672cb487267d2d0c1a03"><div class="ttname"><a href="../../da/d65/classONNXModel.html#ab5b5699438cc672cb487267d2d0c1a03">ONNXModel::ONNXModel</a></div><div class="ttdeci">ONNXModel(const char *model_path)</div><div class="ttdef"><b>Definition</b> <a href="#l00024">onnx.cpp:24</a></div></div>
+<div class="ttc" id="aclassONNXModel_html_acd5859dab5fa9e9d09ffd0ceaced6270"><div class="ttname"><a href="../../da/d65/classONNXModel.html#acd5859dab5fa9e9d09ffd0ceaced6270">ONNXModel::run</a></div><div class="ttdeci">void run(llvm::SmallVector&lt; float, 100 &gt; &amp;input, llvm::SmallVector&lt; float, 100 &gt; &amp;output)</div><div class="ttdoc">Runs the ONNX model on the input and returns the output.</div><div class="ttdef"><b>Definition</b> <a href="#l00051">onnx.cpp:51</a></div></div>
 <div class="ttc" id="aonnx_8h_html"><div class="ttname"><a href="../../d4/d5d/onnx_8h.html">onnx.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

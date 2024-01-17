@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['grpc_0',['gRPC',['../dc/d4e/classMLBridge_1_1MLModelRunner.html#a402dc0e61f621293a0cad7a2f52f04c5a12acd14e73603d7c8860624f02021b15',1,'MLBridge::MLModelRunner']]]
+  ['invalid_0',['Invalid',['../d5/d9c/namespaceMLBridge.html#ac24975254ef766855d6d0b7f764371fba4bbb8f967da6d1a610596d7257179c2b',1,'MLBridge']]]
 ];

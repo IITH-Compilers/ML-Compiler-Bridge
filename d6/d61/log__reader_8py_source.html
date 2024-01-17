@@ -86,210 +86,206 @@ $(function() { codefold.init(1); });
 <div class="contents">
 <a href="../../d6/d61/log__reader_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html">    1</a></span><span class="comment"># ------------------------------------------------------------------------------</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">#</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"># Part of the MLCompilerBridge Project, under the Apache 2.0 License.</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"># See the LICENSE file under home directory for license and copyright</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"># information.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"># Part of the MLCompilerBridge Project, under the Apache License v2.0 with LLVM</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"># Exceptions. See the LICENSE file for license information.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"># SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">#</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"># ------------------------------------------------------------------------------</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">#</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"># Reader for training log.</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"># See lib/Analysis/TrainingLogger.cpp for a description of the format.</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">#</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"># ------------------------------------------------------------------------------</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">import</span> ctypes</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">import</span> dataclasses</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">import</span> io</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">import</span> json</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">import</span> math</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">import</span> sys</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">from</span> typing <span class="keyword">import</span> List, Optional</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">import</span> operator</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">import</span> numpy</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#a17de637376c1a53d82da117294ba2e82">   25</a></span>_element_types = {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="stringliteral">&quot;float&quot;</span>: ctypes.c_float,</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="stringliteral">&quot;double&quot;</span>: ctypes.c_double,</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="stringliteral">&quot;int8_t&quot;</span>: ctypes.c_int8,</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="stringliteral">&quot;uint8_t&quot;</span>: ctypes.c_uint8,</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="stringliteral">&quot;int16_t&quot;</span>: ctypes.c_int16,</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="stringliteral">&quot;uint16_t&quot;</span>: ctypes.c_uint16,</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="stringliteral">&quot;int32_t&quot;</span>: ctypes.c_int32,</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="stringliteral">&quot;uint32_t&quot;</span>: ctypes.c_uint32,</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="stringliteral">&quot;int64_t&quot;</span>: ctypes.c_int64,</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="stringliteral">&quot;uint64_t&quot;</span>: ctypes.c_uint64,</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">import</span> ctypes</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">import</span> dataclasses</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">import</span> io</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">import</span> json</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">import</span> math</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">import</span> sys</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">from</span> typing <span class="keyword">import</span> List, Optional</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">import</span> operator</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">import</span> numpy</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#a17de637376c1a53d82da117294ba2e82">   26</a></span>_element_types = {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="stringliteral">&quot;float&quot;</span>: ctypes.c_float,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="stringliteral">&quot;double&quot;</span>: ctypes.c_double,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="stringliteral">&quot;int8_t&quot;</span>: ctypes.c_int8,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="stringliteral">&quot;uint8_t&quot;</span>: ctypes.c_uint8,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="stringliteral">&quot;int16_t&quot;</span>: ctypes.c_int16,</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="stringliteral">&quot;uint16_t&quot;</span>: ctypes.c_uint16,</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="stringliteral">&quot;int32_t&quot;</span>: ctypes.c_int32,</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="stringliteral">&quot;uint32_t&quot;</span>: ctypes.c_uint32,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="stringliteral">&quot;int64_t&quot;</span>: ctypes.c_int64,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="stringliteral">&quot;uint64_t&quot;</span>: ctypes.c_uint64,</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">@dataclasses.dataclass(frozen=True)</span></div>
-<div class="foldopen" id="foldopen00040" data-start="" data-end="">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../d7/db4/classlog__reader_1_1TensorSpec.html">   40</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d7/db4/classlog__reader_1_1TensorSpec.html">TensorSpec</a>:</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="../../d7/db4/classlog__reader_1_1TensorSpec.html#ae874668dae128107f62994d23a9a224f">   41</a></span>    name: str</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../d7/db4/classlog__reader_1_1TensorSpec.html#a9fafd7ef0120efd4032d6d2c37e22cb0">   42</a></span>    port: int</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="../../d7/db4/classlog__reader_1_1TensorSpec.html#ab5c9028029a0a7f87bdd1543d405421a">   43</a></span>    shape: List[int]</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="../../d7/db4/classlog__reader_1_1TensorSpec.html#a7344428ba6ba6ece26913afacff493b8">   44</a></span>    element_type: type</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="preprocessor">@staticmethod</span></div>
-<div class="foldopen" id="foldopen00047" data-start="" data-end="">
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="../../d7/db4/classlog__reader_1_1TensorSpec.html#a0ebdbee0d26434fa74fdcfc2bb5edc3b">   47</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d7/db4/classlog__reader_1_1TensorSpec.html#a0ebdbee0d26434fa74fdcfc2bb5edc3b">from_dict</a>(d: dict):</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        name = d[<span class="stringliteral">&quot;name&quot;</span>]</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        port = d[<span class="stringliteral">&quot;port&quot;</span>]</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        shape = [int(e) <span class="keywordflow">for</span> e <span class="keywordflow">in</span> d[<span class="stringliteral">&quot;shape&quot;</span>]]</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        element_type_str = d[<span class="stringliteral">&quot;type&quot;</span>]</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">if</span> element_type_str <span class="keywordflow">not</span> <span class="keywordflow">in</span> _element_types:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordflow">raise</span> ValueError(f<span class="stringliteral">&quot;uknown type: {element_type_str}&quot;</span>)</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="../../d7/db4/classlog__reader_1_1TensorSpec.html">TensorSpec</a>(</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            name=name,</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            port=port,</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            shape=shape,</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            element_type=_element_types[element_type_str],</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        )</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">@dataclasses.dataclass(frozen=True)</span></div>
+<div class="foldopen" id="foldopen00041" data-start="" data-end="">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="../../d7/db4/classlog__reader_1_1TensorSpec.html">   41</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d7/db4/classlog__reader_1_1TensorSpec.html">TensorSpec</a>:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../d7/db4/classlog__reader_1_1TensorSpec.html#ae874668dae128107f62994d23a9a224f">   42</a></span>    name: str</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="../../d7/db4/classlog__reader_1_1TensorSpec.html#a9fafd7ef0120efd4032d6d2c37e22cb0">   43</a></span>    port: int</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="../../d7/db4/classlog__reader_1_1TensorSpec.html#ab5c9028029a0a7f87bdd1543d405421a">   44</a></span>    shape: List[int]</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="../../d7/db4/classlog__reader_1_1TensorSpec.html#a7344428ba6ba6ece26913afacff493b8">   45</a></span>    element_type: type</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="preprocessor">@staticmethod</span></div>
+<div class="foldopen" id="foldopen00048" data-start="" data-end="">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="../../d7/db4/classlog__reader_1_1TensorSpec.html#a0ebdbee0d26434fa74fdcfc2bb5edc3b">   48</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d7/db4/classlog__reader_1_1TensorSpec.html#a0ebdbee0d26434fa74fdcfc2bb5edc3b">from_dict</a>(d: dict):</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        name = d[<span class="stringliteral">&quot;name&quot;</span>]</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        port = d[<span class="stringliteral">&quot;port&quot;</span>]</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        shape = [int(e) <span class="keywordflow">for</span> e <span class="keywordflow">in</span> d[<span class="stringliteral">&quot;shape&quot;</span>]]</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        element_type_str = d[<span class="stringliteral">&quot;type&quot;</span>]</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">if</span> element_type_str <span class="keywordflow">not</span> <span class="keywordflow">in</span> _element_types:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">raise</span> ValueError(f<span class="stringliteral">&quot;uknown type: {element_type_str}&quot;</span>)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="../../d7/db4/classlog__reader_1_1TensorSpec.html">TensorSpec</a>(</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            name=name,</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            port=port,</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            shape=shape,</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            element_type=_element_types[element_type_str],</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        )</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
 </div>
 </div>
-<div class="foldopen" id="foldopen00062" data-start="" data-end="">
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html">   62</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d5/d81/classlog__reader_1_1TensorValue.html">TensorValue</a>:</div>
 <div class="foldopen" id="foldopen00063" data-start="" data-end="">
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#afcc496977a6e3b6bc2d770a642900be1">   63</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d5/d81/classlog__reader_1_1TensorValue.html#afcc496977a6e3b6bc2d770a642900be1">__init__</a>(self, spec: TensorSpec, buffer: bytes):</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#aa2f1de70735138da8b7f68d70e574e36">   64</a></span>        self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#aa2f1de70735138da8b7f68d70e574e36">_spec</a> = spec</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a08963649af5fd9c164ec1a4e2567873c">   65</a></span>        self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a08963649af5fd9c164ec1a4e2567873c">_buffer</a> = buffer</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a0fc99d7b132a72919f095e32f437a5c7">   66</a></span>        self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a0fc99d7b132a72919f095e32f437a5c7">_view</a> = ctypes.cast(self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a08963649af5fd9c164ec1a4e2567873c">_buffer</a>, ctypes.POINTER(self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#aa2f1de70735138da8b7f68d70e574e36">_spec</a>.element_type))</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="comment"># self._len = math.prod(self._spec.shape)</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a07f7c204d41022aeb99d9268aa303c0e">   68</a></span>        self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a07f7c204d41022aeb99d9268aa303c0e">_len</a> = reduce(operator.mul, self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#aa2f1de70735138da8b7f68d70e574e36">_spec</a>.shape, 1)</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="comment"># self._view = numpy.frombuffer(self._buffer, float)</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="comment"># print(&quot;Value of&quot;, self._spec.name, &quot;is:&quot;, self._view)</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html">   63</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d5/d81/classlog__reader_1_1TensorValue.html">TensorValue</a>:</div>
+<div class="foldopen" id="foldopen00064" data-start="" data-end="">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#afcc496977a6e3b6bc2d770a642900be1">   64</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d5/d81/classlog__reader_1_1TensorValue.html#afcc496977a6e3b6bc2d770a642900be1">__init__</a>(self, spec: TensorSpec, buffer: bytes):</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#aa2f1de70735138da8b7f68d70e574e36">   65</a></span>        self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#aa2f1de70735138da8b7f68d70e574e36">_spec</a> = spec</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a08963649af5fd9c164ec1a4e2567873c">   66</a></span>        self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a08963649af5fd9c164ec1a4e2567873c">_buffer</a> = buffer</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a0fc99d7b132a72919f095e32f437a5c7">   67</a></span>        self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a0fc99d7b132a72919f095e32f437a5c7">_view</a> = ctypes.cast(self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a08963649af5fd9c164ec1a4e2567873c">_buffer</a>, ctypes.POINTER(self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#aa2f1de70735138da8b7f68d70e574e36">_spec</a>.element_type))</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="comment"># self._len = math.prod(self._spec.shape)</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a07f7c204d41022aeb99d9268aa303c0e">   69</a></span>        self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a07f7c204d41022aeb99d9268aa303c0e">_len</a> = reduce(operator.mul, self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#aa2f1de70735138da8b7f68d70e574e36">_spec</a>.shape, 1)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="comment"># self._view = numpy.frombuffer(self._buffer, float)</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="comment"># print(&quot;Value of&quot;, self._spec.name, &quot;is:&quot;, self._view)</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 </div>
-<div class="foldopen" id="foldopen00072" data-start="" data-end="">
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#ab3b6b311e0b847ba5f47e820de4834d4">   72</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d5/d81/classlog__reader_1_1TensorValue.html#ab3b6b311e0b847ba5f47e820de4834d4">spec</a>(self) -&gt; TensorSpec:</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#aa2f1de70735138da8b7f68d70e574e36">_spec</a></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="foldopen" id="foldopen00073" data-start="" data-end="">
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#ab3b6b311e0b847ba5f47e820de4834d4">   73</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d5/d81/classlog__reader_1_1TensorValue.html#ab3b6b311e0b847ba5f47e820de4834d4">spec</a>(self) -&gt; TensorSpec:</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#aa2f1de70735138da8b7f68d70e574e36">_spec</a></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
 </div>
-<div class="foldopen" id="foldopen00075" data-start="" data-end="">
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a8f335ccb49b7b41f58ea2d33b7e46814">   75</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a8f335ccb49b7b41f58ea2d33b7e46814">__len__</a>(self) -&gt; int:</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a07f7c204d41022aeb99d9268aa303c0e">_len</a></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="foldopen" id="foldopen00076" data-start="" data-end="">
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a8f335ccb49b7b41f58ea2d33b7e46814">   76</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a8f335ccb49b7b41f58ea2d33b7e46814">__len__</a>(self) -&gt; int:</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a07f7c204d41022aeb99d9268aa303c0e">_len</a></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
 </div>
-<div class="foldopen" id="foldopen00078" data-start="" data-end="">
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a303866c5fd53e252f10c70499c55d3e6">   78</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a303866c5fd53e252f10c70499c55d3e6">__getitem__</a>(self, index):</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">if</span> index &lt; 0 <span class="keywordflow">or</span> index &gt;= self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a07f7c204d41022aeb99d9268aa303c0e">_len</a>:</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <span class="keywordflow">raise</span> IndexError(f<span class="stringliteral">&quot;Index {index} out of range [0..{self._len})&quot;</span>)</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a0fc99d7b132a72919f095e32f437a5c7">_view</a>[index]</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="" data-end="">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a303866c5fd53e252f10c70499c55d3e6">   79</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a303866c5fd53e252f10c70499c55d3e6">__getitem__</a>(self, index):</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">if</span> index &lt; 0 <span class="keywordflow">or</span> index &gt;= self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a07f7c204d41022aeb99d9268aa303c0e">_len</a>:</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="keywordflow">raise</span> IndexError(f<span class="stringliteral">&quot;Index {index} out of range [0..{self._len})&quot;</span>)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d5/d81/classlog__reader_1_1TensorValue.html#a0fc99d7b132a72919f095e32f437a5c7">_view</a>[index]</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
 </div>
 </div>
-<div class="foldopen" id="foldopen00084" data-start="" data-end="">
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#a824cd3e05f3d3094a806870ea1ea5da9">   84</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a824cd3e05f3d3094a806870ea1ea5da9">read_tensor</a>(fs: io.BufferedReader, ts: TensorSpec) -&gt; TensorValue:</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    size = reduce(operator.mul, ts.shape, 1) * ctypes.sizeof(ts.element_type)</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment"># size = math.prod(ts.shape) * ctypes.sizeof(ts.element_type)</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    data = fs.read(size)</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="../../d5/d81/classlog__reader_1_1TensorValue.html">TensorValue</a>(ts, data)</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="foldopen" id="foldopen00085" data-start="" data-end="">
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#a824cd3e05f3d3094a806870ea1ea5da9">   85</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a824cd3e05f3d3094a806870ea1ea5da9">read_tensor</a>(fs: io.BufferedReader, ts: TensorSpec) -&gt; TensorValue:</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    size = reduce(operator.mul, ts.shape, 1) * ctypes.sizeof(ts.element_type)</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="comment"># size = math.prod(ts.shape) * ctypes.sizeof(ts.element_type)</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    data = fs.read(size)</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="../../d5/d81/classlog__reader_1_1TensorValue.html">TensorValue</a>(ts, data)</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
 </div>
-<div class="foldopen" id="foldopen00091" data-start="" data-end="">
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#a14b90855a54de6f662b45732cb262314">   91</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a14b90855a54de6f662b45732cb262314">pretty_print_tensor_value</a>(tv: TensorValue):</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    print(f<span class="stringliteral">&#39;{tv.spec().name}: {&quot;,&quot;.join([str(v) for v in tv])}&#39;</span>)</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="foldopen" id="foldopen00092" data-start="" data-end="">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#a14b90855a54de6f662b45732cb262314">   92</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a14b90855a54de6f662b45732cb262314">pretty_print_tensor_value</a>(tv: TensorValue):</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    print(f<span class="stringliteral">&#39;{tv.spec().name}: {&quot;,&quot;.join([str(v) for v in tv])}&#39;</span>)</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
 </div>
-<div class="foldopen" id="foldopen00095" data-start="" data-end="">
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#ab40242c357e077a78fbfb8fd4a61cf90">   95</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#ab40242c357e077a78fbfb8fd4a61cf90">read_header</a>(f: io.BufferedReader):</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    line = f.readline()</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    header = json.loads(line)</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    tensor_specs = [TensorSpec.from_dict(ts) <span class="keywordflow">for</span> ts <span class="keywordflow">in</span> header[<span class="stringliteral">&quot;features&quot;</span>]]</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    score_spec = TensorSpec.from_dict(header[<span class="stringliteral">&quot;score&quot;</span>]) <span class="keywordflow">if</span> <span class="stringliteral">&quot;score&quot;</span> <span class="keywordflow">in</span> header <span class="keywordflow">else</span> <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    advice_spec = TensorSpec.from_dict(header[<span class="stringliteral">&quot;advice&quot;</span>]) <span class="keywordflow">if</span> <span class="stringliteral">&quot;advice&quot;</span> <span class="keywordflow">in</span> header <span class="keywordflow">else</span> <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">return</span> tensor_specs, score_spec, advice_spec</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="foldopen" id="foldopen00096" data-start="" data-end="">
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#ab40242c357e077a78fbfb8fd4a61cf90">   96</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#ab40242c357e077a78fbfb8fd4a61cf90">read_header</a>(f: io.BufferedReader):</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    line = f.readline()</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    header = json.loads(line)</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    tensor_specs = [TensorSpec.from_dict(ts) <span class="keywordflow">for</span> ts <span class="keywordflow">in</span> header[<span class="stringliteral">&quot;features&quot;</span>]]</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    score_spec = TensorSpec.from_dict(header[<span class="stringliteral">&quot;score&quot;</span>]) <span class="keywordflow">if</span> <span class="stringliteral">&quot;score&quot;</span> <span class="keywordflow">in</span> header <span class="keywordflow">else</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    advice_spec = TensorSpec.from_dict(header[<span class="stringliteral">&quot;advice&quot;</span>]) <span class="keywordflow">if</span> <span class="stringliteral">&quot;advice&quot;</span> <span class="keywordflow">in</span> header <span class="keywordflow">else</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">return</span> tensor_specs, score_spec, advice_spec</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
 </div>
-<div class="foldopen" id="foldopen00104" data-start="" data-end="">
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#a224d6d585cf78a7b3baeaa7474fffc13">  104</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a224d6d585cf78a7b3baeaa7474fffc13">read_one_observation</a>(</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    context: Optional[str],</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    event_str: str,</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    f: io.BufferedReader,</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    tensor_specs: List[TensorSpec],</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    score_spec: Optional[TensorSpec],</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>):</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    features = []</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">for</span> ts <span class="keywordflow">in</span> tensor_specs:</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        features.append(<a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a824cd3e05f3d3094a806870ea1ea5da9">read_tensor</a>(f, ts))</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    f.readline()</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordflow">return</span> context, <span class="keywordtype">None</span>, features, <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="foldopen" id="foldopen00105" data-start="" data-end="">
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#a224d6d585cf78a7b3baeaa7474fffc13">  105</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a224d6d585cf78a7b3baeaa7474fffc13">read_one_observation</a>(</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    context: Optional[str],</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    event_str: str,</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    f: io.BufferedReader,</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    tensor_specs: List[TensorSpec],</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    score_spec: Optional[TensorSpec],</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>):</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    features = []</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">for</span> ts <span class="keywordflow">in</span> tensor_specs:</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        features.append(<a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a824cd3e05f3d3094a806870ea1ea5da9">read_tensor</a>(f, ts))</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    f.readline()</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordflow">return</span> context, <span class="keywordtype">None</span>, features, <span class="keywordtype">None</span></div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
 </div>
-<div class="foldopen" id="foldopen00118" data-start="" data-end="">
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#a795f34462a51ea2794eb103b432ad61f">  118</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a795f34462a51ea2794eb103b432ad61f">read_stream</a>(fname: str):</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keyword">with</span> io.BufferedReader(io.FileIO(fname, <span class="stringliteral">&quot;rb&quot;</span>)) <span class="keyword">as</span> f:</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        tensor_specs, score_spec, _ = <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#ab40242c357e077a78fbfb8fd4a61cf90">read_header</a>(f)</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        context = <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">while</span> <span class="keyword">True</span>:</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            event_str = f.readline()</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            <span class="keywordflow">if</span> <span class="keywordflow">not</span> event_str:</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                <span class="keywordflow">break</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            context, observation_id, features, score = <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a224d6d585cf78a7b3baeaa7474fffc13">read_one_observation</a>(</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                context, event_str, f, tensor_specs, score_spec</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            )</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            <span class="keywordflow">yield</span> context, observation_id, features, score</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="foldopen" id="foldopen00119" data-start="" data-end="">
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#a795f34462a51ea2794eb103b432ad61f">  119</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a795f34462a51ea2794eb103b432ad61f">read_stream</a>(fname: str):</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keyword">with</span> io.BufferedReader(io.FileIO(fname, <span class="stringliteral">&quot;rb&quot;</span>)) <span class="keyword">as</span> f:</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        tensor_specs, score_spec, _ = <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#ab40242c357e077a78fbfb8fd4a61cf90">read_header</a>(f)</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        context = <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keywordflow">while</span> <span class="keyword">True</span>:</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            event_str = f.readline()</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            <span class="keywordflow">if</span> <span class="keywordflow">not</span> event_str:</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                <span class="keywordflow">break</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            context, observation_id, features, score = <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a224d6d585cf78a7b3baeaa7474fffc13">read_one_observation</a>(</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                context, event_str, f, tensor_specs, score_spec</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            )</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            <span class="keywordflow">yield</span> context, observation_id, features, score</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
 </div>
-<div class="foldopen" id="foldopen00132" data-start="" data-end="">
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#abe185aedde809d51166c20f13603159a">  132</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#abe185aedde809d51166c20f13603159a">read_stream2</a>(f: io.BufferedReader):</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    context = <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordflow">while</span> <span class="keyword">True</span>:</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        tensor_specs, score_spec, _ = <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#ab40242c357e077a78fbfb8fd4a61cf90">read_header</a>(f)</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="comment"># event_str = f.readline()</span></div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="comment"># print(&quot;Event: &quot;, event_str)</span></div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="comment"># if not event_str:</span></div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="comment"># break</span></div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        context, observation_id, features, score = <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a224d6d585cf78a7b3baeaa7474fffc13">read_one_observation</a>(</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            context, <span class="stringliteral">&quot;&quot;</span>, f, tensor_specs, score_spec</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        )</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <span class="keywordflow">yield</span> context, observation_id, features, score</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="foldopen" id="foldopen00133" data-start="" data-end="">
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#abe185aedde809d51166c20f13603159a">  133</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#abe185aedde809d51166c20f13603159a">read_stream2</a>(f: io.BufferedReader):</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    context = <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordflow">while</span> <span class="keyword">True</span>:</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        tensor_specs, score_spec, _ = <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#ab40242c357e077a78fbfb8fd4a61cf90">read_header</a>(f)</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="comment"># event_str = f.readline()</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="comment"># print(&quot;Event: &quot;, event_str)</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="comment"># if not event_str:</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="comment"># break</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        context, observation_id, features, score = <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a224d6d585cf78a7b3baeaa7474fffc13">read_one_observation</a>(</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            context, <span class="stringliteral">&quot;&quot;</span>, f, tensor_specs, score_spec</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        )</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keywordflow">yield</span> context, observation_id, features, score</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
 </div>
-<div class="foldopen" id="foldopen00146" data-start="" data-end="">
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#a00a10719af7fe8bd112870799e9472d1">  146</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a00a10719af7fe8bd112870799e9472d1">main</a>(args):</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    last_context = <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordflow">for</span> ctx, obs_id, features, score <span class="keywordflow">in</span> <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a795f34462a51ea2794eb103b432ad61f">read_stream</a>(args[1]):</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <span class="keywordflow">if</span> last_context != ctx:</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            print(f<span class="stringliteral">&quot;context: {ctx}&quot;</span>)</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>            last_context = ctx</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        print(f<span class="stringliteral">&quot;observation: {obs_id}&quot;</span>)</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordflow">for</span> fv <span class="keywordflow">in</span> features:</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a14b90855a54de6f662b45732cb262314">pretty_print_tensor_value</a>(fv)</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keywordflow">if</span> score:</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a14b90855a54de6f662b45732cb262314">pretty_print_tensor_value</a>(score)</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="foldopen" id="foldopen00147" data-start="" data-end="">
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="../../d0/d86/namespacelog__reader.html#a00a10719af7fe8bd112870799e9472d1">  147</a></span><span class="keyword">def </span><a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a00a10719af7fe8bd112870799e9472d1">main</a>(args):</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    last_context = <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordflow">for</span> ctx, obs_id, features, score <span class="keywordflow">in</span> <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a795f34462a51ea2794eb103b432ad61f">read_stream</a>(args[1]):</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keywordflow">if</span> last_context != ctx:</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>            print(f<span class="stringliteral">&quot;context: {ctx}&quot;</span>)</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            last_context = ctx</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        print(f<span class="stringliteral">&quot;observation: {obs_id}&quot;</span>)</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">for</span> fv <span class="keywordflow">in</span> features:</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a14b90855a54de6f662b45732cb262314">pretty_print_tensor_value</a>(fv)</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keywordflow">if</span> score:</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a14b90855a54de6f662b45732cb262314">pretty_print_tensor_value</a>(score)</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
 </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>:</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a00a10719af7fe8bd112870799e9472d1">main</a>(sys.argv)</div>
-<div class="ttc" id="aclasslog__reader_1_1TensorSpec_html"><div class="ttname"><a href="../../d7/db4/classlog__reader_1_1TensorSpec.html">log_reader.TensorSpec</a></div><div class="ttdef"><b>Definition</b> <a href="#l00040">log_reader.py:40</a></div></div>
-<div class="ttc" id="aclasslog__reader_1_1TensorSpec_html_a0ebdbee0d26434fa74fdcfc2bb5edc3b"><div class="ttname"><a href="../../d7/db4/classlog__reader_1_1TensorSpec.html#a0ebdbee0d26434fa74fdcfc2bb5edc3b">log_reader.TensorSpec.from_dict</a></div><div class="ttdeci">from_dict(dict d)</div><div class="ttdef"><b>Definition</b> <a href="#l00047">log_reader.py:47</a></div></div>
-<div class="ttc" id="aclasslog__reader_1_1TensorValue_html"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html">log_reader.TensorValue</a></div><div class="ttdef"><b>Definition</b> <a href="#l00062">log_reader.py:62</a></div></div>
-<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_a07f7c204d41022aeb99d9268aa303c0e"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#a07f7c204d41022aeb99d9268aa303c0e">log_reader.TensorValue._len</a></div><div class="ttdeci">_len</div><div class="ttdef"><b>Definition</b> <a href="#l00068">log_reader.py:68</a></div></div>
-<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_a08963649af5fd9c164ec1a4e2567873c"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#a08963649af5fd9c164ec1a4e2567873c">log_reader.TensorValue._buffer</a></div><div class="ttdeci">_buffer</div><div class="ttdef"><b>Definition</b> <a href="#l00065">log_reader.py:65</a></div></div>
-<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_a0fc99d7b132a72919f095e32f437a5c7"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#a0fc99d7b132a72919f095e32f437a5c7">log_reader.TensorValue._view</a></div><div class="ttdeci">_view</div><div class="ttdef"><b>Definition</b> <a href="#l00066">log_reader.py:66</a></div></div>
-<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_a303866c5fd53e252f10c70499c55d3e6"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#a303866c5fd53e252f10c70499c55d3e6">log_reader.TensorValue.__getitem__</a></div><div class="ttdeci">__getitem__(self, index)</div><div class="ttdef"><b>Definition</b> <a href="#l00078">log_reader.py:78</a></div></div>
-<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_a8f335ccb49b7b41f58ea2d33b7e46814"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#a8f335ccb49b7b41f58ea2d33b7e46814">log_reader.TensorValue.__len__</a></div><div class="ttdeci">int __len__(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00075">log_reader.py:75</a></div></div>
-<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_aa2f1de70735138da8b7f68d70e574e36"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#aa2f1de70735138da8b7f68d70e574e36">log_reader.TensorValue._spec</a></div><div class="ttdeci">_spec</div><div class="ttdef"><b>Definition</b> <a href="#l00064">log_reader.py:64</a></div></div>
-<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_ab3b6b311e0b847ba5f47e820de4834d4"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#ab3b6b311e0b847ba5f47e820de4834d4">log_reader.TensorValue.spec</a></div><div class="ttdeci">TensorSpec spec(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00072">log_reader.py:72</a></div></div>
-<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_afcc496977a6e3b6bc2d770a642900be1"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#afcc496977a6e3b6bc2d770a642900be1">log_reader.TensorValue.__init__</a></div><div class="ttdeci">__init__(self, TensorSpec spec, bytes buffer)</div><div class="ttdef"><b>Definition</b> <a href="#l00063">log_reader.py:63</a></div></div>
-<div class="ttc" id="anamespacelog__reader_html_a00a10719af7fe8bd112870799e9472d1"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#a00a10719af7fe8bd112870799e9472d1">log_reader.main</a></div><div class="ttdeci">main(args)</div><div class="ttdef"><b>Definition</b> <a href="#l00146">log_reader.py:146</a></div></div>
-<div class="ttc" id="anamespacelog__reader_html_a14b90855a54de6f662b45732cb262314"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#a14b90855a54de6f662b45732cb262314">log_reader.pretty_print_tensor_value</a></div><div class="ttdeci">pretty_print_tensor_value(TensorValue tv)</div><div class="ttdef"><b>Definition</b> <a href="#l00091">log_reader.py:91</a></div></div>
-<div class="ttc" id="anamespacelog__reader_html_a224d6d585cf78a7b3baeaa7474fffc13"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#a224d6d585cf78a7b3baeaa7474fffc13">log_reader.read_one_observation</a></div><div class="ttdeci">read_one_observation(Optional[str] context, str event_str, io.BufferedReader f, List[TensorSpec] tensor_specs, Optional[TensorSpec] score_spec)</div><div class="ttdef"><b>Definition</b> <a href="#l00104">log_reader.py:110</a></div></div>
-<div class="ttc" id="anamespacelog__reader_html_a795f34462a51ea2794eb103b432ad61f"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#a795f34462a51ea2794eb103b432ad61f">log_reader.read_stream</a></div><div class="ttdeci">read_stream(str fname)</div><div class="ttdef"><b>Definition</b> <a href="#l00118">log_reader.py:118</a></div></div>
-<div class="ttc" id="anamespacelog__reader_html_a824cd3e05f3d3094a806870ea1ea5da9"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#a824cd3e05f3d3094a806870ea1ea5da9">log_reader.read_tensor</a></div><div class="ttdeci">TensorValue read_tensor(io.BufferedReader fs, TensorSpec ts)</div><div class="ttdef"><b>Definition</b> <a href="#l00084">log_reader.py:84</a></div></div>
-<div class="ttc" id="anamespacelog__reader_html_ab40242c357e077a78fbfb8fd4a61cf90"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#ab40242c357e077a78fbfb8fd4a61cf90">log_reader.read_header</a></div><div class="ttdeci">read_header(io.BufferedReader f)</div><div class="ttdef"><b>Definition</b> <a href="#l00095">log_reader.py:95</a></div></div>
-<div class="ttc" id="anamespacelog__reader_html_abe185aedde809d51166c20f13603159a"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#abe185aedde809d51166c20f13603159a">log_reader.read_stream2</a></div><div class="ttdeci">read_stream2(io.BufferedReader f)</div><div class="ttdef"><b>Definition</b> <a href="#l00132">log_reader.py:132</a></div></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>:</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <a class="code hl_function" href="../../d0/d86/namespacelog__reader.html#a00a10719af7fe8bd112870799e9472d1">main</a>(sys.argv)</div>
+<div class="ttc" id="aclasslog__reader_1_1TensorSpec_html"><div class="ttname"><a href="../../d7/db4/classlog__reader_1_1TensorSpec.html">log_reader.TensorSpec</a></div><div class="ttdef"><b>Definition</b> <a href="#l00041">log_reader.py:41</a></div></div>
+<div class="ttc" id="aclasslog__reader_1_1TensorSpec_html_a0ebdbee0d26434fa74fdcfc2bb5edc3b"><div class="ttname"><a href="../../d7/db4/classlog__reader_1_1TensorSpec.html#a0ebdbee0d26434fa74fdcfc2bb5edc3b">log_reader.TensorSpec.from_dict</a></div><div class="ttdeci">from_dict(dict d)</div><div class="ttdef"><b>Definition</b> <a href="#l00048">log_reader.py:48</a></div></div>
+<div class="ttc" id="aclasslog__reader_1_1TensorValue_html"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html">log_reader.TensorValue</a></div><div class="ttdef"><b>Definition</b> <a href="#l00063">log_reader.py:63</a></div></div>
+<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_a07f7c204d41022aeb99d9268aa303c0e"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#a07f7c204d41022aeb99d9268aa303c0e">log_reader.TensorValue._len</a></div><div class="ttdeci">_len</div><div class="ttdef"><b>Definition</b> <a href="#l00069">log_reader.py:69</a></div></div>
+<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_a08963649af5fd9c164ec1a4e2567873c"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#a08963649af5fd9c164ec1a4e2567873c">log_reader.TensorValue._buffer</a></div><div class="ttdeci">_buffer</div><div class="ttdef"><b>Definition</b> <a href="#l00066">log_reader.py:66</a></div></div>
+<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_a0fc99d7b132a72919f095e32f437a5c7"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#a0fc99d7b132a72919f095e32f437a5c7">log_reader.TensorValue._view</a></div><div class="ttdeci">_view</div><div class="ttdef"><b>Definition</b> <a href="#l00067">log_reader.py:67</a></div></div>
+<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_a303866c5fd53e252f10c70499c55d3e6"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#a303866c5fd53e252f10c70499c55d3e6">log_reader.TensorValue.__getitem__</a></div><div class="ttdeci">__getitem__(self, index)</div><div class="ttdef"><b>Definition</b> <a href="#l00079">log_reader.py:79</a></div></div>
+<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_a8f335ccb49b7b41f58ea2d33b7e46814"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#a8f335ccb49b7b41f58ea2d33b7e46814">log_reader.TensorValue.__len__</a></div><div class="ttdeci">int __len__(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00076">log_reader.py:76</a></div></div>
+<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_aa2f1de70735138da8b7f68d70e574e36"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#aa2f1de70735138da8b7f68d70e574e36">log_reader.TensorValue._spec</a></div><div class="ttdeci">_spec</div><div class="ttdef"><b>Definition</b> <a href="#l00065">log_reader.py:65</a></div></div>
+<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_ab3b6b311e0b847ba5f47e820de4834d4"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#ab3b6b311e0b847ba5f47e820de4834d4">log_reader.TensorValue.spec</a></div><div class="ttdeci">TensorSpec spec(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00073">log_reader.py:73</a></div></div>
+<div class="ttc" id="aclasslog__reader_1_1TensorValue_html_afcc496977a6e3b6bc2d770a642900be1"><div class="ttname"><a href="../../d5/d81/classlog__reader_1_1TensorValue.html#afcc496977a6e3b6bc2d770a642900be1">log_reader.TensorValue.__init__</a></div><div class="ttdeci">__init__(self, TensorSpec spec, bytes buffer)</div><div class="ttdef"><b>Definition</b> <a href="#l00064">log_reader.py:64</a></div></div>
+<div class="ttc" id="anamespacelog__reader_html_a00a10719af7fe8bd112870799e9472d1"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#a00a10719af7fe8bd112870799e9472d1">log_reader.main</a></div><div class="ttdeci">main(args)</div><div class="ttdef"><b>Definition</b> <a href="#l00147">log_reader.py:147</a></div></div>
+<div class="ttc" id="anamespacelog__reader_html_a14b90855a54de6f662b45732cb262314"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#a14b90855a54de6f662b45732cb262314">log_reader.pretty_print_tensor_value</a></div><div class="ttdeci">pretty_print_tensor_value(TensorValue tv)</div><div class="ttdef"><b>Definition</b> <a href="#l00092">log_reader.py:92</a></div></div>
+<div class="ttc" id="anamespacelog__reader_html_a224d6d585cf78a7b3baeaa7474fffc13"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#a224d6d585cf78a7b3baeaa7474fffc13">log_reader.read_one_observation</a></div><div class="ttdeci">read_one_observation(Optional[str] context, str event_str, io.BufferedReader f, List[TensorSpec] tensor_specs, Optional[TensorSpec] score_spec)</div><div class="ttdef"><b>Definition</b> <a href="#l00105">log_reader.py:111</a></div></div>
+<div class="ttc" id="anamespacelog__reader_html_a795f34462a51ea2794eb103b432ad61f"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#a795f34462a51ea2794eb103b432ad61f">log_reader.read_stream</a></div><div class="ttdeci">read_stream(str fname)</div><div class="ttdef"><b>Definition</b> <a href="#l00119">log_reader.py:119</a></div></div>
+<div class="ttc" id="anamespacelog__reader_html_a824cd3e05f3d3094a806870ea1ea5da9"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#a824cd3e05f3d3094a806870ea1ea5da9">log_reader.read_tensor</a></div><div class="ttdeci">TensorValue read_tensor(io.BufferedReader fs, TensorSpec ts)</div><div class="ttdef"><b>Definition</b> <a href="#l00085">log_reader.py:85</a></div></div>
+<div class="ttc" id="anamespacelog__reader_html_ab40242c357e077a78fbfb8fd4a61cf90"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#ab40242c357e077a78fbfb8fd4a61cf90">log_reader.read_header</a></div><div class="ttdeci">read_header(io.BufferedReader f)</div><div class="ttdef"><b>Definition</b> <a href="#l00096">log_reader.py:96</a></div></div>
+<div class="ttc" id="anamespacelog__reader_html_abe185aedde809d51166c20f13603159a"><div class="ttname"><a href="../../d0/d86/namespacelog__reader.html#abe185aedde809d51166c20f13603159a">log_reader.read_stream2</a></div><div class="ttdeci">read_stream2(io.BufferedReader f)</div><div class="ttdef"><b>Definition</b> <a href="#l00133">log_reader.py:133</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

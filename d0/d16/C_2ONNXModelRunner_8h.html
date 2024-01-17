@@ -135,7 +135,36 @@ Functions</h2></td></tr>
 <tr class="memitem:a3d752a415534a47d5ced63e31772be52" id="r_a3d752a415534a47d5ced63e31772be52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d752a415534a47d5ced63e31772be52">destroyONNXModelRunner</a> (<a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> *obj)</td></tr>
 <tr class="separator:a3d752a415534a47d5ced63e31772be52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file defines the C APIs for <a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a>. This is a wrapper around the <a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> class that provides an interface for the MLCompilerBridge to interact with the ONNX models during inference.</p>
+<p>Usage for single agent:</p><ol type="1">
+<li>Create an <a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> object using createSingleAgentOMR</li>
+<li>Evaluate the features using singleAgentEvaluate</li>
+<li>Destroy the instance of <a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> using destroyONNXModelRunner</li>
+</ol>
+<p>Usage for multiple agents:</p><ol type="1">
+<li>Create an <a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> object using createEnvironment</li>
+<li>Set the number of features using env_setNumFeatures</li>
+<li>Set the step function using env_setStepFunc</li>
+<li>Set the reset function using env_setResetFunc</li>
+<li>Set the next agent using env_setNextAgent</li>
+<li>Create an <a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> object using createONNXModelRunner</li>
+<li>Evaluate the features using evaluate</li>
+<li>Destroy the instance of <a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> using destroyONNXModelRunner</li>
+<li>Destroy the instance of <a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> using destroyEnvironment</li>
+</ol>
+<p>Using <a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a>:</p><ol type="1">
+<li>Create an <a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> object using createEnvironment</li>
+<li>Set the number of features using env_setNumFeatures</li>
+<li>Set the step function using env_setStepFunc</li>
+<li>Set the reset function using env_setResetFunc</li>
+<li>Set the next agent using env_setNextAgent</li>
+<li>Destroy the instance of <a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> using destroyEnvironment after calling destroyONNXModelRunner.</li>
+</ol>
+<p>Internally, the <a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> will call the step function to get the next action and the reset function to reset the environment. The step function should return a pointer to an array of floats. The reset function should return a pointer to an array of floats. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html">ONNXModelRunner.h</a>.</p>
+</div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="aa80c0747f7b1243c91b0b96069dc4900" name="aa80c0747f7b1243c91b0b96069dc4900"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa80c0747f7b1243c91b0b96069dc4900">&#9670;&#160;</a></span>Action</h2>
 
@@ -148,7 +177,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html#l00050">50</a> of file <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html">ONNXModelRunner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html#l00053">53</a> of file <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html">ONNXModelRunner.h</a>.</p>
 
 </div>
 </div>
@@ -164,7 +193,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html#l00049">49</a> of file <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html">ONNXModelRunner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html#l00052">52</a> of file <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html">ONNXModelRunner.h</a>.</p>
 
 </div>
 </div>
@@ -180,7 +209,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html#l00048">48</a> of file <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html">ONNXModelRunner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html#l00051">51</a> of file <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h_source.html">ONNXModelRunner.h</a>.</p>
 
 </div>
 </div>
@@ -200,7 +229,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/dbf/ONNXModelRunnerCWrapper_8cpp_source.html#l00080">80</a> of file <a class="el" href="../../dd/dbf/ONNXModelRunnerCWrapper_8cpp_source.html">ONNXModelRunnerCWrapper.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/dbf/ONNXModelRunnerCWrapper_8cpp_source.html#l00081">81</a> of file <a class="el" href="../../dd/dbf/ONNXModelRunnerCWrapper_8cpp_source.html">ONNXModelRunnerCWrapper.cpp</a>.</p>
 
 </div>
 </div>
@@ -245,7 +274,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/dbf/ONNXModelRunnerCWrapper_8cpp_source.html#l00123">123</a> of file <a class="el" href="../../dd/dbf/ONNXModelRunnerCWrapper_8cpp_source.html">ONNXModelRunnerCWrapper.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/dbf/ONNXModelRunnerCWrapper_8cpp_source.html#l00124">124</a> of file <a class="el" href="../../dd/dbf/ONNXModelRunnerCWrapper_8cpp_source.html">ONNXModelRunnerCWrapper.cpp</a>.</p>
 
 </div>
 </div>

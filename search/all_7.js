@@ -34,7 +34,7 @@ var searchData=
   ['getstring_31',['getString',['../db/d74/classllvm_1_1json_1_1Object.html#a3f5a1fac6edc9441441ce993e57dcafe',1,'llvm::json::Object']]],
   ['gettensorspecfromjson_32',['getTensorSpecFromJSON',['../d5/d9c/namespaceMLBridge.html#ac1ae58fc820384ee58ac74ef94d1c7e7',1,'MLBridge::getTensorSpecFromJSON(llvm::LLVMContext &amp;Ctx, const llvm::json::Value &amp;Value)'],['../d5/d9c/namespaceMLBridge.html#ad42554006482ad110d93a01e71bcb53c',1,'MLBridge::getTensorSpecFromJSON(LLVMContext &amp;Ctx, const json::Value &amp;Value)']]],
   ['gettotaltensorbuffersize_33',['getTotalTensorBufferSize',['../d2/d87/classMLBridge_1_1TensorSpec.html#a96fa6c8a190c5d10495d6831834683ea',1,'MLBridge::TensorSpec']]],
-  ['grpc_34',['Building LLVM-GRPC',['../df/ddf/md_MLModelRunner_2gRPCModelRunner_2README.html#autotoc_md2',1,'']]],
+  ['grpc_34',['Building LLVM-GRPC',['../df/ddf/md_MLModelRunner_2gRPCModelRunner_2README.html#autotoc_md7',1,'']]],
   ['grpc_35',['gRPC',['../dc/d4e/classMLBridge_1_1MLModelRunner.html#a402dc0e61f621293a0cad7a2f52f04c5a12acd14e73603d7c8860624f02021b15',1,'MLBridge::MLModelRunner']]],
   ['grpc_3aregister_20allocation_36',['LLVM-GRPC:Register-Allocation',['../df/ddf/md_MLModelRunner_2gRPCModelRunner_2README.html',1,'']]],
   ['grpc_5fservice_5fobj_37',['grpc_service_obj',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a59a31ff8ea537637e5ff147bf21abf96',1,'GrpcCompilerInterface::GrpcCompilerInterface']]],

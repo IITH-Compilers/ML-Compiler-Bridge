@@ -2,10 +2,10 @@
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,80,162,106"/>
 <area shape="rect" id="Node000002" href="$da/de4/classMLBridge_1_1BitstreamSerDes.html" title=" " alt="" coords="213,5,396,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,71,209,40,245,29,247,34,211,45,130,76"/>
-<area shape="rect" id="Node000003" href="$df/db6/classMLBridge_1_1JsonSerDes.html" title=" " alt="" coords="227,55,382,80"/>
+<area shape="rect" id="Node000003" href="$df/db6/classMLBridge_1_1JsonSerDes.html" title="JsonSerDes &#45; Json Serialization/Deserialization using LLVM&#39;s json library." alt="" coords="227,55,382,80"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,80,226,74,227,79,177,85"/>
 <area shape="rect" id="Node000004" href="$d1/dcd/classMLBridge_1_1ProtobufSerDes.html" title=" " alt="" coords="217,104,392,130"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="177,100,217,105,216,110,177,106"/>
-<area shape="rect" id="Node000005" href="$d9/d52/classMLBridge_1_1TensorflowSerDes.html" title=" " alt="" coords="210,153,399,179"/>
+<area shape="rect" id="Node000005" href="$d9/d52/classMLBridge_1_1TensorflowSerDes.html" title="TensorflowSerDes &#45; Serialization/Deserialization to support TF AOT models." alt="" coords="210,153,399,179"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="131,110,211,140,247,150,245,155,209,145,129,115"/>
 </map>

@@ -147,7 +147,32 @@ Typedefs</h2></td></tr>
 <tr class="memitem:aa80c0747f7b1243c91b0b96069dc4900" id="r_aa80c0747f7b1243c91b0b96069dc4900"><td class="memItemLeft" align="right" valign="top">typedef signed&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa80c0747f7b1243c91b0b96069dc4900">Action</a></td></tr>
 <tr class="separator:aa80c0747f7b1243c91b0b96069dc4900"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base <a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> class to support ONNX based inference of RL models. This class is used to define the environment for the agents to interact with.</p>
+<p>The <a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> should be defined by the compiler pass that is using the MLCompilerBridge. The environment should be defined by inheriting from this class and implementing the step() and reset() methods.</p>
+<p>step() and reset() are typical methods used in RL environments.</p>
+<p>The step() method takes an action as input and returns the observation corresponding to the next state. The reset() method returns the initial observation.</p>
+<p>Usage:</p><ol type="1">
+<li>Create an environment class inheriting from <a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">MLBridge::Environment</a></li>
+<li>Implement step() and reset() methods</li>
+</ol>
+<p>Example: </p><div class="fragment"><div class="line"><span class="keyword">class </span>MyEnvironment : <span class="keyword">public</span> <a class="code hl_class" href="../../d7/d68/classMLBridge_1_1Environment.html">MLBridge::Environment</a> {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">  Observation &amp;<a class="code hl_function" href="../../d7/d68/classMLBridge_1_1Environment.html#a6d31b787a7eacbfab13018a5313091dd">step</a>(<a class="code hl_typedef" href="../../d0/d16/C_2ONNXModelRunner_8h.html#aa80c0747f7b1243c91b0b96069dc4900">Action</a> action)<span class="keyword"> override </span>{</div>
+<div class="line">    <span class="comment">// Implement the step function here</span></div>
+<div class="line">  }</div>
+<div class="line">  Observation &amp;<a class="code hl_function" href="../../d7/d68/classMLBridge_1_1Environment.html#a825b999ae0b621a4e135f16e165ae8fb">reset</a>()<span class="keyword"> override </span>{</div>
+<div class="line">    <span class="comment">// Implement the reset function here</span></div>
+<div class="line">  }</div>
+<div class="line">};</div>
+<div class="ttc" id="aC_2ONNXModelRunner_8h_html_aa80c0747f7b1243c91b0b96069dc4900"><div class="ttname"><a href="../../d0/d16/C_2ONNXModelRunner_8h.html#aa80c0747f7b1243c91b0b96069dc4900">Action</a></div><div class="ttdeci">signed Action</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d16/C_2ONNXModelRunner_8h_source.html#l00053">ONNXModelRunner.h:53</a></div></div>
+<div class="ttc" id="aclassMLBridge_1_1Environment_html"><div class="ttname"><a href="../../d7/d68/classMLBridge_1_1Environment.html">MLBridge::Environment</a></div><div class="ttdef"><b>Definition</b> <a href="../../de/d26/environment_8h_source.html#l00056">environment.h:56</a></div></div>
+<div class="ttc" id="aclassMLBridge_1_1Environment_html_a6d31b787a7eacbfab13018a5313091dd"><div class="ttname"><a href="../../d7/d68/classMLBridge_1_1Environment.html#a6d31b787a7eacbfab13018a5313091dd">MLBridge::Environment::step</a></div><div class="ttdeci">virtual Observation &amp; step(Action action)=0</div></div>
+<div class="ttc" id="aclassMLBridge_1_1Environment_html_a825b999ae0b621a4e135f16e165ae8fb"><div class="ttname"><a href="../../d7/d68/classMLBridge_1_1Environment.html#a825b999ae0b621a4e135f16e165ae8fb">MLBridge::Environment::reset</a></div><div class="ttdeci">virtual Observation &amp; reset()=0</div></div>
+</div><!-- fragment --><p>This environment can then be used by the <a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> to interact with the agents. getNextAgent() and setNextAgent() methods can be used to set the next agent to interact with. These methods are used in step() and reset() to get the next agent to interact with in case of multi-agent environment. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
+</div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="aa80c0747f7b1243c91b0b96069dc4900" name="aa80c0747f7b1243c91b0b96069dc4900"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa80c0747f7b1243c91b0b96069dc4900">&#9670;&#160;</a></span>Action</h2>
 
@@ -160,7 +185,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/d26/environment_8h_source.html#l00050">50</a> of file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d26/environment_8h_source.html#l00053">53</a> of file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
 
 </div>
 </div>

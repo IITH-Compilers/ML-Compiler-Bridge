@@ -202,7 +202,6 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d4a/classMLBridge_1_1gRPCModelRunner.html">MLBridge::gRPCModelRunner&lt; Client, Stub, Request, Response &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">grpc model runner requires service, stub, request and response  <a href="../../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -210,7 +209,26 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d5/d9c/namespaceMLBridge" id="r_d5/d9c/namespaceMLBridge"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d9c/namespaceMLBridge.html">MLBridge</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>gRPCModelRunner class supporting communication via gRPC. This class is used to communicate with the gRPC server and send/receive data to/from the model. Supports interleaved communication with the model.</p>
+<p>There are two ways to use this class:</p><ol type="1">
+<li>Training mode - gRPC Server: In this mode, the gRPCModelRunner object is created with the server address and the service object. The service object is used to create the server and the server waits for the client to connect. Once the client connects, the server waits for the client to send the request and then responds with the result. In Training mode, <a class="el" href="../../d8/d4a/namespaceGrpcCompilerInterface.html">GrpcCompilerInterface</a> class from <a class="el" href="../../d1/d5a/GrpcCompilerInterface_8py.html" title="Compiler interface for gRPC.">GrpcCompilerInterface.py</a> acts as the client and sends the request to the server.</li>
+<li>Inference mode - gRPC Client: In this mode, the gRPCModelRunner object is created with the server address, request and response objects. The request object is used to send the features to the model and the response object is used to receive the result from the model.</li>
+</ol>
+<p>In Inference mode, the compiler pass using this class acts as the client and sends the request to the server implemented by using <a class="el" href="../../d1/d5a/GrpcCompilerInterface_8py.html" title="Compiler interface for gRPC.">GrpcCompilerInterface.py</a>.</p>
+<p>Interfacing with the model using protobuf (.proto) files: Users should define the service, stub, request and response by writing a .proto file. The service and stub objects are generated using the protoc compiler. The request and response objects are generated using the protoc compiler or created by the user. The build process will automatically compile .proto files and generates the relevant stubs and request/response objects in both CPP and Python which will be used by gRPCModelRunner and <a class="el" href="../../d8/d4a/namespaceGrpcCompilerInterface.html">GrpcCompilerInterface</a> respectively..</p>
+<p>In Inference mode, users should override <code>getAdvice()</code> RPC method in the Python model code to process the request and send the response back to the client. This method is called by the gRPC server in the evaluate_untyped() method of gRPCModelRunner class to get the result from the model after populating the features in the request object.</p>
+<p>In Training mode, users should override the RPC function/service that they declare in the .proto file in the Compiler pass which is using the gRPCModelRunner. This function is called by the gRPC client (Python model) that is using the <a class="el" href="../../d8/d4a/namespaceGrpcCompilerInterface.html">GrpcCompilerInterface</a> class to send the request to the server.</p>
+<p>Usage:</p><ol type="1">
+<li>Create a .proto file with the service and message definitions</li>
+<li>Generate the stubs using protoc</li>
+<li>Create a gRPCModelRunner object with the server address, stub, request and response</li>
+<li>Populate the features to be sent to the model</li>
+<li>Call <a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h.html#a01a4936796df6ca38ab4c976abed0124">evaluate()</a> to get the result back from the model </li>
+</ol>
+
+<p class="definition">Definition in file <a class="el" href="../../d4/d7b/gRPCModelRunner_8h_source.html">gRPCModelRunner.h</a>.</p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0

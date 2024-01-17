@@ -74,6 +74,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../d0/de5/classONNXModel-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">ONNXModel Class Reference</div></div>
@@ -89,6 +90,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acd5859dab5fa9e9d09ffd0ceaced6270" id="r_acd5859dab5fa9e9d09ffd0ceaced6270"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd5859dab5fa9e9d09ffd0ceaced6270">run</a> (llvm::SmallVector&lt; float, 100 &gt; &amp;input, llvm::SmallVector&lt; float, 100 &gt; &amp;output)</td></tr>
 <tr class="memdesc:acd5859dab5fa9e9d09ffd0ceaced6270"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the ONNX model on the input and returns the output.  <br /></td></tr>
 <tr class="separator:acd5859dab5fa9e9d09ffd0ceaced6270"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
 <tr class="memitem:a1ce422500fc37d345033de60bf68d31f" id="r_a1ce422500fc37d345033de60bf68d31f"><td class="memItemLeft" align="right" valign="top">Ort::Value&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ce422500fc37d345033de60bf68d31f">getInputValue</a> (llvm::SmallVector&lt; float, 100 &gt; &amp;input, int inputIdx)</td></tr>
 <tr class="separator:a1ce422500fc37d345033de60bf68d31f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -103,7 +107,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d4/d5d/onnx_8h_source.html#l00028">28</a> of file <a class="el" href="../../d4/d5d/onnx_8h_source.html">onnx.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5d/onnx_8h_source.html#l00029">29</a> of file <a class="el" href="../../d4/d5d/onnx_8h_source.html">onnx.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab5b5699438cc672cb487267d2d0c1a03" name="ab5b5699438cc672cb487267d2d0c1a03"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab5b5699438cc672cb487267d2d0c1a03">&#9670;&#160;</a></span>ONNXModel()</h2>
@@ -120,7 +124,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/df5/onnx_8cpp_source.html#l00023">23</a> of file <a class="el" href="../../d9/df5/onnx_8cpp_source.html">onnx.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/df5/onnx_8cpp_source.html#l00024">24</a> of file <a class="el" href="../../d9/df5/onnx_8cpp_source.html">onnx.cpp</a>.</p>
 
 </div>
 </div>
@@ -130,6 +134,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Ort::Value ONNXModel::getInputValue </td>
@@ -142,9 +149,14 @@ Private Attributes</h2></td></tr>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>inputIdx</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/df5/onnx_8cpp_source.html#l00028">28</a> of file <a class="el" href="../../d9/df5/onnx_8cpp_source.html">onnx.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/df5/onnx_8cpp_source.html#l00029">29</a> of file <a class="el" href="../../d9/df5/onnx_8cpp_source.html">onnx.cpp</a>.</p>
 
 </div>
 </div>
@@ -169,7 +181,7 @@ Private Attributes</h2></td></tr>
 
 <p>Runs the ONNX model on the input and returns the output. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/df5/onnx_8cpp_source.html#l00049">49</a> of file <a class="el" href="../../d9/df5/onnx_8cpp_source.html">onnx.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/df5/onnx_8cpp_source.html#l00051">51</a> of file <a class="el" href="../../d9/df5/onnx_8cpp_source.html">onnx.cpp</a>.</p>
 
 </div>
 </div>
@@ -194,7 +206,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5d/onnx_8h_source.html#l00029">29</a> of file <a class="el" href="../../d4/d5d/onnx_8h_source.html">onnx.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5d/onnx_8h_source.html#l00030">30</a> of file <a class="el" href="../../d4/d5d/onnx_8h_source.html">onnx.h</a>.</p>
 
 </div>
 </div>
@@ -218,7 +230,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5d/onnx_8h_source.html#l00030">30</a> of file <a class="el" href="../../d4/d5d/onnx_8h_source.html">onnx.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5d/onnx_8h_source.html#l00031">31</a> of file <a class="el" href="../../d4/d5d/onnx_8h_source.html">onnx.h</a>.</p>
 
 </div>
 </div>
@@ -242,7 +254,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5d/onnx_8h_source.html#l00031">31</a> of file <a class="el" href="../../d4/d5d/onnx_8h_source.html">onnx.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5d/onnx_8h_source.html#l00032">32</a> of file <a class="el" href="../../d4/d5d/onnx_8h_source.html">onnx.h</a>.</p>
 
 </div>
 </div>

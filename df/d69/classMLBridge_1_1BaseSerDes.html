@@ -95,11 +95,11 @@ Inheritance diagram for MLBridge::BaseSerDes:</div>
 <area shape="rect" title=" " alt="" coords="5,80,162,106"/>
 <area shape="rect" href="../../da/de4/classMLBridge_1_1BitstreamSerDes.html" title=" " alt="" coords="213,5,396,31"/>
 <area shape="poly" title=" " alt="" coords="128,71,209,40,245,29,247,34,211,45,130,76"/>
-<area shape="rect" href="../../df/db6/classMLBridge_1_1JsonSerDes.html" title=" " alt="" coords="227,55,382,80"/>
+<area shape="rect" href="../../df/db6/classMLBridge_1_1JsonSerDes.html" title="JsonSerDes &#45; Json Serialization/Deserialization using LLVM&#39;s json library." alt="" coords="227,55,382,80"/>
 <area shape="poly" title=" " alt="" coords="177,80,226,74,227,79,177,85"/>
 <area shape="rect" href="../../d1/dcd/classMLBridge_1_1ProtobufSerDes.html" title=" " alt="" coords="217,104,392,130"/>
 <area shape="poly" title=" " alt="" coords="177,100,217,105,216,110,177,106"/>
-<area shape="rect" href="../../d9/d52/classMLBridge_1_1TensorflowSerDes.html" title=" " alt="" coords="210,153,399,179"/>
+<area shape="rect" href="../../d9/d52/classMLBridge_1_1TensorflowSerDes.html" title="TensorflowSerDes &#45; Serialization/Deserialization to support TF AOT models." alt="" coords="210,153,399,179"/>
 <area shape="poly" title=" " alt="" coords="131,110,211,140,247,150,245,155,209,145,129,115"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
@@ -159,8 +159,9 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:aca7e98198831ec27d302c89caa28766c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00044">44</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<div class="textblock"><p>This is the base class for <a class="el" href="../../da/d52/namespaceSerDes.html">SerDes</a>. It defines the interface for the serialization and deserialization of the data structures used for the communication by the <a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner - The main interface for interacting with the ML models.">MLModelRunner</a>. Currently, (int, float) or (long, double), char and bool are supported. Vectors of these types are supported as well. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00046">46</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a03e4188fd2b99530aad3eb3d69130c50" name="a03e4188fd2b99530aad3eb3d69130c50"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a03e4188fd2b99530aad3eb3d69130c50">&#9670;&#160;</a></span>Kind</h2>
@@ -217,7 +218,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00077">77</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00078">78</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>
@@ -326,7 +327,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00072">72</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00073">73</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>
@@ -355,7 +356,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="../../d1/dcd/classMLBridge_1_1ProtobufSerDes.html#aabb5c7e5c1eb7dac4219fab1c7f27c2d">MLBridge::ProtobufSerDes</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00073">73</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00074">74</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>
@@ -384,7 +385,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="../../d1/dcd/classMLBridge_1_1ProtobufSerDes.html#a8879fd34bc3061d26d10ef7cff946ac3">MLBridge::ProtobufSerDes</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00074">74</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00075">75</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>
@@ -444,7 +445,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="../../d1/dcd/classMLBridge_1_1ProtobufSerDes.html#a190cf24ca06b4116b2c131cef25a27bd">MLBridge::ProtobufSerDes</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00058">58</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00060">60</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>
@@ -477,7 +478,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="../../d1/dcd/classMLBridge_1_1ProtobufSerDes.html#a3afe78a9a725b4f25d1feb04a362e5f1">MLBridge::ProtobufSerDes</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00061">61</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00063">63</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>
@@ -506,7 +507,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="../../d1/dcd/classMLBridge_1_1ProtobufSerDes.html#a380d59dce2751341c766c0df8f9ce727">MLBridge::ProtobufSerDes</a>, and <a class="el" href="../../d9/d52/classMLBridge_1_1TensorflowSerDes.html#a1e9978fec6cc97727c7171bf0f137f4c">MLBridge::TensorflowSerDes</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00066">66</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00067">67</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>
@@ -535,7 +536,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="../../d1/dcd/classMLBridge_1_1ProtobufSerDes.html#a3116a058a281e2e7cde39c1bfb2707c2">MLBridge::ProtobufSerDes</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00069">69</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00070">70</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>
@@ -560,7 +561,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00082">82</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00083">83</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>
@@ -584,7 +585,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00080">80</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00081">81</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>
@@ -608,7 +609,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00081">81</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00082">82</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>
@@ -632,7 +633,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00079">79</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00080">80</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>

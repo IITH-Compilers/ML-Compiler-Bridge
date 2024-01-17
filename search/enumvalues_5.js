@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['invalid_0',['Invalid',['../d5/d9c/namespaceMLBridge.html#ac24975254ef766855d6d0b7f764371fba4bbb8f967da6d1a610596d7257179c2b',1,'MLBridge']]]
+  ['json_0',['Json',['../df/d69/classMLBridge_1_1BaseSerDes.html#a03e4188fd2b99530aad3eb3d69130c50aeed8d85b888a6c015834240885ee6333',1,'MLBridge::BaseSerDes']]]
 ];

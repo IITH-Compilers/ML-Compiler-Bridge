@@ -188,7 +188,15 @@ Macros</h2></td></tr>
 <tr class="memitem:ad0c3185874c1450a2f28e0641b00411d" id="r_ad0c3185874c1450a2f28e0641b00411d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0c3185874c1450a2f28e0641b00411d">SET_FEATURE</a>(TYPE)</td></tr>
 <tr class="separator:ad0c3185874c1450a2f28e0641b00411d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Supporting new <a class="el" href="../../da/d52/namespaceSerDes.html">SerDes</a>:</p><ol type="1">
+<li>Create a new class which inherits from BaseSerDes.</li>
+<li>Implement the setFeature(), getSerializedData(), cleanDataStructures() and deserializeUntyped() methods.</li>
+<li>Add the new <a class="el" href="../../da/d52/namespaceSerDes.html">SerDes</a> to the enum class Kind in this class. </li>
+</ol>
+
+<p class="definition">Definition in file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ad0c3185874c1450a2f28e0641b00411d" name="ad0c3185874c1450a2f28e0641b00411d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad0c3185874c1450a2f28e0641b00411d">&#9670;&#160;</a></span>SET_FEATURE</h2>
 
@@ -205,8 +213,9 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">  <span class="keyword">virtual</span> <span class="keywordtype">void</span> setFeature(<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> TYPE &amp;) = 0;              \</div>
 <div class="line">  <span class="keyword">virtual</span> <span class="keywordtype">void</span> setFeature(<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::vector&lt;TYPE&gt; &amp;){};</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00051">51</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+</div><!-- fragment --><p>setFeature() is used to set the features of the data structure used for communication. The features are set as key-value pairs. The key is a string and the value can be any of the supported types. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00054">54</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>
@@ -231,7 +240,7 @@ Macros</h2></td></tr>
 <div class="line">  M(<span class="keywordtype">string</span>)                                                                    \</div>
 <div class="line">  M(<span class="keywordtype">bool</span>)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00035">35</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00032">32</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 
 </div>
 </div>

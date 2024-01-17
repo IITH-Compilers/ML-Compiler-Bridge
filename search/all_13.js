@@ -33,12 +33,12 @@ var searchData=
   ['tfutils_5fgetname_5fimpl_30',['TFUTILS_GETNAME_IMPL',['../df/d39/TensorSpec_8cpp.html#a97b6550ebb6e94eebaca1f30427dcd46',1,'TensorSpec.cpp']]],
   ['to_5fcompiler_31',['to_compiler',['../d3/d1f/classPipeCompilerInterface_1_1PipeCompilerInterface.html#a03b11815913ec5e8d9ea2e4f6fe60cac',1,'PipeCompilerInterface::PipeCompilerInterface']]],
   ['tojson_32',['toJSON',['../d2/d87/classMLBridge_1_1TensorSpec.html#a3849ade063e4820817acec596468e25d',1,'MLBridge::TensorSpec::toJSON()'],['../d3/db1/namespacellvm_1_1json.html#a0583929481e4fadf2c53598a411a6118',1,'llvm::json::toJSON()']]],
-  ['tools_33',['ml-llvm-tools',['../index.html',1,'']]],
-  ['tools_2ecpp_34',['tools.cpp',['../d3/d62/tools_8cpp.html',1,'']]],
-  ['tostring_35',['toString',['../d5/d9c/namespaceMLBridge.html#aa801c42f31b8fb150727d1b9cb38330b',1,'MLBridge']]],
-  ['total_36',['Total',['../d5/d9c/namespaceMLBridge.html#ac24975254ef766855d6d0b7f764371fba96b0141273eabab320119c467cdcaf17',1,'MLBridge']]],
-  ['trained_20model_20integration_37',['Trained model integration',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md4',1,'']]],
-  ['try_5femplace_38',['try_emplace',['../db/d74/classllvm_1_1json_1_1Object.html#a80d194add67c2f33b5b1081ce59c4b05',1,'llvm::json::Object::try_emplace(const ObjectKey &amp;K, Ts &amp;&amp;...Args)'],['../db/d74/classllvm_1_1json_1_1Object.html#a7bcd7607daaa27a2bccb22d08ad8f9a9',1,'llvm::json::Object::try_emplace(ObjectKey &amp;&amp;K, Ts &amp;&amp;...Args)']]],
+  ['tools_2ecpp_33',['tools.cpp',['../d3/d62/tools_8cpp.html',1,'']]],
+  ['tostring_34',['toString',['../d5/d9c/namespaceMLBridge.html#aa801c42f31b8fb150727d1b9cb38330b',1,'MLBridge']]],
+  ['total_35',['Total',['../d5/d9c/namespaceMLBridge.html#ac24975254ef766855d6d0b7f764371fba96b0141273eabab320119c467cdcaf17',1,'MLBridge']]],
+  ['trained_20model_20integration_36',['Trained model integration',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md9',1,'']]],
+  ['try_5femplace_37',['try_emplace',['../db/d74/classllvm_1_1json_1_1Object.html#a80d194add67c2f33b5b1081ce59c4b05',1,'llvm::json::Object::try_emplace(const ObjectKey &amp;K, Ts &amp;&amp;...Args)'],['../db/d74/classllvm_1_1json_1_1Object.html#a7bcd7607daaa27a2bccb22d08ad8f9a9',1,'llvm::json::Object::try_emplace(ObjectKey &amp;&amp;K, Ts &amp;&amp;...Args)']]],
+  ['type_38',['type',['../d2/d87/classMLBridge_1_1TensorSpec.html#a3f0588648f79daeef14b49fa6015c222',1,'MLBridge::TensorSpec']]],
   ['type_39',['Type',['../dc/d4e/classMLBridge_1_1MLModelRunner.html#ad708ed037bc8332d680f0b1c4f3696b3',1,'MLBridge::MLModelRunner::Type'],['../d3/d47/classllvm_1_1json_1_1Value.html#ac8d3abb596dedde02a5535232498de1f',1,'llvm::json::Value::Type'],['../df/d69/classMLBridge_1_1BaseSerDes.html#aab4388c28347cedc0a2b16666e653be0',1,'MLBridge::BaseSerDes::Type'],['../d2/d87/classMLBridge_1_1TensorSpec.html#a905ae76aa7a1f389c9230174b7fea197',1,'MLBridge::TensorSpec::Type']]],
-  ['type_40',['type',['../d2/d87/classMLBridge_1_1TensorSpec.html#a3f0588648f79daeef14b49fa6015c222',1,'MLBridge::TensorSpec::type()'],['../d2/d3c/namespacehello-mlbridge.html#a2fceaa02f66a70e8eae630846c488f90',1,'hello-mlbridge.type'],['../d3/d31/namespacemlbridge-test.html#a673d87ee09acbc01d69b9023a0e4686c',1,'mlbridge-test.type']]]
+  ['type_40',['type',['../d2/d3c/namespacehello-mlbridge.html#a2fceaa02f66a70e8eae630846c488f90',1,'hello-mlbridge.type'],['../d3/d31/namespacemlbridge-test.html#a673d87ee09acbc01d69b9023a0e4686c',1,'mlbridge-test.type']]]
 ];

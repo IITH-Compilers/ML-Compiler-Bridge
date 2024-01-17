@@ -1,5 +1,5 @@
 <map id="PipeModelRunnerWrapper" name="PipeModelRunnerWrapper">
 <area shape="rect" id="Node000001" title=" " alt="" coords="9,94,180,120"/>
-<area shape="rect" id="Node000002" href="$dc/d4e/classMLBridge_1_1MLModelRunner.html" title=" " alt="" coords="5,5,184,31"/>
+<area shape="rect" id="Node000002" href="$dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner &#45; The main interface for interacting with the ML models." alt="" coords="5,5,184,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,47,97,94,92,94,92,47"/>
 </map>
