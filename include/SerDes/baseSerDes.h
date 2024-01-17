@@ -71,8 +71,8 @@ public:
   virtual void *getSerializedData() = 0;
   virtual void *deserializeUntyped(void *data) = 0;
   size_t getMessageLength() { return MessageLength; }
-  virtual void *getRequest(){};
-  virtual void *getResponse(){};
+  virtual void *getRequest(){ return nullptr; };
+  virtual void *getResponse(){ return nullptr; };
 
 protected:
   BaseSerDes(Kind Type) : Type(Type) { assert(Type != Kind::Unknown); }
