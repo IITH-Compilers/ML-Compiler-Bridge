@@ -67,7 +67,7 @@ public:
   }
 
   static bool classof(const MLModelRunner *R) {
-    return R->getKind() == MLModelRunner::Kind::Release;
+    return R->getKind() == MLModelRunner::Kind::TFAOT;
   }
 
 private:

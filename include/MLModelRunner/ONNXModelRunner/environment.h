@@ -43,14 +43,14 @@
 /// get the next agent to interact with in case of multi-agent environment.
 ///
 //===----------------------------------------------------------------------===//
-/
+
 #ifndef ONNX_MODELRUNNER_ENVIRONMENT_H
 #define ONNX_MODELRUNNER_ENVIRONMENT_H
 
 #include "MLModelRunner/ONNXModelRunner/agent.h"
 #include <map>
 
-    typedef signed Action;
+typedef signed Action;
 
 namespace MLBridge {
 class Environment {
