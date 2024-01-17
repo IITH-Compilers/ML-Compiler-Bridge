@@ -22,6 +22,7 @@
 namespace Ort {
 class Env;
 class Session;
+class Value;
 } // namespace Ort
 
 class ONNXModel {
@@ -35,6 +36,8 @@ public:
   /// Runs the ONNX model on the input and returns the output
   void run(llvm::SmallVector<float, 100> &input,
            llvm::SmallVector<float, 100> &output);
+  Ort::Value getInputValue(llvm::SmallVector<float, 100> &input,
+                                        int inputIdx);
 };
 
 #endif // ONNX_MODELRUNNER_ONNX_H
