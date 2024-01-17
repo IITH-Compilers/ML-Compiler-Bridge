@@ -1,53 +1,56 @@
 //=== MLModelRunner/ONNXModelRunner/environment.h - ONNX Environment C++ -===//
 //
-// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
-// See the LICENSE file under home directory for license and copyright
-// information.
+// Part of the MLCompilerBridge Project, under the Apache License v2.0 with LLVM
+// Exceptions. See the LICENSE file for license information.
+// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 //===---------------------------------------------------------------------===//
-//
-// Base Environment class to support ONNX based inference of RL models. This
-// class is used to define the environment for the agents to interact with.
-//
-// The Environment should be defined by the compiler pass that is using the
-// MLCompilerBridge. The environment should be defined by inheriting from this
-// class and implementing the step() and reset() methods.
-//
-// step() and reset() are typical methods used in RL environments.
-//
-// The step() method takes an action as input and returns the observation
-// corresponding to the next state. The reset() method returns the initial
-// observation.
-//
-// Usage:
-// 1. Create an environment class inheriting from MLBridge::Environment
-// 2. Implement step() and reset() methods
-//
-// Example:
-// class MyEnvironment : public MLBridge::Environment {
-// public:
-//   Observation &step(Action action) override {
-//     // Implement the step function here
-//   }
-//   Observation &reset() override {
-//     // Implement the reset function here
-//   }
-// };
-//
-// This environment can then be used by the ONNXModelRunner to interact with
-// the agents. getNextAgent() and setNextAgent() methods can be used to set the
-// next agent to interact with. These methods are used in step() and reset() to
-// get the next agent to interact with in case of multi-agent environment.
-//
+///
+/// \file
+/// Base Environment class to support ONNX based inference of RL models. This
+/// class is used to define the environment for the agents to interact with.
+///
+/// The Environment should be defined by the compiler pass that is using the
+/// MLCompilerBridge. The environment should be defined by inheriting from this
+/// class and implementing the step() and reset() methods.
+///
+/// step() and reset() are typical methods used in RL environments.
+///
+/// The step() method takes an action as input and returns the observation
+/// corresponding to the next state. The reset() method returns the initial
+/// observation.
+///
+/// Usage:
+/// 1. Create an environment class inheriting from MLBridge::Environment
+/// 2. Implement step() and reset() methods
+///
+/// Example:
+/// \code
+/// class MyEnvironment : public MLBridge::Environment {
+/// public:
+///   Observation &step(Action action) override {
+///     // Implement the step function here
+///   }
+///   Observation &reset() override {
+///     // Implement the reset function here
+///   }
+/// };
+/// \endcode
+///
+/// This environment can then be used by the ONNXModelRunner to interact with
+/// the agents. getNextAgent() and setNextAgent() methods can be used to set the
+/// next agent to interact with. These methods are used in step() and reset() to
+/// get the next agent to interact with in case of multi-agent environment.
+///
 //===----------------------------------------------------------------------===//
-
+/
 #ifndef ONNX_MODELRUNNER_ENVIRONMENT_H
 #define ONNX_MODELRUNNER_ENVIRONMENT_H
 
 #include "MLModelRunner/ONNXModelRunner/agent.h"
 #include <map>
 
-typedef signed Action;
+    typedef signed Action;
 
 namespace MLBridge {
 class Environment {

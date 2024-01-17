@@ -1,14 +1,15 @@
 //===- onnx.cpp - ONNX Interface with CPP Runtime --------------*- C++ -*-===//
 //
-// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
-// See the LICENSE file under home directory for license and copyright
-// information.
+// Part of the MLCompilerBridge Project, under the Apache License v2.0 with LLVM
+// Exceptions. See the LICENSE file for license information.
+// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 //===----------------------------------------------------------------------===//
-//
-// This file defines the ONNXModel class, which is a wrapper around the ONNX
-// C++ interface.
-//
+///
+/// \file
+/// This file defines the ONNXModel class, which is a wrapper around the ONNX
+/// C++ interface.
+///
 //===----------------------------------------------------------------------===//
 
 #include "MLModelRunner/ONNXModelRunner/onnx.h"
@@ -25,7 +26,8 @@ ONNXModel::ONNXModel(const char *model_path) : model_path(model_path) {
   session = new Ort::Session(*env, model_path, Ort::SessionOptions{nullptr});
 }
 
-Ort::Value ONNXModel::getInputValue(llvm::SmallVector<float, 100> &input, int inputIdx) {
+Ort::Value ONNXModel::getInputValue(llvm::SmallVector<float, 100> &input,
+                                    int inputIdx) {
   auto typeInfo = session->GetInputTypeInfo(inputIdx);
   auto tensorInfo = typeInfo.GetTensorTypeAndShapeInfo();
   auto inputDims = tensorInfo.GetShape();
@@ -47,7 +49,7 @@ Ort::Value ONNXModel::getInputValue(llvm::SmallVector<float, 100> &input, int in
 }
 
 void ONNXModel::run(llvm::SmallVector<float, 100> &input,
-                        llvm::SmallVector<float, 100> &output) {
+                    llvm::SmallVector<float, 100> &output) {
   Ort::AllocatorWithDefaultOptions allocator;
 
   int input_count = session->GetInputCount();
@@ -56,7 +58,7 @@ void ONNXModel::run(llvm::SmallVector<float, 100> &input,
   llvm::SmallVector<float, 100> dummy_input;
   dummy_input.insert(dummy_input.end(), 1);
   for (int i = 1; i < input_count; i++) {
-      inputList.push_back(dummy_input);
+    inputList.push_back(dummy_input);
   }
 
   llvm::SmallVector<std::string, 10> inputNameList;
@@ -69,9 +71,10 @@ void ONNXModel::run(llvm::SmallVector<float, 100> &input,
   std::vector<Ort::Value> input_final;
   llvm::SmallVector<const char *, 10> inputNameStr_final;
 
-  for (int i = 0; i < input_count; i++){
+  for (int i = 0; i < input_count; i++) {
     input_final.insert(input_final.end(), getInputValue(inputList[i], i));
-    inputNameStr_final.insert(inputNameStr_final.end(), inputNameList[i].c_str());
+    inputNameStr_final.insert(inputNameStr_final.end(),
+                              inputNameList[i].c_str());
   }
 
   auto outputName = session->GetOutputNameAllocated(0, allocator);

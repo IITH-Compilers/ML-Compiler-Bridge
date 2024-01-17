@@ -1,25 +1,26 @@
 //===- PipeModelRunner.h ---- PipeModelRunner  ------*- C++ -*-------------===//
 //
-// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
-// See the LICENSE file under home directory for license and copyright
-// information.
+// Part of the MLCompilerBridge Project, under the Apache License v2.0 with LLVM
+// Exceptions. See the LICENSE file for license information.
+// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 // (Preliminary version adopted from InteractiveModelRunner.h of LLVM 17.X)
 //
 //===----------------------------------------------------------------------===//
-//
-// PipeModelRunner class supporting communication via OS pipes between the
-// compiler and an external ML agent.
-//
-// Usage:
-// 1. Create a PipeModelRunner object with the names of the pipes, and the
-// serialization technique.
-// 2. Populate the features to be sent to the model.
-// 3. Call evaluate() to get the result back from the model.
-//
-// This supports both training and inference. Supports interleaved
-// communication.
-//
+///
+/// \file
+/// PipeModelRunner class supporting communication via OS pipes between the
+/// compiler and an external ML agent.
+///
+/// Usage:
+/// 1. Create a PipeModelRunner object with the names of the pipes, and the
+/// serialization technique.
+/// 2. Populate the features to be sent to the model.
+/// 3. Call evaluate() to get the result back from the model.
+///
+/// This supports both training and inference. Supports interleaved
+/// communication.
+///
 //===----------------------------------------------------------------------===//
 
 #ifndef PipeModelRunner_H

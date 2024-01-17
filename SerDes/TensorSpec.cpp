@@ -1,16 +1,17 @@
 //===- TensorSpec.cpp - tensor type abstraction ---------------------------===//
 //
-// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
-// See the LICENSE file under home directory for license and copyright
-// information.
+// Part of the MLCompilerBridge Project, under the Apache License v2.0 with LLVM
+// Exceptions. See the LICENSE file for license information.
+// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 // (Preliminary version adopted from TensorSpec.cpp of LLVM 12.X)
 //
 //===----------------------------------------------------------------------===//
-//
-// Implementation file for the abstraction of a tensor type, and JSON loading
-// utils.
-//
+///
+/// \file
+/// Implementation file for the abstraction of a tensor type, and JSON loading
+/// utils.
+///
 //===----------------------------------------------------------------------===//
 
 #include "SerDes/TensorSpec.h"

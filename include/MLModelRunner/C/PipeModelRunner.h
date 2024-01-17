@@ -1,23 +1,24 @@
 //===--- MLModelRunner/C/PipeModelRunner.h - C API for PipeModelRunner ---===//
 //
-// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
-// See the LICENSE file under home directory for license and copyright
-// information.
+// Part of the MLCompilerBridge Project, under the Apache License v2.0 with LLVM
+// Exceptions. See the LICENSE file for license information.
+// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 //===---------------------------------------------------------------------===//
-//
-// This file defines the C API for PipeModelRunner.
-// PipeModelRunner is a wrapper around the MLModelRunner class that provides
-// an interface for the MLCompilerBridge to interact with the PipeModelRunner
-// class.
-//
-// Usage:
-// 1. Create an instance of PipeModelRunnerWrapper using createPipeModelRunner
-// 2. Populate the features using populateXXXFeatures functions
-// 3. Evaluate the features using evaluateXXXFeatures functions
-// 4. Destroy the instance of PipeModelRunnerWrapper using
-// destroyPipeModelRunner
-//
+///
+/// \file
+/// This file defines the C API for PipeModelRunner.
+/// PipeModelRunner is a wrapper around the MLModelRunner class that provides
+/// an interface for the MLCompilerBridge to interact with the PipeModelRunner
+/// class.
+///
+/// Usage:
+/// 1. Create an instance of PipeModelRunnerWrapper using createPipeModelRunner
+/// 2. Populate the features using populateXXXFeatures functions
+/// 3. Evaluate the features using evaluateXXXFeatures functions
+/// 4. Destroy the instance of PipeModelRunnerWrapper using
+/// destroyPipeModelRunner
+///
 //===---------------------------------------------------------------------===//
 
 #ifndef PIPE_MODEL_RUNNER_WRAPPER_H

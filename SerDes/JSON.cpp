@@ -7,9 +7,10 @@
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 //===---------------------------------------------------------------------===//
-//
-// This file implements a JSON parser and serializer to support JSONSerDes.
-//
+///
+/// \file
+/// This file implements a JSON parser and serializer to support JSONSerDes.
+///
 //===---------------------------------------------------------------------===//
 
 #include "MLModelRunner/Utils/JSON.h"

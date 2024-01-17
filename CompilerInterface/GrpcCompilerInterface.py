@@ -1,14 +1,15 @@
 # ------------------------------------------------------------------------------
 #
-# Part of the MLCompilerBridge Project, under the Apache 2.0 License.
-# See the LICENSE file under home directory for license and copyright
-# information.
+# Part of the MLCompilerBridge Project, under the Apache License v2.0 with LLVM
+# Exceptions. See the LICENSE file for license information.
+# SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
 # ------------------------------------------------------------------------------
-#
-# Compiler interface for gRPC. This class implements methods for communication
-# with compiler using gRPC.
-#
+##
+## @file
+## Compiler interface for gRPC. This class implements methods for communication
+## with compiler using gRPC.
+##
 # ------------------------------------------------------------------------------
 
 

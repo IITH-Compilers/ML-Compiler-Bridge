@@ -1,16 +1,17 @@
 //===- TFModelRunner.h ---- TF precompiled model runner  ------*- C++-*----===//
 //
-// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
-// See the LICENSE file under home directory for license and copyright
-// information.
+// Part of the MLCompilerBridge Project, under the Apache License v2.0 with LLVM
+// Exceptions. See the LICENSE file for license information.
+// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 // (Preliminary version adopted from ReleaseModeModelRunner.h of LLVM 17.X)
 //
 //===----------------------------------------------------------------------===//
-//
-// This file implements a model runner wrapping an AOT compiled ML model.
-// Only inference is supported.
-//
+///
+/// \file
+/// This file implements a model runner wrapping an AOT compiled ML model.
+/// Only inference is supported.
+///
 //===----------------------------------------------------------------------===//
 
 #ifndef TFMODELRUNNER_H
@@ -18,7 +19,6 @@
 
 #include "MLModelRunner/MLModelRunner.h"
 #include "SerDes/TensorSpec.h"
-#include "llvm/Support/ErrorHandling.h"
 
 #include <memory>
 #include <vector>
@@ -80,33 +80,6 @@ private:
   std::unique_ptr<TGen> CompiledModel;
 };
 
-/// A mock class satisfying the interface expected by ReleaseModeModelRunner for
-/// its `TGen` parameter. Useful to avoid conditional compilation complexity, as
-/// a compile-time replacement for a real AOT-ed model.
-class NoopSavedModelImpl final {
-#define NOOP_MODEL_ERRMSG                                                      \
-  "The mock AOT-ed saved model is a compile-time stub and should not be "      \
-  "called."
-
-public:
-  NoopSavedModelImpl() = default;
-  int LookupArgIndex(const std::string &) {
-    llvm_unreachable(NOOP_MODEL_ERRMSG);
-  }
-  int LookupResultIndex(const std::string &) {
-    llvm_unreachable(NOOP_MODEL_ERRMSG);
-  }
-  void Run() { llvm_unreachable(NOOP_MODEL_ERRMSG); }
-  void *result_data(int) { llvm_unreachable(NOOP_MODEL_ERRMSG); }
-  void *arg_data(int) { llvm_unreachable(NOOP_MODEL_ERRMSG); }
-#undef NOOP_MODEL_ERRMSG
-};
-
-template <class T> bool isEmbeddedModelEvaluatorValid() { return true; }
-
-template <> inline bool isEmbeddedModelEvaluatorValid<NoopSavedModelImpl>() {
-  return false;
-}
 } // namespace MLBridge
 
 #endif // TFMODELRUNNER_H

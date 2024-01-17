@@ -1,3 +1,11 @@
+# ------------------------------------------------------------------------------
+#
+# Part of the MLCompilerBridge Project, under the Apache License v2.0 with LLVM
+# Exceptions. See the LICENSE file for license information.
+# SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+#
+# ------------------------------------------------------------------------------
+
 import argparse
 import sys
 import torch, torch.nn as nn
@@ -52,7 +60,7 @@ class DummyModel(nn.Module):
 
 
 def run_pipe_communication(data_format, pipe_name):
-    compiler_interface = PipeCompilerInterface(data_format, '/tmp/' + pipe_name)
+    compiler_interface = PipeCompilerInterface(data_format, "/tmp/" + pipe_name)
     print("PipeCompilerInterface init...")
     compiler_interface.reset_pipes()
 
@@ -109,6 +117,10 @@ if __name__ == "__main__":
     if args.use_pipe:
         run_pipe_communication(args.data_format, args.pipe_name)
     elif args.use_grpc:
-        compiler_interface = GrpcCompilerInterface(mode = 'server', add_server_method=helloMLBridge_pb2_grpc.add_HelloMLBridgeServiceServicer_to_server, grpc_service_obj=service_server(), hostport= args.server_port)
+        compiler_interface = GrpcCompilerInterface(
+            mode="server",
+            add_server_method=helloMLBridge_pb2_grpc.add_HelloMLBridgeServiceServicer_to_server,
+            grpc_service_obj=service_server(),
+            hostport=args.server_port,
+        )
         compiler_interface.start_server()
-

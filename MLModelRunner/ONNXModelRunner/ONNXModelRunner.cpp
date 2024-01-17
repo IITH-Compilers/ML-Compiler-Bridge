@@ -1,14 +1,15 @@
 //===- ONNXModelRunner.cpp - ONNX Runner ------------------------*- C++ -*-===//
 //
-// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
-// See the LICENSE file under home directory for license and copyright
-// information.
+// Part of the MLCompilerBridge Project, under the Apache License v2.0 with LLVM
+// Exceptions. See the LICENSE file for license information.
+// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 //===----------------------------------------------------------------------===//
-//
-// This file defines the ONNXModelRunner class to support ML model inference
-// via ONNX.
-//
+///
+/// \file
+/// This file defines the ONNXModelRunner class to support ML model inference
+/// via ONNX.
+///
 //===----------------------------------------------------------------------===//
 
 #include "MLModelRunner/ONNXModelRunner/ONNXModelRunner.h"

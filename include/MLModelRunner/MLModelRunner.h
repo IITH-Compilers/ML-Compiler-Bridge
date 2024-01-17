@@ -1,35 +1,36 @@
 //===- MLModelRunner.h ---- ML model runner interface -----------*- C++ -*-===//
 //
-// Part of the MLCompilerBridge Project, under the Apache 2.0 License.
-// See the LICENSE file under home directory for license and copyright
-// information.
+// Part of the MLCompilerBridge Project, under the Apache License v2.0 with LLVM
+// Exceptions. See the LICENSE file for license information.
+// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 // (Preliminary version adopted from MLModelRunner.h of LLVM 17.X)
 //
 //===----------------------------------------------------------------------===//
-//
-// The MLModelRunner class is the main interface for interacting with the
-// ML models. The MLCompilerBridge uses the MLModelRunner class to set the
-// features to be sent to the model and get the result back from the model.
-//
-// This class internally uses the SerDes class to serialize and deserialize the
-// features and result.
-//
-// The MLModelRunner class is an abstract class and cannot be instantiated.
-//
-// This class internally uses the SerDes class to serialize and deserialize the
-// features and result.
-//
-// Supporting new Model Runners:
-// 1. Create a new class inheriting the MLModelRunner class.
-// 2. Override evaluateUntyped() method to call the model and get the result.
-//
-// Using any of the existing Model Runners:
-// 1. Instantiate the model runner object with the appropriate arguments.
-// 2. Call populateFeatures() to set the features to be sent to the model.
-// 3. Call evaluate() to get the send and receive the result from the model.
-// Similar flows apply for both training and inference.
-
+///
+/// \file
+/// The MLModelRunner class is the main interface for interacting with the
+/// ML models. The MLCompilerBridge uses the MLModelRunner class to set the
+/// features to be sent to the model and get the result back from the model.
+///
+/// This class internally uses the SerDes class to serialize and deserialize the
+/// features and result.
+///
+/// The MLModelRunner class is an abstract class and cannot be instantiated.
+///
+/// This class internally uses the SerDes class to serialize and deserialize the
+/// features and result.
+///
+/// Supporting new Model Runners:
+/// 1. Create a new class inheriting the MLModelRunner class.
+/// 2. Override evaluateUntyped() method to call the model and get the result.
+///
+/// Using any of the existing Model Runners:
+/// 1. Instantiate the model runner object with the appropriate arguments.
+/// 2. Call populateFeatures() to set the features to be sent to the model.
+/// 3. Call evaluate() to get the send and receive the result from the model.
+/// Similar flows apply for both training and inference.
+///
 //===----------------------------------------------------------------------===//
 
 #ifndef ML_MODEL_RUNNER_H
@@ -57,11 +58,13 @@ public:
   MLModelRunner &operator=(const MLModelRunner &) = delete;
   virtual ~MLModelRunner() = default;
 
+  /// Main user-facing interface for interacting with the ML models
   template <typename T>
   typename std::enable_if<std::is_fundamental<T>::value, T>::type evaluate() {
     return *reinterpret_cast<T *>(evaluateUntyped());
   }
 
+  /// Main user-facing interface for interacting with the ML models
   template <typename T>
   typename std::enable_if<
       std::is_fundamental<typename std::remove_pointer<T>::type>::value,
@@ -75,22 +78,19 @@ public:
     data = ret;
   }
 
-  enum class Kind : int {
-    Unknown,
-    Release,
-    Development,
-    NoOp,
-    Pipe,
-    gRPC,
-    ONNX,
-    TFAOT
-  };
+  /// Type of the MLModelRunner
+  enum class Kind : int { Unknown, Pipe, gRPC, ONNX, TFAOT };
+
   Kind getKind() const { return Type; }
   BaseSerDes::Kind getSerDesKind() const { return SerDesType; }
 
   virtual void requestExit() = 0;
   std::promise<void> *exit_requested;
 
+  /// User-facing interface for setting the features to be sent to the model.
+  /// The features are passed as a list of key-value pairs.
+  /// The key is the name of the feature and the value is the value of the
+  /// feature. The value can be a scalar or a vector.
   template <typename T, typename... Types>
   void populateFeatures(std::pair<std::string, T> &var1,
                         std::pair<std::string, Types> &...var2) {
@@ -100,8 +100,9 @@ public:
 
   void populateFeatures() {}
 
+  /// Mainly used in the case of gRPC where the request and response objects are
+  /// not known explicitly.
   void setRequest(void *request) { SerDes->setRequest(request); }
-
   void setResponse(void *response) { SerDes->setResponse(response); }
 
 protected:
@@ -111,11 +112,14 @@ protected:
     assert(Type != Kind::Unknown);
     initSerDes();
   }
+
   MLModelRunner(Kind Type, llvm::LLVMContext *Ctx = nullptr)
       : Ctx(Ctx), Type(Type), SerDesType(BaseSerDes::Kind::Unknown) {
     SerDes = nullptr;
   };
 
+  /// Should be implemented by the derived class to call the model and get the
+  /// result.
   virtual void *evaluateUntyped() = 0;
 
   llvm::LLVMContext *Ctx;
