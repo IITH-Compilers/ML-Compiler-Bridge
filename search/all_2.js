@@ -13,7 +13,7 @@ var searchData=
   ['block_10',['Block',['../de/d03/classllvm_1_1json_1_1OStream.html#ae5c537c76bd3b93f03bf4bbbbc489280',1,'llvm::json::OStream']]],
   ['bool_11',['bool',['../d2/d3c/namespacehello-mlbridge.html#a224c234f0cfea45f973e1f2302665421',1,'hello-mlbridge.bool'],['../d3/d31/namespacemlbridge-test.html#a1cceb2f1871c54c92da6e91bde986af9',1,'mlbridge-test.bool']]],
   ['boolean_12',['Boolean',['../d3/d47/classllvm_1_1json_1_1Value.html#ad10d8b22abefa6faed2bdc37463da8b5a0185c7ad51f75621f32a6ed346d4a56a',1,'llvm::json::Value']]],
-  ['buffer_13',['Buffer',['../da/de4/classMLBridge_1_1BitstreamSerDes.html#acf60d5e5076beb42eefdf605efa779fd',1,'MLBridge::BitstreamSerDes']]],
-  ['buffer_14',['buffer',['../d3/d1f/classPipeCompilerInterface_1_1PipeCompilerInterface.html#a4c202652721cae3dac173572defb85e7',1,'PipeCompilerInterface.PipeCompilerInterface.buffer'],['../d7/dab/classSerDes_1_1SerDes.html#a8d4a1391ad9f57df83fb00939e7f380a',1,'SerDes.SerDes.buffer']]],
+  ['buffer_13',['buffer',['../d3/d1f/classPipeCompilerInterface_1_1PipeCompilerInterface.html#a4c202652721cae3dac173572defb85e7',1,'PipeCompilerInterface.PipeCompilerInterface.buffer'],['../d7/dab/classSerDes_1_1SerDes.html#a8d4a1391ad9f57df83fb00939e7f380a',1,'SerDes.SerDes.buffer']]],
+  ['buffer_14',['Buffer',['../da/de4/classMLBridge_1_1BitstreamSerDes.html#acf60d5e5076beb42eefdf605efa779fd',1,'MLBridge::BitstreamSerDes']]],
   ['building_20llvm_20grpc_15',['Building LLVM-GRPC',['../df/ddf/md_MLModelRunner_2gRPCModelRunner_2README.html#autotoc_md2',1,'']]]
 ];

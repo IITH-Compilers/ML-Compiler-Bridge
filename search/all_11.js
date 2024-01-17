@@ -1,8 +1,8 @@
 var searchData=
 [
   ['rawdata_0',['rawData',['../da/de4/classMLBridge_1_1BitstreamSerDes.html#ab2cabdffbf8d189da6027833b3d0dbd8',1,'MLBridge::BitstreamSerDes']]],
-  ['rawvalue_1',['rawValue',['../de/d03/classllvm_1_1json_1_1OStream.html#abe988728690935fad7313244c2f4a772',1,'llvm::json::OStream']]],
-  ['rawvalue_2',['RawValue',['../de/d03/classllvm_1_1json_1_1OStream.html#ae4b2f9a526f86b52da896e665428cfcea49425f005062878dbc6dfc7226b907fa',1,'llvm::json::OStream']]],
+  ['rawvalue_1',['RawValue',['../de/d03/classllvm_1_1json_1_1OStream.html#ae4b2f9a526f86b52da896e665428cfcea49425f005062878dbc6dfc7226b907fa',1,'llvm::json::OStream']]],
+  ['rawvalue_2',['rawValue',['../de/d03/classllvm_1_1json_1_1OStream.html#abe988728690935fad7313244c2f4a772',1,'llvm::json::OStream']]],
   ['rawvalue2_3',['rawValue2',['../de/d03/classllvm_1_1json_1_1OStream.html#a609e0d23d01b858520853e1a8dffab6e',1,'llvm::json::OStream']]],
   ['rawvaluebegin_4',['rawValueBegin',['../de/d03/classllvm_1_1json_1_1OStream.html#a792749e73c83a275ccff99e769c64569',1,'llvm::json::OStream']]],
   ['rawvalueend_5',['rawValueEnd',['../de/d03/classllvm_1_1json_1_1OStream.html#ad3381dc4020a5d5353451a2348e3ec24',1,'llvm::json::OStream']]],
