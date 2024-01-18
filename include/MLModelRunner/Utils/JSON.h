@@ -77,9 +77,9 @@ namespace json {
 //     always be valid UTF-8.
 
 template <typename T>
-constexpr bool is_uint_64_bit_v =
-    std::is_integral_v<T> && std::is_unsigned_v<T> &&
-    sizeof(T) == sizeof(uint64_t);
+constexpr bool
+    is_uint_64_bit_v = std::is_integral_v<T> &&std::is_unsigned_v<T> &&
+                       sizeof(T) == sizeof(uint64_t);
 
 /// Returns true if \p S is valid UTF-8, which is required for use as JSON.
 /// If it returns false, \p Offset is set to a byte offset near the first error.
