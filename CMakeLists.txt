@@ -56,7 +56,7 @@ if(LLVM_MLBRIDGE)
   tf_xla_runtime
   protobuf::libprotobuf
   )
-  
+
 
   target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
   install(TARGETS LLVMMLBridge DESTINATION lib)
@@ -79,7 +79,7 @@ else()
 
   target_compile_features(MLCompilerBridgeC PRIVATE cxx_std_17)
   set_property(TARGET MLCompilerBridgeC PROPERTY POSITION_INDEPENDENT_CODE 1)
-  
+
   set_target_properties(MLCompilerBridge PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
   set_target_properties(MLCompilerBridgeC PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
   install(TARGETS MLCompilerBridgeC DESTINATION lib)

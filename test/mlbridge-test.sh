@@ -13,32 +13,32 @@ STATUS=0
 SERVER_PID=0
 
 run_test() {
-    sleep 1
-    $@
-    if [ $? != 0 ]; then
-        STATUS=1
-        echo -e "$(tput bold)${RED}[Test Failed] Error detected by compiler side.${NC}"
-        kill $SERVER_PID
-        SERVER_PID=0
-    fi  
+	sleep 1
+	$@
+	if [ $? != 0 ]; then
+		STATUS=1
+		echo -e "$(tput bold)${RED}[Test Failed] Error detected by compiler side.${NC}"
+		kill $SERVER_PID
+		SERVER_PID=0
+	fi
 
-    if [ $SERVER_PID != 0 ]; then
-        wait $SERVER_PID
-        if [ $? != 0 ]; then
-            STATUS=1
-            echo -e "$(tput bold)${RED}[Test Failed] Error detected by model side.${NC}"
-        fi  
-    fi
+	if [ $SERVER_PID != 0 ]; then
+		wait $SERVER_PID
+		if [ $? != 0 ]; then
+			STATUS=1
+			echo -e "$(tput bold)${RED}[Test Failed] Error detected by model side.${NC}"
+		fi
+	fi
 
-    if [ $STATUS == 0 ]; then
-        echo -e "${GREEN}${BOLD}[Test Passed] Datatypes transmitted succesfully.${NC}"
-    fi
+	if [ $STATUS == 0 ]; then
+		echo -e "${GREEN}${BOLD}[Test Passed] Datatypes transmitted succesfully.${NC}"
+	fi
 
-    STATUS=0
-    SERVER_PID=0
+	STATUS=0
+	SERVER_PID=0
 }
 
-# source deactivate 
+# source deactivate
 # source activate ml_loopdist_env
 
 echo -e "${BLUE}${BOLD}Testing MLBridge [pipe-bytes]${NC}"
@@ -47,7 +47,7 @@ SERVER_PID=$!
 run_test $BUILD_DIR/MLCompilerBridgeTest --test-config=pipe-bytes --test-pipe-name=mlbridgepipe --silent
 
 echo -e "${BLUE}${BOLD}Testing MLBridge [pipe-json]${NC}"
-python $SERVER_FILE --use_pipe=True --data_format=json --pipe_name=mlbridgepipe2 --silent=True  &
+python $SERVER_FILE --use_pipe=True --data_format=json --pipe_name=mlbridgepipe2 --silent=True &
 SERVER_PID=$!
 run_test $BUILD_DIR/MLCompilerBridgeTest --test-config=pipe-json --test-pipe-name=mlbridgepipe2 --silent
 

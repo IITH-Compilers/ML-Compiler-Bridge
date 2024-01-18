@@ -3,7 +3,7 @@ if(LLVM_MLBRIDGE)
   MLConfig.cpp
   )
   target_include_directories(ModelRunnerUtils PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../include)
-  
+
 else()
   add_library(ModelRunnerCUtils OBJECT MLConfig.cpp)
   add_library(ModelRunnerUtils OBJECT MLConfig.cpp)
