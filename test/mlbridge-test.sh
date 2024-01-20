@@ -6,8 +6,10 @@ NC='\033[0m' # No Color
 BOLD='\033[1m'
 
 REPO_DIR=$HOME/MLCompilerBridge
-BUILD_DIR=$REPO_DIR/build
+BUILD_DIR=$REPO_DIR/build_release
 SERVER_FILE=$REPO_DIR/test/mlbridge-test.py
+
+export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
 
 STATUS=0
 SERVER_PID=0
