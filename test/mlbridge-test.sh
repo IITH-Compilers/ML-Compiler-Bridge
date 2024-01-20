@@ -5,15 +5,15 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 BOLD='\033[1m'
 
-REPO_DIR=$HOME/ml-llvm-project/MLCompilerBridge
-BUILD_DIR=$REPO_DIR/build_release
+REPO_DIR=$HOME/MLCompilerBridge
+BUILD_DIR=$REPO_DIR/build
 SERVER_FILE=$REPO_DIR/test/mlbridge-test.py
 
 STATUS=0
 SERVER_PID=0
 
 run_test() {
-	sleep 1
+	sleep 5
 	$@
 	if [ $? != 0 ]; then
 		STATUS=1
@@ -44,12 +44,12 @@ run_test() {
 echo -e "${BLUE}${BOLD}Testing MLBridge [pipe-bytes]${NC}"
 python $SERVER_FILE --use_pipe=True --data_format=bytes --pipe_name=mlbridgepipe --silent=True &
 SERVER_PID=$!
-run_test $BUILD_DIR/MLCompilerBridgeTest --test-config=pipe-bytes --test-pipe-name=mlbridgepipe --silent
+run_test $BUILD_DIR/bin/MLCompilerBridgeTest --test-config=pipe-bytes --test-pipe-name=mlbridgepipe --silent
 
 echo -e "${BLUE}${BOLD}Testing MLBridge [pipe-json]${NC}"
 python $SERVER_FILE --use_pipe=True --data_format=json --pipe_name=mlbridgepipe2 --silent=True &
 SERVER_PID=$!
-run_test $BUILD_DIR/MLCompilerBridgeTest --test-config=pipe-json --test-pipe-name=mlbridgepipe2 --silent
+run_test $BUILD_DIR/bin/MLCompilerBridgeTest --test-config=pipe-json --test-pipe-name=mlbridgepipe2 --silent
 
 # python $SERVER_FILE --use_grpc --server_port=50065 &
 # echo "Test [grpc]:"
