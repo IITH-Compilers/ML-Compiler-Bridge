@@ -19,22 +19,24 @@ add_subdirectory(C)
 # # python3 -m pip install --upgrade pip && python3 -m pip install --user tf_nightly==2.3.0.dev20200528
 # # Then set TENSORFLOW_AOT_PATH to the package install - usually it's ~/.local/lib/python3.7/site-packages/tensorflow
 # #
-if(LLVM_MLBRIDGE)
 set(TENSORFLOW_AOT_PATH "" CACHE PATH "Path to TensorFlow pip install dir")
 
 if (NOT TENSORFLOW_AOT_PATH STREQUAL "")
   include_directories(${TENSORFLOW_AOT_PATH}/include)
   add_subdirectory(${TENSORFLOW_AOT_PATH}/xla_aot_runtime_src
     ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/tf_runtime)
-  install(TARGETS tf_xla_runtime EXPORT LLVMExports
-    ARCHIVE DESTINATION lib${LLVM_LIBDIR_SUFFIX} COMPONENT tf_xla_runtime)
-  set_property(GLOBAL APPEND PROPERTY LLVM_EXPORTS tf_xla_runtime)
-endif()
-
+    if(LLVM_MLBRIDGE)
+      install(TARGETS tf_xla_runtime EXPORT LLVMExports
+        ARCHIVE DESTINATION lib${LLVM_LIBDIR_SUFFIX} COMPONENT tf_xla_runtime)
+      set_property(GLOBAL APPEND PROPERTY LLVM_EXPORTS tf_xla_runtime)
+    else()
+      install(TARGETS tf_xla_runtime ARCHIVE DESTINATION ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
+    endif()
 endif()
 
 add_library(ModelRunnerCLib OBJECT PipeModelRunner.cpp)
 target_link_libraries(ModelRunnerCLib PUBLIC ModelRunnerCUtils ONNXModelRunnerLib)
+target_compile_definitions(ModelRunnerCLib PRIVATE C_LIBRARY)
 
 if(LLVM_MLBRIDGE)
   add_llvm_library(ModelRunnerLib PipeModelRunner.cpp)

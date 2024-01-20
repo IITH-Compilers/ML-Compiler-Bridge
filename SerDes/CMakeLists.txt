@@ -15,5 +15,4 @@ else()
 
   add_library(SerDesCLib OBJECT TensorSpec.cpp jsonSerDes.cpp bitstreamSerDes.cpp JSON.cpp)
 endif()
-
 target_include_directories(SerDesLib PRIVATE ${TENSORFLOW_AOT_PATH}/include)
