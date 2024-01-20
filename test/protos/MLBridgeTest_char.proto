@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package MLBridgeTestgRPC_char;
+
+service MLBridgeTestService {
+  rpc getAdvice(Request) returns (Reply) {}
+}
+
+message Request { string data = 1; }
+message Reply { string action = 1; }

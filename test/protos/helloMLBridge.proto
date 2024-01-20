@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package helloMLBridgegRPC_a;
+
+service HelloMLBridgeService {
+  rpc getAdvice(Request) returns (Reply) {}
+}
+
+message Request {  int32 data = 1; }
+
+message Reply { int32 action = 1; }

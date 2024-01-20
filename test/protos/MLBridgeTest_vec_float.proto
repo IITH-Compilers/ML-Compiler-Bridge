@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package MLBridgeTestgRPC_vec_float;
+
+service MLBridgeTestService {
+  rpc getAdvice(Request) returns (Reply) {}
+}
+
+message Request { repeated float data = 1; }
+message Reply { repeated float action = 1; }

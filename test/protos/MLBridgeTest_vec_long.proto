@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package MLBridgeTestgRPC_vec_long;
+
+service MLBridgeTestService {
+  rpc getAdvice(Request) returns (Reply) {}
+}
+
+message Request { repeated int64 data = 1; }
+message Reply { repeated int64 action = 1; }
