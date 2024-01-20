@@ -32,18 +32,13 @@ jobs:
         environment-file: mlbridge.yml
     - name: Install other dependencies and build
       run: bash .github/workflows/mlbridge_build.sh release
+    - name: Run Tests
+      run: |
+        cd $GITHUB_WORKSPACE/test
+        bash mlbridge-test.sh
     - uses: actions/upload-artifact@v2
       with:
         name: MLCompilerBridge
         path: |
           install/lib
           install/include
-
-  test:
-      runs-on: ubuntu-20.04
-      needs: build
-      steps:
-      - name: Run Tests
-        run: |
-          cd test
-          bash mlbridge-test.sh
