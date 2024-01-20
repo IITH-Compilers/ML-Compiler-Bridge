@@ -31,7 +31,7 @@ if (NOT TENSORFLOW_AOT_PATH STREQUAL "")
       set_property(GLOBAL APPEND PROPERTY LLVM_EXPORTS tf_xla_runtime)
     else()
       install(TARGETS tf_xla_runtime ARCHIVE DESTINATION ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
-    endif()  
+    endif()
 endif()
 
 add_library(ModelRunnerCLib OBJECT PipeModelRunner.cpp)
