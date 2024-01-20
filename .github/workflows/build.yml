@@ -8,6 +8,7 @@ on:
     paths:
     - '**.cpp'
     - '**.h'
+    - '**.py'
 jobs:
   build:
 

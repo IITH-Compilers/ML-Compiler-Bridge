@@ -42,6 +42,6 @@ cmake \
 	-DTENSORFLOW_AOT_PATH=$CONDA/envs/mlbridge/lib/python3.10/site-packages/tensorflow \
 	-DCMAKE_BUILD_TYPE="$BUILD" \
 	-DCMAKE_INSTALL_PREFIX=$REPO_DIR/install \
-	-DPROTOS_DIRECTORY=$HOME/MLCompilerBridge/test/protos
+	-DPROTOS_DIRECTORY=$REPO_DIR/test/protos
 
 make -j -C $REPO_DIR/build_${BUILD,,} install
