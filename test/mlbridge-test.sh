@@ -5,7 +5,7 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 BOLD='\033[1m'
 
-REPO_DIR=$HOME/MLCompilerBridge
+REPO_DIR=$GITHUB_WORKSPACE
 BUILD_DIR=$REPO_DIR/build_release
 SERVER_FILE=$REPO_DIR/test/mlbridge-test.py
 
@@ -36,7 +36,6 @@ run_test() {
 		echo -e "${GREEN}${BOLD}[Test Passed] Datatypes transmitted succesfully.${NC}"
 	fi
 
-	STATUS=0
 	SERVER_PID=0
 }
 
@@ -52,6 +51,8 @@ echo -e "${BLUE}${BOLD}Testing MLBridge [pipe-json]${NC}"
 python $SERVER_FILE --use_pipe=True --data_format=json --pipe_name=mlbridgepipe2 --silent=True &
 SERVER_PID=$!
 run_test $BUILD_DIR/bin/MLCompilerBridgeTest --test-config=pipe-json --test-pipe-name=mlbridgepipe2 --silent
+
+exit $STATUS
 
 # python $SERVER_FILE --use_grpc --server_port=50065 &
 # echo "Test [grpc]:"
