@@ -34,6 +34,7 @@ jobs:
       run: bash .github/workflows/mlbridge_build.sh release
     - name: Run Tests
       run: |
+        conda activate mlbridge
         cd $GITHUB_WORKSPACE/test
         bash mlbridge-test.sh
     - uses: actions/upload-artifact@v2
