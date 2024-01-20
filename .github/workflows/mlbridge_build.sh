@@ -35,7 +35,7 @@ if [[ -z "$BUILD" ]]; then
 fi
 
 cmake \
-	-G Ninja \
+	-G "Unix Makefiles" \
 	-S $REPO_DIR \
 	-B $REPO_DIR/build_${BUILD,,} \
 	-DONNXRUNTIME_ROOTDIR=$HOME/onnxruntime-linux-x64-1.16.3 \
@@ -44,4 +44,4 @@ cmake \
 	-DCMAKE_INSTALL_PREFIX=$REPO_DIR/install \
 	-DPROTOS_DIRECTORY=$HOME/MLCompilerBridge/test/protos
 
-ninja -C $REPO_DIR/build_${BUILD,,} install
+make -j -C $REPO_DIR/build_${BUILD,,} install
