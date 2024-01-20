@@ -18,8 +18,10 @@ var searchData=
   ['invalid_15',['Invalid',['../d5/d9c/namespaceMLBridge.html#ac24975254ef766855d6d0b7f764371fba4bbb8f967da6d1a610596d7257179c2b',1,'MLBridge']]],
   ['is_5fuint_5f64_5fbit_5fv_16',['is_uint_64_bit_v',['../d3/db1/namespacellvm_1_1json.html#a03041d200886efaf9203b536e55472c8',1,'llvm::json']]],
   ['iselementtype_17',['isElementType',['../d2/d87/classMLBridge_1_1TensorSpec.html#a1060e2492fa036beb3da4003dd26c5f9',1,'MLBridge::TensorSpec']]],
-  ['isfield_18',['isField',['../da/de6/classllvm_1_1json_1_1Path_1_1Segment.html#a331205fd06b9790d5f936c7dbc01774d',1,'llvm::json::Path::Segment']]],
-  ['isportavailable_19',['isPortAvailable',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#af98488d2c0a9a902a1a5313aba8cd8b5',1,'MLBridge::gRPCModelRunner']]],
-  ['isutf8_20',['isUTF8',['../d3/db1/namespacellvm_1_1json.html#a385765e73480a0f2d49dcc84a8fb70da',1,'llvm::json']]],
-  ['iterator_21',['iterator',['../db/d74/classllvm_1_1json_1_1Object.html#a92074ca3e4c1899f06f9ef8604c3a5b1',1,'llvm::json::Object::iterator'],['../d6/da9/classllvm_1_1json_1_1Array.html#aa8d5ccce0e203df5cf37930ec2d54d9f',1,'llvm::json::Array::iterator']]]
+  ['isembeddedmodelevaluatorvalid_18',['isEmbeddedModelEvaluatorValid',['../d5/d9c/namespaceMLBridge.html#a83cc8ebb235989b9bdc8b760a65e1686',1,'MLBridge']]],
+  ['isembeddedmodelevaluatorvalid_3c_20noopsavedmodelimpl_20_3e_19',['isEmbeddedModelEvaluatorValid&lt; NoopSavedModelImpl &gt;',['../d5/d9c/namespaceMLBridge.html#ad9a80f74bbcf3ba67dcca44dce37d603',1,'MLBridge']]],
+  ['isfield_20',['isField',['../da/de6/classllvm_1_1json_1_1Path_1_1Segment.html#a331205fd06b9790d5f936c7dbc01774d',1,'llvm::json::Path::Segment']]],
+  ['isportavailable_21',['isPortAvailable',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#af98488d2c0a9a902a1a5313aba8cd8b5',1,'MLBridge::gRPCModelRunner']]],
+  ['isutf8_22',['isUTF8',['../d3/db1/namespacellvm_1_1json.html#a385765e73480a0f2d49dcc84a8fb70da',1,'llvm::json']]],
+  ['iterator_23',['iterator',['../db/d74/classllvm_1_1json_1_1Object.html#a92074ca3e4c1899f06f9ef8604c3a5b1',1,'llvm::json::Object::iterator'],['../d6/da9/classllvm_1_1json_1_1Array.html#aa8d5ccce0e203df5cf37930ec2d54d9f',1,'llvm::json::Array::iterator']]]
 ];

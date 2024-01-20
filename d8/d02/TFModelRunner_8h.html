@@ -78,7 +78,9 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">TFModelRunner.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -196,17 +198,52 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc0/classMLBridge_1_1TFModelRunner.html">MLBridge::TFModelRunner&lt; TGen &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/db0/classMLBridge_1_1NoopSavedModelImpl.html">MLBridge::NoopSavedModelImpl</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:d5/d9c/namespaceMLBridge" id="r_d5/d9c/namespaceMLBridge"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d9c/namespaceMLBridge.html">MLBridge</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a9d7f87ff3f5204b0233b4968f5c9cfb8" id="r_a9d7f87ff3f5204b0233b4968f5c9cfb8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d7f87ff3f5204b0233b4968f5c9cfb8">NOOP_MODEL_ERRMSG</a></td></tr>
+<tr class="separator:a9d7f87ff3f5204b0233b4968f5c9cfb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a83cc8ebb235989b9bdc8b760a65e1686" id="r_a83cc8ebb235989b9bdc8b760a65e1686"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a83cc8ebb235989b9bdc8b760a65e1686"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/d9c/namespaceMLBridge.html#a83cc8ebb235989b9bdc8b760a65e1686">MLBridge::isEmbeddedModelEvaluatorValid</a> ()</td></tr>
+<tr class="separator:a83cc8ebb235989b9bdc8b760a65e1686"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9a80f74bbcf3ba67dcca44dce37d603" id="r_ad9a80f74bbcf3ba67dcca44dce37d603"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ad9a80f74bbcf3ba67dcca44dce37d603"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/d9c/namespaceMLBridge.html#ad9a80f74bbcf3ba67dcca44dce37d603">MLBridge::isEmbeddedModelEvaluatorValid&lt; NoopSavedModelImpl &gt;</a> ()</td></tr>
+<tr class="separator:ad9a80f74bbcf3ba67dcca44dce37d603"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file implements a model runner wrapping an AOT compiled ML model. Only inference is supported. </p>
 
 <p class="definition">Definition in file <a class="el" href="../../d8/d02/TFModelRunner_8h_source.html">TFModelRunner.h</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a9d7f87ff3f5204b0233b4968f5c9cfb8" name="a9d7f87ff3f5204b0233b4968f5c9cfb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d7f87ff3f5204b0233b4968f5c9cfb8">&#9670;&#160;</a></span>NOOP_MODEL_ERRMSG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NOOP_MODEL_ERRMSG</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">  <span class="stringliteral">&quot;The mock AOT-ed saved model is a compile-time stub and should not be &quot;</span>      \</div>
+<div class="line">  <span class="stringliteral">&quot;called.&quot;</span></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d8/d02/TFModelRunner_8h_source.html#l00087">87</a> of file <a class="el" href="../../d8/d02/TFModelRunner_8h_source.html">TFModelRunner.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0

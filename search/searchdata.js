@@ -10,7 +10,7 @@ var indexSectionsWithContent =
   7: "cktv",
   8: "_abgijnoprstu",
   9: "aop",
-  10: "_dmpst",
+  10: "_dmnpst",
   11: "agilmopr"
 };
 
