@@ -20,10 +20,12 @@ jobs:
         sudo bash llvm.sh 10
     - uses: actions/checkout@v3
     - name: Setup Conda dependencies
-      run: |
-        echo ${CONDA}
-        conda env create -f mlbridge.yml 
-        conda activate mlbridge
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        channels: conda-forge,bioconda,defaults
+        auto-activate-base: true
+        activate-environment: mlbridge
+        environment-file: mlbridge.yml
     - name: Install other dependencies and build
       run: bash mlbridge_build.sh release
     - uses: actions/upload-artifact@v2
