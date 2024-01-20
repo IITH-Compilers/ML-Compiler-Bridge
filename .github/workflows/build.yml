@@ -41,6 +41,7 @@ jobs:
         environment-file: mlbridge.yml
     - name: Run Tests
       run: |
+        conda init
         conda activate mlbridge
         cd $GITHUB_WORKSPACE/test
         bash mlbridge-test.sh
