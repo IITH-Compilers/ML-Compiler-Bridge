@@ -1,0 +1,34 @@
+name: Build
+
+on:
+  workflow_dispatch:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+    paths:
+    - '**.cpp'
+    - '**.h'
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Install LLVM-10
+      run: |
+        wget https://apt.llvm.org/llvm.sh
+        sudo bash llvm.sh 10
+    - uses: actions/checkout@v3
+    - name: Setup Conda dependencies
+      run: |
+        echo ${CONDA}
+        conda env create -f mlbridge.yml 
+        conda activate mlbridge
+    - name: Install other dependencies and build
+      run: bash mlbridge_build.sh release
+    - uses: actions/upload-artifact@v2
+      with:
+        name: MLCompilerBridge
+        path: |
+          install/lib
+          install/include
