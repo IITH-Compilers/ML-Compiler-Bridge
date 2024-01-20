@@ -1,4 +1,4 @@
-name: Build
+name: Build and Tests
 
 on:
   workflow_dispatch:
@@ -9,6 +9,9 @@ on:
     - '**.cpp'
     - '**.h'
     - '**.py'
+  pull_request:
+    branches: [ main ]
+
 jobs:
   build:
 
@@ -35,3 +38,12 @@ jobs:
         path: |
           install/lib
           install/include
+
+  test:
+      runs-on: ubuntu-20.04
+      needs: build
+      steps:
+      - name: Run Tests
+        run: |
+          cd test
+          bash mlbridge-test.sh
