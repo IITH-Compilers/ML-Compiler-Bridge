@@ -25,7 +25,7 @@ wget https://github.com/microsoft/onnxruntime/releases/download/v1.16.3/onnxrunt
 tar -xzf onnxruntime-linux-x64-1.16.3.tgz
 
 # Setup MLCompilerBridge
-REPO_DIR=$HOME/MLCompilerBridge
+REPO_DIR=$GITHUB_WORKSPACE
 BUILD=$1
 
 if [[ -z "$BUILD" ]]; then

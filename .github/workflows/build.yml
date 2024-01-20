@@ -27,7 +27,7 @@ jobs:
         activate-environment: mlbridge
         environment-file: mlbridge.yml
     - name: Install other dependencies and build
-      run: bash mlbridge_build.sh release
+      run: bash .github/workflows/mlbridge_build.sh release
     - uses: actions/upload-artifact@v2
       with:
         name: MLCompilerBridge
