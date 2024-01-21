@@ -20,7 +20,7 @@
 
 namespace MLBridge {
 namespace MLConfig {
-  extern llvm::cl::opt<std::string> mlconfig;
+extern llvm::cl::opt<std::string> mlconfig;
 } // namespace MLConfig
 } // namespace MLBridge
 
