@@ -52,6 +52,11 @@ foreach(proto ${proto_list})
   )
 endforeach()
 set( PYTHON_UTILITIES_DIRECTORY "" CACHE PATH "Path to the directory containing the python utilities")
+
+if(PYTHON_UTILITIES_DIRECTORY STREQUAL "")
+  set(PYTHON_UTILITIES_DIRECTORY ${CMAKE_BINARY_DIR}/tools/MLCompilerBridge/Python-Utilities)
+endif()
+
 if(NOT PYTHON_UTILITIES_DIRECTORY STREQUAL "")
   file(MAKE_DIRECTORY ${PYTHON_UTILITIES_DIRECTORY})
   foreach(proto ${proto_list})
