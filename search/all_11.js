@@ -1,8 +1,8 @@
 var searchData=
 [
   ['rawdata_0',['rawData',['../da/de4/classMLBridge_1_1BitstreamSerDes.html#ab2cabdffbf8d189da6027833b3d0dbd8',1,'MLBridge::BitstreamSerDes']]],
-  ['rawvalue_1',['RawValue',['../de/d03/classllvm_1_1json_1_1OStream.html#ae4b2f9a526f86b52da896e665428cfcea49425f005062878dbc6dfc7226b907fa',1,'llvm::json::OStream']]],
-  ['rawvalue_2',['rawValue',['../de/d03/classllvm_1_1json_1_1OStream.html#abe988728690935fad7313244c2f4a772',1,'llvm::json::OStream']]],
+  ['rawvalue_1',['rawValue',['../de/d03/classllvm_1_1json_1_1OStream.html#abe988728690935fad7313244c2f4a772',1,'llvm::json::OStream']]],
+  ['rawvalue_2',['RawValue',['../de/d03/classllvm_1_1json_1_1OStream.html#ae4b2f9a526f86b52da896e665428cfcea49425f005062878dbc6dfc7226b907fa',1,'llvm::json::OStream']]],
   ['rawvalue2_3',['rawValue2',['../de/d03/classllvm_1_1json_1_1OStream.html#a609e0d23d01b858520853e1a8dffab6e',1,'llvm::json::OStream']]],
   ['rawvaluebegin_4',['rawValueBegin',['../de/d03/classllvm_1_1json_1_1OStream.html#a792749e73c83a275ccff99e769c64569',1,'llvm::json::OStream']]],
   ['rawvalueend_5',['rawValueEnd',['../de/d03/classllvm_1_1json_1_1OStream.html#ad3381dc4020a5d5353451a2348e3ec24',1,'llvm::json::OStream']]],
@@ -18,8 +18,8 @@ var searchData=
   ['receive_15',['receive',['../d9/d4c/classMLBridge_1_1PipeModelRunner.html#a0d97a1e21107c4587d0831c315acbf72',1,'MLBridge::PipeModelRunner']]],
   ['remove_5fpipes_16',['remove_pipes',['../d3/d1f/classPipeCompilerInterface_1_1PipeCompilerInterface.html#a004ba411178b05a4168bffede97cea4c',1,'PipeCompilerInterface::PipeCompilerInterface']]],
   ['report_17',['report',['../d6/d2a/classllvm_1_1json_1_1Path.html#abb341982d84226c17deb044ca13eb048',1,'llvm::json::Path']]],
-  ['request_18',['request',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#abc1e4b0fb90e2f6940afddbfeb835949',1,'MLBridge::gRPCModelRunner']]],
-  ['request_19',['Request',['../d1/dcd/classMLBridge_1_1ProtobufSerDes.html#a00a22374c8ae2e6932d7e7129120bc24',1,'MLBridge::ProtobufSerDes']]],
+  ['request_18',['Request',['../d1/dcd/classMLBridge_1_1ProtobufSerDes.html#a00a22374c8ae2e6932d7e7129120bc24',1,'MLBridge::ProtobufSerDes']]],
+  ['request_19',['request',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#abc1e4b0fb90e2f6940afddbfeb835949',1,'MLBridge::gRPCModelRunner']]],
   ['requestexit_20',['requestExit',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#a8be324ea793aa73f6a9ef97eb863942b',1,'MLBridge::gRPCModelRunner::requestExit()'],['../dc/d4e/classMLBridge_1_1MLModelRunner.html#afb4ddd6b4375221611ad724b8bd7bd2b',1,'MLBridge::MLModelRunner::requestExit()'],['../d5/dd7/classMLBridge_1_1ONNXModelRunner.html#a551a331fbdd3956b9e3c30c4f295efc1',1,'MLBridge::ONNXModelRunner::requestExit()'],['../d9/d4c/classMLBridge_1_1PipeModelRunner.html#a7319b8aa7504c504c3414cff90a32a4b',1,'MLBridge::PipeModelRunner::requestExit()'],['../da/dc0/classMLBridge_1_1TFModelRunner.html#a8463055a5309bec6f6a2fbd8ceacbeb7',1,'MLBridge::TFModelRunner::requestExit()']]],
   ['requestvoid_21',['RequestVoid',['../df/d69/classMLBridge_1_1BaseSerDes.html#af08ba047fb2dacd5329609db05af6443',1,'MLBridge::BaseSerDes']]],
   ['required_22',['required',['../d2/d3c/namespacehello-mlbridge.html#a54e805d7209ef239ec36ad2ee43304cf',1,'hello-mlbridge.required'],['../d3/d31/namespacemlbridge-test.html#a47ca2fed0fb07b74a69cba1f8d1f116e',1,'mlbridge-test.required']]],
@@ -38,11 +38,12 @@ var searchData=
   ['returned_5fdata_35',['returned_data',['../d3/d31/namespacemlbridge-test.html#a40a321e49ed03bba4d54e0c6adb69b9a',1,'mlbridge-test']]],
   ['rl_20agent_20class_36',['RL Agent Class',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md11',1,'']]],
   ['rl_20inferenceengine_20class_37',['RL InferenceEngine Class',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md12',1,'']]],
-  ['root_38',['Root',['../d8/d01/classllvm_1_1json_1_1Path_1_1Root.html',1,'llvm::json::Path::Root'],['../d8/d01/classllvm_1_1json_1_1Path_1_1Root.html#acee898545ed238ee925d9cd23787fde6',1,'llvm::json::Path::Root::Root(llvm::StringRef Name=&quot;&quot;)'],['../d8/d01/classllvm_1_1json_1_1Path_1_1Root.html#af78bfa2d5bb88f88410223755bcd20c9',1,'llvm::json::Path::Root::Root(Root &amp;&amp;)=delete'],['../d8/d01/classllvm_1_1json_1_1Path_1_1Root.html#a7857709c798bd7d5e7983f647bab1104',1,'llvm::json::Path::Root::Root(const Root &amp;)=delete']]],
+  ['root_38',['Root',['../d8/d01/classllvm_1_1json_1_1Path_1_1Root.html',1,'llvm::json::Path']]],
   ['root_39',['root',['../da/de6/classllvm_1_1json_1_1Path_1_1Segment.html#aeed0f242b9097ff934bceec970184619',1,'llvm::json::Path::Segment']]],
-  ['run_40',['Run',['../da/db0/classMLBridge_1_1NoopSavedModelImpl.html#a5f763901629cecd16362e04a35b86814',1,'MLBridge::NoopSavedModelImpl']]],
-  ['run_41',['run',['../da/d65/classONNXModel.html#acd5859dab5fa9e9d09ffd0ceaced6270',1,'ONNXModel']]],
-  ['run_5fpipe_5fcommunication_42',['run_pipe_communication',['../d2/d3c/namespacehello-mlbridge.html#abca85001e0522d0f0d932a75007eb424',1,'hello-mlbridge.run_pipe_communication()'],['../d3/d31/namespacemlbridge-test.html#a0ddb6a53c068887b7574270e6c930c8f',1,'mlbridge-test.run_pipe_communication()']]],
-  ['runner_20in_20process_20model_20runner_43',['ONNX Model Runner  (In-Process Model Runner)',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html',1,'']]],
-  ['runservice_44',['RunService',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#a513fd026bc4bf95c5a9d589e981397ad',1,'MLBridge::gRPCModelRunner']]]
+  ['root_40',['Root',['../d8/d01/classllvm_1_1json_1_1Path_1_1Root.html#acee898545ed238ee925d9cd23787fde6',1,'llvm::json::Path::Root::Root(llvm::StringRef Name=&quot;&quot;)'],['../d8/d01/classllvm_1_1json_1_1Path_1_1Root.html#af78bfa2d5bb88f88410223755bcd20c9',1,'llvm::json::Path::Root::Root(Root &amp;&amp;)=delete'],['../d8/d01/classllvm_1_1json_1_1Path_1_1Root.html#a7857709c798bd7d5e7983f647bab1104',1,'llvm::json::Path::Root::Root(const Root &amp;)=delete']]],
+  ['run_41',['Run',['../da/db0/classMLBridge_1_1NoopSavedModelImpl.html#a5f763901629cecd16362e04a35b86814',1,'MLBridge::NoopSavedModelImpl']]],
+  ['run_42',['run',['../da/d65/classONNXModel.html#acd5859dab5fa9e9d09ffd0ceaced6270',1,'ONNXModel']]],
+  ['run_5fpipe_5fcommunication_43',['run_pipe_communication',['../d2/d3c/namespacehello-mlbridge.html#abca85001e0522d0f0d932a75007eb424',1,'hello-mlbridge.run_pipe_communication()'],['../d3/d31/namespacemlbridge-test.html#a0ddb6a53c068887b7574270e6c930c8f',1,'mlbridge-test.run_pipe_communication()']]],
+  ['runner_20in_20process_20model_20runner_44',['ONNX Model Runner  (In-Process Model Runner)',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html',1,'']]],
+  ['runservice_45',['RunService',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#a513fd026bc4bf95c5a9d589e981397ad',1,'MLBridge::gRPCModelRunner']]]
 ];
