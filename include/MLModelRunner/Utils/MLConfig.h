@@ -19,10 +19,9 @@
 #include "llvm/Support/CommandLine.h"
 
 namespace MLBridge {
-class MLConfig {
-public:
-  static llvm::cl::opt<std::string> mlconfig;
-};
+namespace MLConfig {
+extern llvm::cl::opt<std::string> mlconfig;
+} // namespace MLConfig
 } // namespace MLBridge
 
 #endif
