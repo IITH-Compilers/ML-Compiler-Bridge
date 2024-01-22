@@ -51,30 +51,29 @@ foreach(proto ${proto_list})
       DEPENDS "${proto}"
   )
 endforeach()
+
 set( PYTHON_UTILITIES_DIRECTORY "" CACHE PATH "Path to the directory containing the python utilities")
 
 if(PYTHON_UTILITIES_DIRECTORY STREQUAL "")
-  set(PYTHON_UTILITIES_DIRECTORY ${CMAKE_BINARY_DIR}/Python-Utilities)
+  set(PYTHON_UTILITIES_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Python-Utilities)
 endif()
 
-if(NOT PYTHON_UTILITIES_DIRECTORY STREQUAL "")
-  file(MAKE_DIRECTORY ${PYTHON_UTILITIES_DIRECTORY})
-  foreach(proto ${proto_list})
-    get_filename_component(proto_name ${proto} NAME_WLE)
-    set(proto_python_srcs_list ${proto_python_srcs_list} "${PYTHON_UTILITIES_DIRECTORY}/${proto_name}_pb2.py")
+file(MAKE_DIRECTORY ${PYTHON_UTILITIES_DIRECTORY})
+foreach(proto ${proto_list})
+  get_filename_component(proto_name ${proto} NAME_WLE)
+  set(proto_python_srcs_list ${proto_python_srcs_list} "${PYTHON_UTILITIES_DIRECTORY}/${proto_name}_pb2.py")
 
-    add_custom_command(
-        OUTPUT "${PYTHON_UTILITIES_DIRECTORY}/${proto_name}_pb2.py"
-        COMMAND ${_PROTOBUF_PROTOC}
-        ARGS --grpc_out "${PYTHON_UTILITIES_DIRECTORY}/"
-        --python_out "${PYTHON_UTILITIES_DIRECTORY}/"
-        -I "${proto_dir}"
-        --plugin=protoc-gen-grpc="${_GRPC_PYTHON_PLUGIN_EXECUTABLE}"
-        "${proto}"
-        DEPENDS "${proto}"
-    )
-  endforeach()
-endif()
+  add_custom_command(
+      OUTPUT "${PYTHON_UTILITIES_DIRECTORY}/${proto_name}_pb2.py"
+      COMMAND ${_PROTOBUF_PROTOC}
+      ARGS --grpc_out "${PYTHON_UTILITIES_DIRECTORY}/"
+      --python_out "${PYTHON_UTILITIES_DIRECTORY}/"
+      -I "${proto_dir}"
+      --plugin=protoc-gen-grpc="${_GRPC_PYTHON_PLUGIN_EXECUTABLE}"
+      "${proto}"
+      DEPENDS "${proto}"
+  )
+endforeach()
 
 # Building the library
 if(LLVM_MLBRIDGE)
