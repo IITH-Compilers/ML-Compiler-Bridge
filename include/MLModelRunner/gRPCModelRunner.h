@@ -164,7 +164,7 @@ private:
 
     int max_retries = 30, attempts = 0;
     double retries_wait_secs = 0.2;
-    int deadline_time = 1000;
+    int deadline_time = 10000;
     int deadline_max_retries = 30, deadline_attpts = 0;
     double retry_wait_backoff_exponent = 1.5;
 
