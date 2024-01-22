@@ -58,7 +58,7 @@ if(LLVM_MLBRIDGE)
   protobuf::libprotobuf
   )
 
-
+  target_include_directories(LLVMMLBridge SYSTEM PUBLIC ${Protobuf_INCLUDE_DIRS} ${TENSORFLOW_AOT_PATH}/include)
   target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
   install(TARGETS LLVMMLBridge DESTINATION lib)
 
