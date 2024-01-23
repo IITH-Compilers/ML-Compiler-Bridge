@@ -36,12 +36,28 @@ PipeModelRunner::PipeModelRunner(StringRef OutboundName, StringRef InboundName,
       InEC(sys::fs::openFileForRead(InboundName, Inbound)) {
   this->InboundName = InboundName.str();
   if (InEC) {
-    auto message = "Cannot open inbound file: " + InEC.message();
-    if (this->Ctx)
-      this->Ctx->emitError(message);
-    else
-      std::cerr << message << std::endl;
-    return;
+    int max_retries = 30, attempts = 0;
+    double wait_seconds = 0.2, backoff_exp = 1.2;
+
+    while (attempts < max_retries) {
+      InEC = sys::fs::openFileForRead(InboundName, Inbound);
+      if (InEC) {
+        attempts++;
+        std::cout << "Cannot open inbound file retrying! attempt: " << attempts << std::endl;
+        std::this_thread::sleep_for(std::chrono::duration<double>(wait_seconds));
+        wait_seconds *= backoff_exp;
+      } else {
+        break;
+      }
+    }
+    if (InEC) {
+      auto message = "Cannot open inbound file: " + InEC.message();
+      if (this->Ctx)
+        this->Ctx->emitError(message);
+      else
+        std::cerr << message << std::endl;
+      return;
+    }
   }
   {
     OutStream = std::make_unique<raw_fd_ostream>(OutboundName, OutEC);
