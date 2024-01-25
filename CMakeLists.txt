@@ -40,6 +40,9 @@ add_subdirectory(MLModelRunner)
 add_subdirectory(SerDes)
 add_subdirectory(test)
 
+# add_custom_target(copy)
+# add_custom_command(TARGET copy PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy CompilerInterface include/python/CompilerInterface)
+
 if(LLVM_MLBRIDGE)
   include(AddLLVM)
   include(HandleLLVMOptions)
@@ -50,6 +53,9 @@ if(LLVM_MLBRIDGE)
 
   ADDITIONAL_HEADER_DIRS
   ${CMAKE_CURRENT_SOURCE_DIR}/include
+
+  DEPENDS
+  copy
 
   LINK_LIBS
   ModelRunnerLib
@@ -89,4 +95,4 @@ else()
 endif(LLVM_MLBRIDGE)
 
 install(DIRECTORY include/ DESTINATION include)
-install(DIRECTORY CompilerInterface DESTINATION include/python/MLCompilerBridge)
+install(DIRECTORY CompilerInterface DESTINATION include/python/CompilerInterface)

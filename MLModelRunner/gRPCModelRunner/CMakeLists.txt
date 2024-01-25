@@ -53,7 +53,6 @@ foreach(proto ${proto_list})
 endforeach()
 
 set( PYTHON_UTILITIES_DIRECTORY "" CACHE PATH "Path to the directory containing the python utilities")
-
 if(PYTHON_UTILITIES_DIRECTORY STREQUAL "")
   set(PYTHON_UTILITIES_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Python-Utilities)
 endif()
@@ -84,7 +83,7 @@ if(LLVM_MLBRIDGE)
       ${proto_python_srcs_list}
   )
 else()
-  add_library(gRPCModelRunnerLib OBJECT
+  add_library(gRPCModelRunnerLib
       ${cc_files}
       ${proto_srcs_list}
       ${grpc_srcs_list}

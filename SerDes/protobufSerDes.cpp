@@ -156,6 +156,12 @@ void *ProtobufSerDes::deserializeUntyped(void *data) {
       this->MessageLength = ref.size() * sizeof(int32_t);
       return ret->data();
     }
+    if (field->type() == FieldDescriptor::Type::TYPE_INT64) {
+      auto &ref = reflection->GetRepeatedField<int64_t>(*Response, field);
+      std::vector<int64_t> *ret = new std::vector<int64_t>(ref.begin(), ref.end());
+      this->MessageLength = ref.size() * sizeof(int64_t);
+      return ret->data();
+    }
     if (field->type() == FieldDescriptor::Type::TYPE_FLOAT) {
       auto ref = reflection->GetRepeatedField<float>(*Response, field);
       std::vector<float> *ret = new std::vector<float>(ref.begin(), ref.end());
@@ -197,6 +203,12 @@ void *ProtobufSerDes::deserializeUntyped(void *data) {
     int32_t value = reflection->GetInt32(*Response, field);
     int32_t *ptr = new int32_t(value);
     this->MessageLength = sizeof(int32_t);
+    return ptr;
+  }
+  if (field->type() == FieldDescriptor::Type::TYPE_INT64) {
+    int64_t value = reflection->GetInt64(*Response, field);
+    int64_t *ptr = new int64_t(value);
+    this->MessageLength = sizeof(int64_t);
     return ptr;
   }
   if (field->type() == FieldDescriptor::Type::TYPE_FLOAT) {

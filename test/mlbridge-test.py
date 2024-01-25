@@ -5,21 +5,20 @@
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
 # ------------------------------------------------------------------------------
-
 import argparse
 import numpy as np
 import ctypes
 
 import sys
+import os
 import torch, torch.nn as nn
+import subprocess
+import time
 
-sys.path.append("../CompilerInterface")
+BUILD_DIR="../build_release"
+sys.path.extend(["../CompilerInterface", f"{BUILD_DIR}/MLModelRunner/gRPCModelRunner/Python-Utilities"])
 from PipeCompilerInterface import PipeCompilerInterface
 from GrpcCompilerInterface import GrpcCompilerInterface
-
-sys.path.append("./Python-Utilities")
-import helloMLBridge_pb2, helloMLBridge_pb2_grpc, grpc
-from concurrent import futures
 
 FAIL = 1
 SUCCESS = 0
@@ -53,9 +52,85 @@ parser.add_argument(
     "--server_port",
     type=int,
     help="Server Port",
-    default=5050,
+)
+parser.add_argument(
+    "--test_number",
+    type=int,
+    help="Datatype number for test",
+    default=0,
 )
 args = parser.parse_args()
+
+if args.test_number <= 1:
+    import MLBridgeTest_int_pb2, MLBridgeTest_int_pb2_grpc
+
+    MLBridgeTest_pb2, MLBridgeTest_pb2_grpc = (
+        MLBridgeTest_int_pb2,
+        MLBridgeTest_int_pb2_grpc,
+    )
+elif args.test_number == 2:
+    import MLBridgeTest_long_pb2, MLBridgeTest_long_pb2_grpc
+
+    MLBridgeTest_pb2, MLBridgeTest_pb2_grpc = (
+        MLBridgeTest_long_pb2,
+        MLBridgeTest_long_pb2_grpc,
+    )
+elif args.test_number == 3:
+    import MLBridgeTest_float_pb2, MLBridgeTest_float_pb2_grpc
+
+    MLBridgeTest_pb2, MLBridgeTest_pb2_grpc = (
+        MLBridgeTest_float_pb2,
+        MLBridgeTest_float_pb2_grpc,
+    )
+elif args.test_number == 4:
+    import MLBridgeTest_double_pb2, MLBridgeTest_double_pb2_grpc
+
+    MLBridgeTest_pb2, MLBridgeTest_pb2_grpc = (
+        MLBridgeTest_double_pb2,
+        MLBridgeTest_double_pb2_grpc,
+    )
+elif args.test_number == 5:
+    import MLBridgeTest_char_pb2, MLBridgeTest_char_pb2_grpc
+
+    MLBridgeTest_pb2, MLBridgeTest_pb2_grpc = (
+        MLBridgeTest_char_pb2,
+        MLBridgeTest_char_pb2_grpc,
+    )
+elif args.test_number == 6:
+    import MLBridgeTest_bool_pb2, MLBridgeTest_bool_pb2_grpc
+
+    MLBridgeTest_pb2, MLBridgeTest_pb2_grpc = (
+        MLBridgeTest_bool_pb2,
+        MLBridgeTest_bool_pb2_grpc,
+    )
+elif args.test_number == 7:
+    import MLBridgeTest_vec_int_pb2, MLBridgeTest_vec_int_pb2_grpc
+
+    MLBridgeTest_pb2, MLBridgeTest_pb2_grpc = (
+        MLBridgeTest_vec_int_pb2,
+        MLBridgeTest_vec_int_pb2_grpc,
+    )
+elif args.test_number == 8:
+    import MLBridgeTest_vec_long_pb2, MLBridgeTest_vec_long_pb2_grpc
+
+    MLBridgeTest_pb2, MLBridgeTest_pb2_grpc = (
+        MLBridgeTest_vec_long_pb2,
+        MLBridgeTest_vec_long_pb2_grpc,
+    )
+elif args.test_number == 9:
+    import MLBridgeTest_vec_float_pb2, MLBridgeTest_vec_float_pb2_grpc
+
+    MLBridgeTest_pb2, MLBridgeTest_pb2_grpc = (
+        MLBridgeTest_vec_float_pb2,
+        MLBridgeTest_vec_float_pb2_grpc,
+    )
+elif args.test_number == 10:
+    import MLBridgeTest_vec_double_pb2, MLBridgeTest_vec_double_pb2_grpc
+
+    MLBridgeTest_pb2, MLBridgeTest_pb2_grpc = (
+        MLBridgeTest_vec_double_pb2,
+        MLBridgeTest_vec_double_pb2_grpc,
+    )
 
 
 class DummyModel(nn.Module):
@@ -82,7 +157,7 @@ expected_type = {
 }
 
 expected_data = {
-    1: 11,
+    1: 12,
     2: 1234567890,
     3: 3.14,
     4: 0.123456789123456789,
@@ -96,25 +171,69 @@ expected_data = {
 
 returned_data = {
     1: 12,
-    2: ctypes.c_long(1234567891),
+    2: 1234567891,
     3: 4.14,
-    4: ctypes.c_double(1.123456789123456789),
+    4: 1.123456789123456789,
     5: ord("b"),
     6: False,
     7: [12, 23, 34],
-    8: [ctypes.c_long(123456780), ctypes.c_long(123456781), ctypes.c_long(123456782)],
+    8: [123456780, 123456781, 123456782],
     9: [1.11, 2.22, -3.33, 0],
-    10: [ctypes.c_double(1.12345678912345670), ctypes.c_double(-1.12345678912345671)],
+    10: [1.12345678912345670, -1.12345678912345671],
 }
 
-# may not be configured for extended types
-if args.data_format == "json":
-    returned_data[2] = ctypes.c_long(12345)
-    returned_data[8] = [
-        ctypes.c_long(6780),
-        ctypes.c_long(6781),
-        ctypes.c_long(6782),
-    ]  # [ctypes.c_long(6780),ctypes.c_long(6781),ctypes.c_long(6782)],
+if args.use_pipe and args.data_format == "bytes":
+    returned_data.update(
+        {
+            2: ctypes.c_long(1234567891),
+            4: ctypes.c_double(1.123456789123456789),
+            8: [
+                ctypes.c_long(123456780),
+                ctypes.c_long(123456781),
+                ctypes.c_long(123456782),
+            ],
+            10: [
+                ctypes.c_double(1.12345678912345670),
+                ctypes.c_double(-1.12345678912345671),
+            ],
+        }
+    )
+if args.use_pipe and args.data_format == "json":
+    returned_data.update(
+        {
+            2: ctypes.c_long(12345),
+            4: ctypes.c_double(1.123456789123456789),
+            8: [ctypes.c_long(6780), ctypes.c_long(6781), ctypes.c_long(6782)],
+            10: [
+                ctypes.c_double(1.12345678912345670),
+                ctypes.c_double(-1.12345678912345671),
+            ],
+        }
+    )
+
+status = SUCCESS
+
+# test index vs received data
+def checkData(index, data):
+    global status
+    if not args.silent:
+        print(" ", expected_type[index], "request:", data)
+
+    if isinstance(expected_data[index], list):
+        for e, d in zip(expected_data[index], data):
+            if abs(e - d) > 10e-6:
+                print(
+                    f"Error: Expected {expected_type[index]} request: {expected_data[index]}, Received: {data}"
+                )
+                status = FAIL
+                # raise Exception(f"Mismatch in {expected_type[i]}")
+
+    elif abs(data - expected_data[index]) > 10e-6:
+        print(
+            f"Error: Expected {expected_type[index]} request: {expected_data[index]}, Received: {data}"
+        )
+        status = FAIL
+        # raise Exception(f"Mismatch in {expected_type[i]}")
 
 
 def run_pipe_communication(data_format, pipe_name):
@@ -123,7 +242,6 @@ def run_pipe_communication(data_format, pipe_name):
         print("PipeCompilerInterface init...")
     compiler_interface.reset_pipes()
 
-    status = SUCCESS
     i = 0
     while True:
         i += 1
@@ -137,24 +255,7 @@ def run_pipe_communication(data_format, pipe_name):
                 if len(data) == 1:
                     data = data[0]
 
-            if not args.silent:
-                print(" ", expected_type[i], "request:", data)
-
-            if isinstance(expected_data[i], list):
-                for e, d in zip(expected_data[i], data):
-                    if abs(e - d) > 10e-6:
-                        print(
-                            f"Error: Expected {expected_type[i]} request: {expected_data[i]}, Received: {data}"
-                        )
-                        status = FAIL
-                        # raise Exception(f"Mismatch in {expected_type[i]}")
-
-            elif abs(data - expected_data[i]) > 10e-6:
-                print(
-                    f"Error: Expected {expected_type[i]} request: {expected_data[i]}, Received: {data}"
-                )
-                status = FAIL
-                # raise Exception(f"Mismatch in {expected_type[i]}")
+            checkData(i, data)
 
             compiler_interface.populate_buffer(returned_data[i])
 
@@ -166,46 +267,56 @@ def run_pipe_communication(data_format, pipe_name):
             compiler_interface.reset_pipes()
 
 
-class service_server(helloMLBridge_pb2_grpc.HelloMLBridgeService):
-    def __init__(self, data_format, pipe_name):
-        # self.serdes = SerDes.SerDes(data_format, pipe_name)
-        # self.serdes.init()
+class service_server(MLBridgeTest_pb2_grpc.MLBridgeTestService):
+    def __init__(self):
         pass
 
     def getAdvice(self, request, context):
         try:
-            print(request)
-            print("Entered getAdvice")
-            print("Data: ", request.tensor)
-            reply = helloMLBridge_pb2.ActionRequest(action=1)
+            request_type = [var for var in dir(request) if "request" in var]
+            data = getattr(request, request_type[0])
+            checkData(args.test_number, data)
+            if status == FAIL:
+                os.system("touch mlbridge-grpc-fail.txt")
+            reply = MLBridgeTest_pb2.Reply(action=returned_data[args.test_number])
             return reply
         except:
-            reply = helloMLBridge_pb2.ActionRequest(action=-1)
+            reply = MLBridgeTest_pb2.Reply(action=-1)
             return reply
 
 
-def test_func():
-    data = 3.24
-    import struct
+def run_grpc_communication():
+    # parent with test_number 0 spawns different servers
+    if args.test_number == 0:
+        process_list = []
+        for i in range(1, len(expected_type) + 1):
+            p = subprocess.Popen(
+                f"python mlbridge-test.py --use_grpc --server_port={args.server_port} --silent={args.silent} --test_number={i}".split(),
+            )
+            process_list.append(p)
 
-    print(data, type(data))
-    byte_data = struct.pack("f", data)
-    print(byte_data, len(byte_data))
+        time.sleep(10)
+        global status
+        for p in process_list:
+            if os.path.isfile("mlbridge-grpc-fail.txt"):
+                status = FAIL
+                os.system("rm mlbridge-grpc-fail.txt")
+            p.terminate()
+        exit(status)
 
-    print("decoding...")
-    decoded = float(byte_data)
-
-    print(decoded, type(decoded))
+    # servers serve different datatypes
+    else:
+        compiler_interface = GrpcCompilerInterface(
+            mode="server",
+            add_server_method=MLBridgeTest_pb2_grpc.add_MLBridgeTestServiceServicer_to_server,
+            grpc_service_obj=service_server(),
+            hostport=args.server_port + args.test_number,
+        )
+        compiler_interface.start_server()
 
 
 if __name__ == "__main__":
     if args.use_pipe:
         run_pipe_communication(args.data_format, args.pipe_name)
     elif args.use_grpc:
-        compiler_interface = GrpcCompilerInterface(
-            mode="server",
-            add_server_method=helloMLBridge_pb2_grpc.add_HelloMLBridgeServiceServicer_to_server,
-            grpc_service_obj=service_server(),
-            hostport=args.server_port,
-        )
-        compiler_interface.start_server()
+        run_grpc_communication()
