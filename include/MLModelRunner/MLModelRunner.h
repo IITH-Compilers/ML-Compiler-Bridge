@@ -40,8 +40,8 @@
 #include "SerDes/bitstreamSerDes.h"
 #include "SerDes/jsonSerDes.h"
 
-#include <fstream>
 #include <cstdlib>
+#include <fstream>
 #include <future>
 #include <memory>
 #include <string>
@@ -57,7 +57,6 @@ namespace MLBridge {
 class MLModelRunner {
 public:
   std::ofstream of;
-  
   // Disallows copy and assign.
   MLModelRunner(const MLModelRunner &) = delete;
   MLModelRunner &operator=(const MLModelRunner &) = delete;
@@ -95,7 +94,6 @@ public:
   template <typename T, typename... Types>
   void passMetaInfo(std::pair<std::string, T> &var1,
                     std::pair<std::string, Types> &...var2) {
-      
     of.open("observation.txt", std::ios::app);
     of << var1.first << ": " << var1.second << "\n";
     of.close();
