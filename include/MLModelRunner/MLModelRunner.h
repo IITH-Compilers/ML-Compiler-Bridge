@@ -40,6 +40,7 @@
 #include "SerDes/bitstreamSerDes.h"
 #include "SerDes/jsonSerDes.h"
 
+#include <fstream>
 #include <cstdlib>
 #include <future>
 #include <memory>
@@ -55,6 +56,8 @@ namespace MLBridge {
 /// MLModelRunner - The main interface for interacting with the ML models.
 class MLModelRunner {
 public:
+  std::ofstream of;
+  
   // Disallows copy and assign.
   MLModelRunner(const MLModelRunner &) = delete;
   MLModelRunner &operator=(const MLModelRunner &) = delete;
@@ -89,6 +92,18 @@ public:
   virtual void requestExit() = 0;
   std::promise<void> *exit_requested;
 
+  template <typename T, typename... Types>
+  void passMetaInfo(std::pair<std::string, T> &var1,
+                      std::pair<std::string, Types> &...var2) {
+      
+      of.open("observation.txt",std::ios::app);
+      of << var1.first << ": " << var1.second << "\n";
+      of.close();
+      passMetaInfo(var2...);
+
+  }
+
+  void passMetaInfo() {}
   /// User-facing interface for setting the features to be sent to the model.
   /// The features are passed as a list of key-value pairs.
   /// The key is the name of the feature and the value is the value of the
@@ -97,6 +112,9 @@ public:
   void populateFeatures(std::pair<std::string, T> &var1,
                         std::pair<std::string, Types> &...var2) {
     SerDes->setFeature(var1.first, var1.second);
+    //of.open("observation.txt",std::ios::app);
+    //of << var1.first << ": " << reinterpret_cast<T>(var1.second) << "\n";
+    //of.close();
     populateFeatures(var2...);
   }
 
