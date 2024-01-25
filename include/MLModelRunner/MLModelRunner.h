@@ -96,7 +96,7 @@ public:
   void passMetaInfo(std::pair<std::string, T> &var1,
                     std::pair<std::string, Types> &...var2) {
       
-    of.open("observation.txt",std::ios::app);
+    of.open("observation.txt", std::ios::app);
     of << var1.first << ": " << var1.second << "\n";
     of.close();
     passMetaInfo(var2...);
@@ -112,9 +112,9 @@ public:
   void populateFeatures(std::pair<std::string, T> &var1,
                         std::pair<std::string, Types> &...var2) {
     SerDes->setFeature(var1.first, var1.second);
-    //of.open("observation.txt",std::ios::app);
-    //of << var1.first << ": " << reinterpret_cast<T>(var1.second) << "\n";
-    //of.close();
+    // of.open("observation.txt",std::ios::app);
+    // of << var1.first << ": " << reinterpret_cast<T>(var1.second) << "\n";
+    // of.close();
     populateFeatures(var2...);
   }
 
