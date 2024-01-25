@@ -94,12 +94,12 @@ public:
 
   template <typename T, typename... Types>
   void passMetaInfo(std::pair<std::string, T> &var1,
-                      std::pair<std::string, Types> &...var2) {
+                    std::pair<std::string, Types> &...var2) {
       
-      of.open("observation.txt",std::ios::app);
-      of << var1.first << ": " << var1.second << "\n";
-      of.close();
-      passMetaInfo(var2...);
+    of.open("observation.txt",std::ios::app);
+    of << var1.first << ": " << var1.second << "\n";
+    of.close();
+    passMetaInfo(var2...);
 
   }
 
