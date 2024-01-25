@@ -101,6 +101,26 @@ public:
   }
 
   void passMetaInfo() {}
+
+  template <typename T>
+  void dumpFeature(std::pair<std::string, T> &var1) {
+    of.open("observation.txt", std::ios::app);
+    of << var1.first << ": " << var1.second << "\n";
+    of.close();
+
+  }
+
+  template <typename T>
+  void dumpFeature(std::pair<std::string, std::vector<T>> &var1) {
+    of.open("observation.txt", std::ios::app);
+    of << var1.first << ": ";
+    for (const auto& elem : var1.second) {
+        of << elem << " ";
+    }
+    of << "\n";
+    of.close();
+
+  }
   /// User-facing interface for setting the features to be sent to the model.
   /// The features are passed as a list of key-value pairs.
   /// The key is the name of the feature and the value is the value of the
@@ -109,6 +129,7 @@ public:
   void populateFeatures(std::pair<std::string, T> &var1,
                         std::pair<std::string, Types> &...var2) {
     SerDes->setFeature(var1.first, var1.second);
+    dumpFeature(var1);
     // of.open("observation.txt",std::ios::app);
     // of << var1.first << ": " << reinterpret_cast<T>(var1.second) << "\n";
     // of.close();
