@@ -98,7 +98,6 @@ public:
     of << var1.first << ": " << var1.second << "\n";
     of.close();
     passMetaInfo(var2...);
-
   }
 
   void passMetaInfo() {}
