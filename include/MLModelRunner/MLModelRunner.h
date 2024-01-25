@@ -102,8 +102,7 @@ public:
 
   void passMetaInfo() {}
 
-  template <typename T>
-  void dumpFeature(std::pair<std::string, T> &var1) {
+  template <typename T> void dumpFeature(std::pair<std::string, T> &var1) {
     of.open("observation.txt", std::ios::app);
     of << var1.first << ": " << var1.second << "\n";
     of.close();
@@ -114,8 +113,8 @@ public:
   void dumpFeature(std::pair<std::string, std::vector<T>> &var1) {
     of.open("observation.txt", std::ios::app);
     of << var1.first << ": ";
-    for (const auto& elem : var1.second) {
-        of << elem << " ";
+    for (const auto &elem : var1.second) {
+      of << elem << " ";
     }
     of << "\n";
     of.close();
