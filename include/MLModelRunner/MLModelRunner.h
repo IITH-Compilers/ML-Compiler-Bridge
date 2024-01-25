@@ -106,7 +106,6 @@ public:
     of.open("observation.txt", std::ios::app);
     of << var1.first << ": " << var1.second << "\n";
     of.close();
-
   }
 
   template <typename T>
@@ -118,7 +117,6 @@ public:
     }
     of << "\n";
     of.close();
-
   }
   /// User-facing interface for setting the features to be sent to the model.
   /// The features are passed as a list of key-value pairs.
