@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MLCompilerBridge: MLCompilerBridge</title>
+<title>MLCompilerBridge: ML-Compiler-Bridge</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -72,10 +72,10 @@ $(function() {
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">MLCompilerBridge </div></div>
+  <div class="headertitle"><div class="title">ML-Compiler-Bridge </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a> <code>MLCompilerBridge</code> is a compiler agnostic library to aid in ML-Enabled Compiler Optimizations. MLCompilerBridge supports both training and inference scenarios. Library exposes Python and C/C++ APIs to interface with the Python-based ML models and a C/C++ compiler. This design allows ML model development within a traditional Python framework while making end-to-end integration with an optimizing compiler possible and efficient.</p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <code>ML-Compiler-Bridge</code> is a compiler agnostic library to aid in ML-Enabled Compiler Optimizations. ML-Compiler-Bridge supports both training and inference scenarios. Library exposes Python and C/C++ APIs to interface with the Python-based ML models and a C/C++ compiler. This design allows ML model development within a traditional Python framework while making end-to-end integration with an optimizing compiler possible and efficient.</p>
 <p>This repo contains the source code and relevant information described in our paper, <a href="https://arxiv.org/abs/2311.10800">"The Next 700 ML-Enabled Compiler Optimizations"</a>. Please see <a href="https://iith-compilers.github.io/MLCompilerBridge/">here</a> for documentation and other details.</p>
 <blockquote class="doxtable">
 <p>&zwj;The Next 700 ML-Enabled Compiler Optimizations, S. VenkataKeerthy, Siddharth Jain, Umesh Kalvakuntla, Pranav Sai Gorantla, Rajiv Shailesh Chitale, Eugene Brevdo, Albert Cohen, Mircea Trofin and Ramakrishna Upadrasta. CC 2024. </p>
@@ -116,7 +116,7 @@ Requirements</h1>
 <p>(Experiments are done on an Ubuntu 20.04 machine)</p>
 <h1><a class="anchor" id="autotoc_md17"></a>
 Setup</h1>
-<p><code>MLCompilerBridge</code> can be built as a stand-alone library to generate <code>.a</code> files that can in turn be linked with any compiler.</p><ol type="1">
+<p><code>ML-Compiler-Bridge</code> can be built as a stand-alone library to generate <code>.a</code> files that can in turn be linked with any compiler.</p><ol type="1">
 <li><code>mkdir build &amp;&amp; cd build</code></li>
 <li><code>cmake [-DCMAKE_BUILD_TYPE=Release|Debug] [-DCMAKE_INSTALL_PREFIX=&lt;Install_path&gt;] -DONNXRUNTIME_ROOTDIR=&lt;Path to ONNX install dir&gt; -DTENSORFLOW_AOT_PATH=&lt;Path to TensorFlow pip install dir&gt; ../</code></li>
 <li><code>make -j [&amp;&amp; make install]</code></li>
@@ -125,8 +125,8 @@ Setup</h1>
 <p>Python end points are available under <a href="./CompilerInterface/"><code>CompilerInterface</code></a>.</p>
 <p>To ensure the correctness, run <code>make verify-all</code></p>
 <h2><a class="anchor" id="autotoc_md18"></a>
-Using MLCompilerBridge with LLVM and MLIR</h2>
-<p><code>MLCompilerBridge</code> can be integrated and built along with the LLVM project. This can be done by adding this repository as a new project and setting <code>LLVM_MLBRIDGE</code> option to <code>ON</code>.</p>
+Using ML-Compiler-Bridge with LLVM and MLIR</h2>
+<p><code>ML-Compiler-Bridge</code> can be integrated and built along with the LLVM project. This can be done by adding this repository as a new project and setting <code>LLVM_MLBRIDGE</code> option to <code>ON</code>.</p>
 <p>You can check the <a href="https://github.com/IITH-Compilers/ml-llvm-project/blob/mlbridge-lib/llvm/CMakeLists.txt">CMakeLists.txt</a> of the <a href="https://github.com/IITH-Compilers/ml-llvm-project/tree/mlbridge-lib"><code>ml-llvm-project</code></a> repository which demonstrates such an integration.</p>
 <p>The passes that need to make use of this library can then just link with <code>LLVMMLBridge</code>.</p>
 <p>Example <code>CMakeLists.txt</code> of an LLVM pass that would use the library is shown below.</p>
@@ -165,7 +165,7 @@ Contributions</h1>
 <p>Please feel free to raise issues to file a bug, pose a question, or initiate any related discussions. Pull requests are welcome :)</p>
 <h1><a class="anchor" id="autotoc_md23"></a>
 License</h1>
-<p>MLCompilerBridge is released under Apache 2.0 license with LLVM Exceptions. See LICENSE file for more details. </p>
+<p>ML-Compiler-Bridge is released under Apache 2.0 license with LLVM Exceptions. See LICENSE file for more details. </p>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"/>
 </div><!-- contents -->

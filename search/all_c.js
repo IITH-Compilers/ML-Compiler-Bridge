@@ -3,7 +3,7 @@ var searchData=
   ['license_0',['License',['../index.html#autotoc_md23',1,'']]],
   ['line_1',['Line',['../d6/d31/classllvm_1_1json_1_1ParseError.html#a7199a3eaa08bb905c7e03923e4e97656',1,'llvm::json::ParseError']]],
   ['llvm_2',['llvm',['../d9/d4a/namespacellvm.html',1,'']]],
-  ['llvm_20and_20mlir_3',['Using MLCompilerBridge with LLVM and MLIR',['../index.html#autotoc_md18',1,'']]],
+  ['llvm_20and_20mlir_3',['Using ML-Compiler-Bridge with LLVM and MLIR',['../index.html#autotoc_md18',1,'']]],
   ['llvm_20grpc_4',['Building LLVM-GRPC',['../df/ddf/md_MLModelRunner_2gRPCModelRunner_2README.html#autotoc_md7',1,'']]],
   ['llvm_20grpc_3aregister_20allocation_5',['LLVM-GRPC:Register-Allocation',['../df/ddf/md_MLModelRunner_2gRPCModelRunner_2README.html',1,'']]],
   ['llvm_20pass_6',['Integration with LLVM Pass',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md13',1,'']]],
