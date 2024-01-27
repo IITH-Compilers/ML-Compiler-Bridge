@@ -87,7 +87,6 @@ public:
   BaseSerDes::Kind getSerDesKind() const { return SerDesType; }
 
   virtual void requestExit() = 0;
-  std::promise<void> *exit_requested;
 
   /// User-facing interface for setting the features to be sent to the model.
   /// The features are passed as a list of key-value pairs.
