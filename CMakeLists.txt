@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(MLCompilerBridge)
+project(MLCompilerBridge VERSION 0.0.1)
 add_compile_options("$<$<CONFIG:${CMAKE_BUILD_TYPE}>:-UNDEBUG>")
 set(protobuf_MODULE_COMPATIBLE TRUE)
 find_package(Protobuf CONFIG REQUIRED)
