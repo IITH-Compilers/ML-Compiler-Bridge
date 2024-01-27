@@ -84,7 +84,7 @@ if(LLVM_MLBRIDGE)
       ${proto_python_srcs_list}
   )
 else()
-  add_library(gRPCModelRunnerLib OBJECT
+  add_library(gRPCModelRunnerLib
       ${cc_files}
       ${proto_srcs_list}
       ${grpc_srcs_list}

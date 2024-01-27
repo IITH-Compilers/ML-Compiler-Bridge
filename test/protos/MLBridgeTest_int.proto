@@ -6,5 +6,5 @@ service MLBridgeTestService {
   rpc getAdvice(Request) returns (Reply) {}
 }
 
-message Request { int32 data = 1; }
+message Request { int32 request_int = 1; }
 message Reply { int32 action = 1; }
