@@ -100,7 +100,6 @@ Inheritance diagram for MLBridge::Environment:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2b01c8a659ed22797efa42d78a494553" id="r_a2b01c8a659ed22797efa42d78a494553"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b01c8a659ed22797efa42d78a494553">checkDone</a> ()</td></tr>
-<tr class="memdesc:a2b01c8a659ed22797efa42d78a494553"><td class="mdescLeft">&#160;</td><td class="mdescRight">CheckDone returns true if the termination condition is met.  <br /></td></tr>
 <tr class="separator:a2b01c8a659ed22797efa42d78a494553"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2943c940d0856e64585d26cd68869089" id="r_a2943c940d0856e64585d26cd68869089"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2943c940d0856e64585d26cd68869089">setDone</a> ()</td></tr>
 <tr class="memdesc:a2943c940d0856e64585d26cd68869089"><td class="mdescLeft">&#160;</td><td class="mdescRight">SetDone sets the termination condition to true.  <br /></td></tr>
@@ -108,7 +107,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeb5abdfef604cb6a68d64aa85319a2a4" id="r_aeb5abdfef604cb6a68d64aa85319a2a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb5abdfef604cb6a68d64aa85319a2a4">resetDone</a> ()</td></tr>
 <tr class="separator:aeb5abdfef604cb6a68d64aa85319a2a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3513332c1b017e22660f41cb4ea73d4" id="r_ae3513332c1b017e22660f41cb4ea73d4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3513332c1b017e22660f41cb4ea73d4">getNextAgent</a> ()</td></tr>
-<tr class="memdesc:ae3513332c1b017e22660f41cb4ea73d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">GetNextAgent returns the name of the next agent to interact with.  <br /></td></tr>
+<tr class="memdesc:ae3513332c1b017e22660f41cb4ea73d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">GetNextAgent returns the name/ID of the next agent to interact with.  <br /></td></tr>
 <tr class="separator:ae3513332c1b017e22660f41cb4ea73d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5031cb98f3f0b9a53cb6708149b33a73" id="r_a5031cb98f3f0b9a53cb6708149b33a73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5031cb98f3f0b9a53cb6708149b33a73">setNextAgent</a> (std::string name)</td></tr>
 <tr class="memdesc:a5031cb98f3f0b9a53cb6708149b33a73"><td class="mdescLeft">&#160;</td><td class="mdescRight">SetNextAgent sets the name of the next agent to interact with.  <br /></td></tr>
@@ -156,10 +155,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>CheckDone returns true if the termination condition is met at the end of the episode. </p>
 
-<p>CheckDone returns true if the termination condition is met. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../de/d26/environment_8h_source.html#l00065">65</a> of file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d26/environment_8h_source.html#l00066">66</a> of file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
 
 </div>
 </div>
@@ -186,9 +184,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>GetNextAgent returns the name of the next agent to interact with. </p>
+<p>GetNextAgent returns the name/ID of the next agent to interact with. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../de/d26/environment_8h_source.html#l00072">72</a> of file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d26/environment_8h_source.html#l00073">73</a> of file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
 
 </div>
 </div>
@@ -214,7 +212,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Reset function returns the initial observation. This method should be implemented by the user. This method can internally call <a class="el" href="#a5031cb98f3f0b9a53cb6708149b33a73" title="SetNextAgent sets the name of the next agent to interact with.">setNextAgent()</a> to set the next agent to interact with and <a class="el" href="#a2943c940d0856e64585d26cd68869089" title="SetDone sets the termination condition to true.">setDone()</a>/resetDone() to set/reset the termination condition. </p>
+<p>Reset function returns the initial observation. This method should be implemented by the user. This method can internally call <a class="el" href="#a5031cb98f3f0b9a53cb6708149b33a73" title="SetNextAgent sets the name of the next agent to interact with.">setNextAgent()</a> to set the next agent to interact with. </p>
 
 <p>Implemented in <a class="el" href="../../d8/d6e/classHelloMLBridgeEnv.html#af01aed7d7d0fdc4d36a5f6a5b6fcf309">HelloMLBridgeEnv</a>.</p>
 
@@ -243,7 +241,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/d26/environment_8h_source.html#l00069">69</a> of file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d26/environment_8h_source.html#l00070">70</a> of file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
 
 </div>
 </div>
@@ -272,7 +270,7 @@ Private Attributes</h2></td></tr>
 
 <p>SetDone sets the termination condition to true. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../de/d26/environment_8h_source.html#l00068">68</a> of file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d26/environment_8h_source.html#l00069">69</a> of file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
 
 </div>
 </div>
@@ -301,7 +299,7 @@ Private Attributes</h2></td></tr>
 
 <p>SetNextAgent sets the name of the next agent to interact with. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../de/d26/environment_8h_source.html#l00075">75</a> of file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d26/environment_8h_source.html#l00076">76</a> of file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
 
 </div>
 </div>

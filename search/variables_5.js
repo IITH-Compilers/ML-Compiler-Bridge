@@ -8,7 +8,7 @@ var searchData=
   ['err_5',['Err',['../dc/d1d/JSON_8cpp.html#a1d6fce4cec505c961773bbf78fc843ff',1,'JSON.cpp']]],
   ['errormessage_6',['ErrorMessage',['../d8/d01/classllvm_1_1json_1_1Path_1_1Root.html#aa82066fc9eb9117af4793e4a391f6516',1,'llvm::json::Path::Root']]],
   ['errorpath_7',['ErrorPath',['../d8/d01/classllvm_1_1json_1_1Path_1_1Root.html#aaa02a6e98e0001ae6a9c8af1a7694b77',1,'llvm::json::Path::Root']]],
-  ['exit_5frequested_8',['exit_requested',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#ad001c42d341f664c0edd42610e04a5e5',1,'MLBridge::gRPCModelRunner::exit_requested'],['../dc/d4e/classMLBridge_1_1MLModelRunner.html#adb0b58c9b6c1c05ca2f56ee73b2e7a8e',1,'MLBridge::MLModelRunner::exit_requested']]],
+  ['exit_5frequested_8',['exit_requested',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#ad001c42d341f664c0edd42610e04a5e5',1,'MLBridge::gRPCModelRunner']]],
   ['expected_5fdata_9',['expected_data',['../d3/d31/namespacemlbridge-test.html#aa8fc54e703db379f60b04f06b489c88f',1,'mlbridge-test']]],
   ['expected_5ftype_10',['expected_type',['../d3/d31/namespacemlbridge-test.html#a5a16d87186f4dfb35a7b688822113798',1,'mlbridge-test']]]
 ];

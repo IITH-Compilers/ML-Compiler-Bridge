@@ -2,8 +2,8 @@ var searchData=
 [
   ['fail_0',['FAIL',['../d3/d31/namespacemlbridge-test.html#a76a7ed3e9729db73bcd9479971695466',1,'mlbridge-test']]],
   ['false_1',['False',['../d2/d3c/namespacehello-mlbridge.html#a6f3c661c0e763a38f90bcf898cf070ba',1,'hello-mlbridge.False'],['../d3/d31/namespacemlbridge-test.html#a57b8b40a688061596a031d99c4a7e0fa',1,'mlbridge-test.False']]],
-  ['fc_2',['fc',['../d3/d1f/classPipeCompilerInterface_1_1PipeCompilerInterface.html#a2e57ff42a5fedc7ffdfdba649b39c43d',1,'PipeCompilerInterface::PipeCompilerInterface']]],
-  ['fc1_3',['fc1',['../dc/d41/classhello-mlbridge_1_1DummyModel.html#a5b6436c430f7d36fe9b660f8205a894f',1,'hello-mlbridge.DummyModel.fc1'],['../df/d2e/classmlbridge-test_1_1DummyModel.html#a4dfe5a2f36b372c26f1fcf9142906432',1,'mlbridge-test.DummyModel.fc1']]],
+  ['fc1_2',['fc1',['../dc/d41/classhello-mlbridge_1_1DummyModel.html#a5b6436c430f7d36fe9b660f8205a894f',1,'hello-mlbridge.DummyModel.fc1'],['../df/d2e/classmlbridge-test_1_1DummyModel.html#a4dfe5a2f36b372c26f1fcf9142906432',1,'mlbridge-test.DummyModel.fc1']]],
+  ['fc_5fbuffer_3',['fc_buffer',['../d3/d1f/classPipeCompilerInterface_1_1PipeCompilerInterface.html#a4e98cc701c5b3ba8d47b77d1123f01c1',1,'PipeCompilerInterface::PipeCompilerInterface']]],
   ['features_4',['Features',['../index.html#autotoc_md15',1,'']]],
   ['featurevector_5',['FeatureVector',['../d8/d6e/classHelloMLBridgeEnv.html#a99919c777fe09d60cbdf207ff77375e6',1,'HelloMLBridgeEnv']]],
   ['field_6',['field',['../d6/d2a/classllvm_1_1json_1_1Path.html#ad629aae639d840582ecc3358fb0bfd47',1,'llvm::json::Path::field()'],['../da/de6/classllvm_1_1json_1_1Path_1_1Segment.html#aaea86fb11918058a6b42c2292081595e',1,'llvm::json::Path::Segment::field()']]],

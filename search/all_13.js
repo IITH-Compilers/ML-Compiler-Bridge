@@ -9,7 +9,7 @@ var searchData=
   ['t_5fstring_6',['T_String',['../d3/d47/classllvm_1_1json_1_1Value.html#add93c1c0c545bc44159b837593f3fae8a93a02585f253408a52ee26dd87e3584a',1,'llvm::json::Value']]],
   ['t_5fstringref_7',['T_StringRef',['../d3/d47/classllvm_1_1json_1_1Value.html#add93c1c0c545bc44159b837593f3fae8a0b703b793511b55a3ff765696d12600d',1,'llvm::json::Value']]],
   ['t_5fuint64_8',['T_UINT64',['../d3/d47/classllvm_1_1json_1_1Value.html#add93c1c0c545bc44159b837593f3fae8a11510d228e602cfb27688d912d960c9b',1,'llvm::json::Value']]],
-  ['tc_9',['tc',['../d3/d1f/classPipeCompilerInterface_1_1PipeCompilerInterface.html#afbeeac458c8cc4935f44a2037fed0828',1,'PipeCompilerInterface::PipeCompilerInterface']]],
+  ['tc_5fbuffer_9',['tc_buffer',['../d3/d1f/classPipeCompilerInterface_1_1PipeCompilerInterface.html#a5eb4f4836b07f5b165735a8bbb14c640',1,'PipeCompilerInterface::PipeCompilerInterface']]],
   ['temporary_5fstorage_5fclean_10',['TEMPORARY_STORAGE_CLEAN',['../d6/d32/bitstreamSerDes_8h.html#ad172d70da89db2f9a077ccc09d7462ed',1,'bitstreamSerDes.h']]],
   ['temporary_5fstorage_5fdef_11',['TEMPORARY_STORAGE_DEF',['../d6/d32/bitstreamSerDes_8h.html#adae3c283d1345abd3727eda963d95df9',1,'bitstreamSerDes.h']]],
   ['temporary_5fstorage_5finit_12',['TEMPORARY_STORAGE_INIT',['../d6/d32/bitstreamSerDes_8h.html#a23b64cf25224cf9783ae09f604e5e7bd',1,'bitstreamSerDes.h']]],

@@ -28,7 +28,7 @@ var searchData=
   ['evaluateuntyped_25',['evaluateUntyped',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#ad5f2a75192a4e552677c4df4fff08049',1,'MLBridge::gRPCModelRunner::evaluateUntyped()'],['../dc/d4e/classMLBridge_1_1MLModelRunner.html#adeac6eb6a4826b4156e34802302556d3',1,'MLBridge::MLModelRunner::evaluateUntyped()'],['../d5/dd7/classMLBridge_1_1ONNXModelRunner.html#a21c4f40c6681b2ce3508975d16abd55c',1,'MLBridge::ONNXModelRunner::evaluateUntyped()'],['../d9/d4c/classMLBridge_1_1PipeModelRunner.html#aea57ef66f1cfb284865562da37d283e6',1,'MLBridge::PipeModelRunner::evaluateUntyped()'],['../da/dc0/classMLBridge_1_1TFModelRunner.html#a320573b7ec22529946af82f2636aa82a',1,'MLBridge::TFModelRunner::evaluateUntyped()']]],
   ['example_20usage_3a_26',['Example Usage:',['../de/d3b/md_MLModelRunner_2ONNXModelRunner_2README.html#autotoc_md10',1,'']]],
   ['examples_27',['Examples',['../index.html#autotoc_md19',1,'']]],
-  ['exit_5frequested_28',['exit_requested',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#ad001c42d341f664c0edd42610e04a5e5',1,'MLBridge::gRPCModelRunner::exit_requested'],['../dc/d4e/classMLBridge_1_1MLModelRunner.html#adb0b58c9b6c1c05ca2f56ee73b2e7a8e',1,'MLBridge::MLModelRunner::exit_requested']]],
+  ['exit_5frequested_28',['exit_requested',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#ad001c42d341f664c0edd42610e04a5e5',1,'MLBridge::gRPCModelRunner']]],
   ['expected_5fdata_29',['expected_data',['../d3/d31/namespacemlbridge-test.html#aa8fc54e703db379f60b04f06b489c88f',1,'mlbridge-test']]],
   ['expected_5ftype_30',['expected_type',['../d3/d31/namespacemlbridge-test.html#a5a16d87186f4dfb35a7b688822113798',1,'mlbridge-test']]]
 ];
