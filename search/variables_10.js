@@ -1,11 +1,20 @@
 var searchData=
 [
-  ['p_0',['P',['../d6/d6e/classllvm_1_1json_1_1ObjectMapper.html#ad3c0132ab472752af32d22d04fdd2cfe',1,'llvm::json::ObjectMapper::P'],['../dc/d1d/JSON_8cpp.html#a5248e89c4d3a2d6a97b906bc7fe2b884',1,'P:&#160;JSON.cpp']]],
-  ['parent_1',['Parent',['../d6/d2a/classllvm_1_1json_1_1Path.html#aaa96258b4c44db41ca129cd24e9ed754',1,'llvm::json::Path']]],
-  ['parser_2',['parser',['../d2/d3c/namespacehello-mlbridge.html#a0d68beb257884e1d150a0857e4eeb144',1,'hello-mlbridge.parser'],['../d3/d31/namespacemlbridge-test.html#a927eb5d2108268b31db7a42b405c19f8',1,'mlbridge-test.parser']]],
-  ['pendingcomment_3',['PendingComment',['../de/d03/classllvm_1_1json_1_1OStream.html#ad5b9e5ede5b59ce11a9e7fab5bec8cad',1,'llvm::json::OStream']]],
-  ['pipe_5fname_4',['pipe_name',['../d3/d1f/classPipeCompilerInterface_1_1PipeCompilerInterface.html#af5a7b26e997efa5a5444c3d54e58479d',1,'PipeCompilerInterface::PipeCompilerInterface']]],
-  ['pointer_5',['Pointer',['../da/de6/classllvm_1_1json_1_1Path_1_1Segment.html#a0e9e0ddf83a942db2ebe7a4722d2c7f9',1,'llvm::json::Path::Segment']]],
-  ['port_6',['port',['../d7/db4/classlog__reader_1_1TensorSpec.html#a9fafd7ef0120efd4032d6d2c37e22cb0',1,'log_reader::TensorSpec']]],
-  ['port_7',['Port',['../d2/d87/classMLBridge_1_1TensorSpec.html#afcbd46c52d4cce19a290d3023fd3c570',1,'MLBridge::TensorSpec']]]
+  ['serdes_0',['SerDes',['../dc/d4e/classMLBridge_1_1MLModelRunner.html#a0ff8892297e0caa1cb98652905270d4e',1,'MLBridge::MLModelRunner']]],
+  ['serdes_5fobj_1',['serdes_obj',['../de/d17/classBaseCompilerInterface_1_1BaseCompilerInterface.html#abe6b893beff97307c8441b2e1a93e589',1,'BaseCompilerInterface::BaseCompilerInterface']]],
+  ['serdestype_2',['SerDesType',['../dc/d4e/classMLBridge_1_1MLModelRunner.html#ad25fc32b02466205977ee6978b1923f5',1,'MLBridge::MLModelRunner']]],
+  ['serializebytes_3',['serializeBytes',['../d7/dab/classSerDes_1_1SerDes.html#ab7a64aae928916f493617550ef9c9133',1,'SerDes::SerDes']]],
+  ['serializejson_4',['serializeJson',['../d7/dab/classSerDes_1_1SerDes.html#a9defe1668f1e0d4e1f3b1346c36974da',1,'SerDes::SerDes']]],
+  ['serializeprotobuf_5',['serializeProtobuf',['../d7/dab/classSerDes_1_1SerDes.html#a8cb8c9a1d2f76c476e2be38bc8d1f48c',1,'SerDes::SerDes']]],
+  ['sermap_6',['serMap',['../d7/dab/classSerDes_1_1SerDes.html#ac1178a54fa264100aac4cdf9e5d3fdbb',1,'SerDes::SerDes']]],
+  ['server_5faddress_7',['server_address',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#a42a248795b8ebd06283a101818aa57d8',1,'MLBridge::gRPCModelRunner']]],
+  ['server_5fmode_8',['server_mode',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#ab68e6e879a9d4ba3ba830915d7b1d692',1,'MLBridge::gRPCModelRunner']]],
+  ['server_5fport_9',['server_port',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a66b3d7d4cf0b01e4659856d86d6c8449',1,'GrpcCompilerInterface::GrpcCompilerInterface']]],
+  ['session_10',['session',['../da/d65/classONNXModel.html#a12fed7dccfbf589448ce0e4f99fc356e',1,'ONNXModel']]],
+  ['shape_11',['shape',['../d7/db4/classlog__reader_1_1TensorSpec.html#ab5c9028029a0a7f87bdd1543d405421a',1,'log_reader::TensorSpec']]],
+  ['shape_12',['Shape',['../d2/d87/classMLBridge_1_1TensorSpec.html#af4cff0256bb5b46fc9336bbeee930b7b',1,'MLBridge::TensorSpec']]],
+  ['start_13',['Start',['../dc/d1d/JSON_8cpp.html#ad0cf5b3bbb583824ea13371671cb6904',1,'JSON.cpp']]],
+  ['stepfunc_14',['stepFunc',['../d0/d3c/structEnvironment.html#a2c9cc7b98a105c8a56cab019e74d8460',1,'Environment']]],
+  ['stub_15',['stub',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a3781b5631c0de3f25353dcece395d03b',1,'GrpcCompilerInterface::GrpcCompilerInterface']]],
+  ['stub_5f_16',['stub_',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#a663984873f6ad1986919337a4f0bcaab',1,'MLBridge::gRPCModelRunner']]]
 ];

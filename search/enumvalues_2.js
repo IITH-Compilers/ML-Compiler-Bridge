@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['bitstream_0',['Bitstream',['../df/d69/classMLBridge_1_1BaseSerDes.html#a03e4188fd2b99530aad3eb3d69130c50a0b79eab5aacf81d139c4eaec818a549a',1,'MLBridge::BaseSerDes']]],
-  ['boolean_1',['Boolean',['../d3/d47/classllvm_1_1json_1_1Value.html#ad10d8b22abefa6faed2bdc37463da8b5a0185c7ad51f75621f32a6ed346d4a56a',1,'llvm::json::Value']]]
+  ['grpc_0',['gRPC',['../dc/d4e/classMLBridge_1_1MLModelRunner.html#a402dc0e61f621293a0cad7a2f52f04c5a12acd14e73603d7c8860624f02021b15',1,'MLBridge::MLModelRunner']]]
 ];

@@ -82,6 +82,9 @@ $(function() {
   <div class="headertitle"><div class="title">agent.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Agent class to support ML/RL model inference via ONNX.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d4/d5d/onnx_8h_source.html">MLModelRunner/ONNXModelRunner/onnx.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d5/d60/utils_8h_source.html">MLModelRunner/ONNXModelRunner/utils.h</a>&quot;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
@@ -91,8 +94,8 @@ Include dependency graph for agent.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d23/agent_8h__incl.png" border="0" usemap="#ainclude_2MLModelRunner_2ONNXModelRunner_2agent_8h" alt=""/></div>
 <map name="ainclude_2MLModelRunner_2ONNXModelRunner_2agent_8h" id="ainclude_2MLModelRunner_2ONNXModelRunner_2agent_8h">
-<area shape="rect" title=" " alt="" coords="375,5,562,46"/>
-<area shape="rect" href="../../d4/d5d/onnx_8h.html" title=" " alt="" coords="265,94,501,135"/>
+<area shape="rect" title="Agent class to support ML/RL model inference via ONNX." alt="" coords="375,5,562,46"/>
+<area shape="rect" href="../../d4/d5d/onnx_8h.html" title="This file defines the ONNXModel class, which is a wrapper around the ONNX C++ interface." alt="" coords="265,94,501,135"/>
 <area shape="poly" title=" " alt="" coords="451,48,415,85,411,81,447,45"/>
 <area shape="rect" href="../../d5/d60/utils_8h.html" title=" " alt="" coords="5,94,241,135"/>
 <area shape="poly" title=" " alt="" coords="390,49,217,92,215,87,389,44"/>
@@ -114,23 +117,18 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../da/dfd/agent_8h__dep__incl.png" border="0" usemap="#ainclude_2MLModelRunner_2ONNXModelRunner_2agent_8hdep" alt=""/></div>
 <map name="ainclude_2MLModelRunner_2ONNXModelRunner_2agent_8hdep" id="ainclude_2MLModelRunner_2ONNXModelRunner_2agent_8hdep">
-<area shape="rect" title=" " alt="" coords="339,5,525,46"/>
-<area shape="rect" href="../../dd/dbf/ONNXModelRunnerCWrapper_8cpp.html" title=" " alt="" coords="5,94,213,135"/>
+<area shape="rect" title="Agent class to support ML/RL model inference via ONNX." alt="" coords="339,5,525,46"/>
+<area shape="rect" href="../../dd/dbf/ONNXModelRunnerCWrapper_8cpp.html" title="This file defines the C APIs for ONNXModelRunner." alt="" coords="5,94,213,135"/>
 <area shape="poly" title=" " alt="" coords="344,53,183,96,182,91,343,48"/>
-<area shape="rect" href="../../dd/d3d/agent_8cpp.html" title=" " alt="" coords="237,94,472,135"/>
+<area shape="rect" href="../../dd/d3d/agent_8cpp.html" title="This file defines the Agent class, which is a wrapper around the ONNXModel class." alt="" coords="237,94,472,135"/>
 <area shape="poly" title=" " alt="" coords="406,60,374,95,370,92,402,56"/>
-<area shape="rect" href="../../d7/d34/ONNXModelRunner_2ONNXModelRunner_8h.html" title=" " alt="" coords="374,183,644,223"/>
-<area shape="poly" title=" " alt="" coords="463,57,486,93,502,140,510,182,504,183,497,141,481,95,458,60"/>
-<area shape="rect" href="../../de/d26/environment_8h.html" title=" " alt="" coords="547,94,772,135"/>
+<area shape="rect" href="../../d7/d34/ONNXModelRunner_2ONNXModelRunner_8h.html" title="ONNXModelRunner class supporting communication via ONNX C++ Runtime." alt="" coords="449,183,718,223"/>
+<area shape="poly" title=" " alt="" coords="460,56,569,180,565,184,456,59"/>
+<area shape="rect" href="../../de/d26/environment_8h.html" title="Base Environment class to support ONNX based inference of RL models." alt="" coords="547,94,772,135"/>
 <area shape="poly" title=" " alt="" coords="498,49,609,91,607,96,496,54"/>
-<area shape="rect" href="../../d4/d63/ONNXModelRunner_8cpp.html" title=" " alt="" coords="391,271,627,312"/>
-<area shape="poly" title=" " alt="" coords="512,239,512,271,506,271,506,239"/>
-<area shape="rect" href="../../db/d4f/MLBridgeTest_8cpp.html" title=" " alt="" coords="668,279,822,305"/>
-<area shape="poly" title=" " alt="" coords="577,226,713,276,711,281,576,231"/>
-<area shape="poly" title=" " alt="" coords="614,145,544,185,542,180,611,140"/>
-<area shape="rect" href="../../d3/d89/HelloMLBridge__Env_8h.html" title=" " alt="" coords="667,183,858,223"/>
-<area shape="poly" title=" " alt="" coords="696,143,741,180,737,184,693,147"/>
-<area shape="poly" title=" " alt="" coords="758,239,750,279,745,278,753,238"/>
+<area shape="rect" href="../../d4/d63/ONNXModelRunner_8cpp.html" title="This file defines the ONNXModelRunner class to support ML model inference via ONNX." alt="" coords="466,271,701,312"/>
+<area shape="poly" title=" " alt="" coords="586,239,586,271,581,271,581,239"/>
+<area shape="poly" title=" " alt="" coords="634,148,603,184,599,180,630,145"/>
 </map>
 </div>
 </div>
@@ -139,6 +137,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d06/classMLBridge_1_1Agent.html">MLBridge::Agent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d06/classMLBridge_1_1Agent.html" title="Agent is a wrapper around the ONNXModel class, interfaces with the Environment class to support ML/RL...">Agent</a> is a wrapper around the <a class="el" href="../../da/d65/classONNXModel.html">ONNXModel</a> class, interfaces with the <a class="el" href="../../d7/d68/classMLBridge_1_1Environment.html">Environment</a> class to support ML/RL model inference via <a class="el" href="../../da/d65/classONNXModel.html">ONNXModel</a>.  <a href="../../db/d06/classMLBridge_1_1Agent.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -147,7 +146,7 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Agent class to support ML/RL model inference via ONNX</p>
+<div class="textblock"><p>Agent class to support ML/RL model inference via ONNX. </p>
 <p>Usage:</p><ol type="1">
 <li>Construct an agent object with the path to the ONNX model</li>
 <li>Call computeAction() to get the action from the model </li>

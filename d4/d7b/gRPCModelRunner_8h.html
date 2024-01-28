@@ -82,6 +82,9 @@ $(function() {
   <div class="headertitle"><div class="title">gRPCModelRunner.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>gRPCModelRunner class supporting communication via gRPC.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../df/d23/MLModelRunner_8h_source.html">MLModelRunner/MLModelRunner.h</a>&quot;</code><br />
 <code>#include &lt;future&gt;</code><br />
 <code>#include &lt;google/protobuf/text_format.h&gt;</code><br />
@@ -93,107 +96,45 @@ Include dependency graph for gRPCModelRunner.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d5/d26/gRPCModelRunner_8h__incl.png" border="0" usemap="#ainclude_2MLModelRunner_2gRPCModelRunner_8h" alt=""/></div>
 <map name="ainclude_2MLModelRunner_2gRPCModelRunner_8h" id="ainclude_2MLModelRunner_2gRPCModelRunner_8h">
-<area shape="rect" title=" " alt="" coords="1409,5,1571,46"/>
-<area shape="rect" href="../../df/d23/MLModelRunner_8h.html" title=" " alt="" coords="699,102,924,127"/>
-<area shape="poly" title=" " alt="" coords="1409,40,922,102,921,96,1408,35"/>
-<area shape="rect" title=" " alt="" coords="1404,368,1472,393"/>
-<area shape="poly" title=" " alt="" coords="1483,47,1466,95,1453,167,1445,239,1440,352,1435,352,1440,238,1447,166,1461,93,1478,46"/>
-<area shape="rect" title=" " alt="" coords="1347,183,1401,208"/>
-<area shape="poly" title=" " alt="" coords="1467,48,1443,70,1422,96,1400,133,1385,169,1380,167,1395,131,1417,92,1440,66,1463,44"/>
-<area shape="rect" title=" " alt="" coords="1476,94,1611,135"/>
-<area shape="poly" title=" " alt="" coords="1504,45,1526,79,1521,82,1500,48"/>
-<area shape="rect" title=" " alt="" coords="1635,102,1748,127"/>
-<area shape="poly" title=" " alt="" coords="1537,44,1650,93,1648,98,1535,49"/>
-<area shape="rect" title=" " alt="" coords="1773,94,1914,135"/>
-<area shape="poly" title=" " alt="" coords="1571,44,1758,89,1757,95,1570,49"/>
-<area shape="rect" href="../../d2/d15/baseSerDes_8h.html" title=" " alt="" coords="514,271,663,297"/>
-<area shape="poly" title=" " alt="" coords="783,130,734,153,684,185,642,223,609,261,605,257,638,219,680,181,732,148,780,125"/>
-<area shape="rect" title=" " alt="" coords="710,368,763,393"/>
-<area shape="poly" title=" " alt="" coords="787,130,754,152,740,167,728,184,716,228,715,274,721,317,730,352,725,353,716,318,709,274,711,227,724,182,736,163,751,148,784,126"/>
-<area shape="rect" href="../../d6/d32/bitstreamSerDes_8h.html" title=" " alt="" coords="908,183,1083,208"/>
-<area shape="poly" title=" " alt="" coords="841,125,954,174,952,179,839,130"/>
-<area shape="poly" title=" " alt="" coords="894,125,979,142,1081,168,1187,205,1239,228,1289,254,1361,305,1417,354,1413,358,1358,309,1286,259,1237,233,1185,210,1079,174,978,147,893,130"/>
-<area shape="rect" href="../../d2/dd2/jsonSerDes_8h.html" title=" " alt="" coords="739,183,884,208"/>
-<area shape="poly" title=" " alt="" coords="814,128,814,167,809,167,809,128"/>
-<area shape="rect" title=" " alt="" coords="1263,183,1322,208"/>
-<area shape="poly" title=" " alt="" coords="905,125,1064,148,1245,180,1249,181,1247,186,1244,185,1063,154,904,130"/>
-<area shape="poly" title=" " alt="" coords="925,122,1112,144,1221,160,1332,180,1331,185,1220,165,1111,149,924,128"/>
-<area shape="rect" title=" " alt="" coords="133,183,215,208"/>
-<area shape="poly" title=" " alt="" coords="699,128,486,150,231,185,230,180,485,145,698,123"/>
-<area shape="rect" href="../../d1/de8/protobufSerDes_8h.html" title=" " alt="" coords="239,183,408,208"/>
-<area shape="poly" title=" " alt="" coords="737,130,414,182,413,177,736,125"/>
-<area shape="rect" href="../../dd/d3f/tensorflowSerDes_8h.html" title=" " alt="" coords="432,183,612,208"/>
-<area shape="poly" title=" " alt="" coords="767,130,582,181,581,175,766,125"/>
-<area shape="rect" href="../../d4/deb/Debug_8h.html" title=" " alt="" coords="400,360,548,401"/>
-<area shape="poly" title=" " alt="" coords="576,299,511,352,508,348,572,295"/>
-<area shape="rect" title=" " alt="" coords="207,360,376,401"/>
-<area shape="poly" title=" " alt="" coords="551,300,369,357,367,352,550,295"/>
-<area shape="rect" title=" " alt="" coords="5,368,183,393"/>
-<area shape="poly" title=" " alt="" coords="554,300,503,315,417,332,349,341,194,363,171,367,170,362,194,357,348,336,416,327,501,309,552,295"/>
-<area shape="rect" title=" " alt="" coords="571,368,636,393"/>
-<area shape="poly" title=" " alt="" coords="593,297,602,352,596,353,588,298"/>
-<area shape="rect" title=" " alt="" coords="358,449,404,474"/>
-<area shape="poly" title=" " alt="" coords="605,296,627,317,647,344,658,373,657,388,649,402,625,426,601,440,575,447,549,448,490,446,456,446,419,451,418,446,456,441,490,440,549,443,574,442,599,435,622,422,645,399,652,387,653,374,643,346,623,320,601,299"/>
-<area shape="poly" title=" " alt="" coords="609,295,706,357,703,361,606,300"/>
-<area shape="rect" title=" " alt="" coords="788,368,845,393"/>
-<area shape="poly" title=" " alt="" coords="622,295,776,358,778,358,776,363,774,362,620,300"/>
-<area shape="poly" title=" " alt="" coords="938,212,661,270,660,265,937,206"/>
-<area shape="poly" title=" " alt="" coords="987,210,948,258,928,288,919,301,904,314,871,334,842,343,812,350,776,362,775,363,773,358,774,358,811,345,840,338,868,329,900,310,915,297,924,285,944,255,983,207"/>
-<area shape="poly" title=" " alt="" coords="996,210,981,258,967,287,948,314,913,335,857,363,854,358,910,330,944,310,962,285,976,256,990,208"/>
-<area shape="rect" href="../../dd/d23/TensorSpec_8h.html" title=" " alt="" coords="1016,271,1164,297"/>
-<area shape="poly" title=" " alt="" coords="1010,207,1068,259,1064,263,1007,211"/>
-<area shape="poly" title=" " alt="" coords="1084,204,1162,222,1203,236,1241,254,1259,267,1271,281,1282,295,1298,310,1341,333,1397,358,1395,363,1338,337,1295,314,1278,299,1267,285,1255,271,1238,259,1201,241,1161,227,1083,209"/>
-<area shape="rect" title=" " alt="" coords="1188,271,1227,297"/>
-<area shape="poly" title=" " alt="" coords="1052,206,1114,225,1178,254,1186,259,1183,264,1175,259,1112,230,1050,212"/>
-<area shape="rect" title=" " alt="" coords="839,271,890,297"/>
-<area shape="poly" title=" " alt="" coords="979,211,897,265,894,260,976,207"/>
-<area shape="poly" title=" " alt="" coords="1048,300,960,327,859,362,856,363,855,359,857,358,958,322,1046,295"/>
-<area shape="rect" href="../../d2/d43/JSON_8h.html" title=" " alt="" coords="870,360,1017,401"/>
-<area shape="poly" title=" " alt="" coords="1073,300,988,354,985,349,1070,295"/>
-<area shape="rect" title=" " alt="" coords="1224,368,1380,393"/>
-<area shape="poly" title=" " alt="" coords="1118,295,1262,358,1259,363,1116,300"/>
-<area shape="poly" title=" " alt="" coords="1128,295,1176,309,1237,323,1285,332,1333,341,1393,357,1398,359,1397,364,1392,363,1332,346,1284,337,1236,329,1175,315,1126,300"/>
-<area shape="rect" title=" " alt="" coords="1042,368,1109,393"/>
-<area shape="poly" title=" " alt="" coords="1091,298,1082,353,1077,352,1086,297"/>
-<area shape="rect" title=" " alt="" coords="1133,368,1199,393"/>
-<area shape="poly" title=" " alt="" coords="1102,296,1149,354,1145,357,1098,299"/>
-<area shape="poly" title=" " alt="" coords="870,401,857,403,736,418,639,424,542,431,420,451,419,446,542,426,639,419,735,413,856,398,869,396"/>
-<area shape="rect" title=" " alt="" coords="1448,449,1599,474"/>
-<area shape="poly" title=" " alt="" coords="1018,396,1030,398,1141,415,1229,425,1432,446,1432,451,1229,430,1141,420,1030,403,1017,401"/>
-<area shape="rect" title=" " alt="" coords="1623,449,1773,474"/>
-<area shape="poly" title=" " alt="" coords="1018,396,1030,398,1191,418,1317,426,1444,432,1607,446,1607,451,1444,438,1317,431,1190,423,1030,403,1017,401"/>
-<area shape="rect" title=" " alt="" coords="429,449,589,474"/>
-<area shape="poly" title=" " alt="" coords="870,401,857,403,601,448,600,443,856,398,869,396"/>
-<area shape="rect" title=" " alt="" coords="613,449,756,474"/>
-<area shape="poly" title=" " alt="" coords="880,404,740,446,738,441,878,399"/>
-<area shape="rect" title=" " alt="" coords="781,449,916,474"/>
-<area shape="poly" title=" " alt="" coords="922,403,876,441,873,437,918,399"/>
-<area shape="rect" title=" " alt="" coords="940,449,1136,474"/>
-<area shape="poly" title=" " alt="" coords="968,399,1014,437,1010,441,965,403"/>
-<area shape="rect" title=" " alt="" coords="1160,449,1343,474"/>
-<area shape="poly" title=" " alt="" coords="1018,398,1190,442,1188,447,1017,403"/>
-<area shape="rect" title=" " alt="" coords="1367,449,1424,474"/>
-<area shape="poly" title=" " alt="" coords="1018,396,1030,398,1119,412,1190,420,1261,429,1352,445,1351,451,1261,434,1189,425,1119,417,1030,403,1017,401"/>
-<area shape="poly" title=" " alt="" coords="781,211,635,268,633,263,779,206"/>
-<area shape="poly" title=" " alt="" coords="808,210,786,257,748,354,743,352,781,255,803,207"/>
-<area shape="poly" title=" " alt="" coords="812,209,812,256,818,285,830,311,850,333,876,350,873,355,847,337,825,313,813,286,807,257,807,209"/>
-<area shape="poly" title=" " alt="" coords="821,207,852,257,847,260,816,210"/>
-<area shape="poly" title=" " alt="" coords="362,206,538,264,536,269,360,212"/>
-<area shape="poly" title=" " alt="" coords="324,209,300,345,295,344,319,208"/>
-<area shape="poly" title=" " alt="" coords="310,211,122,360,119,356,307,207"/>
-<area shape="poly" title=" " alt="" coords="533,207,572,257,568,261,529,210"/>
-<area shape="rect" title=" " alt="" coords="354,256,490,312"/>
-<area shape="poly" title=" " alt="" coords="510,211,467,248,463,244,506,207"/>
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../df/d05/gRPCModelRunner_8h__dep__incl.png" border="0" usemap="#ainclude_2MLModelRunner_2gRPCModelRunner_8hdep" alt=""/></div>
-<map name="ainclude_2MLModelRunner_2gRPCModelRunner_8hdep" id="ainclude_2MLModelRunner_2gRPCModelRunner_8hdep">
-<area shape="rect" title=" " alt="" coords="5,5,167,46"/>
-<area shape="rect" href="../../db/d4f/MLBridgeTest_8cpp.html" title=" " alt="" coords="9,94,163,120"/>
-<area shape="poly" title=" " alt="" coords="89,62,89,93,83,93,83,62"/>
+<area shape="rect" title="gRPCModelRunner class supporting communication via gRPC." alt="" coords="769,5,930,46"/>
+<area shape="rect" href="../../df/d23/MLModelRunner_8h.html" title="The MLModelRunner class is the main interface for interacting with the ML models." alt="" coords="534,102,760,127"/>
+<area shape="poly" title=" " alt="" coords="805,49,690,98,688,93,803,44"/>
+<area shape="rect" title=" " alt="" coords="5,256,73,282"/>
+<area shape="poly" title=" " alt="" coords="769,33,590,46,482,57,372,72,266,92,171,117,95,148,66,165,45,184,38,197,34,211,35,241,30,241,29,211,33,195,41,181,63,161,92,143,169,112,264,87,371,67,482,51,590,40,768,28"/>
+<area shape="rect" title=" " alt="" coords="1133,183,1188,208"/>
+<area shape="poly" title=" " alt="" coords="838,48,827,68,818,91,817,113,825,133,846,148,878,159,961,170,1048,174,1115,180,1118,181,1117,186,1115,185,1048,179,961,175,877,164,844,153,821,136,811,114,813,89,822,65,833,45"/>
+<area shape="rect" title=" " alt="" coords="835,94,971,135"/>
+<area shape="poly" title=" " alt="" coords="864,45,885,79,881,82,860,48"/>
+<area shape="rect" title=" " alt="" coords="994,102,1108,127"/>
+<area shape="poly" title=" " alt="" coords="896,44,1010,93,1008,98,894,49"/>
+<area shape="rect" title=" " alt="" coords="1132,94,1274,135"/>
+<area shape="poly" title=" " alt="" coords="931,44,1118,89,1116,95,930,49"/>
+<area shape="rect" href="../../d2/d15/baseSerDes_8h.html" title="Supporting new SerDes:" alt="" coords="702,256,851,282"/>
+<area shape="poly" title=" " alt="" coords="709,125,794,148,829,164,852,181,857,201,850,219,834,236,815,250,811,246,830,232,845,216,852,200,847,184,827,168,792,153,708,130"/>
+<area shape="rect" title=" " alt="" coords="868,330,922,356"/>
+<area shape="poly" title=" " alt="" coords="745,125,950,154,1033,168,1073,181,1085,204,1083,227,1070,249,1049,269,993,303,937,329,935,324,991,299,1046,265,1066,245,1078,225,1080,205,1069,185,1032,174,949,159,744,130"/>
+<area shape="rect" href="../../d6/d32/bitstreamSerDes_8h.html" title="Bitstream Serialization/Deserialization which sends header information followed by the raw data." alt="" coords="265,183,440,208"/>
+<area shape="poly" title=" " alt="" coords="602,130,413,181,412,176,601,125"/>
+<area shape="poly" title=" " alt="" coords="534,125,253,148,131,165,89,175,66,185,56,196,49,211,42,241,37,240,44,209,51,194,63,181,87,169,130,160,252,142,534,119"/>
+<area shape="rect" href="../../d2/dd2/jsonSerDes_8h.html" title="Json Serialization/Deserialization using LLVM&#39;s json library." alt="" coords="913,183,1058,208"/>
+<area shape="poly" title=" " alt="" coords="700,125,919,176,918,181,699,130"/>
+<area shape="rect" title=" " alt="" coords="76,183,135,208"/>
+<area shape="poly" title=" " alt="" coords="534,129,358,150,151,185,150,180,357,145,534,124"/>
+<area shape="poly" title=" " alt="" coords="732,125,779,132,948,153,1021,163,1116,180,1118,181,1117,186,1114,185,1021,168,947,158,779,137,731,130"/>
+<area shape="rect" title=" " alt="" coords="160,183,241,208"/>
+<area shape="poly" title=" " alt="" coords="569,130,256,185,256,179,568,125"/>
+<area shape="rect" href="../../d1/de8/protobufSerDes_8h.html" title="Protobuf Serialization/Deserialization to support gRPC communication." alt="" coords="464,183,633,208"/>
+<area shape="poly" title=" " alt="" coords="634,130,577,175,573,171,630,126"/>
+<area shape="rect" href="../../dd/d3f/tensorflowSerDes_8h.html" title="Serialization/Deserialization to support TF AOT models." alt="" coords="657,183,837,208"/>
+<area shape="poly" title=" " alt="" coords="664,125,722,171,718,175,661,130"/>
+<area shape="poly" title=" " alt="" coords="798,280,863,319,861,324,795,285"/>
+<area shape="poly" title=" " alt="" coords="425,206,689,251,688,256,424,212"/>
+<area shape="poly" title=" " alt="" coords="398,206,854,328,853,333,397,211"/>
+<area shape="poly" title=" " alt="" coords="299,212,88,259,87,254,298,206"/>
+<area shape="poly" title=" " alt="" coords="951,211,827,253,826,248,949,206"/>
+<area shape="poly" title=" " alt="" coords="981,210,913,318,908,315,976,207"/>
+<area shape="poly" title=" " alt="" coords="588,206,724,249,722,254,586,211"/>
+<area shape="poly" title=" " alt="" coords="754,208,768,241,763,243,749,210"/>
 </map>
 </div>
 </div>
@@ -202,6 +143,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d4a/classMLBridge_1_1gRPCModelRunner.html">MLBridge::gRPCModelRunner&lt; Client, Stub, Request, Response &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is used to create the grpc model runner object.  <a href="../../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -210,7 +152,8 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>gRPCModelRunner class supporting communication via gRPC. This class is used to communicate with the gRPC server and send/receive data to/from the model. Supports interleaved communication with the model.</p>
+<div class="textblock"><p>gRPCModelRunner class supporting communication via gRPC. </p>
+<p>This class is used to communicate with the gRPC server and send/receive data to/from the model. Supports interleaved communication with the model.</p>
 <p>There are two ways to use this class:</p><ol type="1">
 <li>Training mode - gRPC Server: In this mode, the gRPCModelRunner object is created with the server address and the service object. The service object is used to create the server and the server waits for the client to connect. Once the client connects, the server waits for the client to send the request and then responds with the result. In Training mode, <a class="el" href="../../d8/d4a/namespaceGrpcCompilerInterface.html">GrpcCompilerInterface</a> class from <a class="el" href="../../d1/d5a/GrpcCompilerInterface_8py.html" title="Compiler interface for gRPC.">GrpcCompilerInterface.py</a> acts as the client and sends the request to the server.</li>
 <li>Inference mode - gRPC Client: In this mode, the gRPCModelRunner object is created with the server address, request and response objects. The request object is used to send the features to the model and the response object is used to receive the result from the model.</li>

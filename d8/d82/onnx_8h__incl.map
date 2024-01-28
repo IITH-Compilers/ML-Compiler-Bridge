@@ -1,5 +1,5 @@
 <map id="include/MLModelRunner/ONNXModelRunner/onnx.h" name="include/MLModelRunner/ONNXModelRunner/onnx.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="130,5,311,46"/>
+<area shape="rect" id="Node000001" title="This file defines the ONNXModel class, which is a wrapper around the ONNX C++ interface." alt="" coords="130,5,311,46"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,94,166,120"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,49,121,88,118,83,185,44"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="190,94,250,120"/>

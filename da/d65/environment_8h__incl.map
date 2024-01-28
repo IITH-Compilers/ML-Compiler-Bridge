@@ -1,10 +1,10 @@
 <map id="include/MLModelRunner/ONNXModelRunner/environment.h" name="include/MLModelRunner/ONNXModelRunner/environment.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="438,5,664,46"/>
-<area shape="rect" id="Node000002" href="$de/d9e/agent_8h.html" title=" " alt="" coords="351,94,586,135"/>
+<area shape="rect" id="Node000001" title="Base Environment class to support ONNX based inference of RL models." alt="" coords="438,5,664,46"/>
+<area shape="rect" id="Node000002" href="$de/d9e/agent_8h.html" title="Agent class to support ML/RL model inference via ONNX." alt="" coords="351,94,586,135"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="534,48,499,84,496,81,530,45"/>
 <area shape="rect" id="Node000010" title=" " alt="" coords="611,102,657,127"/>
 <area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="572,45,614,89,610,92,568,48"/>
-<area shape="rect" id="Node000003" href="$d4/d5d/onnx_8h.html" title=" " alt="" coords="265,183,501,223"/>
+<area shape="rect" id="Node000003" href="$d4/d5d/onnx_8h.html" title="This file defines the ONNXModel class, which is a wrapper around the ONNX C++ interface." alt="" coords="265,183,501,223"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="451,137,415,174,411,170,447,133"/>
 <area shape="rect" id="Node000007" href="$d5/d60/utils_8h.html" title=" " alt="" coords="5,183,241,223"/>
 <area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="390,138,217,181,215,176,389,133"/>

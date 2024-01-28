@@ -86,13 +86,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A <a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner - The main interface for interacting with the ML models.">MLModelRunner</a> that asks for advice from an external agent, or host.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d9/d82/PipeModelRunner_8h_source.html">PipeModelRunner.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MLBridge::PipeModelRunner:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../df/da0/classMLBridge_1_1PipeModelRunner__inherit__graph.png" border="0" usemap="#aMLBridge_1_1PipeModelRunner_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMLBridge_1_1PipeModelRunner_inherit__map" id="aMLBridge_1_1PipeModelRunner_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,79,191,105"/>
+<area shape="rect" title="A MLModelRunner that asks for advice from an external agent, or host." alt="" coords="5,79,191,105"/>
 <area shape="rect" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner &#45; The main interface for interacting with the ML models." alt="" coords="9,5,187,31"/>
 <area shape="poly" title=" " alt="" coords="101,46,101,79,95,79,95,46"/>
 </map>
@@ -102,7 +105,7 @@ Collaboration diagram for MLBridge::PipeModelRunner:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/d5b/classMLBridge_1_1PipeModelRunner__coll__graph.png" border="0" usemap="#aMLBridge_1_1PipeModelRunner_coll__map" alt="Collaboration graph"/></div>
 <map name="aMLBridge_1_1PipeModelRunner_coll__map" id="aMLBridge_1_1PipeModelRunner_coll__map">
-<area shape="rect" title=" " alt="" coords="5,79,191,105"/>
+<area shape="rect" title="A MLModelRunner that asks for advice from an external agent, or host." alt="" coords="5,79,191,105"/>
 <area shape="rect" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner &#45; The main interface for interacting with the ML models." alt="" coords="9,5,187,31"/>
 <area shape="poly" title=" " alt="" coords="101,46,101,79,95,79,95,46"/>
 </map>
@@ -137,12 +140,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a38143cb70acd823b4a1fb6d00888e762 inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a266ad8ce7b39fbd62b1c2f89c45b6aa8 inherit pub_methods_classMLBridge_1_1MLModelRunner" id="r_a266ad8ce7b39fbd62b1c2f89c45b6aa8"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Types&gt; </td></tr>
 <tr class="memitem:a266ad8ce7b39fbd62b1c2f89c45b6aa8 inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html#a266ad8ce7b39fbd62b1c2f89c45b6aa8">populateFeatures</a> (std::pair&lt; std::string, T &gt; &amp;var1, std::pair&lt; std::string, Types &gt; &amp;...var2)</td></tr>
+<tr class="memdesc:a266ad8ce7b39fbd62b1c2f89c45b6aa8 inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="mdescLeft">&#160;</td><td class="mdescRight">User-facing interface for setting the features to be sent to the model.  <br /></td></tr>
 <tr class="separator:a266ad8ce7b39fbd62b1c2f89c45b6aa8 inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a210e7c8a065a16bece991fb98273f0ae inherit pub_methods_classMLBridge_1_1MLModelRunner" id="r_a210e7c8a065a16bece991fb98273f0ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html#a210e7c8a065a16bece991fb98273f0ae">populateFeatures</a> ()</td></tr>
 <tr class="separator:a210e7c8a065a16bece991fb98273f0ae inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46952733473143c3e0e3b8281db75e0b inherit pub_methods_classMLBridge_1_1MLModelRunner" id="r_a46952733473143c3e0e3b8281db75e0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html#a46952733473143c3e0e3b8281db75e0b">setRequest</a> (void *request)</td></tr>
+<tr class="memdesc:a46952733473143c3e0e3b8281db75e0b inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mainly used in the case of gRPC where the request object is not known explicitly.  <br /></td></tr>
 <tr class="separator:a46952733473143c3e0e3b8281db75e0b inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6d116dce0246b53231e94b486e73c44 inherit pub_methods_classMLBridge_1_1MLModelRunner" id="r_af6d116dce0246b53231e94b486e73c44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html#af6d116dce0246b53231e94b486e73c44">setResponse</a> (void *response)</td></tr>
+<tr class="memdesc:af6d116dce0246b53231e94b486e73c44 inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mainly used in the case of gRPC where the response object is not known explicitly.  <br /></td></tr>
 <tr class="separator:af6d116dce0246b53231e94b486e73c44 inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -157,6 +163,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a0d97a1e21107c4587d0831c315acbf72" id="r_a0d97a1e21107c4587d0831c315acbf72"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d97a1e21107c4587d0831c315acbf72">receive</a> ()</td></tr>
 <tr class="separator:a0d97a1e21107c4587d0831c315acbf72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea57ef66f1cfb284865562da37d283e6" id="r_aea57ef66f1cfb284865562da37d283e6"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea57ef66f1cfb284865562da37d283e6">evaluateUntyped</a> () override</td></tr>
+<tr class="memdesc:aea57ef66f1cfb284865562da37d283e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Should be implemented by the derived class to call the model and get the result.  <br /></td></tr>
 <tr class="separator:aea57ef66f1cfb284865562da37d283e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6856ae065150016b52c4170b0be5fe20" id="r_a6856ae065150016b52c4170b0be5fe20"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6856ae065150016b52c4170b0be5fe20">readNBytes</a> (size_t N)</td></tr>
 <tr class="separator:a6856ae065150016b52c4170b0be5fe20"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,7 +211,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a0ff8892297e0caa1cb98652905270d4e inherit pro_attribs_classMLBridge_1_1MLModelRunner"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A <a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner - The main interface for interacting with the ML models.">MLModelRunner</a> that asks for advice from an external agent, or host. It uses 2 files - ideally named pipes - one to send data to that agent, and one to receive advice. The compiler will send observations; the host is expected to reply with a tensor value after each observation as a binary buffer that's conforming to the shape of the advice. Interleaved, the data closely resembles the training log for a log where we don't capture the reward signal.</p>
+<div class="textblock"><p>A <a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner - The main interface for interacting with the ML models.">MLModelRunner</a> that asks for advice from an external agent, or host. </p>
+<p>It uses 2 files - ideally named pipes - one to send data to that agent, and one to receive advice. The compiler will send observations; the host is expected to reply with a tensor value after each observation as a binary buffer that's conforming to the shape of the advice. Interleaved, the data closely resembles the training log for a log where we don't capture the reward signal.</p>
 <p>Note that the correctness of the received data is the responsibility of the host. In particular, if insufficient data were sent, the compiler will block when waiting for an advice.</p>
 <p>Note that the host can either open the pipes RW, or open first the pipe to the compiler - i.e. the "Inbound" - and then the "Outbound", to avoid deadlock. This is because the compiler first tries to open the inbound (which will hang until there's a writer on the other end). </p>
 
@@ -320,6 +328,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Should be implemented by the derived class to call the model and get the result. </p>
 
 <p>Implements <a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html#adeac6eb6a4826b4156e34802302556d3">MLBridge::MLModelRunner</a>.</p>

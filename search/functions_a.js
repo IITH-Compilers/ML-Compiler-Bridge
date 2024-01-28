@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['jsonserdes_0',['JsonSerDes',['../df/db6/classMLBridge_1_1JsonSerDes.html#af2b465c5c9635c14086f833414b208dd',1,'MLBridge::JsonSerDes']]]
+  ['lookupargindex_0',['LookupArgIndex',['../da/db0/classMLBridge_1_1NoopSavedModelImpl.html#a374078d7a0267a955211d0f27767d5d9',1,'MLBridge::NoopSavedModelImpl']]],
+  ['lookupresultindex_1',['LookupResultIndex',['../da/db0/classMLBridge_1_1NoopSavedModelImpl.html#a2b7e652dbac5bdbb9e4c0457f0321284',1,'MLBridge::NoopSavedModelImpl']]]
 ];

@@ -97,13 +97,13 @@ Inheritance diagram for MLBridge::MLModelRunner:</div>
 <div class="center"><img src="../../dd/d9c/classMLBridge_1_1MLModelRunner__inherit__graph.png" border="0" usemap="#aMLBridge_1_1MLModelRunner_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMLBridge_1_1MLModelRunner_inherit__map" id="aMLBridge_1_1MLModelRunner_inherit__map">
 <area shape="rect" title="MLModelRunner &#45; The main interface for interacting with the ML models." alt="" coords="5,84,184,110"/>
-<area shape="rect" href="../../d5/dd7/classMLBridge_1_1ONNXModelRunner.html" title=" " alt="" coords="232,5,430,31"/>
+<area shape="rect" href="../../d5/dd7/classMLBridge_1_1ONNXModelRunner.html" title="ONNXModelRunner is the main user facing class that interfaces with the Environment and Agent classes ..." alt="" coords="232,5,430,31"/>
 <area shape="poly" title=" " alt="" coords="138,75,231,40,268,29,270,34,233,45,140,80"/>
-<area shape="rect" href="../../d9/d4c/classMLBridge_1_1PipeModelRunner.html" title=" " alt="" coords="238,55,424,80"/>
+<area shape="rect" href="../../d9/d4c/classMLBridge_1_1PipeModelRunner.html" title="A MLModelRunner that asks for advice from an external agent, or host." alt="" coords="238,55,424,80"/>
 <area shape="poly" title=" " alt="" coords="199,81,237,76,238,82,199,87"/>
-<area shape="rect" href="../../da/dc0/classMLBridge_1_1TFModelRunner.html" title=" " alt="" coords="243,105,419,145"/>
+<area shape="rect" href="../../da/dc0/classMLBridge_1_1TFModelRunner.html" title="TFModelRunner &#45; TF Compiled model implementation of the MLModelRunner." alt="" coords="243,105,419,145"/>
 <area shape="poly" title=" " alt="" coords="199,107,243,112,242,117,199,112"/>
-<area shape="rect" href="../../d4/d4a/classMLBridge_1_1gRPCModelRunner.html" title=" " alt="" coords="234,169,428,225"/>
+<area shape="rect" href="../../d4/d4a/classMLBridge_1_1gRPCModelRunner.html" title="This class is used to create the grpc model runner object." alt="" coords="234,169,428,225"/>
 <area shape="poly" title=" " alt="" coords="140,114,233,154,260,166,258,171,231,159,138,119"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
@@ -146,12 +146,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:afb4ddd6b4375221611ad724b8bd7bd2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a266ad8ce7b39fbd62b1c2f89c45b6aa8" id="r_a266ad8ce7b39fbd62b1c2f89c45b6aa8"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Types&gt; </td></tr>
 <tr class="memitem:a266ad8ce7b39fbd62b1c2f89c45b6aa8"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a266ad8ce7b39fbd62b1c2f89c45b6aa8">populateFeatures</a> (std::pair&lt; std::string, T &gt; &amp;var1, std::pair&lt; std::string, Types &gt; &amp;...var2)</td></tr>
+<tr class="memdesc:a266ad8ce7b39fbd62b1c2f89c45b6aa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">User-facing interface for setting the features to be sent to the model.  <br /></td></tr>
 <tr class="separator:a266ad8ce7b39fbd62b1c2f89c45b6aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a210e7c8a065a16bece991fb98273f0ae" id="r_a210e7c8a065a16bece991fb98273f0ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a210e7c8a065a16bece991fb98273f0ae">populateFeatures</a> ()</td></tr>
 <tr class="separator:a210e7c8a065a16bece991fb98273f0ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46952733473143c3e0e3b8281db75e0b" id="r_a46952733473143c3e0e3b8281db75e0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46952733473143c3e0e3b8281db75e0b">setRequest</a> (void *request)</td></tr>
+<tr class="memdesc:a46952733473143c3e0e3b8281db75e0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mainly used in the case of gRPC where the request object is not known explicitly.  <br /></td></tr>
 <tr class="separator:a46952733473143c3e0e3b8281db75e0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6d116dce0246b53231e94b486e73c44" id="r_af6d116dce0246b53231e94b486e73c44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6d116dce0246b53231e94b486e73c44">setResponse</a> (void *response)</td></tr>
+<tr class="memdesc:af6d116dce0246b53231e94b486e73c44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mainly used in the case of gRPC where the response object is not known explicitly.  <br /></td></tr>
 <tr class="separator:af6d116dce0246b53231e94b486e73c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
@@ -161,6 +164,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a58424364701fe26218a35d35370148e1" id="r_a58424364701fe26218a35d35370148e1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58424364701fe26218a35d35370148e1">MLModelRunner</a> (<a class="el" href="#a402dc0e61f621293a0cad7a2f52f04c5">Kind</a> <a class="el" href="#ad708ed037bc8332d680f0b1c4f3696b3">Type</a>, llvm::LLVMContext *<a class="el" href="#a8d3a6df7bd18c7baee94bc92a7c4b820">Ctx</a>=nullptr)</td></tr>
 <tr class="separator:a58424364701fe26218a35d35370148e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adeac6eb6a4826b4156e34802302556d3" id="r_adeac6eb6a4826b4156e34802302556d3"><td class="memItemLeft" align="right" valign="top">virtual void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adeac6eb6a4826b4156e34802302556d3">evaluateUntyped</a> ()=0</td></tr>
+<tr class="memdesc:adeac6eb6a4826b4156e34802302556d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Should be implemented by the derived class to call the model and get the result.  <br /></td></tr>
 <tr class="separator:adeac6eb6a4826b4156e34802302556d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -424,6 +428,7 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Should be implemented by the derived class to call the model and get the result. </p>
 
 <p>Implemented in <a class="el" href="../../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#ad5f2a75192a4e552677c4df4fff08049">MLBridge::gRPCModelRunner&lt; Client, Stub, Request, Response &gt;</a>, <a class="el" href="../../d5/dd7/classMLBridge_1_1ONNXModelRunner.html#a21c4f40c6681b2ce3508975d16abd55c">MLBridge::ONNXModelRunner</a>, <a class="el" href="../../d9/d4c/classMLBridge_1_1PipeModelRunner.html#aea57ef66f1cfb284865562da37d283e6">MLBridge::PipeModelRunner</a>, and <a class="el" href="../../da/dc0/classMLBridge_1_1TFModelRunner.html#a320573b7ec22529946af82f2636aa82a">MLBridge::TFModelRunner&lt; TGen &gt;</a>.</p>
@@ -591,7 +596,9 @@ template&lt;typename T , typename... Types&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>User-facing interface for setting the features to be sent to the model. The features are passed as a list of key-value pairs. The key is the name of the feature and the value is the value of the feature. The value can be a scalar or a vector. </p>
+
+<p>User-facing interface for setting the features to be sent to the model. </p>
+<p>The features are passed as a list of key-value pairs. The key is the name of the feature and the value is the value of the feature. The value can be a scalar or a vector. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d23/MLModelRunner_8h_source.html#l00096">96</a> of file <a class="el" href="../../df/d23/MLModelRunner_8h_source.html">MLModelRunner.h</a>.</p>
 
@@ -646,6 +653,7 @@ template&lt;typename T , typename... Types&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Mainly used in the case of gRPC where the request object is not known explicitly. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d23/MLModelRunner_8h_source.html#l00106">106</a> of file <a class="el" href="../../df/d23/MLModelRunner_8h_source.html">MLModelRunner.h</a>.</p>
@@ -674,6 +682,7 @@ template&lt;typename T , typename... Types&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Mainly used in the case of gRPC where the response object is not known explicitly. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d23/MLModelRunner_8h_source.html#l00110">110</a> of file <a class="el" href="../../df/d23/MLModelRunner_8h_source.html">MLModelRunner.h</a>.</p>

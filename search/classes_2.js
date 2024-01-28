@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dummymodel_0',['DummyModel',['../dc/d41/classhello-mlbridge_1_1DummyModel.html',1,'hello-mlbridge.DummyModel'],['../df/d2e/classmlbridge-test_1_1DummyModel.html',1,'mlbridge-test.DummyModel']]]
+  ['environment_0',['Environment',['../d0/d3c/structEnvironment.html',1,'Environment'],['../d7/d68/classMLBridge_1_1Environment.html',1,'MLBridge::Environment']]]
 ];

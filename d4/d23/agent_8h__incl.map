@@ -1,6 +1,6 @@
 <map id="include/MLModelRunner/ONNXModelRunner/agent.h" name="include/MLModelRunner/ONNXModelRunner/agent.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="375,5,562,46"/>
-<area shape="rect" id="Node000002" href="$d4/d5d/onnx_8h.html" title=" " alt="" coords="265,94,501,135"/>
+<area shape="rect" id="Node000001" title="Agent class to support ML/RL model inference via ONNX." alt="" coords="375,5,562,46"/>
+<area shape="rect" id="Node000002" href="$d4/d5d/onnx_8h.html" title="This file defines the ONNXModel class, which is a wrapper around the ONNX C++ interface." alt="" coords="265,94,501,135"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="451,48,415,85,411,81,447,45"/>
 <area shape="rect" id="Node000006" href="$d5/d60/utils_8h.html" title=" " alt="" coords="5,94,241,135"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="390,49,217,92,215,87,389,44"/>

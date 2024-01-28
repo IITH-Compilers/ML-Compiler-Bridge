@@ -1,10 +1,13 @@
 var searchData=
 [
-  ['o_0',['O',['../d6/d6e/classllvm_1_1json_1_1ObjectMapper.html#a1422d1f7b40d47ad3b0a53a676680cfa',1,'llvm::json::ObjectMapper']]],
-  ['obsmap_1',['obsMap',['../d7/d68/classMLBridge_1_1Environment.html#a2336178ad189e90b7b3ea9ce10c863ec',1,'MLBridge::Environment']]],
-  ['offset_2',['Offset',['../da/de6/classllvm_1_1json_1_1Path_1_1Segment.html#a3673bbbaa7b6285c2c1db55ae6f9ed63',1,'llvm::json::Path::Segment::Offset'],['../d6/d31/classllvm_1_1json_1_1ParseError.html#a7c983c4eba9867a8c00944bd8513b26d',1,'llvm::json::ParseError::Offset']]],
-  ['os_3',['OS',['../de/d03/classllvm_1_1json_1_1OStream.html#af15c422eb2d5b0f5db9c555ee5c1465e',1,'llvm::json::OStream']]],
-  ['outec_4',['OutEC',['../d9/d4c/classMLBridge_1_1PipeModelRunner.html#aadd97dd6135a53091055344904abe0d5',1,'MLBridge::PipeModelRunner']]],
-  ['outstream_5',['OutStream',['../d9/d4c/classMLBridge_1_1PipeModelRunner.html#a8b2280b7b2b8cd1e05783127146529bb',1,'MLBridge::PipeModelRunner']]],
-  ['owned_6',['Owned',['../d6/dbb/classllvm_1_1json_1_1ObjectKey.html#a44e260e20b5bfcbe750f17087685e63b',1,'llvm::json::ObjectKey']]]
+  ['rawdata_0',['rawData',['../da/de4/classMLBridge_1_1BitstreamSerDes.html#ab2cabdffbf8d189da6027833b3d0dbd8',1,'MLBridge::BitstreamSerDes']]],
+  ['read_5fstream_5fiter_1',['read_stream_iter',['../d7/dab/classSerDes_1_1SerDes.html#a2638ddc74f788c46a87f8e8aeea19704',1,'SerDes::SerDes']]],
+  ['request_2',['Request',['../d1/dcd/classMLBridge_1_1ProtobufSerDes.html#a00a22374c8ae2e6932d7e7129120bc24',1,'MLBridge::ProtobufSerDes']]],
+  ['request_3',['request',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#abc1e4b0fb90e2f6940afddbfeb835949',1,'MLBridge::gRPCModelRunner']]],
+  ['requestvoid_4',['RequestVoid',['../df/d69/classMLBridge_1_1BaseSerDes.html#af08ba047fb2dacd5329609db05af6443',1,'MLBridge::BaseSerDes']]],
+  ['resetfunc_5',['resetFunc',['../d0/d3c/structEnvironment.html#a676911e509543a65428225fa8cff3107',1,'Environment']]],
+  ['response_6',['Response',['../d1/dcd/classMLBridge_1_1ProtobufSerDes.html#a58616f2cda4ceaab84fad840da2113dd',1,'MLBridge::ProtobufSerDes']]],
+  ['response_7',['response',['../d4/d4a/classMLBridge_1_1gRPCModelRunner.html#a4f5ee166d6e237f6b1149c29bc4b1044',1,'MLBridge::gRPCModelRunner']]],
+  ['responsevoid_8',['ResponseVoid',['../df/d69/classMLBridge_1_1BaseSerDes.html#a316ec1ebb556230815b1d145f0186515',1,'MLBridge::BaseSerDes']]],
+  ['resultindex_9',['ResultIndex',['../da/dc0/classMLBridge_1_1TFModelRunner.html#a3a9fb1f791310c133d88511d27164212',1,'MLBridge::TFModelRunner']]]
 ];

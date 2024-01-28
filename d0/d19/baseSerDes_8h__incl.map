@@ -1,6 +1,6 @@
 <map id="include/SerDes/baseSerDes.h" name="include/SerDes/baseSerDes.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="507,5,702,31"/>
-<area shape="rect" id="Node000002" href="$d4/deb/Debug_8h.html" title=" " alt="" coords="5,79,153,120"/>
+<area shape="rect" id="Node000001" title="Supporting new SerDes:" alt="" coords="507,5,702,31"/>
+<area shape="rect" id="Node000002" href="$d4/deb/Debug_8h.html" title="This file defines the debug macros for the MLCompilerBridge." alt="" coords="5,79,153,120"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="507,33,352,53,168,81,168,76,351,47,506,28"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="177,79,346,120"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="552,34,362,78,361,73,551,29"/>

@@ -1,5 +1,5 @@
 <map id="MLBridge::Agent" name="MLBridge::Agent">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,94,123,120"/>
+<area shape="rect" id="Node000001" title="Agent is a wrapper around the ONNXModel class, interfaces with the Environment class to support ML/RL..." alt="" coords="5,94,123,120"/>
 <area shape="rect" id="Node000002" href="$da/d65/classONNXModel.html" title=" " alt="" coords="16,5,112,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,47,67,94,61,94,61,47"/>
 </map>

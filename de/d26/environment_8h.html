@@ -83,6 +83,9 @@ $(function() {
   <div class="headertitle"><div class="title">environment.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Base <a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> class to support ONNX based inference of RL models.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../de/d9e/agent_8h_source.html">MLModelRunner/ONNXModelRunner/agent.h</a>&quot;</code><br />
 <code>#include &lt;map&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -90,12 +93,12 @@ Include dependency graph for environment.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../da/d65/environment_8h__incl.png" border="0" usemap="#ainclude_2MLModelRunner_2ONNXModelRunner_2environment_8h" alt=""/></div>
 <map name="ainclude_2MLModelRunner_2ONNXModelRunner_2environment_8h" id="ainclude_2MLModelRunner_2ONNXModelRunner_2environment_8h">
-<area shape="rect" title=" " alt="" coords="438,5,664,46"/>
-<area shape="rect" href="../../de/d9e/agent_8h.html" title=" " alt="" coords="351,94,586,135"/>
+<area shape="rect" title="Base Environment class to support ONNX based inference of RL models." alt="" coords="438,5,664,46"/>
+<area shape="rect" href="../../de/d9e/agent_8h.html" title="Agent class to support ML/RL model inference via ONNX." alt="" coords="351,94,586,135"/>
 <area shape="poly" title=" " alt="" coords="534,48,499,84,496,81,530,45"/>
 <area shape="rect" title=" " alt="" coords="611,102,657,127"/>
 <area shape="poly" title=" " alt="" coords="572,45,614,89,610,92,568,48"/>
-<area shape="rect" href="../../d4/d5d/onnx_8h.html" title=" " alt="" coords="265,183,501,223"/>
+<area shape="rect" href="../../d4/d5d/onnx_8h.html" title="This file defines the ONNXModel class, which is a wrapper around the ONNX C++ interface." alt="" coords="265,183,501,223"/>
 <area shape="poly" title=" " alt="" coords="451,137,415,174,411,170,447,133"/>
 <area shape="rect" href="../../d5/d60/utils_8h.html" title=" " alt="" coords="5,183,241,223"/>
 <area shape="poly" title=" " alt="" coords="390,138,217,181,215,176,389,133"/>
@@ -117,16 +120,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/d9f/environment_8h__dep__incl.png" border="0" usemap="#ainclude_2MLModelRunner_2ONNXModelRunner_2environment_8hdep" alt=""/></div>
 <map name="ainclude_2MLModelRunner_2ONNXModelRunner_2environment_8hdep" id="ainclude_2MLModelRunner_2ONNXModelRunner_2environment_8hdep">
-<area shape="rect" title=" " alt="" coords="154,5,379,46"/>
-<area shape="rect" href="../../d7/d34/ONNXModelRunner_2ONNXModelRunner_8h.html" title=" " alt="" coords="5,94,275,135"/>
-<area shape="poly" title=" " alt="" coords="227,57,170,96,167,91,224,53"/>
-<area shape="rect" href="../../d3/d89/HelloMLBridge__Env_8h.html" title=" " alt="" coords="298,94,489,135"/>
-<area shape="poly" title=" " alt="" coords="309,53,366,91,363,96,306,57"/>
-<area shape="rect" href="../../d4/d63/ONNXModelRunner_8cpp.html" title=" " alt="" coords="22,183,258,223"/>
+<area shape="rect" title="Base Environment class to support ONNX based inference of RL models." alt="" coords="27,5,253,46"/>
+<area shape="rect" href="../../d7/d34/ONNXModelRunner_2ONNXModelRunner_8h.html" title="ONNXModelRunner class supporting communication via ONNX C++ Runtime." alt="" coords="5,94,275,135"/>
+<area shape="poly" title=" " alt="" coords="143,62,143,94,137,94,137,62"/>
+<area shape="rect" href="../../d4/d63/ONNXModelRunner_8cpp.html" title="This file defines the ONNXModelRunner class to support ML model inference via ONNX." alt="" coords="22,183,258,223"/>
 <area shape="poly" title=" " alt="" coords="143,150,143,182,137,182,137,150"/>
-<area shape="rect" href="../../db/d4f/MLBridgeTest_8cpp.html" title=" " alt="" coords="299,190,453,216"/>
-<area shape="poly" title=" " alt="" coords="208,138,344,187,342,192,207,143"/>
-<area shape="poly" title=" " alt="" coords="389,151,381,190,376,189,384,150"/>
 </map>
 </div>
 </div>
@@ -148,7 +146,8 @@ Typedefs</h2></td></tr>
 <tr class="separator:aa80c0747f7b1243c91b0b96069dc4900"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Base <a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> class to support ONNX based inference of RL models. This class is used to define the environment for the agents to interact with.</p>
+<div class="textblock"><p>Base <a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> class to support ONNX based inference of RL models. </p>
+<p>This class is used to define the environment for the agents to interact with.</p>
 <p>The <a class="el" href="../../d0/d3c/structEnvironment.html">Environment</a> should be defined by the compiler pass that is using the MLCompilerBridge. The environment should be defined by inheriting from this class and implementing the step() and reset() methods.</p>
 <p>step() and reset() are typical methods used in RL environments.</p>
 <p>The step() method takes an action as input and returns the observation corresponding to the next state. The reset() method returns the initial observation.</p>
@@ -167,8 +166,8 @@ Typedefs</h2></td></tr>
 <div class="line">};</div>
 <div class="ttc" id="aC_2ONNXModelRunner_8h_html_aa80c0747f7b1243c91b0b96069dc4900"><div class="ttname"><a href="../../d0/d16/C_2ONNXModelRunner_8h.html#aa80c0747f7b1243c91b0b96069dc4900">Action</a></div><div class="ttdeci">signed Action</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d16/C_2ONNXModelRunner_8h_source.html#l00053">ONNXModelRunner.h:53</a></div></div>
 <div class="ttc" id="aclassMLBridge_1_1Environment_html"><div class="ttname"><a href="../../d7/d68/classMLBridge_1_1Environment.html">MLBridge::Environment</a></div><div class="ttdef"><b>Definition</b> <a href="../../de/d26/environment_8h_source.html#l00056">environment.h:56</a></div></div>
-<div class="ttc" id="aclassMLBridge_1_1Environment_html_a6d31b787a7eacbfab13018a5313091dd"><div class="ttname"><a href="../../d7/d68/classMLBridge_1_1Environment.html#a6d31b787a7eacbfab13018a5313091dd">MLBridge::Environment::step</a></div><div class="ttdeci">virtual Observation &amp; step(Action action)=0</div></div>
-<div class="ttc" id="aclassMLBridge_1_1Environment_html_a825b999ae0b621a4e135f16e165ae8fb"><div class="ttname"><a href="../../d7/d68/classMLBridge_1_1Environment.html#a825b999ae0b621a4e135f16e165ae8fb">MLBridge::Environment::reset</a></div><div class="ttdeci">virtual Observation &amp; reset()=0</div></div>
+<div class="ttc" id="aclassMLBridge_1_1Environment_html_a6d31b787a7eacbfab13018a5313091dd"><div class="ttname"><a href="../../d7/d68/classMLBridge_1_1Environment.html#a6d31b787a7eacbfab13018a5313091dd">MLBridge::Environment::step</a></div><div class="ttdeci">virtual Observation &amp; step(Action action)=0</div><div class="ttdoc">Step function takes an action as input and returns the observation corresponding to the next state.</div></div>
+<div class="ttc" id="aclassMLBridge_1_1Environment_html_a825b999ae0b621a4e135f16e165ae8fb"><div class="ttname"><a href="../../d7/d68/classMLBridge_1_1Environment.html#a825b999ae0b621a4e135f16e165ae8fb">MLBridge::Environment::reset</a></div><div class="ttdeci">virtual Observation &amp; reset()=0</div><div class="ttdoc">Reset function returns the initial observation.</div></div>
 </div><!-- fragment --><p>This environment can then be used by the <a class="el" href="../../da/d2e/structONNXModelRunner.html">ONNXModelRunner</a> to interact with the agents. getNextAgent() and setNextAgent() methods can be used to set the next agent to interact with. These methods are used in step() and reset() to get the next agent to interact with in case of multi-agent environment. </p>
 
 <p class="definition">Definition in file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>

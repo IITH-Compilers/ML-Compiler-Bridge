@@ -1,8 +1,8 @@
 <map id="MLModelRunner/ONNXModelRunner/agent.cpp" name="MLModelRunner/ONNXModelRunner/agent.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="701,5,937,46"/>
-<area shape="rect" id="Node000002" href="$de/d9e/agent_8h.html" title=" " alt="" coords="351,94,586,135"/>
+<area shape="rect" id="Node000001" title="This file defines the Agent class, which is a wrapper around the ONNXModel class." alt="" coords="701,5,937,46"/>
+<area shape="rect" id="Node000002" href="$de/d9e/agent_8h.html" title="Agent class to support ML/RL model inference via ONNX." alt="" coords="351,94,586,135"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="740,49,563,92,562,87,738,44"/>
-<area shape="rect" id="Node000010" href="$d4/deb/Debug_8h.html" title=" " alt="" coords="611,94,758,135"/>
+<area shape="rect" id="Node000010" href="$d4/deb/Debug_8h.html" title="This file defines the debug macros for the MLCompilerBridge." alt="" coords="611,94,758,135"/>
 <area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="790,49,729,88,726,83,787,44"/>
 <area shape="rect" id="Node000011" title=" " alt="" coords="782,102,856,127"/>
 <area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="822,47,822,86,816,86,816,47"/>
@@ -10,7 +10,7 @@
 <area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="841,45,887,89,883,93,837,48"/>
 <area shape="rect" id="Node000013" title=" " alt="" coords="962,102,1023,127"/>
 <area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="860,44,956,92,954,97,857,49"/>
-<area shape="rect" id="Node000003" href="$d4/d5d/onnx_8h.html" title=" " alt="" coords="265,183,501,223"/>
+<area shape="rect" id="Node000003" href="$d4/d5d/onnx_8h.html" title="This file defines the ONNXModel class, which is a wrapper around the ONNX C++ interface." alt="" coords="265,183,501,223"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="451,137,415,174,411,170,447,133"/>
 <area shape="rect" id="Node000007" href="$d5/d60/utils_8h.html" title=" " alt="" coords="5,183,241,223"/>
 <area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="390,138,217,181,215,176,389,133"/>

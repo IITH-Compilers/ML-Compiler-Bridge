@@ -86,18 +86,21 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>This is the base class for <a class="el" href="../../da/d52/namespaceSerDes.html">SerDes</a>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MLBridge::BaseSerDes:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/d40/classMLBridge_1_1BaseSerDes__inherit__graph.png" border="0" usemap="#aMLBridge_1_1BaseSerDes_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMLBridge_1_1BaseSerDes_inherit__map" id="aMLBridge_1_1BaseSerDes_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,162,106"/>
-<area shape="rect" href="../../da/de4/classMLBridge_1_1BitstreamSerDes.html" title=" " alt="" coords="213,5,396,31"/>
+<area shape="rect" title="This is the base class for SerDes." alt="" coords="5,80,162,106"/>
+<area shape="rect" href="../../da/de4/classMLBridge_1_1BitstreamSerDes.html" title="BitstreamSerDes &#45; Bitstream Serialization/Deserialization which sends header information followed by ..." alt="" coords="213,5,396,31"/>
 <area shape="poly" title=" " alt="" coords="128,71,209,40,245,29,247,34,211,45,130,76"/>
 <area shape="rect" href="../../df/db6/classMLBridge_1_1JsonSerDes.html" title="JsonSerDes &#45; Json Serialization/Deserialization using LLVM&#39;s json library." alt="" coords="227,55,382,80"/>
 <area shape="poly" title=" " alt="" coords="177,80,226,74,227,79,177,85"/>
-<area shape="rect" href="../../d1/dcd/classMLBridge_1_1ProtobufSerDes.html" title=" " alt="" coords="217,104,392,130"/>
+<area shape="rect" href="../../d1/dcd/classMLBridge_1_1ProtobufSerDes.html" title="ProtobufSerDes &#45; Protobuf Serialization/Deserialization to support gRPC communication." alt="" coords="217,104,392,130"/>
 <area shape="poly" title=" " alt="" coords="177,100,217,105,216,110,177,106"/>
 <area shape="rect" href="../../d9/d52/classMLBridge_1_1TensorflowSerDes.html" title="TensorflowSerDes &#45; Serialization/Deserialization to support TF AOT models." alt="" coords="210,153,399,179"/>
 <area shape="poly" title=" " alt="" coords="131,110,211,140,247,150,245,155,209,145,129,115"/>
@@ -159,7 +162,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:aca7e98198831ec27d302c89caa28766c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This is the base class for <a class="el" href="../../da/d52/namespaceSerDes.html">SerDes</a>. It defines the interface for the serialization and deserialization of the data structures used for the communication by the <a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner - The main interface for interacting with the ML models.">MLModelRunner</a>. Currently, (int, float) or (long, double), char and bool are supported. Vectors of these types are supported as well. </p>
+<div class="textblock"><p>This is the base class for <a class="el" href="../../da/d52/namespaceSerDes.html">SerDes</a>. </p>
+<p>It defines the interface for the serialization and deserialization of the data structures used for the communication by the <a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner - The main interface for interacting with the ML models.">MLModelRunner</a>. Currently, (int, float) or (long, double), char and bool are supported. Vectors of these types are supported as well. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00046">46</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>

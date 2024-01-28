@@ -86,20 +86,11 @@ $(function() {
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for MLBridge::Environment:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../da/d2d/classMLBridge_1_1Environment__inherit__graph.png" border="0" usemap="#aMLBridge_1_1Environment_inherit__map" alt="Inheritance graph"/></div>
-<map name="aMLBridge_1_1Environment_inherit__map" id="aMLBridge_1_1Environment_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,5,161,31"/>
-<area shape="rect" href="../../d8/d6e/classHelloMLBridgeEnv.html" title=" " alt="" coords="18,79,148,105"/>
-<area shape="poly" title=" " alt="" coords="86,46,86,79,80,79,80,46"/>
-</map>
-<center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2b01c8a659ed22797efa42d78a494553" id="r_a2b01c8a659ed22797efa42d78a494553"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b01c8a659ed22797efa42d78a494553">checkDone</a> ()</td></tr>
+<tr class="memdesc:a2b01c8a659ed22797efa42d78a494553"><td class="mdescLeft">&#160;</td><td class="mdescRight">CheckDone returns true if the termination condition is met at the end of the episode.  <br /></td></tr>
 <tr class="separator:a2b01c8a659ed22797efa42d78a494553"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2943c940d0856e64585d26cd68869089" id="r_a2943c940d0856e64585d26cd68869089"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2943c940d0856e64585d26cd68869089">setDone</a> ()</td></tr>
 <tr class="memdesc:a2943c940d0856e64585d26cd68869089"><td class="mdescLeft">&#160;</td><td class="mdescRight">SetDone sets the termination condition to true.  <br /></td></tr>
@@ -113,8 +104,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5031cb98f3f0b9a53cb6708149b33a73"><td class="mdescLeft">&#160;</td><td class="mdescRight">SetNextAgent sets the name of the next agent to interact with.  <br /></td></tr>
 <tr class="separator:a5031cb98f3f0b9a53cb6708149b33a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d31b787a7eacbfab13018a5313091dd" id="r_a6d31b787a7eacbfab13018a5313091dd"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d5/d9c/namespaceMLBridge.html#af57e2060b414c240cc2e8e848b663183">Observation</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d31b787a7eacbfab13018a5313091dd">step</a> (<a class="el" href="../../d0/d16/C_2ONNXModelRunner_8h.html#aa80c0747f7b1243c91b0b96069dc4900">Action</a> action)=0</td></tr>
+<tr class="memdesc:a6d31b787a7eacbfab13018a5313091dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Step function takes an action as input and returns the observation corresponding to the next state.  <br /></td></tr>
 <tr class="separator:a6d31b787a7eacbfab13018a5313091dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a825b999ae0b621a4e135f16e165ae8fb" id="r_a825b999ae0b621a4e135f16e165ae8fb"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d5/d9c/namespaceMLBridge.html#af57e2060b414c240cc2e8e848b663183">Observation</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a825b999ae0b621a4e135f16e165ae8fb">reset</a> ()=0</td></tr>
+<tr class="memdesc:a825b999ae0b621a4e135f16e165ae8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset function returns the initial observation.  <br /></td></tr>
 <tr class="separator:a825b999ae0b621a4e135f16e165ae8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -155,6 +148,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>CheckDone returns true if the termination condition is met at the end of the episode. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../de/d26/environment_8h_source.html#l00066">66</a> of file <a class="el" href="../../de/d26/environment_8h_source.html">environment.h</a>.</p>
@@ -212,9 +206,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Reset function returns the initial observation. This method should be implemented by the user. This method can internally call <a class="el" href="#a5031cb98f3f0b9a53cb6708149b33a73" title="SetNextAgent sets the name of the next agent to interact with.">setNextAgent()</a> to set the next agent to interact with. </p>
 
-<p>Implemented in <a class="el" href="../../d8/d6e/classHelloMLBridgeEnv.html#af01aed7d7d0fdc4d36a5f6a5b6fcf309">HelloMLBridgeEnv</a>.</p>
+<p>Reset function returns the initial observation. </p>
+<p>This method should be implemented by the user. This method can internally call <a class="el" href="#a5031cb98f3f0b9a53cb6708149b33a73" title="SetNextAgent sets the name of the next agent to interact with.">setNextAgent()</a> to set the next agent to interact with. </p>
 
 </div>
 </div>
@@ -325,9 +319,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Step function takes an action as input and returns the observation corresponding to the next state. This method should be implemented by the user. Typically this method should call <a class="el" href="#a2943c940d0856e64585d26cd68869089" title="SetDone sets the termination condition to true.">setDone()</a> if the termination condition is met. <a class="el" href="#a5031cb98f3f0b9a53cb6708149b33a73" title="SetNextAgent sets the name of the next agent to interact with.">setNextAgent()</a> can be called in this method to set the next agent to interact with. </p>
 
-<p>Implemented in <a class="el" href="../../d8/d6e/classHelloMLBridgeEnv.html#abbbce5818fddd17d1ec57972b9efef7c">HelloMLBridgeEnv</a>.</p>
+<p>Step function takes an action as input and returns the observation corresponding to the next state. </p>
+<p>This method should be implemented by the user. Typically this method should call <a class="el" href="#a2943c940d0856e64585d26cd68869089" title="SetDone sets the termination condition to true.">setDone()</a> if the termination condition is met. <a class="el" href="#a5031cb98f3f0b9a53cb6708149b33a73" title="SetNextAgent sets the name of the next agent to interact with.">setNextAgent()</a> can be called in this method to set the next agent to interact with. </p>
 
 </div>
 </div>

@@ -1,5 +1,5 @@
 <map id="MLBridge::PipeModelRunner" name="MLBridge::PipeModelRunner">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,79,191,105"/>
+<area shape="rect" id="Node000001" title="A MLModelRunner that asks for advice from an external agent, or host." alt="" coords="5,79,191,105"/>
 <area shape="rect" id="Node000002" href="$dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner &#45; The main interface for interacting with the ML models." alt="" coords="9,5,187,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,46,101,79,95,79,95,46"/>
 </map>

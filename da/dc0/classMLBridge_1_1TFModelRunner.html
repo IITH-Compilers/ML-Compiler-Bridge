@@ -86,13 +86,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="../../da/dc0/classMLBridge_1_1TFModelRunner.html" title="TFModelRunner - TF Compiled model implementation of the MLModelRunner.">TFModelRunner</a> - TF Compiled model implementation of the <a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner - The main interface for interacting with the ML models.">MLModelRunner</a>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d8/d02/TFModelRunner_8h_source.html">TFModelRunner.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MLBridge::TFModelRunner&lt; TGen &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../df/d21/classMLBridge_1_1TFModelRunner__inherit__graph.png" border="0" usemap="#aMLBridge_1_1TFModelRunner_3_01TGen_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMLBridge_1_1TFModelRunner_3_01TGen_01_4_inherit__map" id="aMLBridge_1_1TFModelRunner_3_01TGen_01_4_inherit__map">
-<area shape="rect" title=" " alt="" coords="7,79,182,120"/>
+<area shape="rect" title="TFModelRunner &#45; TF Compiled model implementation of the MLModelRunner." alt="" coords="7,79,182,120"/>
 <area shape="rect" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner &#45; The main interface for interacting with the ML models." alt="" coords="5,5,184,31"/>
 <area shape="poly" title=" " alt="" coords="97,46,97,79,92,79,92,46"/>
 </map>
@@ -102,7 +105,7 @@ Collaboration diagram for MLBridge::TFModelRunner&lt; TGen &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/d6a/classMLBridge_1_1TFModelRunner__coll__graph.png" border="0" usemap="#aMLBridge_1_1TFModelRunner_3_01TGen_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aMLBridge_1_1TFModelRunner_3_01TGen_01_4_coll__map" id="aMLBridge_1_1TFModelRunner_3_01TGen_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="7,79,182,120"/>
+<area shape="rect" title="TFModelRunner &#45; TF Compiled model implementation of the MLModelRunner." alt="" coords="7,79,182,120"/>
 <area shape="rect" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner &#45; The main interface for interacting with the ML models." alt="" coords="5,5,184,31"/>
 <area shape="poly" title=" " alt="" coords="97,46,97,79,92,79,92,46"/>
 </map>
@@ -111,6 +114,7 @@ Collaboration diagram for MLBridge::TFModelRunner&lt; TGen &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a64ff1f5099a2484f8c9276bce1754df2" id="r_a64ff1f5099a2484f8c9276bce1754df2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64ff1f5099a2484f8c9276bce1754df2">TFModelRunner</a> (llvm::StringRef DecisionName, llvm::LLVMContext &amp;<a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html#a8d3a6df7bd18c7baee94bc92a7c4b820">Ctx</a>, llvm::StringRef FeedPrefix=&quot;feed_&quot;, llvm::StringRef FetchPrefix=&quot;fetch_&quot;)</td></tr>
+<tr class="memdesc:a64ff1f5099a2484f8c9276bce1754df2"><td class="mdescLeft">&#160;</td><td class="mdescRight">FeatureNames' type should be an indexed collection of std::string, like std::array or std::vector, that has a size() method.  <br /></td></tr>
 <tr class="separator:a64ff1f5099a2484f8c9276bce1754df2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c30c943714156ff92523e57a3ffe050" id="r_a5c30c943714156ff92523e57a3ffe050"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c30c943714156ff92523e57a3ffe050">TFModelRunner</a> (llvm::StringRef DecisionName, llvm::StringRef FeedPrefix=&quot;feed_&quot;, llvm::StringRef FetchPrefix=&quot;fetch_&quot;)</td></tr>
 <tr class="separator:a5c30c943714156ff92523e57a3ffe050"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,12 +143,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a38143cb70acd823b4a1fb6d00888e762 inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a266ad8ce7b39fbd62b1c2f89c45b6aa8 inherit pub_methods_classMLBridge_1_1MLModelRunner" id="r_a266ad8ce7b39fbd62b1c2f89c45b6aa8"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Types&gt; </td></tr>
 <tr class="memitem:a266ad8ce7b39fbd62b1c2f89c45b6aa8 inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html#a266ad8ce7b39fbd62b1c2f89c45b6aa8">populateFeatures</a> (std::pair&lt; std::string, T &gt; &amp;var1, std::pair&lt; std::string, Types &gt; &amp;...var2)</td></tr>
+<tr class="memdesc:a266ad8ce7b39fbd62b1c2f89c45b6aa8 inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="mdescLeft">&#160;</td><td class="mdescRight">User-facing interface for setting the features to be sent to the model.  <br /></td></tr>
 <tr class="separator:a266ad8ce7b39fbd62b1c2f89c45b6aa8 inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a210e7c8a065a16bece991fb98273f0ae inherit pub_methods_classMLBridge_1_1MLModelRunner" id="r_a210e7c8a065a16bece991fb98273f0ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html#a210e7c8a065a16bece991fb98273f0ae">populateFeatures</a> ()</td></tr>
 <tr class="separator:a210e7c8a065a16bece991fb98273f0ae inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46952733473143c3e0e3b8281db75e0b inherit pub_methods_classMLBridge_1_1MLModelRunner" id="r_a46952733473143c3e0e3b8281db75e0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html#a46952733473143c3e0e3b8281db75e0b">setRequest</a> (void *request)</td></tr>
+<tr class="memdesc:a46952733473143c3e0e3b8281db75e0b inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mainly used in the case of gRPC where the request object is not known explicitly.  <br /></td></tr>
 <tr class="separator:a46952733473143c3e0e3b8281db75e0b inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6d116dce0246b53231e94b486e73c44 inherit pub_methods_classMLBridge_1_1MLModelRunner" id="r_af6d116dce0246b53231e94b486e73c44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html#af6d116dce0246b53231e94b486e73c44">setResponse</a> (void *response)</td></tr>
+<tr class="memdesc:af6d116dce0246b53231e94b486e73c44 inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mainly used in the case of gRPC where the response object is not known explicitly.  <br /></td></tr>
 <tr class="separator:af6d116dce0246b53231e94b486e73c44 inherit pub_methods_classMLBridge_1_1MLModelRunner"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -155,6 +162,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a320573b7ec22529946af82f2636aa82a" id="r_a320573b7ec22529946af82f2636aa82a"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a320573b7ec22529946af82f2636aa82a">evaluateUntyped</a> () override</td></tr>
+<tr class="memdesc:a320573b7ec22529946af82f2636aa82a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Should be implemented by the derived class to call the model and get the result.  <br /></td></tr>
 <tr class="separator:a320573b7ec22529946af82f2636aa82a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -195,7 +203,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class TGen&gt;<br />
-class MLBridge::TFModelRunner&lt; TGen &gt;</div><p><a class="el" href="../../da/dc0/classMLBridge_1_1TFModelRunner.html">TFModelRunner</a> - TF Compiled model implementation of the <a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner - The main interface for interacting with the ML models.">MLModelRunner</a>. It uses an AOT-compiled SavedModel for efficient execution. </p>
+class MLBridge::TFModelRunner&lt; TGen &gt;</div><p><a class="el" href="../../da/dc0/classMLBridge_1_1TFModelRunner.html" title="TFModelRunner - TF Compiled model implementation of the MLModelRunner.">TFModelRunner</a> - TF Compiled model implementation of the <a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner - The main interface for interacting with the ML models.">MLModelRunner</a>. </p>
+<p>It uses an AOT-compiled SavedModel for efficient execution. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d8/d02/TFModelRunner_8h_source.html#l00030">30</a> of file <a class="el" href="../../d8/d02/TFModelRunner_8h_source.html">TFModelRunner.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -237,6 +246,7 @@ template&lt;class TGen &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>FeatureNames' type should be an indexed collection of std::string, like std::array or std::vector, that has a size() method. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d8/d02/TFModelRunner_8h_source.html#l00034">34</a> of file <a class="el" href="../../d8/d02/TFModelRunner_8h_source.html">TFModelRunner.h</a>.</p>
@@ -362,6 +372,7 @@ template&lt;class TGen &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Should be implemented by the derived class to call the model and get the result. </p>
 
 <p>Implements <a class="el" href="../../dc/d4e/classMLBridge_1_1MLModelRunner.html#adeac6eb6a4826b4156e34802302556d3">MLBridge::MLModelRunner</a>.</p>
