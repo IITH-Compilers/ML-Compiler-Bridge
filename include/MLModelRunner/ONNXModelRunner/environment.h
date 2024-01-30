@@ -61,14 +61,15 @@ protected:
   std::map<std::string, Observation &> obsMap;
 
 public:
-  /// CheckDone returns true if the termination condition is met.
+  /// CheckDone returns true if the termination condition is met at the end of
+  /// the episode.
   bool checkDone() { return done == true; };
 
   /// SetDone sets the termination condition to true.
   void setDone() { done = true; }
   void resetDone() { done = false; }
 
-  /// GetNextAgent returns the name of the next agent to interact with.
+  /// GetNextAgent returns the name/ID of the next agent to interact with.
   std::string getNextAgent() { return nextAgent; };
 
   /// SetNextAgent sets the name of the next agent to interact with.
@@ -83,8 +84,7 @@ public:
 
   /// Reset function returns the initial observation. This method should be
   /// implemented by the user. This method can internally call setNextAgent() to
-  /// set the next agent to interact with and setDone()/resetDone() to set/reset
-  /// the termination condition.
+  /// set the next agent to interact with.
   virtual Observation &reset() = 0;
 };
 } // namespace MLBridge

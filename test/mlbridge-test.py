@@ -17,7 +17,7 @@ sys.path.append("../CompilerInterface")
 from PipeCompilerInterface import PipeCompilerInterface
 from GrpcCompilerInterface import GrpcCompilerInterface
 
-sys.path.append("../MLModelRunner/gRPCModelRunner/Python-Utilities")
+sys.path.append("./Python-Utilities")
 import helloMLBridge_pb2, helloMLBridge_pb2_grpc, grpc
 from concurrent import futures
 

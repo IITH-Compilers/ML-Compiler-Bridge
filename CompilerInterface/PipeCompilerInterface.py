@@ -27,8 +27,8 @@ class PipeCompilerInterface(BaseCompilerInterface):
         self.pipe_name = pipe_name
         self.to_compiler = None
         self.from_compiler = None
-        self.tc = None
-        self.fc = None
+        self.tc_buffer = None
+        self.fc_buffer = None
         self.buffer = None
         self.init_pipes()
 
@@ -40,13 +40,13 @@ class PipeCompilerInterface(BaseCompilerInterface):
     def evaluate(self, mode=None):
         out = self.serdes_obj.getOutputBuffer()
         if out is not None:
-            self.tc.write(out)
-            self.tc.flush()
+            self.tc_buffer.write(out)
+            self.tc_buffer.flush()
 
         if mode == "exit":
             return None
 
-        result = self.serdes_obj.deserializeData(self.fc)
+        result = self.serdes_obj.deserializeData(self.fc_buffer)
 
         return result
 
@@ -64,16 +64,16 @@ class PipeCompilerInterface(BaseCompilerInterface):
 
     ## Resets the buffered reader/writers.
     def reset_pipes(self):
-        self.tc = io.BufferedWriter(io.FileIO(self.to_compiler, "wb"))
-        self.fc = io.BufferedReader(io.FileIO(self.from_compiler, "rb"))
+        self.tc_buffer = io.BufferedWriter(io.FileIO(self.to_compiler, "wb"))
+        self.fc_buffer = io.BufferedReader(io.FileIO(self.from_compiler, "rb"))
 
     ## Closes the buffered reader/writers.
     def close_pipes(self):
-        if self.fc is not None:
-            self.tc.close()
-            self.fc.close()
-            self.tc = None
-            self.fc = None
+        if self.fc_buffer is not None:
+            self.tc_buffer.close()
+            self.fc_buffer.close()
+            self.tc_buffer = None
+            self.fc_buffer = None
 
     ## Deletes the pipe files.
     def remove_pipes(self):
