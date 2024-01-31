@@ -13,7 +13,7 @@ Please see [here](https://iith-compilers.github.io/ML-Compiler-Bridge/) for docu
 [![pre-commit checks](https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/formatting.yml/badge.svg)](https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/formatting.yml)
 
 
-![Image](images/component-ml-compiler-bridge.png)
+![Image](https://github.com/IITH-Compilers/ML-Compiler-Bridge/raw/main/images/component-ml-compiler-bridge.png)
 
 ## Features
 * **Unified Framework:** Comes with a suite of two inter-process and two in-process model runners and three serialization-deserialization mechanisms to support interleaved and non-interleaved communication between models and compiler.
