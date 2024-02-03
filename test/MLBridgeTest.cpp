@@ -18,7 +18,6 @@
 #include "llvm/Support/CommandLine.h"
 #include <algorithm>
 #include <fstream>
-#include <google/protobuf/text_format.h>
 #include <iostream>
 #include <iterator>
 #include <memory>

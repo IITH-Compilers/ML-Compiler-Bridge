@@ -59,9 +59,7 @@ if(LLVM_MLBRIDGE)
 
   LINK_LIBS
   ModelRunnerLib
-  $<TARGET_OBJECTS:SerDesLib>
-  tf_xla_runtime
-  protobuf::libprotobuf
+  SerDesLib
   )
 
   target_include_directories(LLVMMLBridge SYSTEM PUBLIC ${Protobuf_INCLUDE_DIRS} ${TENSORFLOW_AOT_PATH}/include)
@@ -72,7 +70,7 @@ else()
   llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)
 
   add_library(MLCompilerBridge STATIC tools.cpp)
-  target_link_libraries(MLCompilerBridge PUBLIC SerDesLib ModelRunnerLib ONNXModelRunnerLib ${llvm_libs} tf_xla_runtime protobuf::libprotobuf)
+  target_link_libraries(MLCompilerBridge PUBLIC SerDesLib ModelRunnerLib ONNXModelRunnerLib ${llvm_libs})
   set_target_properties(MLCompilerBridge PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
   set_property(TARGET MLCompilerBridge PROPERTY POSITION_INDEPENDENT_CODE 1)
   install(TARGETS MLCompilerBridge DESTINATION lib)
