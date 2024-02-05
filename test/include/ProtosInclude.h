@@ -1,3 +1,11 @@
+//===----------------------------------------------------------------------===//
+//
+// Part of the MLCompilerBridge Project, under the Apache License v2.0 with LLVM
+// Exceptions. See the LICENSE file for license information.
+// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+//
+//===----------------------------------------------------------------------===//
+
 #include "grpc/MLBridgeTest_bool/MLBridgeTest_bool.grpc.pb.h"
 #include "grpc/MLBridgeTest_bool/MLBridgeTest_bool.pb.h"
 #include "grpc/MLBridgeTest_char/MLBridgeTest_char.grpc.pb.h"

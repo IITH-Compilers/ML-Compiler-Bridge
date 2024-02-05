@@ -18,7 +18,7 @@ import time
 BUILD_DIR = "../build_release"
 sys.path.extend(
     [
-        "../CompilerInterface",
+        f"{BUILD_DIR}/MLModelRunner/CompilerInterface",
         f"{BUILD_DIR}/MLModelRunner/gRPCModelRunner/Python-Utilities",
     ]
 )

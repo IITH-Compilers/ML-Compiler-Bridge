@@ -74,7 +74,6 @@ void testPrimitive(std::string label, T1 value, T2 expected) {
   std::pair<std::string, T1> p("request_" + label, value);
   MLRunner->populateFeatures(p);
   T2 out = MLRunner->evaluate<T2>();
-
   debug_out << "  " << label << " reply: " << out << "\n";
   if (std::abs(out - expected) > 10e-6) {
     std::cerr << "Error: Expected " << label << " reply: " << expected
