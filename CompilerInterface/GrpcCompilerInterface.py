@@ -17,6 +17,7 @@ from abc import ABC, abstractmethod
 from BaseCompilerInterface import BaseCompilerInterface
 import os
 import io
+import time
 
 import sys
 import grpc
@@ -79,8 +80,23 @@ class GrpcCompilerInterface(BaseCompilerInterface):
             )
 
             self.add_server_method(self.grpc_service_obj, server)
-            server.add_insecure_port("{}:{}".format(self.host, self.server_port))
+            
+            retries = 0
+            max_retries = 30
+            wait_seconds = 0.2
+            retry_wait_backoff_exponent = 1.2
 
-            server.start()
-            print("Server Running")
-            server.wait_for_termination()
+            while retries < max_retries:
+                added_port = server.add_insecure_port("{}:{}".format(self.host, self.server_port))
+
+                if str(added_port) == self.server_port:
+                    server.start()
+                    print("Server Running")
+                    server.wait_for_termination()
+                    break
+                else:
+                    retries += 1
+                    print("The port", self.port,
+                        "is already in use retrying! attempt: ", retries)
+                    time.sleep(wait_seconds)
+                    wait_seconds *= retry_wait_backoff_exponent
