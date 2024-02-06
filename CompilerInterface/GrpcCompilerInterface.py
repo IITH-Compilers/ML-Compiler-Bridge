@@ -87,7 +87,10 @@ class GrpcCompilerInterface(BaseCompilerInterface):
             retry_wait_backoff_exponent = 1.2
 
             while retries < max_retries:
-                added_port = server.add_insecure_port("{}:{}".format(self.host, self.server_port))
+                added_port = server.add_insecure_port(
+                    "{}:{}".format(self.host, self.server_port)
+                )
+
 
                 if str(added_port) == self.server_port:
                     server.start()
@@ -96,7 +99,12 @@ class GrpcCompilerInterface(BaseCompilerInterface):
                     break
                 else:
                     retries += 1
-                    print("The port", self.port,
-                        "is already in use retrying! attempt: ", retries)
+                    print(
+                        "The port",
+                        self.port,
+                        "is already in use retrying! attempt: ",
+                        retries,
+                    )
+
                     time.sleep(wait_seconds)
                     wait_seconds *= retry_wait_backoff_exponent
