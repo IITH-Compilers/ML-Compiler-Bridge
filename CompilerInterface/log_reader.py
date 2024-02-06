@@ -7,8 +7,7 @@
 # ------------------------------------------------------------------------------
 ##
 ## @file
-## Reader for training log.
-## See lib/Analysis/TrainingLogger.cpp for a description of the format.
+## Reader for training log. Used by Pipe compiler interface with bitstream data.
 ##
 # ------------------------------------------------------------------------------
 

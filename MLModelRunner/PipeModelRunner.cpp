@@ -43,8 +43,10 @@ PipeModelRunner::PipeModelRunner(StringRef OutboundName, StringRef InboundName,
       InEC = sys::fs::openFileForRead(InboundName, Inbound);
       if (InEC) {
         attempts++;
-        std::cout << "Cannot open inbound file retrying! attempt: " << attempts << std::endl;
-        std::this_thread::sleep_for(std::chrono::duration<double>(wait_seconds));
+        std::cout << "Cannot open inbound file retrying! attempt: " << attempts
+                  << std::endl;
+        std::this_thread::sleep_for(
+            std::chrono::duration<double>(wait_seconds));
         wait_seconds *= backoff_exp;
       } else {
         break;
