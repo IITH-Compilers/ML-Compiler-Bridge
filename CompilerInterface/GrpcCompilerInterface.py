@@ -80,7 +80,7 @@ class GrpcCompilerInterface(BaseCompilerInterface):
             )
 
             self.add_server_method(self.grpc_service_obj, server)
-            
+
             retries = 0
             max_retries = 30
             wait_seconds = 0.2
@@ -90,7 +90,6 @@ class GrpcCompilerInterface(BaseCompilerInterface):
                 added_port = server.add_insecure_port(
                     "{}:{}".format(self.host, self.server_port)
                 )
-
 
                 if str(added_port) == self.server_port:
                     server.start()
