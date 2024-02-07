@@ -198,11 +198,12 @@ private:
         retries_wait_secs *= retry_wait_backoff_exponent;
       } else {
         request->Clear();
-        if (!status.ok())
+        if (!status.ok()) {
           if (Ctx)
             Ctx->emitError("gRPC failed: " + status.error_message());
           else
             std::cerr << "gRPC failed: " << status.error_message() << std::endl;
+        }
         // auto *action = new int(); // Hard wired for PosetRL case, should be
         // fixed *action = response->action(); return action;
         return SerDes->deserializeUntyped(response);
@@ -234,7 +235,7 @@ private:
     auto serveFn = [&]() { server->Wait(); };
     std::thread serving_thread(serveFn);
     auto f = exit_requested->get_future();
-    // this->requestExit();
+    this->requestExit();
     f.wait();
     server->Shutdown();
     serving_thread.join();
