@@ -44,8 +44,9 @@ void passAgentInfo(std::string mode, std::string agentName, int action) {
 }
 
 void ONNXModelRunner::computeAction(Observation &obs) {
-  //std::error_code EC;
-  //llvm::raw_fd_ostream fileStream("test-raw.txt", EC, llvm::sys::fs::OF_Append);
+  // std::error_code EC;
+  // llvm::raw_fd_ostream fileStream("test-raw.txt", EC,
+  // llvm::sys::fs::OF_Append);
   while (true) {
     Action action;
     // current agent
@@ -53,7 +54,7 @@ void ONNXModelRunner::computeAction(Observation &obs) {
     action = current_agent->computeAction(obs);
     passAgentInfo("input", this->env->getNextAgent(), action);
     this->env->step(action);
-    
+
     if (this->env->checkDone()) {
       passAgentInfo("output", this->env->getNextAgent(), action);
       std::cout << "Done🎉\n";
