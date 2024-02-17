@@ -78,7 +78,7 @@ public:
       void>::type
   evaluate(T &data, size_t &dataSize) {
     using BaseType = typename std::remove_pointer<T>::type;
-    auto *res = evaluateUntyped();
+    void *res = evaluateUntyped();
     T ret = static_cast<T>(malloc(SerDes->getMessageLength()));
     memcpy(ret, res, SerDes->getMessageLength());
     dataSize = SerDes->getMessageLength() / sizeof(BaseType);
@@ -142,8 +142,9 @@ public:
     OS << "\n";
   }
 
-  void dumpFeature(llvm::raw_ostream &OS,
-                   std::pair<std::string, std::vector<Message *>> &var1) {}
+  void dumpFeature(
+      llvm::raw_ostream &OS,
+      std::pair<std::string, std::vector<google::protobuf::Message *>> &var1) {}
   /// User-facing interface for setting the features to be sent to the model.
   /// The features are passed as a list of key-value pairs.
   /// The key is the name of the feature and the value is the value of the
