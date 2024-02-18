@@ -51,6 +51,10 @@ static llvm::cl::opt<std::string>
     cl_pipe_name("test-pipe-name", llvm::cl::Hidden, llvm::cl::init(""),
                  llvm::cl::desc("Name for pipe file"));
 
+static llvm::cl::opt<std::string>
+    cl_onnx_path("onnx-model-path", llvm::cl::Hidden, llvm::cl::init(""),
+                 llvm::cl::desc("Path to onnx model"));
+
 static llvm::cl::opt<std::string> cl_test_config(
     "test-config", llvm::cl::Hidden,
     llvm::cl::desc("Method for communication with python model"));
@@ -67,6 +71,7 @@ BaseSerDes::Kind SerDesType;
 std::string test_config;
 std::string pipe_name;
 std::string server_address;
+std::string onnx_path;
 
 // send value of type T1. Test received value of type T2 against expected value
 template <typename T1, typename T2>
@@ -219,7 +224,35 @@ int testGRPC() {
   return 0;
 }
 
-int testONNX() { return 0; }
+class ONNXTest : public MLBridgeTestEnv {
+public:
+  int run(int expectedAction) {
+    onnx_path = cl_onnx_path.getValue();
+    if (onnx_path == "") {
+      std::cerr << "ONNX model path must be specified via "
+                   "--onnx-model-path=<filepath>\n";
+      exit(1);
+    }
+    FeatureVector.clear();
+    int n = 100;
+    for (int i = 0; i < n; i++) {
+      float delta = (float)(i - expectedAction) / n;
+      FeatureVector.push_back(delta * delta);
+    }
+
+    Agent *agent = new Agent(onnx_path);
+    std::map<std::string, Agent *> agents;
+    agents["agent"] = agent;
+    MLRunner = std::make_unique<ONNXModelRunner>(this, agents, nullptr);
+    MLRunner->evaluate<int>();
+    if (lastAction != expectedAction) {
+      std::cerr << "Error: Expected action: " << expectedAction
+                << ", Computed action: " << lastAction << "\n";
+      exit(1);
+    }
+    return 0;
+  }
+};
 
 } // namespace
 
@@ -236,9 +269,10 @@ int main(int argc, char **argv) {
   } else if (test_config == "grpc") {
     server_address = cl_server_address.getValue();
     testGRPC();
-  } else if (test_config == "onnx")
-    testONNX();
-  else
+  } else if (test_config == "onnx") {
+    ONNXTest t;
+    t.run(20);
+  } else
     std::cerr << "--test-config must be provided from [pipe-bytes, pipe-json, "
                  "grpc, onnx]\n";
   return 0;

@@ -12,6 +12,7 @@ import ctypes
 import sys
 import os
 import torch, torch.nn as nn
+import torch.onnx
 import subprocess
 import time
 
@@ -29,9 +30,7 @@ FAIL = 1
 SUCCESS = 0
 
 parser = argparse.ArgumentParser()
-parser.add_argument(
-    "--use_pipe", type=bool, default=False, help="Use pipe or not", required=False
-)
+parser.add_argument("--use_pipe", default=False, help="Use pipe or not", required=False)
 parser.add_argument(
     "--data_format",
     type=str,
@@ -63,6 +62,12 @@ parser.add_argument(
     type=int,
     help="Datatype number for test",
     default=0,
+)
+parser.add_argument(
+    "--export_onnx",
+    help="Export onnx test model",
+    required=False,
+    default=False,
 )
 args = parser.parse_args()
 
@@ -139,13 +144,25 @@ elif args.test_number == 10:
 
 
 class DummyModel(nn.Module):
-    def __init__(self, input_dim=10):
+    def __init__(self):
         nn.Module.__init__(self)
-        self.fc1 = nn.Linear(input_dim, 1)
 
     def forward(self, input):
-        x = self.fc1(input)
-        return x
+        return 2 - input
+
+
+def export_onnx_model(input_dim=100):
+    onnx_filename = "./onnx/dummy_model.onnx"
+    dummy_value = torch.randn(1, input_dim)
+    torch.onnx.export(
+        DummyModel(),
+        dummy_value,
+        onnx_filename,
+        input_names=["obs"],
+        verbose=True,
+        export_params=True,
+    )
+    print(f"Model exported to {onnx_filename}")
 
 
 expected_type = {
@@ -325,3 +342,5 @@ if __name__ == "__main__":
         run_pipe_communication(args.data_format, args.pipe_name)
     elif args.use_grpc:
         run_grpc_communication()
+    elif args.export_onnx:
+        export_onnx_model()

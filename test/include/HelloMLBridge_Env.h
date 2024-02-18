@@ -19,6 +19,7 @@ public:
   MLBridgeTestEnv() { setNextAgent("agent"); };
   Observation &reset() override;
   Observation &step(Action) override;
+  Action lastAction;
 
 protected:
   std::vector<float> FeatureVector;
@@ -28,7 +29,7 @@ Observation &MLBridgeTestEnv::step(Action Action) {
   CurrObs.clear();
   std::copy(FeatureVector.begin(), FeatureVector.end(),
             std::back_inserter(CurrObs));
-  llvm::outs() << "Action: " << Action << "\n";
+  lastAction = Action;
   setDone();
   return CurrObs;
 }
