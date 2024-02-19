@@ -12,28 +12,29 @@
 #include "llvm/Support/raw_ostream.h"
 
 using namespace MLBridge;
-class HelloMLBridgeEnv : public Environment {
+class MLBridgeTestEnv : public Environment {
   Observation CurrObs;
 
 public:
-  HelloMLBridgeEnv() { setNextAgent("agent"); };
+  MLBridgeTestEnv() { setNextAgent("agent"); };
   Observation &reset() override;
   Observation &step(Action) override;
+  Action lastAction;
 
 protected:
   std::vector<float> FeatureVector;
 };
 
-Observation &HelloMLBridgeEnv::step(Action Action) {
+Observation &MLBridgeTestEnv::step(Action Action) {
   CurrObs.clear();
   std::copy(FeatureVector.begin(), FeatureVector.end(),
             std::back_inserter(CurrObs));
-  llvm::outs() << "Action: " << Action << "\n";
+  lastAction = Action;
   setDone();
   return CurrObs;
 }
 
-Observation &HelloMLBridgeEnv::reset() {
+Observation &MLBridgeTestEnv::reset() {
   std::copy(FeatureVector.begin(), FeatureVector.end(),
             std::back_inserter(CurrObs));
   return CurrObs;

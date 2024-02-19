@@ -91,7 +91,7 @@ class GrpcCompilerInterface(BaseCompilerInterface):
                     "{}:{}".format(self.host, self.server_port)
                 )
 
-                if str(added_port) == self.server_port:
+                if added_port == self.server_port:
                     server.start()
                     print("Server Running")
                     server.wait_for_termination()
@@ -100,7 +100,7 @@ class GrpcCompilerInterface(BaseCompilerInterface):
                     retries += 1
                     print(
                         "The port",
-                        self.port,
+                        self.server_port,
                         "is already in use retrying! attempt: ",
                         retries,
                     )

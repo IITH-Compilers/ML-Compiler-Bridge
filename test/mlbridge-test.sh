@@ -52,11 +52,12 @@ python $SERVER_FILE --use_pipe=True --data_format=json --pipe_name=mlbridgepipe2
 SERVER_PID=$!
 run_test $BUILD_DIR/bin/MLCompilerBridgeTest --test-config=pipe-json --test-pipe-name=mlbridgepipe2 --silent
 
+echo -e "${BLUE}${BOLD}Testing MLBridge [grpc]${NC}"
+python $SERVER_FILE --use_grpc --server_port=50155 --silent=True &
+SERVER_PID=$!
+run_test $BUILD_DIR/bin/MLCompilerBridgeTest --test-config=grpc --test-server-address="0.0.0.0:50155" --silent
+
+echo -e "${BLUE}${BOLD}Testing MLBridge [onnx]${NC}"
+run_test $BUILD_DIR/bin/MLCompilerBridgeTest --test-config=onnx --onnx-model-path=$REPO_DIR/test/onnx/dummy_model.onnx
+
 exit $STATUS
-
-# python $SERVER_FILE --use_grpc --server_port=50065 &
-# echo "Test [grpc]:"
-# run_test $BUILD_DIR/MLCompilerBridgeTest --test-config=grpc --test-server-address="0.0.0.0:50065"
-
-# echo "Test [onnx]:"
-# $BUILD_DIR/MLCompilerBridgeTest --test-config=onnx

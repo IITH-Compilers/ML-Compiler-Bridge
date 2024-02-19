@@ -6,5 +6,5 @@ service MLBridgeTestService {
   rpc getAdvice(Request) returns (Reply) {}
 }
 
-message Request { float data = 1; }
+message Request { float request_float = 1; }
 message Reply { float action = 1; }

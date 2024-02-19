@@ -87,4 +87,5 @@ else()
 endif(LLVM_MLBRIDGE)
 
 install(DIRECTORY include/ DESTINATION include)
-install(DIRECTORY CompilerInterface DESTINATION include/python/MLCompilerBridge)
+install(DIRECTORY CompilerInterface DESTINATION MLModelRunner/CompilerInterface)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/CompilerInterface DESTINATION ${CMAKE_BINARY_DIR}/MLModelRunner/)
