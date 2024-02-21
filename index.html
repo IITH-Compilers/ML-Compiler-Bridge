@@ -118,7 +118,7 @@ Requirements</h1>
 Setup</h1>
 <p><code>ML-Compiler-Bridge</code> can be built as a stand-alone library to generate <code>.a</code> files that can in turn be linked with any compiler.</p><ol type="1">
 <li><code>mkdir build &amp;&amp; cd build</code></li>
-<li><code>cmake [-DCMAKE_BUILD_TYPE=Release|Debug] [-DCMAKE_INSTALL_PREFIX=&lt;Install_path&gt;] -DONNXRUNTIME_ROOTDIR=&lt;Path to ONNX install dir&gt; -DTENSORFLOW_AOT_PATH=&lt;Path to TensorFlow pip install dir&gt; ../</code></li>
+<li><code>cmake [-DCMAKE_BUILD_TYPE=Release|Debug] [-DCMAKE_INSTALL_PREFIX=&lt;Install_path&gt;] -DONNXRUNTIME_ROOTDIR=&lt;Path to ONNX install dir&gt; -DPROTOS_DIRECTORY=&lt;Path to protobuf files&gt; -DTENSORFLOW_AOT_PATH=&lt;Path to TensorFlow pip install dir&gt; ../</code></li>
 <li><code>make -j [&amp;&amp; make install]</code></li>
 </ol>
 <p>This process would generate <code>libMLCompilerBridge.a</code> and <code>libMLCompilerBridgeC.a</code> libraries under <code>build/lib</code> directory, required headers under <code>build/include</code> directory. <code>libMLCompilerBridgeC.a</code> exposes C APIs for using with C-based compilers like Pluto, where as <code>libMLCompilerBridge.a</code> exposes C++ APIs that can be used with any compiler written in C++.</p>
