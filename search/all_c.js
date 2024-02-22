@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['license_0',['License',['../index.html#autotoc_md23',1,'']]],
+  ['license_0',['License',['../index.html#autotoc_md22',1,'']]],
   ['llvm_1',['llvm',['../d9/d4a/namespacellvm.html',1,'']]],
   ['llvm_20and_20mlir_2',['Using ML-Compiler-Bridge with LLVM and MLIR',['../index.html#autotoc_md18',1,'']]],
   ['llvm_20grpc_3',['Building LLVM-GRPC',['../df/ddf/md_MLModelRunner_2gRPCModelRunner_2README.html#autotoc_md7',1,'']]],

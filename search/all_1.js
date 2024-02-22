@@ -12,5 +12,5 @@ var searchData=
   ['allocation_9',['LLVM-GRPC:Register-Allocation',['../df/ddf/md_MLModelRunner_2gRPCModelRunner_2README.html',1,'']]],
   ['and_20mlir_10',['Using ML-Compiler-Bridge with LLVM and MLIR',['../index.html#autotoc_md18',1,'']]],
   ['arg_5fdata_11',['arg_data',['../da/db0/classMLBridge_1_1NoopSavedModelImpl.html#a4a6d8d4e557263b91b88db94a0ae215a',1,'MLBridge::NoopSavedModelImpl']]],
-  ['artifacts_12',['Artifacts',['../index.html#autotoc_md20',1,'']]]
+  ['artifacts_12',['Artifacts',['../index.html#autotoc_md19',1,'']]]
 ];
