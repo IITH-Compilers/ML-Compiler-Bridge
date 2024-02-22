@@ -3,7 +3,7 @@
 `ML-Compiler-Bridge` is a compiler agnostic library to aid in ML-Enabled Compiler Optimizations. ML-Compiler-Bridge supports both training and inference scenarios. Library exposes Python and C/C++ APIs to interface
 with the Python-based ML models and a C/C++ compiler. This design allows ML model development within a traditional Python framework while making end-to-end integration with an optimizing compiler possible and efficient.
 
-This repo contains the source code and relevant information described in our paper, ["The Next 700 ML-Enabled Compiler Optimizations"](https://arxiv.org/abs/2311.10800).
+This repo contains the source code and relevant information described in our paper, ["The Next 700 ML-Enabled Compiler Optimizations"](https://doi.org/10.1145/3640537.3641580) ([arxiv](https://arxiv.org/abs/2311.10800)).
 Please see [here](https://iith-compilers.github.io/ML-Compiler-Bridge/) for documentation and other details.
 
 > The Next 700 ML-Enabled Compiler Optimizations, S. VenkataKeerthy, Siddharth Jain, Umesh Kalvakuntla, Pranav Sai Gorantla, Rajiv Shailesh Chitale, Eugene Brevdo, Albert Cohen, Mircea Trofin and Ramakrishna Upadrasta. CC 2024.
