@@ -118,12 +118,12 @@ Requirements</h1>
 Setup</h1>
 <p><code>ML-Compiler-Bridge</code> can be built as a stand-alone library to generate <code>.a</code> files that can in turn be linked with any compiler.</p><ol type="1">
 <li><code>mkdir build &amp;&amp; cd build</code></li>
-<li><code>cmake [-DCMAKE_BUILD_TYPE=Release|Debug] [-DCMAKE_INSTALL_PREFIX=&lt;Install_path&gt;] -DONNXRUNTIME_ROOTDIR=&lt;Path to ONNX install dir&gt; -DPROTOS_DIRECTORY=&lt;Path to protobuf files&gt; -DTENSORFLOW_AOT_PATH=&lt;Path to TensorFlow pip install dir&gt; ../</code></li>
+<li><code>cmake [-DCMAKE_BUILD_TYPE=Release|Debug] [-DCMAKE_INSTALL_PREFIX=&lt;Install_path&gt;] [-DMLBRIDGE_ENABLE_TEST=ON|OFF] -DONNXRUNTIME_ROOTDIR=&lt;Path to ONNX install dir&gt; -DPROTOS_DIRECTORY=&lt;Path to protobuf files&gt; -DTENSORFLOW_AOT_PATH=&lt;Path to TensorFlow pip install dir&gt; ../</code></li>
 <li><code>make -j [&amp;&amp; make install]</code></li>
 </ol>
 <p>This process would generate <code>libMLCompilerBridge.a</code> and <code>libMLCompilerBridgeC.a</code> libraries under <code>build/lib</code> directory, required headers under <code>build/include</code> directory. <code>libMLCompilerBridgeC.a</code> exposes C APIs for using with C-based compilers like Pluto, where as <code>libMLCompilerBridge.a</code> exposes C++ APIs that can be used with any compiler written in C++.</p>
 <p>Python end points are available under <a href="./CompilerInterface/"><code>CompilerInterface</code></a>.</p>
-<p>To ensure the correctness, run <code>make verify-all</code></p>
+<p>To ensure the correctness, run <code>make verify-all</code>. This would need enabling tests in cmake (<code>-DMLBRIDGE_ENABLE_TEST=ON</code>) and <code>PROTOS_DIRECTORY</code> should point to <code>test/protos</code>.</p>
 <h2><a class="anchor" id="autotoc_md18"></a>
 Using ML-Compiler-Bridge with LLVM and MLIR</h2>
 <p><code>ML-Compiler-Bridge</code> can be integrated and built along with the LLVM project. This can be done by adding this repository as a new project and setting <code>LLVM_MLBRIDGE</code> option to <code>ON</code>.</p>
