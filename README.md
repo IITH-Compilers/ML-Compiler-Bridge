@@ -48,7 +48,7 @@ This process would generate `libMLCompilerBridge.a` and `libMLCompilerBridgeC.a`
 
 Python end points are available under [`CompilerInterface`](./CompilerInterface/).
 
-To ensure the correctness, run `make verify-all`
+To ensure the correctness, run `make verify-all`. This would need enabling tests in cmake (`-DMLBRIDGE_ENABLE_TEST=ON`) and `PROTOS_DIRECTORY` should point to `test/protos`.
 
 ### Using ML-Compiler-Bridge with LLVM and MLIR
 
