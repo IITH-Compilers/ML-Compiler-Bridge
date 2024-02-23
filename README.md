@@ -41,14 +41,14 @@ Please see [here](https://iith-compilers.github.io/ML-Compiler-Bridge/) for docu
 ## Setup
 `ML-Compiler-Bridge` can be built as a stand-alone library to generate `.a` files that can in turn be linked with any compiler.
 1. `mkdir build && cd build`
-2. `cmake [-DCMAKE_BUILD_TYPE=Release|Debug] [-DCMAKE_INSTALL_PREFIX=<Install_path>] -DONNXRUNTIME_ROOTDIR=<Path to ONNX install dir> -DPROTOS_DIRECTORY=<Path to protobuf files> -DTENSORFLOW_AOT_PATH=<Path to TensorFlow pip install dir> ../`
+2. `cmake [-DCMAKE_BUILD_TYPE=Release|Debug] [-DCMAKE_INSTALL_PREFIX=<Install_path>] [-DMLBRIDGE_ENABLE_TEST=ON|OFF] -DONNXRUNTIME_ROOTDIR=<Path to ONNX install dir> -DPROTOS_DIRECTORY=<Path to protobuf files> -DTENSORFLOW_AOT_PATH=<Path to TensorFlow pip install dir> ../`
 3. `make -j [&& make install]`
 
 This process would generate `libMLCompilerBridge.a` and `libMLCompilerBridgeC.a` libraries under `build/lib` directory, required headers under `build/include` directory. `libMLCompilerBridgeC.a` exposes C APIs for using with C-based compilers like Pluto, where as `libMLCompilerBridge.a` exposes C++ APIs that can be used with any compiler written in C++.
 
 Python end points are available under [`CompilerInterface`](./CompilerInterface/).
 
-To ensure the correctness, run `make verify-all`
+To ensure the correctness, run `make verify-all`. This would need enabling tests in cmake (`-DMLBRIDGE_ENABLE_TEST=ON`) and `PROTOS_DIRECTORY` should point to `test/protos`.
 
 ### Using ML-Compiler-Bridge with LLVM and MLIR
 
