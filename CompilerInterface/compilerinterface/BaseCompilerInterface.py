@@ -15,9 +15,7 @@
 
 
 from abc import ABC, abstractmethod
-from SerDes import SerDes
-import os
-import io
+from .SerDes import SerDes
 
 ## This base class specifies methods for communication with compiler.
 class BaseCompilerInterface(ABC):

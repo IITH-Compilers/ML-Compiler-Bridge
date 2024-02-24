@@ -19,12 +19,10 @@ import time
 BUILD_DIR = "../build_release"
 sys.path.extend(
     [
-        f"{BUILD_DIR}/MLModelRunner/CompilerInterface",
         f"{BUILD_DIR}/MLModelRunner/gRPCModelRunner/Python-Utilities",
     ]
 )
-from PipeCompilerInterface import PipeCompilerInterface
-from GrpcCompilerInterface import GrpcCompilerInterface
+from compilerinterface import PipeCompilerInterface, GrpcCompilerInterface
 
 FAIL = 1
 SUCCESS = 0
