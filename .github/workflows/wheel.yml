@@ -1,0 +1,27 @@
+name: Build wheels
+
+on: [push, workflow_dispatch, workflow_call]
+
+jobs:
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build wheels
+        run: |
+            cd $GITHUB_WORKSPACE/CompilerInterface
+            python fetch_version.py
+            cp ../README.md ./
+            pip wheel . -w ./dist
+            pip install dist/cinter*.whl
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: artifact
+          path: ./CompilerInterface/dist
