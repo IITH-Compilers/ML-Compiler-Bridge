@@ -17,9 +17,9 @@
 
 // #define EXCEPT_LONG(M) M(int) M(float) M(double) M(std::string) M(bool)
 namespace MLBridge {
-#define SET_FEATURE(TYPE)                                                      \
+#define SET_FEATURE(TYPE, _)                                                   \
   void TensorflowSerDes::setFeature(const std::string &Name,                   \
-                                    const TYPE &Value) {                       \
+                                    const TYPE Value) {                        \
     std::string prefix = "feed_";                                              \
     const int Index = CompiledModel->LookupArgIndex(prefix + Name);            \
     if (Index >= 0)                                                            \
