@@ -29,8 +29,8 @@ public:
     return S->getKind() == BaseSerDes::Kind::Json;
   }
 
-#define SET_FEATURE(TYPE)                                                      \
-  void setFeature(const std::string &name, const TYPE &value) override {       \
+#define SET_FEATURE(TYPE, _)                                                   \
+  void setFeature(const std::string &name, const TYPE value) override {        \
     J[name] = value;                                                           \
   }                                                                            \
   void setFeature(const std::string &name, const std::vector<TYPE> &value)     \

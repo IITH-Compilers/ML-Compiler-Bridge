@@ -92,9 +92,17 @@ public:
   /// The features are passed as a list of key-value pairs.
   /// The key is the name of the feature and the value is the value of the
   /// feature. The value can be a scalar or a vector.
-  template <typename T, typename... Types>
-  void populateFeatures(std::pair<std::string, T> &var1,
-                        std::pair<std::string, Types> &...var2) {
+
+  template <typename U, typename T, typename... Types>
+  void populateFeatures(const std::pair<U, T> &var1,
+                        const std::pair<U, Types> &...var2) {
+    SerDes->setFeature(var1.first, var1.second);
+    populateFeatures(var2...);
+  }
+
+  template <typename U, typename T, typename... Types>
+  void populateFeatures(const std::pair<U, T> &&var1,
+                        const std::pair<U, Types> &&...var2) {
     SerDes->setFeature(var1.first, var1.second);
     populateFeatures(var2...);
   }
