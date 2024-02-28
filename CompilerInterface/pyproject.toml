@@ -1,5 +1,5 @@
 [project]
-name = "cinter"
+name = "compilerinterface"
 version = "0.0.1"
 authors = [ {name = "The authors of \"The Next 700 ML-Enabled Compiler Optimizations\"" }]
 description = "Communication framework for ML-Enabled Compiler Optimizations."
