@@ -89,6 +89,7 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d4/deb/Debug_8h_source.html">MLModelRunner/Utils/Debug.h</a>&quot;</code><br />
 <code>#include &quot;google/protobuf/extension_set.h&quot;</code><br />
 <code>#include &quot;google/protobuf/message.h&quot;</code><br />
+<code>#include &quot;llvm/Support/raw_ostream.h&quot;</code><br />
 <code>#include &lt;cassert&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
@@ -98,21 +99,23 @@ Include dependency graph for baseSerDes.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d19/baseSerDes_8h__incl.png" border="0" usemap="#ainclude_2SerDes_2baseSerDes_8h" alt=""/></div>
 <map name="ainclude_2SerDes_2baseSerDes_8h" id="ainclude_2SerDes_2baseSerDes_8h">
-<area shape="rect" title="Supporting new SerDes:" alt="" coords="507,5,702,31"/>
+<area shape="rect" title="Supporting new SerDes:" alt="" coords="639,5,834,31"/>
 <area shape="rect" href="../../d4/deb/Debug_8h.html" title="This file defines the debug macros for the MLCompilerBridge." alt="" coords="5,79,153,120"/>
-<area shape="poly" title=" " alt="" coords="507,33,352,53,168,81,168,76,351,47,506,28"/>
+<area shape="poly" title=" " alt="" coords="639,29,427,48,168,81,168,76,426,43,638,24"/>
 <area shape="rect" title=" " alt="" coords="177,79,346,120"/>
-<area shape="poly" title=" " alt="" coords="552,34,362,78,361,73,551,29"/>
+<area shape="poly" title=" " alt="" coords="653,34,362,81,361,76,653,29"/>
 <area shape="rect" title=" " alt="" coords="370,87,548,112"/>
-<area shape="poly" title=" " alt="" coords="584,34,496,81,493,76,581,29"/>
-<area shape="rect" title=" " alt="" coords="572,87,637,112"/>
-<area shape="poly" title=" " alt="" coords="607,31,607,71,602,71,602,31"/>
-<area shape="rect" title=" " alt="" coords="661,87,708,112"/>
-<area shape="poly" title=" " alt="" coords="618,30,663,74,659,77,615,33"/>
-<area shape="rect" title=" " alt="" coords="731,87,784,112"/>
-<area shape="poly" title=" " alt="" coords="629,29,722,77,720,82,626,34"/>
-<area shape="rect" title=" " alt="" coords="809,87,866,112"/>
-<area shape="poly" title=" " alt="" coords="650,29,720,50,797,76,800,78,798,82,795,82,718,55,648,34"/>
+<area shape="poly" title=" " alt="" coords="694,34,517,84,516,79,693,29"/>
+<area shape="rect" title=" " alt="" coords="571,87,755,112"/>
+<area shape="poly" title=" " alt="" coords="727,33,686,77,683,73,723,30"/>
+<area shape="rect" title=" " alt="" coords="779,87,843,112"/>
+<area shape="poly" title=" " alt="" coords="750,30,791,73,787,77,746,33"/>
+<area shape="rect" title=" " alt="" coords="868,87,914,112"/>
+<area shape="poly" title=" " alt="" coords="762,29,856,76,853,81,760,34"/>
+<area shape="rect" title=" " alt="" coords="938,87,991,112"/>
+<area shape="poly" title=" " alt="" coords="782,29,851,50,927,77,929,77,927,82,925,81,849,55,781,34"/>
+<area shape="rect" title=" " alt="" coords="1016,87,1073,112"/>
+<area shape="poly" title=" " alt="" coords="810,29,903,48,1004,76,1007,78,1005,83,1002,82,902,54,809,34"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -179,9 +182,9 @@ Namespaces</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a4f7af4e09034ec491b9b13d2d0237bc0" id="r_a4f7af4e09034ec491b9b13d2d0237bc0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f7af4e09034ec491b9b13d2d0237bc0">SUPPORTED_TYPES</a>(M)</td></tr>
 <tr class="separator:a4f7af4e09034ec491b9b13d2d0237bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0c3185874c1450a2f28e0641b00411d" id="r_ad0c3185874c1450a2f28e0641b00411d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0c3185874c1450a2f28e0641b00411d">SET_FEATURE</a>(TYPE)</td></tr>
-<tr class="memdesc:ad0c3185874c1450a2f28e0641b00411d"><td class="mdescLeft">&#160;</td><td class="mdescRight">setFeature() is used to set the features of the data structure used for communication.  <br /></td></tr>
-<tr class="separator:ad0c3185874c1450a2f28e0641b00411d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f960678a61f114233bbd0f2c6b15dd0" id="r_a6f960678a61f114233bbd0f2c6b15dd0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f960678a61f114233bbd0f2c6b15dd0">SET_FEATURE</a>(TYPE,  _)</td></tr>
+<tr class="memdesc:a6f960678a61f114233bbd0f2c6b15dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">setFeature() is used to set the features of the data structure used for communication.  <br /></td></tr>
+<tr class="separator:a6f960678a61f114233bbd0f2c6b15dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Supporting new <a class="el" href="../../da/d52/namespaceSerDes.html">SerDes</a>: </p>
@@ -193,8 +196,8 @@ Macros</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ad0c3185874c1450a2f28e0641b00411d" name="ad0c3185874c1450a2f28e0641b00411d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0c3185874c1450a2f28e0641b00411d">&#9670;&#160;</a></span>SET_FEATURE</h2>
+<a id="a6f960678a61f114233bbd0f2c6b15dd0" name="a6f960678a61f114233bbd0f2c6b15dd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f960678a61f114233bbd0f2c6b15dd0">&#9670;&#160;</a></span>SET_FEATURE</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,12 +205,16 @@ Macros</h2></td></tr>
         <tr>
           <td class="memname">#define SET_FEATURE</td>
           <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">TYPE</span></td><td>)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">TYPE, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">_</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  <span class="keyword">virtual</span> <span class="keywordtype">void</span> setFeature(<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> TYPE &amp;) = 0;              \</div>
+<b>Value:</b><div class="fragment"><div class="line">  <span class="keyword">virtual</span> <span class="keywordtype">void</span> setFeature(<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> TYPE) = 0;                \</div>
 <div class="line">  <span class="keyword">virtual</span> <span class="keywordtype">void</span> setFeature(<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::vector&lt;TYPE&gt; &amp;){};</div>
 </div><!-- fragment -->
 <p>setFeature() is used to set the features of the data structure used for communication. </p>
@@ -231,12 +238,12 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  M(<span class="keywordtype">int</span>)                                                                       \</div>
-<div class="line">  M(<span class="keywordtype">long</span>)                                                                      \</div>
-<div class="line">  M(<span class="keywordtype">float</span>)                                                                     \</div>
-<div class="line">  M(<span class="keywordtype">double</span>)                                                                    \</div>
-<div class="line">  M(<span class="keywordtype">string</span>)                                                                    \</div>
-<div class="line">  M(<span class="keywordtype">bool</span>)</div>
+<b>Value:</b><div class="fragment"><div class="line">  M(<span class="keywordtype">int</span>, <span class="keywordtype">int</span>)                                                                  \</div>
+<div class="line">  M(<span class="keywordtype">long</span>, <span class="keywordtype">long</span>)                                                                \</div>
+<div class="line">  M(<span class="keywordtype">float</span>, <span class="keywordtype">float</span>)                                                              \</div>
+<div class="line">  M(<span class="keywordtype">double</span>, <span class="keywordtype">double</span>)                                                            \</div>
+<div class="line">  M(std::string, <span class="keywordtype">string</span>)                                                       \</div>
+<div class="line">  M(<span class="keywordtype">bool</span>, <span class="keywordtype">bool</span>)</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="../../d2/d15/baseSerDes_8h_source.html#l00032">32</a> of file <a class="el" href="../../d2/d15/baseSerDes_8h_source.html">baseSerDes.h</a>.</p>
 

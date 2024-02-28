@@ -99,22 +99,22 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="../../d4/deb/Debug_8h.html">MLModelRunner/Utils/Debug.h</a>&quot;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;google/protobuf/extension_set.h&quot;</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;google/protobuf/message.h&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">using namespace </span>std;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;llvm/Support/raw_ostream.h&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">// TYPE, NAME</span></div>
 <div class="foldopen" id="foldopen00032" data-start="" data-end="">
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../d2/d15/baseSerDes_8h.html#a4f7af4e09034ec491b9b13d2d0237bc0">   32</a></span><span class="preprocessor">#define SUPPORTED_TYPES(M)                                                     \</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">  M(int)                                                                       \</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">  M(long)                                                                      \</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">  M(float)                                                                     \</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">  M(double)                                                                    \</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">  M(string)                                                                    \</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">  M(bool)</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">  M(int, int)                                                                  \</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">  M(long, long)                                                                \</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">  M(float, float)                                                              \</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">  M(double, double)                                                            \</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">  M(std::string, string)                                                       \</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">  M(bool, bool)</span></div>
 </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d5/d9c/namespaceMLBridge.html">MLBridge</a> {</div>
@@ -125,11 +125,11 @@ $(function() { codefold.init(1); });
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="../../df/d69/classMLBridge_1_1BaseSerDes.html#a1063816679a0d8947c8005513b9883cd">   49</a></span>  <a class="code hl_enumeration" href="../../df/d69/classMLBridge_1_1BaseSerDes.html#a03e4188fd2b99530aad3eb3d69130c50">Kind</a> <a class="code hl_function" href="../../df/d69/classMLBridge_1_1BaseSerDes.html#a1063816679a0d8947c8005513b9883cd">getKind</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="../../df/d69/classMLBridge_1_1BaseSerDes.html#aab4388c28347cedc0a2b16666e653be0">Type</a>; }</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="foldopen" id="foldopen00054" data-start="" data-end="">
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="../../d2/d15/baseSerDes_8h.html#ad0c3185874c1450a2f28e0641b00411d">   54</a></span><span class="preprocessor">#define SET_FEATURE(TYPE)                                                      \</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">  virtual void setFeature(const std::string &amp;, const TYPE &amp;) = 0;              \</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="../../d2/d15/baseSerDes_8h.html#a6f960678a61f114233bbd0f2c6b15dd0">   54</a></span><span class="preprocessor">#define SET_FEATURE(TYPE, _)                                                   \</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">  virtual void setFeature(const std::string &amp;, const TYPE) = 0;                \</span></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">  virtual void setFeature(const std::string &amp;, const std::vector&lt;TYPE&gt; &amp;){};</span></div>
 </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <a class="code hl_define" href="../../d2/d15/baseSerDes_8h.html#a4f7af4e09034ec491b9b13d2d0237bc0">SUPPORTED_TYPES</a>(<a class="code hl_define" href="../../d2/d15/baseSerDes_8h.html#ad0c3185874c1450a2f28e0641b00411d">SET_FEATURE</a>)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <a class="code hl_define" href="../../d2/d15/baseSerDes_8h.html#a4f7af4e09034ec491b9b13d2d0237bc0">SUPPORTED_TYPES</a>(<a class="code hl_define" href="../../d2/d15/baseSerDes_8h.html#a6f960678a61f114233bbd0f2c6b15dd0">SET_FEATURE</a>)</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#undef SET_FEATURE</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
@@ -170,7 +170,7 @@ $(function() { codefold.init(1); });
 <div class="ttc" id="aDebug_8h_html"><div class="ttname"><a href="../../d4/deb/Debug_8h.html">Debug.h</a></div><div class="ttdoc">This file defines the debug macros for the MLCompilerBridge.</div></div>
 <div class="ttc" id="aDebug_8h_html_acead4fa3a5885707b2d1cd9dc3929821"><div class="ttname"><a href="../../d4/deb/Debug_8h.html#acead4fa3a5885707b2d1cd9dc3929821">MLBRIDGE_DEBUG</a></div><div class="ttdeci">#define MLBRIDGE_DEBUG(X)</div><div class="ttdef"><b>Definition</b> <a href="../../d4/deb/Debug_8h_source.html#l00025">Debug.h:25</a></div></div>
 <div class="ttc" id="abaseSerDes_8h_html_a4f7af4e09034ec491b9b13d2d0237bc0"><div class="ttname"><a href="../../d2/d15/baseSerDes_8h.html#a4f7af4e09034ec491b9b13d2d0237bc0">SUPPORTED_TYPES</a></div><div class="ttdeci">#define SUPPORTED_TYPES(M)</div><div class="ttdef"><b>Definition</b> <a href="#l00032">baseSerDes.h:32</a></div></div>
-<div class="ttc" id="abaseSerDes_8h_html_ad0c3185874c1450a2f28e0641b00411d"><div class="ttname"><a href="../../d2/d15/baseSerDes_8h.html#ad0c3185874c1450a2f28e0641b00411d">SET_FEATURE</a></div><div class="ttdeci">#define SET_FEATURE(TYPE)</div><div class="ttdoc">setFeature() is used to set the features of the data structure used for communication.</div><div class="ttdef"><b>Definition</b> <a href="#l00054">baseSerDes.h:54</a></div></div>
+<div class="ttc" id="abaseSerDes_8h_html_a6f960678a61f114233bbd0f2c6b15dd0"><div class="ttname"><a href="../../d2/d15/baseSerDes_8h.html#a6f960678a61f114233bbd0f2c6b15dd0">SET_FEATURE</a></div><div class="ttdeci">#define SET_FEATURE(TYPE, _)</div><div class="ttdoc">setFeature() is used to set the features of the data structure used for communication.</div><div class="ttdef"><b>Definition</b> <a href="#l00054">baseSerDes.h:54</a></div></div>
 <div class="ttc" id="aclassMLBridge_1_1BaseSerDes_html"><div class="ttname"><a href="../../df/d69/classMLBridge_1_1BaseSerDes.html">MLBridge::BaseSerDes</a></div><div class="ttdoc">This is the base class for SerDes.</div><div class="ttdef"><b>Definition</b> <a href="#l00046">baseSerDes.h:46</a></div></div>
 <div class="ttc" id="aclassMLBridge_1_1BaseSerDes_html_a0106bb86260ee62f5af59133aed7ad21"><div class="ttname"><a href="../../df/d69/classMLBridge_1_1BaseSerDes.html#a0106bb86260ee62f5af59133aed7ad21">MLBridge::BaseSerDes::BaseSerDes</a></div><div class="ttdeci">BaseSerDes(Kind Type)</div><div class="ttdef"><b>Definition</b> <a href="#l00078">baseSerDes.h:78</a></div></div>
 <div class="ttc" id="aclassMLBridge_1_1BaseSerDes_html_a02ccb12c405060505da7e731f645da2b"><div class="ttname"><a href="../../df/d69/classMLBridge_1_1BaseSerDes.html#a02ccb12c405060505da7e731f645da2b">MLBridge::BaseSerDes::getMessageLength</a></div><div class="ttdeci">size_t getMessageLength()</div><div class="ttdef"><b>Definition</b> <a href="#l00073">baseSerDes.h:73</a></div></div>

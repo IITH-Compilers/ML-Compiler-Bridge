@@ -177,22 +177,22 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a23b64cf25224cf9783ae09f604e5e7bd" id="r_a23b64cf25224cf9783ae09f604e5e7bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23b64cf25224cf9783ae09f604e5e7bd">TEMPORARY_STORAGE_INIT</a>(TYPE)</td></tr>
-<tr class="separator:a23b64cf25224cf9783ae09f604e5e7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0c3185874c1450a2f28e0641b00411d" id="r_ad0c3185874c1450a2f28e0641b00411d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0c3185874c1450a2f28e0641b00411d">SET_FEATURE</a>(TYPE)</td></tr>
-<tr class="separator:ad0c3185874c1450a2f28e0641b00411d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad172d70da89db2f9a077ccc09d7462ed" id="r_ad172d70da89db2f9a077ccc09d7462ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad172d70da89db2f9a077ccc09d7462ed">TEMPORARY_STORAGE_CLEAN</a>(TYPE)</td></tr>
-<tr class="separator:ad172d70da89db2f9a077ccc09d7462ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adae3c283d1345abd3727eda963d95df9" id="r_adae3c283d1345abd3727eda963d95df9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adae3c283d1345abd3727eda963d95df9">TEMPORARY_STORAGE_DEF</a>(TYPE)</td></tr>
-<tr class="separator:adae3c283d1345abd3727eda963d95df9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af72af22dc2326b7a0a8a29445122e0b6" id="r_af72af22dc2326b7a0a8a29445122e0b6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af72af22dc2326b7a0a8a29445122e0b6">TEMPORARY_STORAGE_INIT</a>(TYPE,  NAME)</td></tr>
+<tr class="separator:af72af22dc2326b7a0a8a29445122e0b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f960678a61f114233bbd0f2c6b15dd0" id="r_a6f960678a61f114233bbd0f2c6b15dd0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f960678a61f114233bbd0f2c6b15dd0">SET_FEATURE</a>(TYPE,  _)</td></tr>
+<tr class="separator:a6f960678a61f114233bbd0f2c6b15dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7054a13d19ac63a9ec233e407c8c7814" id="r_a7054a13d19ac63a9ec233e407c8c7814"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7054a13d19ac63a9ec233e407c8c7814">TEMPORARY_STORAGE_CLEAN</a>(TYPE,  NAME)</td></tr>
+<tr class="separator:a7054a13d19ac63a9ec233e407c8c7814"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa835caca3c9cfdd596ca3f9d35079bb8" id="r_aa835caca3c9cfdd596ca3f9d35079bb8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa835caca3c9cfdd596ca3f9d35079bb8">TEMPORARY_STORAGE_DEF</a>(TYPE,  NAME)</td></tr>
+<tr class="separator:aa835caca3c9cfdd596ca3f9d35079bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Bitstream Serialization/Deserialization which sends header information followed by the raw data. </p>
 
 <p class="definition">Definition in file <a class="el" href="../../d6/d32/bitstreamSerDes_8h_source.html">bitstreamSerDes.h</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ad0c3185874c1450a2f28e0641b00411d" name="ad0c3185874c1450a2f28e0641b00411d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0c3185874c1450a2f28e0641b00411d">&#9670;&#160;</a></span>SET_FEATURE</h2>
+<a id="a6f960678a61f114233bbd0f2c6b15dd0" name="a6f960678a61f114233bbd0f2c6b15dd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f960678a61f114233bbd0f2c6b15dd0">&#9670;&#160;</a></span>SET_FEATURE</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,20 +200,24 @@ Macros</h2></td></tr>
         <tr>
           <td class="memname">#define SET_FEATURE</td>
           <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">TYPE</span></td><td>)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">TYPE, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">_</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  <span class="keywordtype">void</span> setFeature(<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> TYPE &amp;) <span class="keyword">override</span>;                 \</div>
+<b>Value:</b><div class="fragment"><div class="line">  <span class="keywordtype">void</span> setFeature(<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> TYPE) <span class="keyword">override</span>;                   \</div>
 <div class="line">  <span class="keywordtype">void</span> setFeature(<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::vector&lt;TYPE&gt; &amp;) <span class="keyword">override</span>;</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="../../d6/d32/bitstreamSerDes_8h_source.html#l00042">42</a> of file <a class="el" href="../../d6/d32/bitstreamSerDes_8h_source.html">bitstreamSerDes.h</a>.</p>
 
 </div>
 </div>
-<a id="ad172d70da89db2f9a077ccc09d7462ed" name="ad172d70da89db2f9a077ccc09d7462ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad172d70da89db2f9a077ccc09d7462ed">&#9670;&#160;</a></span>TEMPORARY_STORAGE_CLEAN</h2>
+<a id="a7054a13d19ac63a9ec233e407c8c7814" name="a7054a13d19ac63a9ec233e407c8c7814"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7054a13d19ac63a9ec233e407c8c7814">&#9670;&#160;</a></span>TEMPORARY_STORAGE_CLEAN</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -221,26 +225,30 @@ Macros</h2></td></tr>
         <tr>
           <td class="memname">#define TEMPORARY_STORAGE_CLEAN</td>
           <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">TYPE</span></td><td>)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">TYPE, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">NAME</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;it : features##TYPE) {                                            \</div>
+<b>Value:</b><div class="fragment"><div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;it : features##NAME) {                                            \</div>
 <div class="line">    <span class="keyword">delete</span> it.second;                                                          \</div>
 <div class="line">  }                                                                            \</div>
-<div class="line">  features##TYPE.clear();                                                      \</div>
-<div class="line">  features##TYPE = {};                                                         \</div>
-<div class="line">  for (<span class="keyword">auto</span> &amp;it : featuresVector##TYPE) {                                      \</div>
+<div class="line">  features##NAME.clear();                                                      \</div>
+<div class="line">  features##NAME = {};                                                         \</div>
+<div class="line">  for (<span class="keyword">auto</span> &amp;it : featuresVector##NAME) {                                      \</div>
 <div class="line">    <span class="keyword">delete</span> it.second;                                                          \</div>
 <div class="line">  }                                                                            \</div>
-<div class="line">  featuresVector##TYPE.clear();                                                \</div>
-<div class="line">  featuresVector##TYPE = {};</div>
+<div class="line">  featuresVector##NAME.clear();                                                \</div>
+<div class="line">  featuresVector##NAME = {};</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="adae3c283d1345abd3727eda963d95df9" name="adae3c283d1345abd3727eda963d95df9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adae3c283d1345abd3727eda963d95df9">&#9670;&#160;</a></span>TEMPORARY_STORAGE_DEF</h2>
+<a id="aa835caca3c9cfdd596ca3f9d35079bb8" name="aa835caca3c9cfdd596ca3f9d35079bb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa835caca3c9cfdd596ca3f9d35079bb8">&#9670;&#160;</a></span>TEMPORARY_STORAGE_DEF</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -248,20 +256,24 @@ Macros</h2></td></tr>
         <tr>
           <td class="memname">#define TEMPORARY_STORAGE_DEF</td>
           <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">TYPE</span></td><td>)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">TYPE, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">NAME</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  std::map&lt;std::string, TYPE *&gt; features##TYPE;                                \</div>
-<div class="line">  std::map&lt;std::string, std::vector&lt;TYPE&gt; *&gt; featuresVector##TYPE;</div>
+<b>Value:</b><div class="fragment"><div class="line">  std::map&lt;std::string, TYPE *&gt; features##NAME;                                \</div>
+<div class="line">  std::map&lt;std::string, std::vector&lt;TYPE&gt; *&gt; featuresVector##NAME;</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="../../d6/d32/bitstreamSerDes_8h_source.html#l00076">76</a> of file <a class="el" href="../../d6/d32/bitstreamSerDes_8h_source.html">bitstreamSerDes.h</a>.</p>
 
 </div>
 </div>
-<a id="a23b64cf25224cf9783ae09f604e5e7bd" name="a23b64cf25224cf9783ae09f604e5e7bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23b64cf25224cf9783ae09f604e5e7bd">&#9670;&#160;</a></span>TEMPORARY_STORAGE_INIT</h2>
+<a id="af72af22dc2326b7a0a8a29445122e0b6" name="af72af22dc2326b7a0a8a29445122e0b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af72af22dc2326b7a0a8a29445122e0b6">&#9670;&#160;</a></span>TEMPORARY_STORAGE_INIT</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -269,13 +281,17 @@ Macros</h2></td></tr>
         <tr>
           <td class="memname">#define TEMPORARY_STORAGE_INIT</td>
           <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">TYPE</span></td><td>)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">TYPE, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname">NAME</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  features##TYPE = {};                                                         \</div>
-<div class="line">  featuresVector##TYPE = {};</div>
+<b>Value:</b><div class="fragment"><div class="line">  features##NAME = {};                                                         \</div>
+<div class="line">  featuresVector##NAME = {};</div>
 </div><!-- fragment -->
 </div>
 </div>
