@@ -44,4 +44,5 @@ jobs:
         uses: pypa/gh-action-pypi-publish@v1.8.5
         with:
           repository-url: https://upload.pypi.org/legacy/
+          packages-dir: ./CompilerInterface/dist
         # if: ${{ github.event.inputs.pypi_repo == 'pypi' }}
