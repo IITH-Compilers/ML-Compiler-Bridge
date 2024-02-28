@@ -38,7 +38,9 @@ endif()
 
 add_subdirectory(MLModelRunner)
 add_subdirectory(SerDes)
-add_subdirectory(test)
+if(MLBRIDGE_ENABLE_TEST)
+  add_subdirectory(test)
+endif()
 
 if(LLVM_MLBRIDGE)
   include(AddLLVM)
@@ -59,6 +61,10 @@ if(LLVM_MLBRIDGE)
   target_include_directories(LLVMMLBridge SYSTEM PUBLIC ${Protobuf_INCLUDE_DIRS} ${TENSORFLOW_AOT_PATH}/include)
   target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
   install(TARGETS LLVMMLBridge DESTINATION lib)
+  add_custom_command(TARGET LLVMMLBridge
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/CompilerInterface ${CMAKE_CURRENT_BINARY_DIR}/CompilerInterface
+  )
 
 else()
   llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)
@@ -78,12 +84,12 @@ else()
   set_property(TARGET MLCompilerBridgeC PROPERTY POSITION_INDEPENDENT_CODE 1)
   set_target_properties(MLCompilerBridgeC PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
   install(TARGETS MLCompilerBridgeC DESTINATION lib)
-
-  add_executable(MLCompilerBridgeTest $<TARGET_OBJECTS:MLBridgeCPPTest>)
-  target_link_libraries(MLCompilerBridgeTest PUBLIC MLCompilerBridge)
-  set_target_properties(MLCompilerBridgeTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-  install(TARGETS MLCompilerBridgeTest DESTINATION bin)
-
+  if(MLBRIDGE_ENABLE_TEST)
+    add_executable(MLCompilerBridgeTest $<TARGET_OBJECTS:MLBridgeCPPTest>)
+    target_link_libraries(MLCompilerBridgeTest PUBLIC MLCompilerBridge)
+    set_target_properties(MLCompilerBridgeTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+    install(TARGETS MLCompilerBridgeTest DESTINATION bin)
+  endif()
 endif(LLVM_MLBRIDGE)
 
 install(DIRECTORY include/ DESTINATION include)

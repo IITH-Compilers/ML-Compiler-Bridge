@@ -26,28 +26,28 @@
 #define DEBUG_TYPE "bitstream-serdes"
 
 namespace MLBridge {
-void BitstreamSerDes::setFeature(const std::string &name, const int &value) {
+void BitstreamSerDes::setFeature(const std::string &name, const int value) {
   auto *valuePtr = new int(value);
   featuresint[name] = valuePtr;
   tensorSpecs.push_back(TensorSpec::createSpec<int>(name, {1}));
   rawData.push_back(valuePtr);
 }
 
-void BitstreamSerDes::setFeature(const std::string &name, const long &value) {
+void BitstreamSerDes::setFeature(const std::string &name, const long value) {
   auto *valuePtr = new long(value);
   featureslong[name] = valuePtr;
   tensorSpecs.push_back(TensorSpec::createSpec<long>(name, {1}));
   rawData.push_back(valuePtr);
 }
 
-void BitstreamSerDes::setFeature(const std::string &name, const float &value) {
+void BitstreamSerDes::setFeature(const std::string &name, const float value) {
   auto *valuePtr = new float(value);
   featuresfloat[name] = valuePtr;
   tensorSpecs.push_back(TensorSpec::createSpec<float>(name, {1}));
   rawData.push_back(valuePtr);
 }
 
-void BitstreamSerDes::setFeature(const std::string &name, const double &value) {
+void BitstreamSerDes::setFeature(const std::string &name, const double value) {
   auto *valuePtr = new double(value);
   featuresdouble[name] = valuePtr;
   tensorSpecs.push_back(TensorSpec::createSpec<double>(name, {1}));
@@ -55,7 +55,7 @@ void BitstreamSerDes::setFeature(const std::string &name, const double &value) {
 }
 
 void BitstreamSerDes::setFeature(const std::string &name,
-                                 const std::string &value) {
+                                 const std::string value) {
   auto *valuePtr = new std::string(value);
   featuresstring[name] = valuePtr;
   long size = value.length();
@@ -63,7 +63,7 @@ void BitstreamSerDes::setFeature(const std::string &name,
   rawData.push_back((void *)valuePtr->c_str());
 }
 
-void BitstreamSerDes::setFeature(const std::string &name, const bool &value) {
+void BitstreamSerDes::setFeature(const std::string &name, const bool value) {
   auto *valuePtr = new bool(value);
   featuresbool[name] = valuePtr;
   tensorSpecs.push_back(TensorSpec::createSpec<uint8_t>(name, {1}));

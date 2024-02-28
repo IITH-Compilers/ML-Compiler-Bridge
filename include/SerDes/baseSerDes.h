@@ -21,21 +21,21 @@
 #include "MLModelRunner/Utils/Debug.h"
 #include "google/protobuf/extension_set.h"
 #include "google/protobuf/message.h"
+#include "llvm/Support/raw_ostream.h"
 
 #include <cassert>
 #include <map>
 #include <string>
 #include <vector>
 
-using namespace std;
-
+// TYPE, NAME
 #define SUPPORTED_TYPES(M)                                                     \
-  M(int)                                                                       \
-  M(long)                                                                      \
-  M(float)                                                                     \
-  M(double)                                                                    \
-  M(string)                                                                    \
-  M(bool)
+  M(int, int)                                                                  \
+  M(long, long)                                                                \
+  M(float, float)                                                              \
+  M(double, double)                                                            \
+  M(std::string, string)                                                       \
+  M(bool, bool)
 
 namespace MLBridge {
 /// This is the base class for SerDes. It defines the interface for the
@@ -51,8 +51,8 @@ public:
   /// setFeature() is used to set the features of the data structure used for
   /// communication. The features are set as key-value pairs. The key is a
   /// string and the value can be any of the supported types.
-#define SET_FEATURE(TYPE)                                                      \
-  virtual void setFeature(const std::string &, const TYPE &) = 0;              \
+#define SET_FEATURE(TYPE, _)                                                   \
+  virtual void setFeature(const std::string &, const TYPE) = 0;                \
   virtual void setFeature(const std::string &, const std::vector<TYPE> &){};
   SUPPORTED_TYPES(SET_FEATURE)
 #undef SET_FEATURE
