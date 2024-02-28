@@ -99,13 +99,16 @@ public:
   }
 
   void requestExit() override {
-    sigset_t wset;
-    sigemptyset(&wset);
-    sigaddset(&wset, SIGKILL);
-    sigaddset(&wset, SIGTERM);
-    sigaddset(&wset, SIGQUIT);
-    int sig;
-    if (sigwait(&wset, &sig) != -1) {
+    // sigset_t wset;
+    // sigemptyset(&wset);
+    // sigaddset(&wset, SIGKILL);
+    // sigaddset(&wset, SIGTERM);
+    // sigaddset(&wset, SIGQUIT);
+    // sigaddset(&wset, SIGUSR1);
+    // int p = sigwait(&wset, &sig);
+    std::string input;
+    std::cin >> input;
+    if (input == "Terminate") {
       this->exit_requested->set_value();
     } else {
       std::cout << "Problem while closing server\n";
@@ -239,6 +242,7 @@ private:
     f.wait();
     server->Shutdown();
     serving_thread.join();
+    std::cout << "Server Shutdowns Successfully" << std::endl;
     // lock_server.unlock();
     return 0;
   }
