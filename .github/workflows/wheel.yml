@@ -19,7 +19,7 @@ jobs:
             python fetch_version.py
             cp ../README.md ./
             pip wheel . -w ./dist
-            pip install dist/cinter*.whl
+            pip install dist/compilerinterface*.whl
 
       - uses: actions/upload-artifact@v3
         with:
