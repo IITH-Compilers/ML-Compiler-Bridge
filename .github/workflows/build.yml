@@ -45,6 +45,7 @@ jobs:
       run: |
         conda init
         conda activate mlbridge
+        pip install compilerinterface
         cd $GITHUB_WORKSPACE/test
         bash mlbridge-test.sh
     - uses: actions/upload-artifact@v2

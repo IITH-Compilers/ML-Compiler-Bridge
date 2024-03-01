@@ -4,9 +4,6 @@ on:
   release:
     types:
       - published
-  push:
-    branches:
-      - pip-package  # or
   workflow_dispatch:
     inputs:
       pypi_repo:

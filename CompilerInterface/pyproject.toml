@@ -17,6 +17,8 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
     "Topic :: Software Development :: Compilers",
+    "Development Status :: 4 - Beta",
+    "Operating System :: POSIX :: Linux",
 ]
 
 [build-system]
