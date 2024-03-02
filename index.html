@@ -80,7 +80,7 @@ $(function() {
 <blockquote class="doxtable">
 <p>&zwj;The Next 700 ML-Enabled Compiler Optimizations, S. VenkataKeerthy, Siddharth Jain, Umesh Kalvakuntla, Pranav Sai Gorantla, Rajiv Shailesh Chitale, Eugene Brevdo, Albert Cohen, Mircea Trofin and Ramakrishna Upadrasta. CC 2024. </p>
 </blockquote>
-<p><a href="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/build.yml"><img src="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/build.yml/badge.svg" alt="Build and Tests" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/main.yml"><img src="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/main.yml/badge.svg" alt="Doxygen Action" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/formatting.yml"><img src="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/formatting.yml/badge.svg" alt="pre-commit checks" style="pointer-events: none;" class="inline"/></a></p>
+<p><a href="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/build.yml"><img src="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/build.yml/badge.svg" alt="Build and Tests" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/main.yml"><img src="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/main.yml/badge.svg" alt="Doxygen Action" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/formatting.yml"><img src="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/formatting.yml/badge.svg" alt="pre-commit checks" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/upload_pypi.yml"><img src="https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/upload_pypi.yml/badge.svg" alt="Upload to Pypi" style="pointer-events: none;" class="inline"/></a></p>
 <p><img src="https://github.com/IITH-Compilers/ML-Compiler-Bridge/raw/main/images/component-ml-compiler-bridge.png" alt="Image" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md15"></a>
 Features</h1>
@@ -120,9 +120,10 @@ Setup</h1>
 <li><code>mkdir build &amp;&amp; cd build</code></li>
 <li><code>cmake [-DCMAKE_BUILD_TYPE=Release|Debug] [-DCMAKE_INSTALL_PREFIX=&lt;Install_path&gt;] [-DMLBRIDGE_ENABLE_TEST=ON|OFF] -DONNXRUNTIME_ROOTDIR=&lt;Path to ONNX install dir&gt; -DPROTOS_DIRECTORY=&lt;Path to protobuf files&gt; -DTENSORFLOW_AOT_PATH=&lt;Path to TensorFlow pip install dir&gt; ../</code></li>
 <li><code>make -j [&amp;&amp; make install]</code></li>
+<li><code>pip install compilerinterface</code></li>
 </ol>
 <p>This process would generate <code>libMLCompilerBridge.a</code> and <code>libMLCompilerBridgeC.a</code> libraries under <code>build/lib</code> directory, required headers under <code>build/include</code> directory. <code>libMLCompilerBridgeC.a</code> exposes C APIs for using with C-based compilers like Pluto, where as <code>libMLCompilerBridge.a</code> exposes C++ APIs that can be used with any compiler written in C++.</p>
-<p>Python end points are available under <a href="./CompilerInterface/"><code>CompilerInterface</code></a>.</p>
+<p>Python end points are available under <a href="./CompilerInterface/"><code>CompilerInterface</code></a>. They can be downloaded as a <a href="https://pypi.org/project/compilerinterface/"><code>package</code></a> from pypi.</p>
 <p>To ensure the correctness, run <code>make verify-all</code>. This would need enabling tests in cmake (<code>-DMLBRIDGE_ENABLE_TEST=ON</code>) and <code>PROTOS_DIRECTORY</code> should point to <code>test/protos</code>.</p>
 <h2><a class="anchor" id="autotoc_md18"></a>
 Using ML-Compiler-Bridge with LLVM and MLIR</h2>

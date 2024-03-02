@@ -1,7 +1,7 @@
 var searchData=
 [
   ['action_0',['Action',['../d0/d16/C_2ONNXModelRunner_8h.html#aa80c0747f7b1243c91b0b96069dc4900',1,'Action:&#160;ONNXModelRunner.h'],['../de/d26/environment_8h.html#aa80c0747f7b1243c91b0b96069dc4900',1,'Action:&#160;environment.h']]],
-  ['add_5fserver_5fmethod_1',['add_server_method',['../dd/daf/classGrpcCompilerInterface_1_1GrpcCompilerInterface.html#a2fd95c69d1caeabacf07bb645060119f',1,'GrpcCompilerInterface::GrpcCompilerInterface']]],
+  ['add_5fserver_5fmethod_1',['add_server_method',['../dd/d00/classcompilerinterface_1_1GrpcCompilerInterface_1_1GrpcCompilerInterface.html#a18bebf11f6a0b03ad0898ea5d4fc5d0d',1,'compilerinterface::GrpcCompilerInterface::GrpcCompilerInterface']]],
   ['addagent_2',['addAgent',['../d5/dd7/classMLBridge_1_1ONNXModelRunner.html#aaacac78fb4576d0f14e1f2d48c612b7c',1,'MLBridge::ONNXModelRunner']]],
   ['agent_3',['Agent',['../db/d06/classMLBridge_1_1Agent.html',1,'MLBridge::Agent'],['../db/d06/classMLBridge_1_1Agent.html#ac9b024826252c5d5a303acd895a2786e',1,'MLBridge::Agent::Agent()']]],
   ['agent_4',['agent',['../da/d2e/structONNXModelRunner.html#a24e1a29e6b150927428e88e4835ddc3d',1,'ONNXModelRunner']]],

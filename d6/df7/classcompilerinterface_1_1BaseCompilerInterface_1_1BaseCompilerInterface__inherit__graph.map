@@ -1,0 +1,9 @@
+<map id="compilerinterface.BaseCompilerInterface.BaseCompilerInterface" name="compilerinterface.BaseCompilerInterface.BaseCompilerInterface">
+<area shape="rect" id="Node000001" title="This base class specifies methods for communication with compiler." alt="" coords="102,39,309,79"/>
+<area shape="rect" id="Node000003" href="$dd/d00/classcompilerinterface_1_1GrpcCompilerInterface_1_1GrpcCompilerInterface.html" title="This class implements methods for communication with compiler using gRPC." alt="" coords="357,5,562,46"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="324,41,356,37,357,42,325,46"/>
+<area shape="rect" id="Node000004" href="$d1/dee/classcompilerinterface_1_1PipeCompilerInterface_1_1PipeCompilerInterface.html" title="This class implements methods for communication with compiler using pipes." alt="" coords="358,71,561,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="325,71,358,76,357,81,324,77"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,46,54,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,56,101,56,101,62,69,62"/>
+</map>

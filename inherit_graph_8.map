@@ -1,3 +1,11 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$da/db0/classMLBridge_1_1NoopSavedModelImpl.html" title="A mock class satisfying the interface expected by ReleaseModeModelRunner for its TGen parameter." alt="" coords="5,5,217,31"/>
+<area shape="rect" id="Node000000" href="$dc/d4e/classMLBridge_1_1MLModelRunner.html" title="MLModelRunner &#45; The main interface for interacting with the ML models." alt="" coords="5,84,184,110"/>
+<area shape="rect" id="Node000001" href="$d5/dd7/classMLBridge_1_1ONNXModelRunner.html" title="ONNXModelRunner is the main user facing class that interfaces with the Environment and Agent classes ..." alt="" coords="232,5,430,31"/>
+<area shape="poly" id="edge8_Node000000_Node000001" title=" " alt="" coords="138,75,231,40,268,29,270,34,233,45,140,80"/>
+<area shape="rect" id="Node000002" href="$d9/d4c/classMLBridge_1_1PipeModelRunner.html" title="A MLModelRunner that asks for advice from an external agent, or host." alt="" coords="238,55,424,80"/>
+<area shape="poly" id="edge9_Node000000_Node000002" title=" " alt="" coords="199,81,237,76,238,82,199,87"/>
+<area shape="rect" id="Node000003" href="$da/dc0/classMLBridge_1_1TFModelRunner.html" title="TFModelRunner &#45; TF Compiled model implementation of the MLModelRunner." alt="" coords="243,105,419,145"/>
+<area shape="poly" id="edge10_Node000000_Node000003" title=" " alt="" coords="199,107,243,112,242,117,199,112"/>
+<area shape="rect" id="Node000004" href="$d4/d4a/classMLBridge_1_1gRPCModelRunner.html" title="This class is used to create the grpc model runner object." alt="" coords="234,169,428,225"/>
+<area shape="poly" id="edge11_Node000000_Node000004" title=" " alt="" coords="140,114,233,154,260,166,258,171,231,159,138,119"/>
 </map>
