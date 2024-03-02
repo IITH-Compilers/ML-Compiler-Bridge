@@ -25,37 +25,37 @@
 
 namespace MLBridge {
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                       const int &value) {
+                                       const int value) {
   Request->GetReflection()->SetInt32(
       Request, Request->GetDescriptor()->FindFieldByName(name), value);
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                       const long &value) {
+                                       const long value) {
   Request->GetReflection()->SetInt64(
       Request, Request->GetDescriptor()->FindFieldByName(name), value);
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                       const float &value) {
+                                       const float value) {
   Request->GetReflection()->SetFloat(
       Request, Request->GetDescriptor()->FindFieldByName(name), value);
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                       const double &value) {
+                                       const double value) {
   Request->GetReflection()->SetDouble(
       Request, Request->GetDescriptor()->FindFieldByName(name), value);
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                       const std::string &value) {
+                                       const std::string value) {
   Request->GetReflection()->SetString(
       Request, Request->GetDescriptor()->FindFieldByName(name), value);
 }
 
 inline void ProtobufSerDes::setFeature(const std::string &name,
-                                       const bool &value) {
+                                       const bool value) {
   Request->GetReflection()->SetBool(
       Request, Request->GetDescriptor()->FindFieldByName(name), value);
 }

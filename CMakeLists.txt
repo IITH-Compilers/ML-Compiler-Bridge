@@ -61,6 +61,10 @@ if(LLVM_MLBRIDGE)
   target_include_directories(LLVMMLBridge SYSTEM PUBLIC ${Protobuf_INCLUDE_DIRS} ${TENSORFLOW_AOT_PATH}/include)
   target_include_directories(LLVMMLBridge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
   install(TARGETS LLVMMLBridge DESTINATION lib)
+  add_custom_command(TARGET LLVMMLBridge
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/CompilerInterface ${CMAKE_CURRENT_BINARY_DIR}/CompilerInterface
+  )
 
 else()
   llvm_map_components_to_libnames(llvm_libs support core irreader analysis TransformUtils)

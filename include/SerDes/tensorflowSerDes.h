@@ -27,8 +27,8 @@ public:
     return S->getKind() == BaseSerDes::Kind::Tensorflow;
   }
 
-#define SET_FEATURE(TYPE)                                                      \
-  void setFeature(const std::string &, const TYPE &) override;                 \
+#define SET_FEATURE(TYPE, _)                                                   \
+  void setFeature(const std::string &, const TYPE) override;                   \
   void setFeature(const std::string &, const std::vector<TYPE> &) override;
   SUPPORTED_TYPES(SET_FEATURE)
 #undef SET_FEATURE

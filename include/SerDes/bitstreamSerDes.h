@@ -33,14 +33,14 @@ public:
     tensorSpecs = std::vector<TensorSpec>();
     rawData = std::vector<const void *>();
 
-#define TEMPORARY_STORAGE_INIT(TYPE)                                           \
-  features##TYPE = {};                                                         \
-  featuresVector##TYPE = {};
+#define TEMPORARY_STORAGE_INIT(TYPE, NAME)                                     \
+  features##NAME = {};                                                         \
+  featuresVector##NAME = {};
     SUPPORTED_TYPES(TEMPORARY_STORAGE_INIT)
 #undef TEMPORARY_STORAGE_INIT
   };
-#define SET_FEATURE(TYPE)                                                      \
-  void setFeature(const std::string &, const TYPE &) override;                 \
+#define SET_FEATURE(TYPE, _)                                                   \
+  void setFeature(const std::string &, const TYPE) override;                   \
   void setFeature(const std::string &, const std::vector<TYPE> &) override;
   SUPPORTED_TYPES(SET_FEATURE)
 #undef SET_FEATURE
@@ -52,17 +52,17 @@ public:
     tensorSpecs = std::vector<TensorSpec>();
     rawData = std::vector<const void *>();
 
-#define TEMPORARY_STORAGE_CLEAN(TYPE)                                          \
-  for (auto &it : features##TYPE) {                                            \
+#define TEMPORARY_STORAGE_CLEAN(TYPE, NAME)                                    \
+  for (auto &it : features##NAME) {                                            \
     delete it.second;                                                          \
   }                                                                            \
-  features##TYPE.clear();                                                      \
-  features##TYPE = {};                                                         \
-  for (auto &it : featuresVector##TYPE) {                                      \
+  features##NAME.clear();                                                      \
+  features##NAME = {};                                                         \
+  for (auto &it : featuresVector##NAME) {                                      \
     delete it.second;                                                          \
   }                                                                            \
-  featuresVector##TYPE.clear();                                                \
-  featuresVector##TYPE = {};
+  featuresVector##NAME.clear();                                                \
+  featuresVector##NAME = {};
     SUPPORTED_TYPES(TEMPORARY_STORAGE_CLEAN)
 #undef TEMPORARY_STORAGE_CLEAN
   }
@@ -73,9 +73,9 @@ private:
   std::vector<const void *> rawData;
   std::string Buffer;
 
-#define TEMPORARY_STORAGE_DEF(TYPE)                                            \
-  std::map<std::string, TYPE *> features##TYPE;                                \
-  std::map<std::string, std::vector<TYPE> *> featuresVector##TYPE;
+#define TEMPORARY_STORAGE_DEF(TYPE, NAME)                                      \
+  std::map<std::string, TYPE *> features##NAME;                                \
+  std::map<std::string, std::vector<TYPE> *> featuresVector##NAME;
   SUPPORTED_TYPES(TEMPORARY_STORAGE_DEF)
 #undef TEMPORARY_STORAGE_DEF
 };
