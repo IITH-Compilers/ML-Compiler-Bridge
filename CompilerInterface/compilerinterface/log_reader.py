@@ -15,12 +15,10 @@ import ctypes
 import dataclasses
 import io
 import json
-import math
 import sys
 from typing import List, Optional
 from functools import reduce
 import operator
-import numpy
 
 _element_types = {
     "float": ctypes.c_float,

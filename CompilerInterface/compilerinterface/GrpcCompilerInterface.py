@@ -13,13 +13,9 @@
 # ------------------------------------------------------------------------------
 
 
-from abc import ABC, abstractmethod
-from BaseCompilerInterface import BaseCompilerInterface
-import os
-import io
+from .BaseCompilerInterface import BaseCompilerInterface
 import time
 
-import sys
 import grpc
 from concurrent import futures
 
@@ -91,7 +87,7 @@ class GrpcCompilerInterface(BaseCompilerInterface):
                     "{}:{}".format(self.host, self.server_port)
                 )
 
-                if added_port == self.server_port:
+                if str(added_port) == str(self.server_port):
                     server.start()
                     print("Server Running")
                     server.wait_for_termination()

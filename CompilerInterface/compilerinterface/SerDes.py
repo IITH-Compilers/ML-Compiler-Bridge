@@ -11,9 +11,8 @@
 ##
 # ------------------------------------------------------------------------------
 
-import os, io
 import json
-import log_reader
+from . import log_reader
 import ctypes
 import struct
 

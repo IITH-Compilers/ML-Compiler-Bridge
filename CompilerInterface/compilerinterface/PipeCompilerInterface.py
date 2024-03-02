@@ -12,8 +12,7 @@
 ##
 # ------------------------------------------------------------------------------
 
-from abc import ABC, abstractmethod
-from BaseCompilerInterface import BaseCompilerInterface
+from .BaseCompilerInterface import BaseCompilerInterface
 import os
 import io
 
