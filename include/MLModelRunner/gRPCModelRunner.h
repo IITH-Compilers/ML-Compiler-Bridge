@@ -242,7 +242,7 @@ private:
     f.wait();
     server->Shutdown();
     serving_thread.join();
-    std::cout << "Server Shutdowns Successfully" << std::endl;
+    std::cout << "Server Shutdown Successfully" << std::endl;
     // lock_server.unlock();
     return 0;
   }
