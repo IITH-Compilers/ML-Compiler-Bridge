@@ -1,0 +1,29 @@
+[project]
+name = "compilerinterface"
+version = "0.0.1"
+authors = [ {name = "The authors of \"The Next 700 ML-Enabled Compiler Optimizations\"" }]
+description = "Communication framework for ML-Enabled Compiler Optimizations."
+license = { text= "Apache License v2.0 with LLVM Exceptions"}
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Compilers",
+    "Development Status :: 4 - Beta",
+    "Operating System :: POSIX :: Linux",
+]
+
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"

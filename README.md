@@ -11,6 +11,7 @@ Please see [here](https://iith-compilers.github.io/ML-Compiler-Bridge/) for docu
 [![Build and Tests](https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/build.yml/badge.svg)](https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/build.yml)
 [![Doxygen Action](https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/main.yml/badge.svg)](https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/main.yml)
 [![pre-commit checks](https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/formatting.yml/badge.svg)](https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/formatting.yml)
+[![Upload to Pypi](https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/upload_pypi.yml/badge.svg)](https://github.com/IITH-Compilers/MLCompilerBridge/actions/workflows/upload_pypi.yml)
 
 
 ![Image](https://github.com/IITH-Compilers/ML-Compiler-Bridge/raw/main/images/component-ml-compiler-bridge.png)
@@ -43,10 +44,11 @@ Please see [here](https://iith-compilers.github.io/ML-Compiler-Bridge/) for docu
 1. `mkdir build && cd build`
 2. `cmake [-DCMAKE_BUILD_TYPE=Release|Debug] [-DCMAKE_INSTALL_PREFIX=<Install_path>] [-DMLBRIDGE_ENABLE_TEST=ON|OFF] -DONNXRUNTIME_ROOTDIR=<Path to ONNX install dir> -DPROTOS_DIRECTORY=<Path to protobuf files> -DTENSORFLOW_AOT_PATH=<Path to TensorFlow pip install dir> ../`
 3. `make -j [&& make install]`
+4. `pip install compilerinterface`
 
 This process would generate `libMLCompilerBridge.a` and `libMLCompilerBridgeC.a` libraries under `build/lib` directory, required headers under `build/include` directory. `libMLCompilerBridgeC.a` exposes C APIs for using with C-based compilers like Pluto, where as `libMLCompilerBridge.a` exposes C++ APIs that can be used with any compiler written in C++.
 
-Python end points are available under [`CompilerInterface`](./CompilerInterface/).
+Python end points are available under [`CompilerInterface`](./CompilerInterface/). They can be downloaded as a [`package`](https://pypi.org/project/compilerinterface/) from pypi.
 
 To ensure the correctness, run `make verify-all`. This would need enabling tests in cmake (`-DMLBRIDGE_ENABLE_TEST=ON`) and `PROTOS_DIRECTORY` should point to `test/protos`.
 
