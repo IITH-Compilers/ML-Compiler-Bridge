@@ -99,13 +99,9 @@ public:
   }
 
   void requestExit() override {
-    sigset_t wset;
-    sigemptyset(&wset);
-    sigaddset(&wset, SIGKILL);
-    sigaddset(&wset, SIGTERM);
-    sigaddset(&wset, SIGQUIT);
-    int sig;
-    if (sigwait(&wset, &sig) != -1) {
+    std::string input;
+    std::cin >> input;
+    if (input == "Terminate") {
       this->exit_requested->set_value();
     } else {
       std::cout << "Problem while closing server\n";
@@ -219,14 +215,12 @@ private:
   Request *request;
   Response *response;
   bool server_mode;
-  // std::mutex lock_server;
 
   /// This method is used to create the server and start listening. Used in
   /// server mode.
   int RunService(grpc::Service *s) {
     exit_requested = new std::promise<void>();
     grpc::ServerBuilder builder;
-    // lock_server.lock();
     // if (!this->isPortAvailable(server_address)) return -1;
     builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
     builder.RegisterService(s);
@@ -239,7 +233,7 @@ private:
     f.wait();
     server->Shutdown();
     serving_thread.join();
-    // lock_server.unlock();
+    std::cout << "Server Shutdowns Successfully" << std::endl;
     return 0;
   }
 
