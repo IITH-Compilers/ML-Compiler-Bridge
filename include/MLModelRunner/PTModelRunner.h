@@ -21,7 +21,7 @@ namespace MLBridge
   {
   public:
     // New constructor that takes the model path as an input
-    PTModelRunner(const std::string &modelPath, llvm::LLVMContext &Ctx);
+    PTModelRunner(const char* modelPath, llvm::LLVMContext &Ctx);
     // {
     //   this->SerDes = new PytorchSerDes();
 
@@ -41,14 +41,14 @@ namespace MLBridge
       return R->getKind() == MLModelRunner::Kind::PTAOT;
     }
 
-    template <typename U, typename T, typename... Types>
-    void populateFeatures(const std::pair<U, T> &var1,
-                          const std::pair<U, Types> &...var2);
+    // template <typename U, typename T, typename... Types>
+    // void populateFeatures(const std::pair<U, T> &var1,
+    //                       const std::pair<U, Types> &...var2);
 
-    void populateFeatures() {}
+    // void populateFeatures() {}
 
     void *evaluateUntyped() override;
-    PytorchSerDes *SerDes;
+    // PytorchSerDes *SerDes;
     // Compiled model container added to the PTModelRunner
   private:
     void *CompiledModel; 

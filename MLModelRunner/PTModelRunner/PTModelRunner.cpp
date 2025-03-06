@@ -16,27 +16,30 @@
 
 #include <memory>
 #include <vector>
+#include <string>
+
 
 using TensorVec = std::vector<torch::Tensor>;
 
 namespace MLBridge
 {
 
-    PTModelRunner::PTModelRunner(const std::string &modelPath, llvm::LLVMContext &Ctx)
+    PTModelRunner::PTModelRunner(const char* modelPath, llvm::LLVMContext &Ctx)
         : MLModelRunner(MLModelRunner::Kind::PTAOT, BaseSerDes::Kind::Pytorch, &Ctx)
     {
-        this->SerDes = new PytorchSerDes();
-
+        // this->SerDes = new PytorchSerDes();
+	      llvm::errs() << "ModelPathName: " << std::string(modelPath) << "[END]\n";
         c10::InferenceMode mode;
-        this->CompiledModel = new torch::inductor::AOTIModelContainerRunnerCpu(modelPath);
+        this->CompiledModel = new torch::inductor::AOTIModelContainerRunnerCpu(std::string(modelPath));
     }
 
 
 
   void *PTModelRunner::evaluateUntyped()
   {
+    SerDes->getRequest();
 
-    if ((*static_cast<TensorVec*>(this->SerDes->getRequest())).empty())
+    if (reinterpret_cast<TensorVec*>(this->SerDes->getRequest())->empty())
     {
       llvm::errs() << "Input vector is empty.\n";
       return nullptr;
@@ -44,9 +47,14 @@ namespace MLBridge
 
     try
     {
-      
-      std::vector<torch::Tensor> *outputTensors = static_cast<std::vector<torch::Tensor>*>(this->SerDes->getResponse());
+      TensorVec* outputTensors = static_cast<TensorVec*>(this->SerDes->getResponse());
+      // 2 torch::Tensor of size 1
+      torch::Tensor state_ins = torch::ones(1);
+      torch::Tensor seq_lens = torch::ones(1);
+      static_cast<TensorVec*>(this->SerDes->getRequest())->push_back(state_ins);
+      static_cast<TensorVec*>(this->SerDes->getRequest())->push_back(seq_lens);
       auto outputs = static_cast<torch::inductor::AOTIModelContainerRunnerCpu*>(this->CompiledModel)->run((*static_cast<TensorVec*>(this->SerDes->getRequest())));
+
       for (auto i = outputs.begin(); i != outputs.end(); ++i)
         (*(outputTensors)).push_back(*i);
       void *rawData = this->SerDes->deserializeUntyped(outputTensors);
@@ -59,12 +67,15 @@ namespace MLBridge
     }
   }
 
-  template <typename U, typename T, typename... Types>
-  void PTModelRunner::populateFeatures(const std::pair<U, T> &var1,
-                                       const std::pair<U, Types> &...var2)
-  {
-    SerDes->setFeature(var1.first, var1.second);
-    PTModelRunner::populateFeatures(var2...);
-  }
+  // template <typename U, typename T, typename... Types>
+  // void PTModelRunner::populateFeatures(const std::pair<U, T> &var1,
+  //                                      const std::pair<U, Types> &...var2)
+  // {
+  //   llvm::errs() << "Inside populate of ptmodelrunner\n";
+  //   SerDes->setFeature(var1.first, var1.second);
+  //   PTModelRunner::populateFeatures(var2...);
+  //   llvm::errs() << reinterpret_cast<TensorVec*>(this->SerDes->getRequest())->size() << "[In Runner after pop, len of req]\n";
+
+  // }
 
 } // namespace MLBridge

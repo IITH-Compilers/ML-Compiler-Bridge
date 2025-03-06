@@ -24,54 +24,57 @@ PytorchSerDes::PytorchSerDes() : BaseSerDes(BaseSerDes::Kind::Pytorch)  {
 
 void PytorchSerDes::setFeature(const std::string &Name, const int Value) {
     auto tensor = torch::tensor({Value}, torch::kInt32);
-    static_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
+    reinterpret_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
 }
 
 void PytorchSerDes::setFeature(const std::string &Name, const long Value) {
     auto tensor = torch::tensor({Value}, torch::kInt64);
-    static_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
+    reinterpret_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
 }
 
 void PytorchSerDes::setFeature(const std::string &Name, const float Value) {
     auto tensor = torch::tensor({Value}, torch::kFloat32);
-    static_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
+    reinterpret_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
 }
 
 void PytorchSerDes::setFeature(const std::string &Name, const double Value) {
     auto tensor = torch::tensor({Value}, torch::kFloat64);
-    static_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
+    reinterpret_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
 }
 
 void PytorchSerDes::setFeature(const std::string &Name, const std::string Value) {
     std::vector<int8_t> encoded_str(Value.begin(), Value.end());
     auto tensor = torch::tensor(encoded_str, torch::kInt8);
-    static_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
+    reinterpret_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
 }
 
 void PytorchSerDes::setFeature(const std::string &Name, const bool Value) {
     auto tensor = torch::tensor({Value}, torch::kBool);
-    static_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
+    reinterpret_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
 }
 
 void PytorchSerDes::setFeature(const std::string &Name, const std::vector<int> &Value) {
     auto tensor = torch::tensor(Value, torch::kInt32);
-    static_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
+    reinterpret_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
 }
 
 void PytorchSerDes::setFeature(const std::string &Name, const std::vector<long> &Value) {
     auto tensor = torch::tensor(Value, torch::kInt64);
-    static_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
+    reinterpret_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
 }
 
 void PytorchSerDes::setFeature(const std::string &Name, const std::vector<float> &Value) {
     auto tensor = torch::tensor(Value, torch::kFloat32);
+    llvm::errs() << Value.size() << "[Vec Size]\n";
     tensor = tensor.reshape({1, Value.size()});
-    static_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
+    llvm::errs() << tensor.sizes()[1] << "[Tensor Size]\n";
+    reinterpret_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
+    llvm::errs() << reinterpret_cast<TensorVec*>(this->RequestVoid)->size() << "[In serdes, len of req, (TensorVec)]\n";
 }
 
 void PytorchSerDes::setFeature(const std::string &Name, const std::vector<double> &Value) {
     auto tensor = torch::tensor(Value, torch::kFloat64);
-    static_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
+    reinterpret_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
 }
 
 void PytorchSerDes::setFeature(const std::string &Name, const std::vector<std::string> &Value) {
@@ -81,21 +84,21 @@ void PytorchSerDes::setFeature(const std::string &Name, const std::vector<std::s
         flat_vec.push_back('\0'); // Null-terminate each string
     }
     auto tensor = torch::tensor(flat_vec, torch::kInt8);
-    static_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
+    reinterpret_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
 }
 
 void PytorchSerDes::setFeature(const std::string &Name, const std::vector<bool> &Value) {
     std::vector<uint8_t> bool_vec(Value.begin(), Value.end());
     auto tensor = torch::tensor(bool_vec, torch::kUInt8);
-    static_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
+    reinterpret_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
 }
 
 // void PytorchSerDes::setRequest(void *Request) {
-//     CompiledModel = static_cast<torch::inductor::AOTIModelContainerRunnerCpu *>(Request);
+//     CompiledModel = reinterpret_cast<torch::inductor::AOTIModelContainerRunnerCpu *>(Request);
 // }
 
 void PytorchSerDes::cleanDataStructures() {
-    static_cast<TensorVec*>(this->RequestVoid)->clear(); // Clear the input vector
+    reinterpret_cast<TensorVec*>(this->RequestVoid)->clear(); // Clear the input vector
 }
 
 void *PytorchSerDes::deserializeUntyped(void *Data) {
@@ -104,7 +107,7 @@ void *PytorchSerDes::deserializeUntyped(void *Data) {
     }
 
     // Assume Data is a pointer to a vector of tensors
-    std::vector<torch::Tensor> *serializedTensors = static_cast<TensorVec *>(Data);
+    std::vector<torch::Tensor> *serializedTensors = reinterpret_cast<TensorVec *>(Data);
 
     if (serializedTensors->empty()) {
         return nullptr;
@@ -119,9 +122,11 @@ void *PytorchSerDes::deserializeUntyped(void *Data) {
         return copyTensorToVect<int64_t>(Data);
     } 
     else if (type_vect == torch::kFloat32) {
+        llvm::errs() << "f32 here!\n";
         return copyTensorToVect<float>(Data);
     } 
     else if (type_vect == torch::kFloat64) {
+        llvm::errs() << "f64 here!\n";
         return copyTensorToVect<double>(Data);
     } 
     else if (type_vect == torch::kBool) {
@@ -138,23 +143,37 @@ void *PytorchSerDes::deserializeUntyped(void *Data) {
 
 void *PytorchSerDes::getSerializedData() {
     return this->ResponseVoid;   // TODO - check
-    // TensorVec serializedData = *static_cast<TensorVec*>(this->ReponseVoid);
+    // TensorVec serializedData = *reinterpret_cast<TensorVec*>(this->ReponseVoid);
 
     // // Allocate memory for the output and copy the serialized data
     // auto *output = new TensorVec(serializedData);
-    // return static_cast<void *>(output);
+    // return reinterpret_cast<void *>(output);
 }
 
  template <typename T>
     std::vector<T> *PytorchSerDes::copyTensorToVect(void *serializedTensors) {
         auto *ret = new std::vector<T>();
-        for (const auto &tensor : *static_cast<TensorVec*>(serializedTensors)) {
+        for (const auto &tensor : *reinterpret_cast<TensorVec*>(serializedTensors)) {
             ret->insert(ret->end(), tensor.data_ptr<T>(), tensor.data_ptr<T>() + tensor.numel());
         }
         return ret;
     }
 
-void *PytorchSerDes::getRequest() { return this->RequestVoid; }
+// void *PytorchSerDes::getRequest() { llvm::errs() << reinterpret_cast<TensorVec*>(this->RequestVoid)->size() << "[In getrequest, len of req]\n"; return this->RequestVoid; }
+void *PytorchSerDes::getRequest() {
+    // return nullptr;
+    auto *tensorVecPtr = reinterpret_cast<TensorVec*>(this->RequestVoid);
+    llvm::errs() << "Inside get request\n";
+    if (!tensorVecPtr) {
+        llvm::errs() << "Error: RequestVoid could not be cast to TensorVec*\n";
+        return nullptr;
+    }
+    else {
+        llvm::errs() << reinterpret_cast<TensorVec*>(this->RequestVoid)->size() << "[In getrequest, len of req]\n";
+    }
+
+    return this->RequestVoid; 
+}
 void *PytorchSerDes::getResponse() { return this->ResponseVoid; }
 
 

@@ -1,5 +1,5 @@
 if(LLVM_MLBRIDGE)
-  add_llvm_library(PTModelRunnerLib PTModelRunner.cpp)
+  add_llvm_component_library(PTModelRunnerLib PTModelRunner.cpp)
 else()
   add_library(PTModelRunnerLib OBJECT PTModelRunner.cpp)
 endif(LLVM_MLBRIDGE)
