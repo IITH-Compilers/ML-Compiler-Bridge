@@ -55,6 +55,7 @@ namespace MLBridge
       static_cast<TensorVec*>(this->SerDes->getRequest())->push_back(seq_lens);
       auto outputs = static_cast<torch::inductor::AOTIModelContainerRunnerCpu*>(this->CompiledModel)->run((*static_cast<TensorVec*>(this->SerDes->getRequest())));
 
+      (*(outputTensors)).clear();
       for (auto i = outputs.begin(); i != outputs.end(); ++i)
         (*(outputTensors)).push_back(*i);
       void *rawData = this->SerDes->deserializeUntyped(outputTensors);

@@ -102,6 +102,7 @@ void PytorchSerDes::cleanDataStructures() {
 }
 
 void *PytorchSerDes::deserializeUntyped(void *Data) {
+    cleanDataStructures();
     if (Data == nullptr) {
         return nullptr;
     }
