@@ -65,11 +65,8 @@ void PytorchSerDes::setFeature(const std::string &Name, const std::vector<long> 
 
 void PytorchSerDes::setFeature(const std::string &Name, const std::vector<float> &Value) {
     auto tensor = torch::tensor(Value, torch::kFloat32);
-    llvm::errs() << Value.size() << "[Vec Size]\n";
-    tensor = tensor.reshape({1, Value.size()});
-    llvm::errs() << tensor.sizes()[1] << "[Tensor Size]\n";
     reinterpret_cast<TensorVec*>(this->RequestVoid)->push_back(tensor.clone());
-    llvm::errs() << reinterpret_cast<TensorVec*>(this->RequestVoid)->size() << "[In serdes, len of req, (TensorVec)]\n";
+    // llvm::errs() << reinterpret_cast<TensorVec*>(this->RequestVoid)->size() << "[In serdes, len of req, (TensorVec)]\n";
 }
 
 void PytorchSerDes::setFeature(const std::string &Name, const std::vector<double> &Value) {
@@ -123,11 +120,11 @@ void *PytorchSerDes::deserializeUntyped(void *Data) {
         return copyTensorToVect<int64_t>(Data);
     } 
     else if (type_vect == torch::kFloat32) {
-        llvm::errs() << "f32 here!\n";
+        // llvm::errs() << "f32 here!\n";
         return copyTensorToVect<float>(Data);
     } 
     else if (type_vect == torch::kFloat64) {
-        llvm::errs() << "f64 here!\n";
+        // llvm::errs() << "f64 here!\n";
         return copyTensorToVect<double>(Data);
     } 
     else if (type_vect == torch::kBool) {
@@ -164,14 +161,14 @@ void *PytorchSerDes::getSerializedData() {
 void *PytorchSerDes::getRequest() {
     // return nullptr;
     auto *tensorVecPtr = reinterpret_cast<TensorVec*>(this->RequestVoid);
-    llvm::errs() << "Inside get request\n";
+    // llvm::errs() << "Inside get request\n";
     if (!tensorVecPtr) {
         llvm::errs() << "Error: RequestVoid could not be cast to TensorVec*\n";
         return nullptr;
     }
-    else {
-        llvm::errs() << reinterpret_cast<TensorVec*>(this->RequestVoid)->size() << "[In getrequest, len of req]\n";
-    }
+    // else {
+    //     llvm::errs() << reinterpret_cast<TensorVec*>(this->RequestVoid)->size() << "[In getrequest, len of req]\n";
+    // }
 
     return this->RequestVoid; 
 }
