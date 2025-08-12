@@ -8,7 +8,8 @@ set(protobuf_MODULE_COMPATIBLE TRUE)
 find_package(Protobuf CONFIG REQUIRED)
 
 include_directories(${Protobuf_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/include)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti -fPIC")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti -fPIC")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frtti -fPIC")
 set (CMAKE_CXX_STANDARD 17)
 
 option(LLVM_MLBRIDGE "MLCompilerBridge install for LLVM" OFF)
@@ -21,8 +22,8 @@ if(NOT LLVM_MLBRIDGE)
   add_compile_definitions(C_LIBRARY)
 endif()
 
-add_subdirectory(MLModelRunner)
 add_subdirectory(SerDes)
+add_subdirectory(MLModelRunner)
 add_subdirectory(test)
 
 if(LLVM_MLBRIDGE)

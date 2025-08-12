@@ -4,6 +4,7 @@ if(NOT PROTOS_DIRECTORY STREQUAL "")
   add_subdirectory(gRPCModelRunner)
 endif()
 add_subdirectory(ONNXModelRunner)
+add_subdirectory(PTModelRunner)
 add_subdirectory(C)
 
 # # For up-to-date instructions for installing the TFLite dependency, refer to
@@ -26,6 +27,12 @@ if (NOT TENSORFLOW_AOT_PATH STREQUAL "")
   include_directories(${TENSORFLOW_AOT_PATH}/include)
   add_subdirectory(${TENSORFLOW_AOT_PATH}/xla_aot_runtime_src
     ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/tf_runtime)
+    
+  # Fix: Add RTTI flags to tf_xla_runtime to provide typeinfo symbols
+  if(TARGET tf_xla_runtime_objects)
+    target_compile_options(tf_xla_runtime_objects PRIVATE -frtti)
+  endif()
+
   install(TARGETS tf_xla_runtime EXPORT LLVMExports
     ARCHIVE DESTINATION lib${LLVM_LIBDIR_SUFFIX} COMPONENT tf_xla_runtime)
   set_property(GLOBAL APPEND PROPERTY LLVM_EXPORTS tf_xla_runtime)
@@ -33,18 +40,18 @@ endif()
 
 endif()
 
-add_library(ModelRunnerCLib OBJECT PipeModelRunner.cpp)
+add_library(ModelRunnerCLib OBJECT MLModelRunner.cpp PipeModelRunner.cpp)
 target_link_libraries(ModelRunnerCLib PUBLIC ModelRunnerCUtils ONNXModelRunnerLib)
 
 if(LLVM_MLBRIDGE)
-  add_llvm_library(ModelRunnerLib PipeModelRunner.cpp)
+  add_llvm_library(ModelRunnerLib MLModelRunner.cpp PipeModelRunner.cpp)
 else()
-  add_library(ModelRunnerLib OBJECT PipeModelRunner.cpp)
+  add_library(ModelRunnerLib OBJECT MLModelRunner.cpp PipeModelRunner.cpp)
 endif(LLVM_MLBRIDGE)
 
-target_link_libraries(ModelRunnerLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib)
+target_link_libraries(ModelRunnerLib PUBLIC ModelRunnerUtils ONNXModelRunnerLib PTModelRunnerLib SerDesLib)
 
 if(NOT PROTOS_DIRECTORY STREQUAL "")
   target_link_libraries(ModelRunnerLib PUBLIC gRPCModelRunnerLib)
 endif()
-set_property(TARGET ModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)
+# set_property(TARGET ModelRunnerLib PROPERTY POSITION_INDEPENDENT_CODE 1)

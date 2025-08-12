@@ -1,3 +1,7 @@
+find_package(Torch REQUIRED)
+
+add_subdirectory(pytorchSerDes)
+
 set(protobuf_MODULE_COMPATIBLE TRUE)
 find_package(Protobuf CONFIG REQUIRED)
 
@@ -15,5 +19,6 @@ else()
 
   add_library(SerDesCLib OBJECT TensorSpec.cpp jsonSerDes.cpp bitstreamSerDes.cpp JSON.cpp)
 endif()
+target_link_libraries(SerDesLib PUBLIC PyTorchSerDesLib)
 
 target_include_directories(SerDesLib PRIVATE ${TENSORFLOW_AOT_PATH}/include)

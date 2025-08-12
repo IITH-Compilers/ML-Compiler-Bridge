@@ -43,8 +43,8 @@ namespace MLBridge {
 /// (which will hang until there's a writer on the other end).
 class PipeModelRunner : public MLModelRunner {
 public:
-  PipeModelRunner(StringRef OutboundName, StringRef InboundName,
-                  BaseSerDes::Kind Kind, LLVMContext *Ctx = nullptr);
+  PipeModelRunner(llvm::StringRef OutboundName, llvm::StringRef InboundName,
+                  BaseSerDes::Kind Kind, llvm::LLVMContext *Ctx = nullptr);
 
   static bool classof(const MLModelRunner *R) {
     return R->getKind() == MLModelRunner::Kind::Pipe;
@@ -64,7 +64,7 @@ private:
   int Inbound = -1;
   std::error_code OutEC;
   std::error_code InEC;
-  std::unique_ptr<raw_fd_ostream> OutStream;
+  std::unique_ptr<llvm::raw_fd_ostream> OutStream;
 };
 } // namespace MLBridge
 #endif // PipeModelRunner_H

@@ -23,9 +23,11 @@
 
 #define DEBUG_TYPE "pipe-model-runner"
 
+using namespace llvm;
+
 namespace MLBridge {
-PipeModelRunner::PipeModelRunner(StringRef OutboundName, StringRef InboundName,
-                                 BaseSerDes::Kind SerDesType, LLVMContext *Ctx)
+PipeModelRunner::PipeModelRunner(llvm::StringRef OutboundName, llvm::StringRef InboundName,
+                                 BaseSerDes::Kind SerDesType, llvm::LLVMContext *Ctx)
     : MLModelRunner(Kind::Pipe, SerDesType, Ctx),
       InEC(sys::fs::openFileForRead(InboundName, Inbound)) {
   this->InboundName = InboundName.str();
@@ -35,7 +37,7 @@ PipeModelRunner::PipeModelRunner(StringRef OutboundName, StringRef InboundName,
     return;
   }
   {
-    OutStream = std::make_unique<raw_fd_ostream>(OutboundName, OutEC);
+    OutStream = std::make_unique<llvm::raw_fd_ostream>(OutboundName, OutEC);
     if (OutEC) {
       if (this->Ctx)
         this->Ctx->emitError("Cannot open outbound file: " + OutEC.message());
