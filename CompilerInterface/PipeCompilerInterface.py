@@ -37,9 +37,13 @@ class PipeCompilerInterface(BaseCompilerInterface):
         return result
 
     ## Creates pipe files for communication.
-    def init_pipes(self):
-        self.to_compiler = self.pipe_name + ".in"
-        self.from_compiler = self.pipe_name + ".out"
+    def init_pipes(self, pipe_name = ""):
+        print("Pipe Name Fn: ", pipe_name)
+        print("PipeName slf: ", self.pipe_name)
+        if(pipe_name == ""):
+            pipe_name = self.pipe_name
+        self.to_compiler = pipe_name + ".in"
+        self.from_compiler = pipe_name + ".out"
         if os.path.exists(self.to_compiler):
             os.remove(self.to_compiler)
         if os.path.exists(self.from_compiler):
