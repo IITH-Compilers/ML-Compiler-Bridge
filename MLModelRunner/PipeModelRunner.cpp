@@ -104,11 +104,13 @@ void *PipeModelRunner::receive() {
 
 void *PipeModelRunner::evaluateUntyped() {
   LLVM_DEBUG(llvm::errs() << "In PipeModelRunner evaluateUntyped...\n");
+  llvm::errs() << "In PipeModelRunner evaluateUntyped...\n";
   auto *data = SerDes->getSerializedData();
   send(data);
   auto *reply = receive();
   LLVM_DEBUG(
       errs() << "In PipeModelRunner::evaluateUntyped() received data...\n");
+  errs() << "In PipeModelRunner::evaluateUntyped() received data...\n";
   return SerDes->deserializeUntyped(reply);
 }
 

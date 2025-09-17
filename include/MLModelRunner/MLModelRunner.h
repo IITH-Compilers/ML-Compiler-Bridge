@@ -35,6 +35,7 @@ public:
 
   template <typename T>
   typename std::enable_if<std::is_fundamental<T>::value, T>::type evaluate() {
+    errs()<<"inside evaluate of MLModelRunner........"<<"\n";
     return *reinterpret_cast<T *>(evaluateUntyped());
   }
 

@@ -9,7 +9,8 @@
 #ifndef MLBRIDGE_TENSORSPEC_H
 #define MLBRIDGE_TENSORSPEC_H
 
-#include "MLModelRunner/Utils/JSON.h"
+// #include "MLModelRunner/Utils/JSON.h"
+#include "llvm/Support/JSON.h"
 #include "llvm/ADT/StringMap.h"
 #include "llvm/Config/llvm-config.h"
 #include "llvm/IR/LLVMContext.h"

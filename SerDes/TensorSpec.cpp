@@ -13,7 +13,8 @@
 #include "llvm/ADT/STLExtras.h"
 // #include "llvm/Config/config.h"
 
-#include "MLModelRunner/Utils/JSON.h"
+// #include "MLModelRunner/Utils/JSON.h"
+#include "llvm/Support/JSON.h"
 #include "SerDes/TensorSpec.h"
 #include "llvm/ADT/StringExtras.h"
 #include "llvm/ADT/Twine.h"

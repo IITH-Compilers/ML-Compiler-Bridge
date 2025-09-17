@@ -8,7 +8,7 @@ if(LLVM_MLBRIDGE)
   bitstreamSerDes.cpp
   protobufSerDes.cpp
   tensorflowSerDes.cpp
-  JSON.cpp
+  # JSON.cpp
   )
 else()
   add_library(SerDesLib OBJECT TensorSpec.cpp jsonSerDes.cpp bitstreamSerDes.cpp protobufSerDes.cpp tensorflowSerDes.cpp JSON.cpp)
