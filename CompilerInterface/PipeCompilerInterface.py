@@ -27,7 +27,7 @@ class PipeCompilerInterface(BaseCompilerInterface):
 
     ## Sends query to compiler and returns deserialized result.
     def evaluate(self, mode=None):
-        print("Inside evaluate: ")
+        # print("Inside evaluate: ")
         out = self.serdes_obj.getOutputBuffer()
         if out is not None:
             # print("Sending data", out)
