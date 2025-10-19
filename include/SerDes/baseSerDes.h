@@ -7,12 +7,12 @@
 #ifndef BASE_SERDES_H
 #define BASE_SERDES_H
 
-// #ifdef __cplusplus
 #include "google/protobuf/extension_set.h"
 #include "google/protobuf/message.h"
-// #endif
-
 #include "llvm/Support/raw_ostream.h"
+#include "SerDes/TensorSpec.h"
+
+
 #include <cassert>
 #include <map>
 #include <string>
@@ -34,7 +34,7 @@ class BaseSerDes {
 public:
   // setRepeatedField as pushback
   // setFeature as setFeature, setAttribute
-  enum class Kind : int { Unknown, Json, Bitstream, Protobuf, Tensorflow };
+  enum class Kind : int { Unknown, Json, Bitstream, Protobuf, Tensorflow, Pytorch };
   Kind getKind() const { return Type; }
 
 #define SET_FEATURE(TYPE)                                                      \

@@ -21,6 +21,8 @@
 #include <memory>
 #include <vector>
 
+using namespace llvm;
+
 namespace MLBridge {
 
 /// TFModelRunner - TF Compiled model implementation of the

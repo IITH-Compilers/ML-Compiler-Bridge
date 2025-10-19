@@ -13,7 +13,7 @@ namespace MLBridge {
 
 ONNXModelRunner::ONNXModelRunner(Environment *env,
                                  std::map<std::string, Agent *> agents,
-                                 LLVMContext *Ctx)
+                                 llvm::LLVMContext *Ctx)
     : MLModelRunner(Kind::ONNX, Ctx), env(env), agents(agents) {}
 
 void ONNXModelRunner::addAgent(Agent *agent, std::string name) {
